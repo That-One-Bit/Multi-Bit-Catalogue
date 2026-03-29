@@ -1,1 +1,1 @@
-Finally! There is documentation on one thing!
+This is a cool website.
