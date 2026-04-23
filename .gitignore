@@ -1,1 +1,8 @@
+#*/FolderName/ Ignores all content of folder
+#*.FileType Ignores all files of said type
+#FileName* Ignores all files with said name
+#!FileName Is used with an ignore to make any file with this name be recognized
+
+
 **/.TagStudio/
+findex*
