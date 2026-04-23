@@ -1,1 +1,1 @@
-What is kosher
+As stated in the description, this website is a modification of Edclub that makes it usable as a sort of Web Hub, hopefully going to include a flash player, blog, and more web based tools. Anyone can request things within reason, but most items will have to be reviewed by me. Please, criticize me for copying a design, but understand that I am trying to learn techniques in web developement from popular websites.
