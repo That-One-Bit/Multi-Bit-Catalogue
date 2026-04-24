@@ -460,7 +460,7 @@
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url("/m/fonts/roboto-v50-latin-300.woff2") format("woff2")
+    src: url("../fonts/roboto-v50-latin-300.woff2") format("woff2")
 }
 
 @font-face {
@@ -468,7 +468,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url("/m/fonts/roboto-v50-latin-regular.woff2") format("woff2")
+    src: url("../fonts/roboto-v50-latin-regular.woff2") format("woff2")
 }
 
 @font-face {
@@ -476,7 +476,7 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url("/m/fonts/roboto-v50-latin-700.woff2") format("woff2")
+    src: url("../fonts/roboto-v50-latin-700.woff2") format("woff2")
 }
 
 @font-face {
@@ -484,7 +484,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url("/m/fonts/roboto-mono-v31-latin-regular.woff2") format("woff2")
+    src: url("../fonts/roboto-mono-v31-latin-regular.woff2") format("woff2")
 }
 
 @font-face {
@@ -492,7 +492,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url("/m/fonts/montserrat-v31-latin-regular.woff2") format("woff2")
+    src: url("../fonts//montserrat-v31-latin-regular.woff2") format("woff2")
 }
 
 @font-face {
@@ -500,7 +500,7 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url("/m/fonts/montserrat-v31-latin-600.woff2") format("woff2")
+    src: url("../fonts/montserrat-v31-latin-600.woff2") format("woff2")
 }
 
 @font-face {
@@ -508,12 +508,12 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url("/m/fonts/montserrat-v31-latin-700.woff2") format("woff2")
+    src: url("../fonts/montserrat-v31-latin-700.woff2") format("woff2")
 }
 
 @font-face {
     font-family: "edclubfont";
-    src: url("/m/edclubfont/edclubfont.woff2?v2wd8d") format("woff2"),url("/m/edclubfont/edclubfont.ttf?v2wd8d") format("truetype"),url("/m/edclubfont/edclubfont.woff?v2wd8d") format("woff"),url("/m/edclubfont/edclubfont.svg?v2wd8d#edclubfont") format("svg");
+    src: url("../fonts/edclubfont.woff") format("woff2"),url("/m/edclubfont/edclubfont.ttf?v2wd8d") format("truetype"),url("/m/edclubfont/edclubfont.woff?v2wd8d") format("woff"),url("/m/edclubfont/edclubfont.svg?v2wd8d#edclubfont") format("svg");
     font-weight: normal;
     font-style: normal
 }
