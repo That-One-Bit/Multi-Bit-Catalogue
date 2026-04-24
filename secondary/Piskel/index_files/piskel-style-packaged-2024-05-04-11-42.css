@@ -1,6 +1,5 @@
 html, body {
   --highlight-color: gold;
-  background-color: black;
 }
 html, body {
   height : 100%; width: 100%;
@@ -44,18 +43,18 @@ input[type="range"] {
 
 ::-webkit-scrollbar-thumb {
     border-radius: 2px;
-    background-color: #ffbc00;
+    background-color: #666;
 }
 
 ::-webkit-scrollbar-track {
-   background-color: rgb(194 143 0);
+   background-color: rgba(50, 50, 50, 0.4);
 }
 
 a, a:visited {
   color: gold;
 }
 body {
-  background: #121212;
+  background: #1D1D1D;
 }
 
 /* Browser fixes */
@@ -132,7 +131,7 @@ body {
 }
 
 .tooltip-descriptor {
-  color:#ffffff;
+  color:#999;
 }
 
 .tooltip-descriptor:last-child {
@@ -141,7 +140,7 @@ body {
 
 .tooltip-descriptor-button {
   padding: 2px;
-  border: 1px Solid #gold;
+  border: 1px Solid #999;
   font-size: 0.8em;
   margin-right: 5px;
   width: 35px;
@@ -243,7 +242,7 @@ body {
 }
 
 .cursor-coordinates {
-  color: #b49700;
+  color: gold;
   font-size: 12px;
   font-weight: bold;
   font-family: monospace;
@@ -300,11 +299,6 @@ body {
 .lowcont-dark-picker-background,
 .lowcont-dark-canvas-background .canvas-background {
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABlBMVEVMTExVVVUnhsEkAAAAHUlEQVR4AWOAAUYoQOePEAUj3v9oYDQ9gMBoegAAJFwCAbLaTIMAAAAASUVORK5CYII=') repeat;
-}
-
-.highcont-dark-picker-background,
-.highcont-dark-canvas-background .canvas-background {
-  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAd0lEQVR4AeyWQQoAIQwDi7/q/w99ltt8YPYkuQQaLyEoowFPd19SVV0SZeVRVt7ZxTo5QAiEwJmZIm2Xi0RZeZSVlysIgRDwE1AXSeoyibLyKCvPT8D6G9nNQyAE/ATURZK6TKKsPMrK8xPYKlonBELgOYG/F/4BAAD//86Jya0AAAAGSURBVAMAUUO60VjxlEAAAAAASUVORK5CYIIA') repeat;
 }
 
 .canvas.onion-skin-canvas {
@@ -442,11 +436,11 @@ body {
 .textfield {
   box-sizing:border-box;
 
-  background : #000000;
-  border : 1px solid ##ffd700;
+  background : black;
+  border : 1px solid #888;
   border-radius : 2px;
   padding : 3px 10px;
-  color : #ffffff;
+  color : white;
 
   height: 23px;
 }
@@ -456,7 +450,7 @@ body {
 }
 
 .textfield[disabled=disabled] {
-  background : #000000;
+  background : #3a3a3a;
 }
 
 .textfield:focus {
@@ -471,7 +465,7 @@ body {
 .button {
   box-sizing: border-box;
   height: 24px;
-  background-color: #000000;
+  background-color: #666;
   border-style: none;
   border-radius: 2px;
   cursor: pointer;
@@ -495,15 +489,15 @@ body {
 }
 
 .button-primary:hover {
-  background-color: #563b00;
-  color: #ffc800;
+  background-color: white;
+  color: black;
 }
 
 .button[disabled],
 .button[disabled]:hover {
   cursor:default;
-  background-color: #404040;
-  color: #8d8d8d;
+  background-color: #aaa;
+  color: #777;
 }
 
 .import-size-field,
@@ -543,13 +537,13 @@ body {
   right: 0;
   font-size: 11px;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #fff;
   text-align: center;
 }
 
 .drawer-content {
   overflow: hidden;
-  background-color: #070707;
+  background-color: #444;
   height: 550px;
   max-height: 100%;
   width: 280px;
@@ -564,10 +558,10 @@ body {
 
 .right-sticky-section .tool-icon.has-expanded-drawer {
   position: relative;
-  background-color: #000000;
+  background-color: #444;
   margin-right: 0;
   padding-right: 2px;
-  border-left : 3px solid #ffd700;
+  border-left : 3px solid gold;
 }
 
 /************************************************************************************************/
@@ -578,7 +572,7 @@ body {
   margin: 10px 20px;
   font-size: 12px;
   font-weight: bold;
-  color: #fff6e0;
+  color: #ccc;
 }
 
 .settings-section .button {
@@ -589,7 +583,7 @@ body {
   margin-top: 20px;
   margin-bottom: 10px;
   text-transform: uppercase;
-  border-bottom: 1px #af0000 solid;
+  border-bottom: 1px #aaa solid;
   padding-bottom: 5px;
   color: gold;
 }
@@ -639,11 +633,11 @@ body {
   margin-right: 5px;
   padding: 1px;
   position: relative;
-  border: #837200 2px solid;
+  border: #888 2px solid;
 }
 
 .background-picker:hover {
-  border-color: #bc9f00;
+  border-color: #eee;
 }
 
 .background-picker.selected {
@@ -665,7 +659,7 @@ body {
   display: inline-block;
   line-height: 30px;
   width: 40px;
-  border: 1px solid #ffd400;
+  border: 1px solid grey;
   box-sizing: border-box;
   border-radius: 3px;
   text-align: center;
@@ -709,12 +703,12 @@ body {
 
 .settings-item-grid-size .size-picker-option,
 .settings-item-grid-spacing .size-picker-option {
-  border-color: #745600;
+  border-color: #888;
 }
 
 .settings-item-grid-size .size-picker-option:not(.selected):hover,
 .settings-item-grid-spacing .size-picker-option:not(.selected):hover {
-  border-color: #ffffff;
+  border-color: white;
 }
 
 .grid-width-select,
@@ -733,18 +727,18 @@ body {
   width: 20px;
   height: 20px;
   cursor: pointer;
-  border: 2px solid #000000;
+  border: 2px solid #888;
   margin-right: 2px;
   margin-bottom: 2px;
   box-sizing: border-box;
 }
 
 .grid-colors-item:hover {
-  border-color: #ffffff;
+  border-color: white;
 }
 
 .grid-colors-item.selected {
-  border-color: #ffd700;
+  border-color: gold;
 }
 
 .settings-section-preferences > .settings-title {
@@ -760,7 +754,7 @@ body {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  color: #ffbc00;
+  color: #888;
 }
 
 /* Override default link styles for the release notes link
@@ -866,7 +860,7 @@ body {
   display: inline-block;
   line-height: 30px;
   width: 40px;
-  border: 1px solid #ffbc00;
+  border: 1px solid grey;
   box-sizing: border-box;
   border-radius: 3px;
   text-align: center;
@@ -907,7 +901,7 @@ body {
 .export-panel-section {
   padding: 5px;
   margin-top: 10px;
-  border: 1px solid #151200;
+  border: 1px solid #5d5d5d;
   border-radius: 2px;
 }
 
@@ -982,7 +976,7 @@ body {
 .save-file-name {
   white-space: nowrap;
   font-weight: bold;
-  color: #ffffff;
+  color: white;
   font-style: normal;
 }
 
@@ -1009,12 +1003,12 @@ body {
   width: 46px;
   height: 46px;
   margin: 1px;
-  background-color: #000000;
+  background-color: #3a3a3a;
 }
 
 .tool-icon.selected {
   cursor: default;
-  background-color: #544700;
+  background-color: #444;
 }
 
 .tool-icon.selected:before {
@@ -1027,7 +1021,7 @@ body {
 }
 
 .tool-icon:hover {
-  background-color: #272100;
+  background-color: #444;
 }
 
 /*
@@ -1124,7 +1118,7 @@ body {
   height: 16px;
   text-indent: -10000px;
   border: 1px solid black;
-  background: #ffffff;
+  background: white;
   cursor: pointer;
   position : relative;
   top: 10px;
@@ -1607,7 +1601,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   padding: 1px 2px;
   border-radius: 3px;
   background-image: linear-gradient(to right, hsl(0, 30%, 70%) 0, hsl(359, 30%, 70%) 100%);
-  box-shadow: inset 0 1px 0 0 #000000, inset 0 -1px 0 0 #3a3d42;
+  box-shadow: inset 0 1px 0 0 #0d0e0f, inset 0 -1px 0 0 #3a3d42;
   outline: none; /* no focus outline */
 }
 
@@ -1715,11 +1709,11 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   box-sizing: border-box;
   -moz-box-sizing : border-box;
 
-  background-color: rgb(0 0 0 / 80%);
+  background-color: rgba(0,0,0,0.8);
   opacity: 0;
   pointer-events: none;
 
-  color: #ffffff;
+  color: white;
 }
 
 #dialog-container-wrapper.animated {
@@ -1741,8 +1735,8 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   -moz-box-sizing : border-box;
 
   border-radius: 3px;
-  border : 3px solid #ffd700;
-  background: #121212;
+  border : 3px solid gold;
+  background: #444;
   overflow: auto;
 }
 
@@ -1804,7 +1798,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   width: 100%;
   height: 10px;
   flex-grow: 1;
-  background: #000000;
+  background: #444;
 
   padding: 20px;
   overflow: auto;
@@ -1857,7 +1851,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 .browse-backups .session-list-empty,
 .browse-backups .snapshot-list-empty {
-  color: #ffffff;
+  color: #bbb;
 }
 
 .browse-backups .session-list-error,
@@ -1887,7 +1881,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   margin-bottom: 10px;
   padding: 0 20px;
 
-  border: 1px solid #000000;
+  border: 1px solid #666;
   box-sizing: border-box;
 }
 
@@ -2070,7 +2064,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 }
 
 .cheatsheet-description {
-  color: #ffffff;
+  color: white;
   font-size : 14px;
   margin-left: 10px;
   line-height : 30px;
@@ -2083,14 +2077,14 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   line-height: 26px;
   padding: 0 10px;
 
-  border : 2px solid #4d0000;
+  border : 2px solid white;
   border-radius: 2px;
 
   text-align: center;
   font-family: monospace;
   font-weight: bold;
   font-size : 18px;
-  color: #ffd700;
+  color: white;
 }
 
 .cheatsheet-shorcut-conflict .cheatsheet-key {
@@ -2103,7 +2097,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 }
 
 .cheatsheet-shortcut-editable .cheatsheet-key {
-  border-color: #312900;
+  border-color: gold;
   color: gold;
 }
 
@@ -2130,14 +2124,14 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   padding : 10px;
   overflow: hidden;
 
-  background-color : #ffd700;
+  background-color : gold;
 }
 
 .cheatsheet-helptext {
   font-size: 14px;
   height : 26px;
   line-height : 26px;
-  color: #ffffff;
+  color: black;
 }
 
 .cheatsheet-helptext-tooltip {
@@ -2261,7 +2255,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   height: 460px;
 
   border: 1px solid black;
-  background: #000000;
+  background: #333;
 }
 
 .color-picker-container {
@@ -2270,7 +2264,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   top:0;
   bottom:0;
   right:0;
-  background: #000000;
+  background: #222;
 }
 
 .create-palette-actions {
@@ -2329,7 +2323,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 
 .create-palette-color {
-  border:1px solid #000000;
+  border:1px solid #2c2c2c;
   transition : border-color 0.2s;
 }
 .create-palette-color:hover {
@@ -2363,7 +2357,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
   font-weight: bold;
   color: rgb(255,255,255);
-  text-shadow : 0 0 1px rgb(0 0 0);
+  text-shadow : 0 0 1px rgb(0,0,0);
 
   transition : opacity 0.3s, color 0.1s;
 }
@@ -2416,8 +2410,8 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  box-shadow: 0 0 2px 0 rgb(0 0 0);
-  background: #000000;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
+  background: #444;
 }
 
 .import-step-content {
@@ -2460,7 +2454,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   text-align: center;
   font-size: 3em;
   color: white;
-  text-shadow: 0 0 60px #000000;
+  text-shadow: 0 0 60px black;
 }
 
 .import-subsection {
@@ -2480,7 +2474,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 .import-section-preview {
   position: absolute;
   display: inline-block;
-  border: 1px dashed #ffffff;
+  border: 1px dashed #999;
   border-radius: 3px;
   margin-left: 50%;
   top: 10px;
@@ -2599,7 +2593,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   text-align: center;
   line-height: 70px;
   font-style: italic;
-  color: #707070;
+  color: #aaa;
 }
 
 .import-mode-title {
@@ -2608,7 +2602,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 .import-mode-section {
   display: flex;
-  border: 3px solid #2c0000;
+  border: 3px solid #666;
   border-radius: 3px;
   padding: 10px;
   margin-bottom: 10px;
@@ -2725,7 +2719,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 }
 
 .dialog-performance-info-body ul {
-  border: 1px solid #ffffff;
+  border: 1px solid #666;
   padding: 5px;
   border-radius: 3px;
 }
@@ -2799,7 +2793,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   border-right: 0;
   border-bottom: 0;
 
-  color: #1e1e1e;
+  color: #222;
   background-color: gold;
 
   font-weight: bold;
@@ -2833,7 +2827,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   border: gold 2px solid;
   border-left: 0;
   border-bottom: 0;
-  background-color: #535353;
+  background-color: #444;
   font-size: 14px;
   z-index: 30000;
   color: #eee;
@@ -2875,29 +2869,29 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   font-size: 15px;
   /* reset for firefox */
   height: 16px;
-  background: #000000;
+  background: #222;
 }
 
 .toolbox-buttons {
   flex-shrink: 0;
   overflow: hidden;
-  border-top: 1px solid #f8f8f8;
-  border-bottom: 1px solid #000000;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #222;
 }
 
 .toolbox-buttons .button {
   /* Override border propery on .button elements from form.css */
   border-style: solid;
-  border-color: #000000;
+  border-color: #333;
   border-width: 0 1px 0 0;
   border-radius: 0;
 
-  background-color: #000000;
+  background-color: #3f3f3f;
 }
 
 .toolbox-buttons .button[disabled],
 .toolbox-buttons .button[disabled]:hover {
-  background-color: #181818;
+  background-color: #aaa;
 }
 
 .toolbox-buttons button:last-child {
@@ -2928,7 +2922,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   top: 0.3em;
   right: 0.5em;
 
-  color: #ffffff;
+  color: #999;
   font-size: 1.3em;
   cursor: pointer;
 
@@ -2968,7 +2962,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   display: flex;
   height:24px;
   line-height: 24px;
-  border-top: 1px solid #301400;
+  border-top: 1px solid #444;
   cursor: pointer;
 }
 
@@ -2989,7 +2983,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 }
 
 .layer-item:hover {
-  background : #000000;
+  background : #222;
 }
 
 .layer-item-opacity {
@@ -2999,7 +2993,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 .current-layer-item,
 .current-layer-item:hover {
-  background : #000000;
+  background : #333;
   color: gold;
 }
 .palettes-list-container {
@@ -3020,7 +3014,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
  */
 
 .palettes-list-container .toolbox-buttons {
-  background-color: #2b2b2b;
+  background-color: #3f3f3f;
   height: 24px;
   padding: 0;
 }
@@ -3040,7 +3034,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   height: 100%;
   padding: 0 5px 0 5px;
 
-  color: #ffffff;
+  color: #aaa;
   font-size : 0.75em;
 
   text-align:left;
@@ -3052,7 +3046,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 .palettes-list-select:hover,
 .palettes-list-select:focus {
-  background-color: #000000;
+  background-color: #484848;
   color: white;
 }
 
@@ -3097,7 +3091,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   height: 35px;
   line-height: 35px;
   width: 100%;
-  color: #2b2b2b;
+  color: gray;
   font-size: 0.8em;
   font-style: italic;
   text-align: center
@@ -3181,7 +3175,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 }
 
 #animated-preview-container {
-  background: #121212;
+  background: #333;
   border-radius : 0 0 2px 2px;
   overflow : hidden;
 }
@@ -3201,7 +3195,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 .display-fps {
   float: left;
-  color: #b4b4b4;
+  color: #aaa;
   font-size: 12px;
   min-width: 55px;
   vertical-align: bottom;
@@ -3218,7 +3212,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 .preview-toggle-onion-skin {
   font-size: 2rem;
-  color: #c6c6c6;
+  color: #aaa;
   float: left;
   line-height: 26px;
   height: 100%;
@@ -3235,7 +3229,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 .preview-toggle-onion-skin-enabled,
 .preview-toggle-onion-skin-enabled:hover {
-  color : #9c8300;
+  color : gold;
 }
 
 .preview-contextual-actions {
@@ -3390,7 +3384,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 .transformations-show-more-link {
   position: absolute;
-  color: #000000;
+  color: #999;
   right: 10px;
   font-weight: normal;
   cursor: pointer;
@@ -3491,7 +3485,7 @@ License: MIT
     height: 8px;
 }
 .sp-alpha-inner {
-    border: solid 1px #000000;
+    border: solid 1px #333;
 }
 
 /* Don't allow text selection */
@@ -3625,7 +3619,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 
 .sp-container {
     border-radius: 0;
-    background-color: #0f0f0f;
+    background-color: #ECECEC;
     border: solid 1px #f0c49B;
     padding: 0;
 }
@@ -3670,8 +3664,8 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 }
 .sp-input.sp-validation-error
 {
-    border: 1px solid #ffffff;
-    background: #000000;
+    border: 1px solid red;
+    background: #fdd;
 }
 .sp-picker-container , .sp-palette-container
 {
@@ -3751,7 +3745,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 }
 .sp-replacer.sp-disabled {
     cursor:default;
-    border-color: #b2b2b2;
+    border-color: silver;
     color: silver;
 }
 .sp-dd {
@@ -3915,11 +3909,11 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   border-width: 0;
   box-sizing: border-box;
   -moz-box-sizing:border-box;
-  background-color: #544700;
+  background-color: #444;
 }
 
 .sp-replacer:hover {
-  background-color: #7f6b00ad;
+  background-color: #888;
 }
 
 /* Hide the triangle */
@@ -3943,7 +3937,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   margin : 0 5px 5px 0;
   width: 24px;
   height: 24px;
-  border-color: #544700;
+  border-color: #444;
 
 }
 
@@ -4211,7 +4205,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 
 .preview-tile {
   position: relative;
-  border: #544700 3px solid;
+  border: #444 3px solid;
   border-radius: 3px;
   margin: 5px 0;
   width: 96px;
@@ -4341,7 +4335,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   width: 20px;
   height: 20px;
 
-  background : #15353d;
+  background : #888;
 
   font-size: 8px;
   text-align: center;
@@ -4359,7 +4353,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 }
 
 .anchor-option.selected {
-  border : 3px solid #008495;
+  border : 3px solid gold;
 }
 
 .anchor-option:before {
@@ -4375,7 +4369,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   content: '';
   width: 4px;
   height: 4px;
-  background: #008495;
+  background: gold;
 }
 
 .disabled .anchor-option.selected:before {
@@ -4395,24 +4389,24 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 }
 
 .anchor-option[data-neighbor="bottom"]:before {
-  border-top-color: #00aca4;
+  border-top-color: gold;
   margin-left: -4px;
 }
 
 .anchor-option[data-neighbor="left"]:before {
-  border-right-color: #00aca4;
+  border-right-color: gold;
   margin-top: -4px;
   margin-left: -6px;
 }
 
 .anchor-option[data-neighbor="top"]:before {
-  border-bottom-color: #00aca4;
+  border-bottom-color: gold;
   margin-top: -6px;
   margin-left: -4px;
 }
 
 .anchor-option[data-neighbor="right"]:before {
-  border-left-color: #00aca4;
+  border-left-color: gold;
   margin-top: -4px;
 }
 
@@ -4489,7 +4483,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   margin-right: 2px;
   border-style: solid;
   border-width: 2px;
-  border-color: #544700;
+  border-color: #444;
   cursor: pointer;
 }
 
@@ -4510,7 +4504,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   content: '';
   width: 100%;
   height: 100%;
-  background-color: #836f00;
+  background-color: white;
   display: block;
   text-align: center;
   line-height: 12px;
@@ -4518,7 +4512,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 }
 
 .size-picker-option:hover {
-  border-color: #9d8500;
+  border-color: #888;
 }
 
 .size-picker-option.selected:before {
@@ -4572,7 +4566,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 
 .tab-item.selected {
   border-color: gold;
-  border-bottom-color: #544700;
+  border-bottom-color: #444;
   border-style: solid;
   border-width: 1px;
 }
