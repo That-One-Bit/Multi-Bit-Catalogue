@@ -742,7 +742,7 @@ label {
 }
 
 a {
-    cursor: cell;
+    cursor: pointer;
     text-decoration-color: #353535;
     text-decoration-thickness: 2px;
 }
