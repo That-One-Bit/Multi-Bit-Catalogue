@@ -302,11 +302,6 @@ body {
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABlBMVEVMTExVVVUnhsEkAAAAHUlEQVR4AWOAAUYoQOePEAUj3v9oYDQ9gMBoegAAJFwCAbLaTIMAAAAASUVORK5CYII=') repeat;
 }
 
-.highcont-dark-picker-background,
-.highcont-dark-canvas-background .canvas-background {
-  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAd0lEQVR4AeyWQQoAIQwDi7/q/w99ltt8YPYkuQQaLyEoowFPd19SVV0SZeVRVt7ZxTo5QAiEwJmZIm2Xi0RZeZSVlysIgRDwE1AXSeoyibLyKCvPT8D6G9nNQyAE/ATURZK6TKKsPMrK8xPYKlonBELgOYG/F/4BAAD//86Jya0AAAAGSURBVAMAUUO60VjxlEAAAAAASUVORK5CYIIA') repeat;
-}
-
 .canvas.onion-skin-canvas {
   opacity: 0.2;
 }
