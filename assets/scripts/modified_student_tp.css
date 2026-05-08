@@ -22174,7 +22174,8 @@ span.keybtn2 .back-shade {
     margin: 20px 0 0 10px;
     border-radius: 4px;
     color: #555;
-    text-shadow: 0px 1px 10px rgba(255,255,255,.7)
+    text-shadow: 0px 1px 10px rgba(255,255,255,.7);
+    cursor: url(../../assets/cursor/text.cur) 15 2, url(../../assets/cursor/text_x16.cur) 7 0, text;
 }
 
 .LPVIEW .sub_header {
@@ -22190,7 +22191,7 @@ span.keybtn2 .back-shade {
     line-height: 18px;
     color: #666;
     margin-top: 2px;
-    letter-spacing: 1px
+    letter-spacing: 1px;
 }
 
 .LPVIEW .lsn_lock {
@@ -22210,6 +22211,7 @@ span.keybtn2 .back-shade {
     text-align: center;
     font-size: 13px;
     color: #555;
+    cursor: url(../../assets/cursor/pointer.cur) 16 4, url(../../assets/cursor/pointer_x16.cur) 7 2, default;
 }
 
 .LPVIEW .lsn_name.active {
@@ -22306,7 +22308,8 @@ span.keybtn2 .back-shade {
 
 .LPVIEW .box-container {
     display: table-cell;
-    padding: 10px
+    padding: 10px;
+    cursor: url(../../assets/cursor/pointer.cur) 16 4, url(../../assets/cursor/pointer_x16.cur) 7 2, default;
 }
 
 .LPVIEW .box {
@@ -22318,7 +22321,8 @@ span.keybtn2 .back-shade {
     background-color: rgba(255,255,255,.7);
     box-shadow: 0 1px 4px 0 rgba(0,0,0,.37);
     transition: box-shadow .28s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 3px
+    border-radius: 3px;
+    cursor: url(../../assets/cursor/pointer.cur) 16 4, url(../../assets/cursor/pointer_x16.cur) 7 2, default;
 }
 
 .LPVIEW .box:hover {
@@ -22328,7 +22332,8 @@ span.keybtn2 .back-shade {
 .LPVIEW .boxicon {
     height: 43px;
     text-align: center;
-    margin-top: -2px
+    margin-top: -2px;
+    cursor: url(../../assets/cursor/pointer.cur) 16 4, url(../../assets/cursor/pointer_x16.cur) 7 2, default;
 }
 
 .LPVIEW .boxicon [class*=e-] {
@@ -25305,4 +25310,7 @@ ul.char-stats li>div {
     bottom: 0
 }
 
+.lesson_icon .box_container .box .boxicon .lsn_name .lsn_num{
+    cursor: url(../../assets/cursor/pointer.cur) 16 4, url(../../assets/cursor/pointer_x16.cur) 7 2, default;
+}
 /*# sourceMappingURL=student_tp.css.map*/
