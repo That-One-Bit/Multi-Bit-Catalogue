@@ -1,5 +1,4 @@
 html, body {
-  --highlight-color: gold;
   background-color: black;
 }
 html, body {
@@ -34,6 +33,7 @@ input[type="submit"] {
 /* IE11 applies a big default margin for range inputs */
 input[type="range"] {
   padding: 0;
+  accent-color: #5c0000;
 }
 
 /* Force apparition of scrollbars on leopard */
@@ -109,6 +109,7 @@ body {
 
 .checkbox-fix {
   margin: 3px 3px 3px 0;
+  accent-color: #5c0000;
 }
 
 .checkbox-container {
@@ -141,7 +142,7 @@ body {
 
 .tooltip-descriptor-button {
   padding: 2px;
-  border: 1px Solid #gold;
+  border: 1px Solid #764c00;
   font-size: 0.8em;
   margin-right: 5px;
   width: 35px;
@@ -170,12 +171,14 @@ body {
   right: 0;
   bottom: 5px;
   left: 0;
+  background: linear-gradient(243deg, #100b04, #0c0a07);
 }
 
 .column-wrapper {
   text-align: center;
   font-size: 0;
   display: flex;
+  margin-top: 9px;
 
   position: absolute;
   left: 100px; /* Reserve room for tools on the left edge of the screen. */
@@ -272,6 +275,7 @@ body {
 .canvas-container {
   position: relative;
   display: block;
+  width: 99%;
 }
 
 .canvas-container .canvas-background {
@@ -282,24 +286,54 @@ body {
   left: 0;
 }
 
-.light-picker-background,
-.light-canvas-background .canvas-background {
-  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABlBMVEXf39////8zI3BgAAAAHklEQVR4AWNghAIGCMDgjwgFCDDSw2M0PSCD0fQAACRcAgF4ciGUAAAAAElFTkSuQmCC') repeat;
+.high-light-picker-background,
+.high-light-canvas-background .canvas-background {
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAFFJREFUWEft1LEJAEAIQ1Fd0h11SW+DWFyR5tuKEB6Y3N0NMTOj1lFVcn/dJwEQQMAu0N2yB37//LpPAiCAgF3AXkQEQAABu4C9iAiAAAJugQfm2v+B5sXaHAAAAABJRU5ErkJgggAA') repeat;
 }
 
-.medium-picker-background,
-.medium-canvas-background .canvas-background {
-  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABlBMVEW6urr///82MBGFAAAAHUlEQVR4AWOAAUYoQOePEAUj3v9oYDQ9gMBoegAAJFwCAbLaTIMAAAAASUVORK5CYII=') repeat;
+.low-light-picker-background,
+.low-light-canvas-background .canvas-background {
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAALEAAACxABrSO9dQAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAWklEQVRIS+3NoQ0AMAwDwe6/ZEdJycvkVRjmIwGvyGc+7gdZyNKBIEsHgiz7A1zhT8hClg4EWToQZNkf4Ap/QhaydCDI0oEgy/4AV/gTspClA0GWDgRZlgdmHkchNKbvgjVKAAAAAElFTkSuQmCC') repeat;
 }
 
-.lowcont-medium-picker-background,
-.lowcont-medium-canvas-background .canvas-background {
-  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABlBMVEXV1dXb29tFGkCIAAAAHklEQVR4AWNghAIGCMDgjwgFCDDSw2M0PSCD0fQAACRcAgF4ciGUAAAAAElFTkSuQmCC') repeat;
+.high-medium-light-picker-background,
+.high-medium-light-canvas-background .canvas-background {
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAFVJREFUWEft1LENADAIA8GwIOuwFzswV7KBKVK4eVqEZJ2Eo6ruEZOZan26W+63+yAAAgjYBWZG9sDvn2/3QQAEELAL2IuIAAggYBewFxEBEEDALfAAGrXrQWwA6CgAAAAASUVORK5CYIIA') repeat;
 }
 
-.lowcont-dark-picker-background,
-.lowcont-dark-canvas-background .canvas-background {
-  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABlBMVEVMTExVVVUnhsEkAAAAHUlEQVR4AWOAAUYoQOePEAUj3v9oYDQ9gMBoegAAJFwCAbLaTIMAAAAASUVORK5CYII=') repeat;
+.low-medium-light-picker-background,
+.low-medium-light-canvas-background .canvas-background {
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAFVJREFUWEft1LENADAIA8EwDVuzDUMwTbKBKVK4eVqEZJ2Eo6ruEZOZan1mRu63+yAAAgjYBbpb9sDvn2/3QQAEELAL2IuIAAggYBewFxEBEEDALfAAHi/ykUz6P70AAAAASUVORK5CYIIA') repeat;
+}
+
+.very-low-medium-light-picker-background,
+.very-low-medium-light-canvas-background .canvas-background {
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAFZJREFUWEft1EENADAIQ9EhAv8WMIEaRGwOymGHXj5XQtK8hEZV3SMmM9X6zIzcb/dBAAQQsAt0t+yB3z/f7oMACCBgF7AXEQEQQMAuYC8iAiCAgFvgAVra9fHtg6nRAAAAAElFTkSuQmCC') repeat;
+}
+
+.high-medium-dark-picker-background,
+.high-medium-dark-canvas-background .canvas-background {
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAFVJREFUWEft1LENADAIA8GwBysxCHuzR7KBKVK4eVqEZJ2Eo6ruEZOZan1mRu63+yAAAgjYBbpb9sDvn2/3QQAEELAL2IuIAAggYBewFxEBEEDALfAAc4nSId6+MpwAAAAASUVORK5CYIIA') repeat;
+}
+
+.low-medium-dark-picker-background,
+.low-medium-dark-canvas-background .canvas-background {
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAFVJREFUWEft1LENADAIA8EwAfuxAeMzQbKBKVK4eVqEZJ2Eo6ruEZOZan1mRu63+yAAAgjYBbpb9sDvn2/3QQAEELAL2IuIAAggYBewFxEBEEDALfAAygLUkaP+uWIAAAAASUVORK5CYIIA') repeat;
+}
+
+.very-low-medium-dark-picker-background,
+.very-low-medium-dark-canvas-background .canvas-background {
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAFNJREFUWEft1CEOADAIQ9GhuCeO+yvUdoMiJmo+lpA0L6FRVfeIyUy1PjMj99t9EAABBOwC3S174PfPt/sgAAII2AXsRUQABBCwC9iLiAAIIOAWeDpY1hFEd8NrAAAAAElFTkSuQmCC') repeat;
+}
+
+.high-dark-picker-background,
+.high-dark-canvas-background .canvas-background {
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAFRJREFUWEft1KENAEAIQ9HD4tDsPx8j3G1QxImajyUkzUtoZOY9YqpKrc/MyP12HwRAAAG7QHfLHvj98+0+CIAAAnYBexERAAEE7AL2IiIAAgi4BR5nl7bxN0ZmewAAAABJRU5ErkJgggAA') repeat;
+}
+
+.low-dark-picker-background,
+.low-dark-canvas-background .canvas-background {
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAFRJREFUWEft1KENAEAIQ9HDsAGK/ZfE3G1QxImajyUkzUtoVNU9YjJTrc/MyP12HwRAAAG7QHfLHvj98+0+CIAAAnYBexERAAEE7AL2IiIAAgi4BR5iArkBq12/aQAAAABJRU5ErkJgggAA') repeat;
 }
 
 .canvas.onion-skin-canvas {
@@ -438,11 +472,10 @@ body {
   box-sizing:border-box;
 
   background : #000000;
-  border : 1px solid ##ffd700;
+  border : 1px solid #570000;
   border-radius : 2px;
   padding : 3px 10px;
   color : #ffffff;
-
   height: 23px;
 }
 
@@ -455,12 +488,13 @@ body {
 }
 
 .textfield:focus {
-  border-color: gold;
+  border-color: #af0000;
   outline: none;
 }
 
 .textfield-small {
   width : 50px;
+  border-color: #8e0000;
 }
 
 .button {
@@ -490,7 +524,7 @@ body {
 }
 
 .button-primary:hover {
-  background-color: #563b00;
+  background-color: #413800;
   color: #ffc800;
 }
 
@@ -540,6 +574,7 @@ body {
   text-transform: uppercase;
   color: #ffffff;
   text-align: center;
+  background: linear-gradient(180deg, #1a1c1e, #0d1012);
 }
 
 .drawer-content {
@@ -573,7 +608,7 @@ body {
   margin: 10px 20px;
   font-size: 12px;
   font-weight: bold;
-  color: #fff6e0;
+  color: #ffffff;
 }
 
 .settings-section .button {
@@ -599,10 +634,15 @@ body {
 
 .settings-item {
   margin : 10px 0;
+  margin-left: 5px;
+}
+.ignore-warnings {
+  margin-top: 16px;  
 }
 
 [name*=checkbox] {
   vertical-align: middle;
+  accent-color: #5c0000;
 }
 
 /********************************/
@@ -622,27 +662,28 @@ body {
   width: 130px;
   overflow: hidden;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: 15px;
 }
 
 .background-picker {
   cursor: pointer;
   float: left;
-  height: 14px;
-  width: 14px;
+  height: 12px;
+  width: 12px;
   background-color: transparent;
   margin-right: 5px;
+  margin-bottom: 5px;
   padding: 1px;
   position: relative;
-  border: #837200 2px solid;
+  border: #8a0000 2px solid;
 }
 
 .background-picker:hover {
-  border-color: #bc9f00;
+  border-color: #ff9595;
 }
 
 .background-picker.selected {
-  border-color: gold;
+  border-color: #af0000;
 }
 
 .settings-opacity-input {
@@ -660,7 +701,7 @@ body {
   display: inline-block;
   line-height: 30px;
   width: 40px;
-  border: 1px solid #ffd400;
+  border: 1px solid #af0000;
   box-sizing: border-box;
   border-radius: 3px;
   text-align: center;
@@ -715,6 +756,10 @@ body {
 .grid-width-select,
 .color-format-select {
   margin: 5px 5px 0 5px;
+  background-color: black;
+  color: white;
+  border-color: #af0000;
+  
 }
 
 
@@ -751,18 +796,24 @@ body {
   margin-top: 10px;
 }
 
+.settings-based-info {
+  position: absolute;
+  bottom: 30px;
+  right: 10px;
+  color: #ffffff;
+}
 .settings-version-info {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  color: #ffbc00;
+  color: #ffffff;
 }
 
 /* Override default link styles for the release notes link
    It doesn't need to popout too much */
 .settings-version,
 .settings-version:hover {
-  color: white !important;
+  color: #ffc300 !important;
   text-decoration: none !important;
 }
 
@@ -848,6 +899,7 @@ body {
 
 .export-scale {
   margin-bottom: 10px;
+  margin-left: 1px;
 }
 
 .export-scale .scale-input {
@@ -861,7 +913,7 @@ body {
   display: inline-block;
   line-height: 30px;
   width: 40px;
-  border: 1px solid #ffbc00;
+  border: 1px solid #f40000;
   box-sizing: border-box;
   border-radius: 3px;
   text-align: center;
@@ -946,7 +998,7 @@ body {
 
 .import-highlight {
   font-weight: bold;
-  color: white;
+  color: #ffd700;
 }
 .resize-section-title {
   vertical-align: top;
@@ -963,6 +1015,8 @@ body {
 
 .save-field {
   width: 100%;
+  border-color: #3d0000;
+  color: #ff9f00;
 }
 
 .save-status {
@@ -1266,6 +1320,12 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 .icon-settings-gear-white {
   background-image: url(../img/icons.png);
   background-position: 0px -90px;
+  width: 46px;
+  height: 46px;
+}
+.icon-settings-changelog-list-white {
+  background-image: url(../img/icons.png);
+  background-position: -320px 0px;
   width: 46px;
   height: 46px;
 }
@@ -1756,6 +1816,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   bottom: 0;
   width: 100%;
   box-sizing: border-box;
+  background-color: #090909;
 }
 
 .dialog-head {
@@ -2505,6 +2566,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 .dialog-section-radio {
   margin-top: 15px;
   vertical-align: sub;
+  accent-color: #5c0000;
 }
 
 .import-size-field:nth-of-type(2) {
@@ -2892,7 +2954,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 .toolbox-buttons .button[disabled],
 .toolbox-buttons .button[disabled]:hover {
-  background-color: #181818;
+  background-color: #221d00;
 }
 
 .toolbox-buttons button:last-child {
@@ -3092,7 +3154,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   height: 35px;
   line-height: 35px;
   width: 100%;
-  color: #2b2b2b;
+  color: #a3a3a3;
   font-size: 0.8em;
   font-style: italic;
   text-align: center
@@ -3385,7 +3447,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 .transformations-show-more-link {
   position: absolute;
-  color: #000000;
+  color: #ffffff;
   right: 10px;
   font-weight: normal;
   cursor: pointer;
@@ -3631,6 +3693,8 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
+
+    color: #ffe557;
 }
 .sp-top
 {
@@ -3884,8 +3948,8 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 /* Widget's main container */
 .sp-container {
   border-radius: 4px;
-  background-color: #2B2B2B;
-  border: solid 4px #888;
+  background-color: #121212;
+  border: solid 3.5px #ffd700;
   padding: 5px 5px 0 5px;
   box-shadow : 0 0 5px 0 black;
 }
@@ -4180,19 +4244,26 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   overflow: hidden;
   width: 96px;
 
-  border: #888 solid 3px;
+  border: #ffd700 solid 3px;
   border-radius: 4px;
 
-  color: #888;
-  background-color: #222;
+  color: #ffffff;
+  background-color: #121212;
   font-size: 13px;
+  justify-content: center;
   cursor: pointer;
+
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-.add-frame-action-icon {
-  margin: 3px;
-  float: left;
-  flex-shrink: 0;
+.add-frame-action:hover {
+  color: #fff2ab;
+  background-color: #1f1f1f;
+}
+
+.add-frame-action-text {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .add-frame-action .label {
@@ -4218,11 +4289,12 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 }
 
 .preview-tile:hover {
-  border: #999 3px solid;
+  border: #c69300 3px solid;
 }
 
 .tile-view {
   position : relative;
+  border: #544700;
 }
 
 .preview-tile .tile-overlay {
@@ -4336,25 +4408,29 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   width: 20px;
   height: 20px;
 
-  background : #15353d;
+  background : #260000;
 
   font-size: 8px;
   text-align: center;
   cursor: pointer;
 }
 
+.disabled .anchor-option:hover {
+  border : 3px solid black !important;
+}
+
 .disabled .anchor-option {
   cursor: default;
-  background : #555;
-  border-color: #555 !important;
+  background : #000000;
+  border-color: #141414 !important;
 }
 
 .anchor-option:hover {
-  border : 3px solid white;
+  border : 3px solid #640000;
 }
 
 .anchor-option.selected {
-  border : 3px solid #008495;
+  border : 3px solid #730000;
 }
 
 .anchor-option:before {
@@ -4370,15 +4446,15 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   content: '';
   width: 4px;
   height: 4px;
-  background: #008495;
+  background: #920000;
 }
 
 .disabled .anchor-option.selected:before {
-  background: #555;
+  background: #000000;
 }
 
 .disabled .anchor-option[data-neighbor]:before {
-  border-color: #555 !important;
+  border-color: #000000 !important;
 }
 
 .anchor-option[data-neighbor]:before {
@@ -4390,24 +4466,24 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 }
 
 .anchor-option[data-neighbor="bottom"]:before {
-  border-top-color: #00aca4;
+  border-top-color: #920000;
   margin-left: -4px;
 }
 
 .anchor-option[data-neighbor="left"]:before {
-  border-right-color: #00aca4;
+  border-right-color: #920000;
   margin-top: -4px;
   margin-left: -6px;
 }
 
 .anchor-option[data-neighbor="top"]:before {
-  border-bottom-color: #00aca4;
+  border-bottom-color: #920000;
   margin-top: -6px;
   margin-left: -4px;
 }
 
 .anchor-option[data-neighbor="right"]:before {
-  border-left-color: #00aca4;
+  border-left-color: #920000;
   margin-top: -4px;
 }
 
@@ -4495,11 +4571,12 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   padding: 4px;
 }
 .size-picker-option[data-size='3'] {
-  padding: 3px;
+  padding-left: 2.7px;
+  padding-top: 3px;
+  padding-right: 3.2px;
+  padding-bottom: 2.9px;
 }
-.size-picker-option[data-size='4'] {
-  padding: 2px;
-}
+.size-picker-option[data-size='4'] {padding-right: 1.9px;padding-top: 2.2px;padding-left: 2.2px;padding-bottom: 2px;}
 
 .size-picker-option:before {
   content: '';
@@ -4603,3 +4680,12 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 .current-step-out {
   margin-left: 100%;
 }
+
+.palette_option {
+  background-color: #0e0e0e;
+}
+
+.palette_option:hover {
+  background-color: #221d00
+}
+
