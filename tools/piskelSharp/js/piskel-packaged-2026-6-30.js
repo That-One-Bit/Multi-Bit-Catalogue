@@ -11777,11 +11777,12 @@ $.widget("ui.sortable", $.ui.mouse, {
 
 }(window.jQuery);
 ;// TODO(grosbouddha): put under pskl namespace.
+// default.editor.marker
 var Constants = {
   DEFAULT : {
-    HEIGHT : 32,
-    WIDTH : 32,
-    FPS : 0,
+    HEIGHT : 16,
+    WIDTH : 16,
+    FPS : 6,
     LAYER_OPACITY : 0.2
   },
 
@@ -14112,7 +14113,8 @@ if (!Uint32Array.prototype.fill) {
     COLOR_FORMAT: 'COLOR_FORMAT',
     TRANSFORM_SHOW_MORE: 'TRANSFORM_SHOW_MORE',
     PREFERENCES_TAB: 'PREFERENCES_TAB',
-    KEY_TO_DEFAULT_VALUE_MAP_ : {
+    // defaults.marker
+	KEY_TO_DEFAULT_VALUE_MAP_ : {
       'GRID_COLOR' : 'black',
       'GRID_ENABLED' : false,
       'GRID_WIDTH' : 1,
@@ -14123,9 +14125,9 @@ if (!Uint32Array.prototype.fill) {
         width : Constants.DEFAULT.WIDTH,
         height : Constants.DEFAULT.HEIGHT
       },
-      'CANVAS_BACKGROUND' : 'lowcont-dark-canvas-background',
+      'CANVAS_BACKGROUND' : 'low-medium-dark-canvas-background',
       'SELECTED_PALETTE' : Constants.CURRENT_COLORS_PALETTE_ID,
-      'SEAMLESS_OPACITY' : 0.30,
+      'SEAMLESS_OPACITY' : 0.35,
       'SEAMLESS_MODE' : false,
       'PREVIEW_SIZE' : 'original',
       'ONION_SKIN' : false,
@@ -25975,9 +25977,8 @@ return Q;
     this.superclass.destroy.call(this);
   };
 
-});
-
-(function () {
+})();
+;(function () {
   var ns = $.namespace('pskl.controller.settings');
 
   ns.ChangelogController = function (piskelController) {
@@ -31616,6 +31617,8 @@ return Q;
   var createShortcut = function (id, description, defaultKey, displayKey) {
     return new ns.Shortcut(id, description, defaultKey, displayKey);
   };
+
+// keyboard.marker
 
   ns.Shortcuts = {
     /**
