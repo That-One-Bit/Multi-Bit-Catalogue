@@ -1,9 +1,9 @@
-<html><head><link href="css/piskel-style-packaged-2024-05-04-11-53.css" rel="stylesheet" type="text/css"></head><body>{% raw %}
+{% raw %}
 <div id="main-wrapper" class="main-wrapper">
   <div class="sticky-section left-sticky-section" id="tool-section">
 <div class="sticky-section-wrap">
   <div class="vertical-centerer">
-    <div class="pen-size-container size-picker-container" title="Pen size&lt;br/&gt;from 1 to 4 pixels" rel="tooltip" data-placement="top">
+    <div class="pen-size-container size-picker-container" title="Pen size<br/>from 1 to 4 pixels" rel="tooltip" data-placement="top">
       <div class="pen-size-option size-picker-option" data-size="1"></div>
       <div class="pen-size-option size-picker-option" data-size="2"></div>
       <div class="pen-size-option size-picker-option" data-size="3"></div>
@@ -13,13 +13,28 @@
       <!-- Drawing tools will be inserted here -->
     </ul>
     <div class="palette-wrapper">
-      <div class="tool-icon tool-color-picker" data-initial-title="Primary - left mouse button" rel="tooltip" data-placement="right">
-        <input id="color-picker" class="color" type="text">
+      <div
+        class="tool-icon tool-color-picker"
+        data-initial-title="Primary - left mouse button"
+        rel="tooltip"
+        data-placement="right"
+      >
+        <input id="color-picker" class="color" type="text"/>
       </div>
-      <div class="tool-icon tool-color-picker" data-initial-title="Secondary - right mouse button" rel="tooltip" data-placement="right">
-        <input id="secondary-color-picker" class="secondary-color-picker color" type="text">
+      <div
+        class="tool-icon tool-color-picker"
+        data-initial-title="Secondary - right mouse button"
+        rel="tooltip"
+        data-placement="right"
+      >
+        <input id="secondary-color-picker" class="secondary-color-picker color" type="text" />
       </div>
-      <div class="swap-colors-button icon-common-swapcolors-arrow-grey" title="Swap colors (X)" rel="tooltip" data-placement="right"></div>
+      <div
+        class="swap-colors-button icon-common-swapcolors-arrow-grey"
+        title="Swap colors (X)"
+        rel="tooltip"
+        data-placement="right"
+      ></div>
     </div>
   </div>
 </div>
@@ -34,7 +49,7 @@
 
 
   <div id="column-wrapper" class="column-wrapper">
-    <div class="column left-column">
+    <div class='column left-column'>
       <div id="preview-list-wrapper" class="preview-list-wrapper">
 <div id="preview-list-scroller" class="preview-list-scroller">
   <ul class="preview-list" id="preview-list"></ul>
@@ -44,7 +59,7 @@
 </div>
     </div>
 
-    <div class="column main-column">
+    <div class='column main-column'>
       <div id="drawing-canvas-container" class="drawing-canvas-container canvas-container">
         <div class="canvas-background"></div>
       </div>
@@ -60,8 +75,10 @@
       <div class="preview-contextual-action  best-size-button" rel="tooltip" data-placement="left"></div>
       <div class="preview-contextual-action  full-size-button" rel="tooltip" data-placement="left">Full</div>
     </div>
-    <div class="preview-contextual-action  toggle-grid-button  icon-minimap-grid-white" title="Toggle grid" rel="tooltip" data-placement="bottom"></div>
-    <div class="preview-contextual-action  open-popup-preview-button  icon-minimap-popup-preview-arrow-white" title="Open preview in popup" rel="tooltip" data-placement="bottom"></div>
+    <div class="preview-contextual-action  toggle-grid-button  icon-minimap-grid-white"
+      title="Toggle grid" rel="tooltip" data-placement="bottom"></div>
+    <div class="preview-contextual-action  open-popup-preview-button  icon-minimap-popup-preview-arrow-white"
+         title="Open preview in popup" rel="tooltip" data-placement="bottom"></div>
   </div>
 
   <div id="animated-preview-canvas-container" class="canvas-container">
@@ -69,29 +86,45 @@
   </div>
 </div>
 <div>
-  <div rel="tooltip" data-placement="bottom" class="piskel-icon-onion preview-toggle-onion-skin"></div>
+  <div rel="tooltip"
+       data-placement="bottom"
+       class="piskel-icon-onion preview-toggle-onion-skin"></div>
   <span id="display-fps" class="display-fps"></span>
-  <input id="preview-fps" class="range-fps" type="range" min="0" max="24">
+  <input id="preview-fps" class="range-fps" type="range" min="0" max="24"/>
 </div>
 <div>
 </div>
 </div>
       <div class="toolbox-container layers-list-container">
 <h3 class="toolbox-title layers-title">Layers
-  <div rel="tooltip" data-placement="left" class="layers-toggle-preview piskel-icon-eye"></div>
+  <div rel="tooltip"
+       data-placement="left"
+       class="layers-toggle-preview piskel-icon-eye"></div>
 </h3>
 <div class="toolbox-buttons">
-  <button data-action="add" class="button layers-button piskel-icon-plus" rel="tooltip" data-placement="top"></button>
+  <button data-action="add"
+    class="button layers-button piskel-icon-plus"
+    rel="tooltip" data-placement="top" ></button>
 
-  <button data-action="up" class="button layers-button piskel-icon-arrow-up-fat" title="Move layer up" rel="tooltip" data-placement="top"></button>
+  <button data-action="up"
+    class="button layers-button piskel-icon-arrow-up-fat"
+    title="Move layer up" rel="tooltip" data-placement="top" ></button>
 
-  <button data-action="down" class="button layers-button piskel-icon-arrow-down-fat" title="Move layer down" rel="tooltip" data-placement="top"></button>
+  <button data-action="down"
+    class="button layers-button piskel-icon-arrow-down-fat"
+    title="Move layer down" rel="tooltip" data-placement="top" ></button>
 
-  <button data-action="edit" class="button layers-button piskel-icon-pencil" title="Edit layer name" rel="tooltip" data-placement="top"></button>
+  <button data-action="edit"
+    class="button layers-button piskel-icon-pencil"
+    title="Edit layer name" rel="tooltip" data-placement="top"></button>
 
-  <button data-action="merge" class="button layers-button piskel-icon-merge" title="Merge with layer below" rel="tooltip" data-placement="top"></button>
+  <button data-action="merge"
+    class="button layers-button piskel-icon-merge"
+    title="Merge with layer below" rel="tooltip" data-placement="top" ></button>
 
-  <button data-action="delete" class="button layers-button piskel-icon-close" title="Delete selected layer" rel="tooltip" data-placement="top"></button>
+  <button data-action="delete"
+    class="button layers-button piskel-icon-close"
+    title="Delete selected layer" rel="tooltip" data-placement="top" ></button>
 
 </div>
 
@@ -116,16 +149,24 @@
       <div class="toolbox-container transformations-container">
 <h3 class="toolbox-title transformations-title">
   Transform
-  <span class="transformations-show-more-link piskel-icon-plus" title="View more tools" rel="tooltip" data-placement="top"></span>
+  <span
+    class="transformations-show-more-link piskel-icon-plus"
+    title="View more tools"
+    rel="tooltip" data-placement="top"
+  ></span>
 </h3>
 <ul class="tools-wrapper"></ul>
 </div>
       <div class="toolbox-container palettes-list-container">
 <h3 class="toolbox-title palettes-title">Palettes</h3>
 <div class="toolbox-buttons">
-  <button class="button palettes-list-button create-palette-button piskel-icon-plus" data-action="add" title="Create a new palette" rel="tooltip" data-placement="top"></button>
+  <button
+    class="button palettes-list-button create-palette-button piskel-icon-plus" data-action="add"
+    title="Create a new palette" rel="tooltip" data-placement="top" ></button>
   <select class="button palettes-list-select"></select>
-  <button class="button palettes-list-button edit-palette-button  piskel-icon-pencil" data-action="edit" title="Manage this palette" rel="tooltip" data-placement="top"></button>
+  <button
+    class="button palettes-list-button edit-palette-button  piskel-icon-pencil" data-action="edit"
+    title="Manage this palette" rel="tooltip" data-placement="top"></button>
 </div>
 <div class="palettes-list-colors"></div>
 <script type="text/template" id="palette-color-template">
@@ -154,19 +195,46 @@
   <div id="application-action-section" data-pskl-controller="settings" class="sticky-section right-sticky-section">
     <div class="sticky-section-wrap">
       <div class="vertical-centerer">
-<div data-setting="user" class="tool-icon icon-settings-gear-white" title="&lt;span class='highlight'&gt;PREFERENCES&lt;/span&gt;&lt;/br&gt;" rel="tooltip" data-placement="left">
+<div
+  data-setting="changelog"
+  class="tool-icon icon-settings-changelog-list-white"
+  title="<span class='highlight'>CHANGELOG</span></br>View the changelog for every version of Piskel and Piskel Sharp, including future update plans."
+  rel="tooltip" data-placement="left">
 </div>
 
-<div data-setting="resize" class="tool-icon  icon-settings-resize-white" title="&lt;span class='highlight'&gt;RESIZE&lt;/span&gt;&lt;/br&gt;Resize the drawing area" rel="tooltip" data-placement="left">
+<div
+  data-setting="user"
+  class="tool-icon icon-settings-gear-white"
+  title="<span class='highlight'>PREFERENCES</span></br>"
+  rel="tooltip" data-placement="left">
 </div>
 
-<div data-setting="save" class="tool-icon  icon-settings-save-white" title="&lt;span class='highlight'&gt;SAVE&lt;/span&gt;&lt;/br&gt;Save to your gallery, save locally&lt;br/&gt;or export as a file" rel="tooltip" data-placement="left">
+<div
+  data-setting="resize"
+  class="tool-icon  icon-settings-resize-white"
+  title="<span class='highlight'>RESIZE</span></br>Resize the drawing area"
+  rel="tooltip" data-placement="left">
 </div>
 
-<div data-setting="export" class="tool-icon  icon-settings-export-white" title="&lt;span class='highlight'&gt;EXPORT&lt;/span&gt;&lt;/br&gt;Export as Image, as Spritesheet&lt;br/&gt;or as Animated GIF" rel="tooltip" data-placement="left">
+<div
+  data-setting="save"
+  class="tool-icon  icon-settings-save-white"
+  title="<span class='highlight'>SAVE</span></br>Save to your gallery, save locally<br/>or export as a file"
+  rel="tooltip" data-placement="left" >
 </div>
 
-<div data-setting="import" class="tool-icon  icon-settings-open-folder-white" title="&lt;span class='highlight'&gt;IMPORT&lt;/span&gt;&lt;/br&gt;Import an existing image,&lt;br/&gt;an animated GIF or a .piskel file" rel="tooltip" data-placement="left">
+<div
+  data-setting="export"
+  class="tool-icon  icon-settings-export-white"
+  title="<span class='highlight'>EXPORT</span></br>Export as Image, as Spritesheet<br/>or as Animated GIF"
+  rel="tooltip" data-placement="left">
+</div>
+
+<div
+  data-setting="import"
+  class="tool-icon  icon-settings-open-folder-white"
+  title="<span class='highlight'>IMPORT</span></br>Import an existing image,<br/>an animated GIF or a .piskel file"
+  rel="tooltip" data-placement="left">
 </div>
 
 </div>
@@ -351,8 +419,10 @@
 </script>
 </div>
 
-<span class="cheatsheet-link icon-common-keyboard-gold" rel="tooltip" data-placement="right" title="Keyboard shortcuts">&nbsp;</span>
-<div class="performance-link icon-common-warning-red" rel="tooltip" data-placement="left" title="Performance problem detected, learn more.">&nbsp;</div>
+<span class="cheatsheet-link icon-common-keyboard-gold"
+      rel="tooltip" data-placement="right" title="Keyboard shortcuts">&nbsp;</span>
+<div class="performance-link icon-common-warning-red"
+     rel="tooltip" data-placement="left" title="Performance problem detected, learn more.">&nbsp;</div>
 
 <!-- dialogs partials -->
 <script type="text/template" id="templates/dialogs/browse-backups.html">
@@ -836,20 +906,68 @@
 </script>
 
 <!-- settings-panel partials -->
+<script type="text/template" id="templates/settings/changelog.html">
+<div class="settings-section settings-section-changelog">
+<div class="settings-title">
+  Piskel Sharp Changelog
+</div>
+<div class="settings-item">
+  <span> View the <span class="changelog-highlight">version history</span> of Piskel Sharp, starting from the top.</span>
+  <div class="changelog-section">
+    <button type="button" class="button button-primary changelog-sharp-button">View Changelog</button>
+  </div>
+</div>
+<div class="settings-title">
+  Piskel Changelog
+</div>
+<div class="settings-item">
+  <span> View the <span class="changelog-highlight">version history</span> of Piskel, starting from the top.</span>
+
+  <div class="changelog-section">
+    <button type="button" class="button button-primary changelog-button">View Changelog</button>
+  </div>
+</div>
+<div class="settings-title">
+  Future Update Plans
+</div>
+<div class="settings-item">
+  <span> Wondering about what <span class="changelog-highlight">features</span> are coming to Piskel Sharp? Check here, updated per-major. </span>
+  <div class="changelog-section">
+    <button type="button" class="button button-primary future-plans-button">View Planned Featuers</button>
+  </div>
+</div>
+<div class="settings-title">
+  Piskel Sharp Credits
+</div>
+<div class="settings-item">
+  <span> Look at who <span class="changelog-highlight">made this</span> fork of Piskel, and every contributor in a stylish manor.</span>
+  <div class="changelog-section">
+    <button type="button" class="button button-primary credits-button">View Credits</button>
+  </div>
+</div>
+</div>
+</script>
 <script type="text/html" id="templates/settings/preferences.html">
 <div class="settings-section settings-section-preferences">
   <div class="settings-title">Settings</div>
   <div class="tab-list">
-    <div class="tab-item" data-tab-id="misc">Misc</div>
+    <div class="tab-item" data-tab-id="misc">Editor</div>
     <div class="tab-item" data-tab-id="grid">Grid</div>
-    <div class="tab-item" data-tab-id="tile">Tile mode</div>
+    <div class="tab-item" data-tab-id="tile">Tiling</div>
   </div>
   <div class="tab-content"></div>
   <div class="settings-version-info">
-    Piskel
-    <span rel="tooltip" data-placement="bottom" title="View release notes">
+    Piskel Sharp
+    <span rel="tooltip" data-placement="bottom" title="View Release Notes">
       <a  class="settings-version" target="_blank"
-          href="https://github.com/piskelapp/piskel/releases/tag/v0.16.1">v0.16.1</a>
+          href="https://github.com/that-one-bit/piskel-sharp/releases/tag/v0.2.0">v0.2.0</a>
+    </span>
+  </div>
+  <div class="settings-based-info">
+    Based on PFP:
+    <span rel="tooltip" data-placement="bottom" title="View Release Notes">
+      <a  class="settings-version" target="_blank"
+          href="https://blog.gingerbeardman.com/2023/05/10/piskel-for-playdate/">1.16.1</a>
     </span>
   </div>
 </div>
@@ -906,26 +1024,34 @@
            title="{{title}}">
       </div>
     </script>
-  
-
-
+  </div>
+</div>
+</script>
 
 <script type="text/html" id="templates/settings/preferences/misc.html">
 <div class="preferences-panel-misc">
   <div class="settings-item">
     <label>Background</label>
     <div class="background-picker-wrapper">
-      <div class="background-picker light-picker-background" data-background="light-canvas-background"
-            rel="tooltip" data-placement="bottom" title="light / high contrast">
+<div class="background-picker high-light-picker-background selected" data-background="high-light-canvas-background" rel="tooltip" data-placement="bottom" data-original-title="light / high contrast">
       </div>
-      <div class="background-picker medium-picker-background" data-background="medium-canvas-background"
-            rel="tooltip" data-placement="bottom" title="medium / high contrast">
+      <div class="background-picker low-light-picker-background" data-background="low-light-canvas-background" rel="tooltip" data-placement="bottom" title="light / low contrast">
       </div>
-      <div class="background-picker lowcont-medium-picker-background" data-background="lowcont-medium-canvas-background"
-            rel="tooltip" data-placement="bottom" title="medium / low contrast">
+      <div class="background-picker high-medium-light-picker-background" data-background="high-medium-light-canvas-background" rel="tooltip" data-placement="bottom" title="medium light / high contrast">
       </div>
-      <div class="background-picker lowcont-dark-picker-background" data-background="lowcont-dark-canvas-background"
-            rel="tooltip" data-placement="bottom" title="dark / low contrast">
+      <div class="background-picker low-medium-light-picker-background" data-background="low-medium-light-canvas-background" rel="tooltip" data-placement="bottom" title="medium light / low contrast">
+      </div>
+      <div class="background-picker very-low-medium-light-picker-background" data-background="very-low-medium-light-canvas-background" rel="tooltip" data-placement="bottom" title="medium light / very low contrast">
+      </div>
+      <div class="background-picker high-medium-dark-picker-background" data-background="high-medium-dark-canvas-background" rel="tooltip" data-placement="bottom" title="medium dark / high contrast">
+      </div>
+      <div class="background-picker low-medium-dark-picker-background" data-background="low-medium-dark-canvas-background" rel="tooltip" data-placement="bottom" title="medium dark / low contrast">
+      </div>
+      <div class="background-picker very-low-medium-dark-picker-background" data-background="very-low-medium-dark-canvas-background" rel="tooltip" data-placement="bottom" title="medium dark / very low contrast">
+      </div>
+      <div class="background-picker high-dark-picker-background" data-background="high-dark-canvas-background" rel="tooltip" data-placement="bottom" title="dark / high contrast">
+      </div>
+      <div class="background-picker low-dark-picker-background" data-background="low-dark-canvas-background" rel="tooltip" data-placement="bottom" title="dark / low contrast">
       </div>
     </div>
   </div>
@@ -1153,54 +1279,7 @@
   </div>
 </div>
 </script>
-<script type="text/template" id="templates/settings/changelog.html">
-<div class="settings-section settings-section-import">
-  <div class="settings-title">
-    Piskel Sharp Changelog
-  </div>
-  <div class="settings-item">
-    <span> View the <span class="import-highlight">version history</span> of Piskel Sharp, starting from the top.</span>
-    <div class="import-section">
-      <button type="button" class="button  button-primary browse-local-button">Open</button>
-    </div>
-  </div>
-  <div class="settings-title">
-    Load .piskel file
-  </div>
-  <div class="settings-item">
-    <span>Load a <span class="import-highlight">.piskel</span> file from your computer</span>
-
-    <div class="import-section">
-      <button type="button" class="button  button-primary open-piskel-button">Browse .piskel files</button>
-      <span class="file-input-open-piskel-status"></span>
-      <input style="display:none"
-        type="file" name="open-piskel-input"
-        value="file" accept=".piskel"/>
-    </div>
-  </div>
-  <div class="settings-title">
-    Import From Picture
-  </div>
-  <div class="settings-item">
-    <div style="margin-top:5px;margin-bottom:5px;">Supports <span class="import-highlight">PNG, JPG, BMP, Animated GIF</span></div>
-    <div class="import-section">
-      <button type="button" class="button  button-primary file-input-button">Browse images</button>
-      <input style="display:none"
-        type="file" name="file-upload-input"
-        value="file" accept="image/*"/>
-    </div>
-  </div>
-  <div class="settings-title">
-    Recover recent sessions
-  </div>
-  <div class="settings-item">
-    Browse backups of previous sessions.
-    <div style="margin-top:10px;">
-      <button type="button" class="button button-primary browse-backups-button">Browse backups</button>
-    </div>
-  </div>
-</div>
-</script><script type="text/html" id="templates/settings/export.html">
+<script type="text/html" id="templates/settings/export.html">
 <div class="settings-section settings-section-export">
   <div class="settings-title">Export</div>
   <div class="settings-item export-scale" title="Scale the animation for export"
@@ -1363,9 +1442,9 @@
   (function () {
 
 /**
- * See @Gruntfile.js => after build, -2024-05-04-11-53 is replaced by the build version
+ * See @Gruntfile.js => after build, -2026-07-09-13-34 is replaced by the build version
  */
-var version = '-2024-05-04-11-53';
+var version = '-2026-07-09-13-34';
 var versionHasNotBeenReplaced = version.indexOf('@@') === 0;
 if (versionHasNotBeenReplaced)  {
   version = '';
@@ -1380,7 +1459,7 @@ window._onPiskelReady = function () {
   loadingMask.style.opacity = 0;
   window.setTimeout(function () {loadingMask.parentNode.removeChild(loadingMask);}, 600);
   pskl.app.init();
-  pskl._releaseVersion = '0.16.1';
+  pskl._releaseVersion = '0.2.0';
   // cleanup
   delete window.pskl_exports;
   delete window.loadDebugScripts;
@@ -1458,5 +1537,5 @@ if (window.location.href.indexOf('debug') != -1) {
   loadScript(script, '_onPiskelReady()');
 }
 })();
-</script><script src="js/piskel-packaged-2024-05-04-11-53.js" onload="_onPiskelReady()"></script>
-{% endraw %}</body></html>
+</script>
+{% endraw %}

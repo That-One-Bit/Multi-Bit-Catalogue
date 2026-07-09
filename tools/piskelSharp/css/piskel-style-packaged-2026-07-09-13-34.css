@@ -1,6 +1,15 @@
 html, body {
-  background-color: black;
+  --sharp-light-gold: #ffd700;
+  --sharp-gold: #b49700;
+  --sharp-dark-gold-a: #c28f00;
+  --sharp-dark-gold-b: #764c00;
+  --sharp-light-red: #af0000;
+  --sharp-dark-red: #5c0000;
+  --sharp-black: #0d0a06;
+  --sharp-orange: #e89100;
+  --highlight-color: var(--sharp-light-gold);
 }
+/* body, webkit, range */
 html, body {
   height : 100%; width: 100%;
   margin : 0;
@@ -33,7 +42,7 @@ input[type="submit"] {
 /* IE11 applies a big default margin for range inputs */
 input[type="range"] {
   padding: 0;
-  accent-color: #5c0000;
+  accent-color: var(--sharp-dark-red);
 }
 
 /* Force apparition of scrollbars on leopard */
@@ -44,18 +53,18 @@ input[type="range"] {
 
 ::-webkit-scrollbar-thumb {
     border-radius: 2px;
-    background-color: #ffbc00;
+    background-color: #666;
 }
 
 ::-webkit-scrollbar-track {
-   background-color: rgb(194 143 0);
+   background-color: rgba(50, 50, 50, 0.4);
 }
 
 a, a:visited {
   color: gold;
 }
 body {
-  background: #121212;
+  background: #1D1D1D;
 }
 
 /* Browser fixes */
@@ -109,7 +118,7 @@ body {
 
 .checkbox-fix {
   margin: 3px 3px 3px 0;
-  accent-color: #5c0000;
+  accent-color: var(--sharp-red)
 }
 
 .checkbox-container {
@@ -133,7 +142,7 @@ body {
 }
 
 .tooltip-descriptor {
-  color:#ffffff;
+  color:#fff;
 }
 
 .tooltip-descriptor:last-child {
@@ -142,7 +151,7 @@ body {
 
 .tooltip-descriptor-button {
   padding: 2px;
-  border: 1px Solid #764c00;
+  border: 1px Solid var(--sharp-very-dark-gold);
   font-size: 0.8em;
   margin-right: 5px;
   width: 35px;
@@ -368,7 +377,7 @@ body {
 .canvas.layers-above-canvas  {z-index:  11;}
 
 @font-face {
-  font-family: 'piskel';
+  font-family: 'icomoon';
   src:url('fonts/icomoon.eot?-3olv93');
   src:url('fonts/icomoon.eot?#iefix-3olv93') format('embedded-opentype'),
     url('fonts/icomoon.woff?-3olv93') format('woff'),
@@ -379,7 +388,7 @@ body {
 }
 
 [class^="piskel-icon-"], [class*=" piskel-icon-"] {
-  font-family: 'piskel';
+  font-family: 'icomoon';
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -464,6 +473,28 @@ body {
   content: "\e60f";
 }
 
+.piskel-icon-lock-locked:before {
+  content: "\e98f";
+}
+
+.piskel-icon-lock-unlocked:before {
+  content: "\e990";
+}
+
+/**********************/
+/* Define Piskel Font */
+/**********************/
+
+@font-face {
+  font-family: 'piskel';
+  src:url('fonts/piskel.eot?-3olv93');
+  src:url('fonts/piskel.eot?#iefix-3olv93') format('embedded-opentype'),
+    url('fonts/piskel.woff?-3olv93') format('woff'),
+    url('fonts/piskel.ttf?-3olv93') format('truetype'),
+    url('fonts/piskel.svg?-3olv93#piskel') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 .row {
   display: block;
 }
@@ -589,14 +620,14 @@ body {
 }
 
 .right-sticky-section.expanded .tool-icon {
-  padding-right: 1px;
+  padding-right: 0px;
 }
 
 .right-sticky-section .tool-icon.has-expanded-drawer {
   position: relative;
   background-color: #000000;
   margin-right: 0;
-  padding-right: 2px;
+  padding-right: 0px;
   border-left : 3px solid #ffd700;
 }
 
@@ -636,6 +667,7 @@ body {
   margin : 10px 0;
   margin-left: 5px;
 }
+
 .ignore-warnings {
   margin-top: 16px;  
 }
@@ -645,6 +677,18 @@ body {
   accent-color: #5c0000;
 }
 
+/************************************************************************************************/
+/* Changelog Panel                                                                              */
+/************************************************************************************************/
+
+.changelog-section {
+  margin: 10px 0;
+}
+
+.changelog-highlight {
+  font-weight: bold;
+  color: var(--sharp-light-gold);
+}
 /********************************/
 /*  Preferences Settings panel  */
 /********************************/
@@ -683,7 +727,7 @@ body {
 }
 
 .background-picker.selected {
-  border-color: #af0000;
+  border-color: var(--sharp-light-red);
 }
 
 .settings-opacity-input {
@@ -701,7 +745,7 @@ body {
   display: inline-block;
   line-height: 30px;
   width: 40px;
-  border: 1px solid #af0000;
+  border: 1px solid var(--sharp-light-red);
   box-sizing: border-box;
   border-radius: 3px;
   text-align: center;
@@ -757,8 +801,8 @@ body {
 .color-format-select {
   margin: 5px 5px 0 5px;
   background-color: black;
-  color: white;
-  border-color: #af0000;
+  color: #fff;
+  border-color: var(--sharp-light-red);
   
 }
 
@@ -784,7 +828,7 @@ body {
 }
 
 .grid-colors-item.selected {
-  border-color: #ffd700;
+  border-color: var(--sharp-light-gold);
 }
 
 .settings-section-preferences > .settings-title {
@@ -817,8 +861,7 @@ body {
   text-decoration: none !important;
 }
 
-/*******************************/
-/* Gif/Png Export Setting panel*/
+Gif/Png Export Setting panel*/
 /*******************************/
 .gif-download-button,
 .gif-render-button {
@@ -987,21 +1030,18 @@ body {
 /************************************************************************************************/
 
 .import-section,
-.resize-section,
-.changelog-section{
+.resize-section {
   margin: 10px 0;
 }
 
-.file-input-button,
-.future-plans-button {
+.file-input-button {
   margin-right: 8px;
   border-radius: 2px;
 }
 
-.import-highlight,
-.changelog-highlight {
+.import-highlight {
   font-weight: bold;
-  color: #ffd700;
+  color: white;
 }
 .resize-section-title {
   vertical-align: top;
@@ -1015,6 +1055,7 @@ body {
   margin-top: 5px;
   display: inline-block;
 }
+
 
 .save-field {
   width: 100%;
@@ -1061,7 +1102,7 @@ body {
   width: 46px;
   height: 46px;
   margin: 1px;
-  background-color: #000000;
+  background-color: #000;
 }
 
 .tool-icon.selected {
@@ -1097,11 +1138,7 @@ body {
 }
 
 .tool-pen .drawing-canvas-container:hover {
-  cursor: url(../img/cursors/pencil.png) 1 14, pointer;
-}
-
-.tool-toggle-pen .drawing-canvas-container:hover {
-    cursor: url(../img/cursors/pen.png) 1 14,pointer
+  cursor: url(../img/cursors/pen.png) 1 14, pointer;
 }
 
 .tool-dithering .drawing-canvas-container:hover {
@@ -1139,10 +1176,6 @@ body {
 
 .tool-shape-select .drawing-canvas-container:hover {
   cursor: url(../img/cursors/wand.png) 10 5, pointer;
-}
-
-.tool-shift-index .drawing-canvas-container:hover {
-  cursor: url(../img/cursors/color-shift.png), pointer;
 }
 
 .tool-colorpicker .drawing-canvas-container:hover {
@@ -1184,7 +1217,7 @@ body {
   height: 16px;
   text-indent: -10000px;
   border: 1px solid black;
-  background: #ffffff;
+  background: white;
   cursor: pointer;
   position : relative;
   top: 10px;
@@ -1258,241 +1291,241 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 }
 .icon-common-keyboard-gold {
   background-image: url(../img/icons.png);
-  background-position: -228px -184px;
+  background-position: -136px -92px;
   width: 36px;
   height: 21px;
 }
 .icon-common-swapcolors-arrow-grey {
   background-image: url(../img/icons.png);
-  background-position: -249px -205px;
+  background-position: -157px -113px;
   width: 18px;
   height: 18px;
 }
 .icon-common-warning-red {
   background-image: url(../img/icons.png);
-  background-position: -228px -205px;
+  background-position: -136px -113px;
   width: 21px;
   height: 21px;
 }
 .icon-frame-dragndrop-white {
   background-image: url(../img/icons.png);
-  background-position: -274px -184px;
+  background-position: -274px -230px;
   width: 30px;
   height: 30px;
 }
 .icon-frame-duplicate-white {
   background-image: url(../img/icons.png);
-  background-position: -274px -214px;
+  background-position: -228px -184px;
   width: 30px;
   height: 30px;
 }
 .icon-frame-plus-white {
   background-image: url(../img/icons.png);
-  background-position: -182px -138px;
+  background-position: -90px -46px;
   width: 26px;
   height: 26px;
 }
 .icon-frame-recyclebin-white {
   background-image: url(../img/icons.png);
-  background-position: -274px -244px;
+  background-position: -182px -138px;
   width: 30px;
   height: 30px;
 }
 .icon-minimap-grid-gold {
   background-image: url(../img/icons.png);
-  background-position: -208px -138px;
+  background-position: -116px -46px;
   width: 18px;
   height: 18px;
 }
 .icon-minimap-grid-white {
   background-image: url(../img/icons.png);
-  background-position: -182px -164px;
+  background-position: -90px -72px;
   width: 18px;
   height: 18px;
 }
 .icon-minimap-popup-preview-arrow-gold {
   background-image: url(../img/icons.png);
-  background-position: -200px -164px;
+  background-position: -108px -72px;
   width: 18px;
   height: 18px;
 }
 .icon-minimap-popup-preview-arrow-white {
   background-image: url(../img/icons.png);
-  background-position: -136px -92px;
+  background-position: -92px -90px;
   width: 18px;
   height: 18px;
 }
-.icon-settings-export-white {
+.icon-settings-changelog-list-white {
   background-image: url(../img/icons.png);
   background-position: -90px 0px;
   width: 46px;
   height: 46px;
 }
-.icon-settings-gear-white {
+.icon-settings-export-white {
   background-image: url(../img/icons.png);
   background-position: 0px -90px;
   width: 46px;
   height: 46px;
 }
-.icon-settings-changelog-list-white {
-  background-image: url(../img/icons.png);
-  background-position: -320px 0px;
-  width: 46px;
-  height: 46px;
-}
-.icon-settings-open-folder-white {
+.icon-settings-gear-white {
   background-image: url(../img/icons.png);
   background-position: -46px -90px;
   width: 46px;
   height: 46px;
 }
-.icon-settings-resize-white {
+.icon-settings-open-folder-white {
   background-image: url(../img/icons.png);
   background-position: -136px 0px;
   width: 46px;
   height: 46px;
 }
-.icon-settings-save-white {
+.icon-settings-resize-white {
   background-image: url(../img/icons.png);
   background-position: -136px -46px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-circle {
+.icon-settings-save-white {
   background-image: url(../img/icons.png);
   background-position: 0px -136px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-colorpicker {
+.icon-tool-circle {
   background-image: url(../img/icons.png);
   background-position: -46px -136px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-colorswap {
+.icon-tool-colorpicker {
   background-image: url(../img/icons.png);
   background-position: -92px -136px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-dithering {
+.icon-tool-colorswap {
   background-image: url(../img/icons.png);
   background-position: -182px 0px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-eraser {
+.icon-tool-dithering {
   background-image: url(../img/icons.png);
   background-position: -182px -46px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-lasso-select {
+.icon-tool-eraser {
   background-image: url(../img/icons.png);
   background-position: -182px -92px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-lighten {
+.icon-tool-lasso-select {
   background-image: url(../img/icons.png);
   background-position: 0px -182px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-move {
+.icon-tool-lighten {
   background-image: url(../img/icons.png);
   background-position: -46px -182px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-outliner {
+.icon-tool-move {
   background-image: url(../img/icons.png);
   background-position: -92px -182px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-paint-bucket {
+.icon-tool-outliner {
   background-image: url(../img/icons.png);
   background-position: -138px -182px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-pen {
+.icon-tool-paint-bucket {
   background-image: url(../img/icons.png);
   background-position: -228px 0px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-rectangle-select {
+.icon-tool-pen {
   background-image: url(../img/icons.png);
   background-position: -228px -46px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-rectangle {
+.icon-tool-rectangle-select {
   background-image: url(../img/icons.png);
   background-position: -228px -92px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-shape-select {
+.icon-tool-rectangle {
   background-image: url(../img/icons.png);
   background-position: -228px -138px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-shift-index {
+.icon-tool-shape-select {
   background-image: url(../img/icons.png);
   background-position: 0px -228px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-stroke {
+.icon-tool-shift-index {
   background-image: url(../img/icons.png);
   background-position: -46px -228px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-toggle-pen {
+.icon-tool-stroke {
   background-image: url(../img/icons.png);
   background-position: -92px -228px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-vertical-mirror-pen {
+.icon-tool-toggle-pen {
   background-image: url(../img/icons.png);
   background-position: -138px -228px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-center {
+.icon-tool-vertical-mirror-pen {
   background-image: url(../img/icons.png);
   background-position: -184px -228px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-clone {
+.icon-tool-center {
   background-image: url(../img/icons.png);
   background-position: -274px 0px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-crop {
+.icon-tool-clone {
   background-image: url(../img/icons.png);
   background-position: -274px -46px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-flip {
+.icon-tool-crop {
   background-image: url(../img/icons.png);
   background-position: -274px -92px;
   width: 46px;
   height: 46px;
 }
-.icon-tool-rotate {
+.icon-tool-flip {
   background-image: url(../img/icons.png);
   background-position: -274px -138px;
+  width: 46px;
+  height: 46px;
+}
+.icon-tool-rotate {
+  background-image: url(../img/icons.png);
+  background-position: -274px -184px;
   width: 46px;
   height: 46px;
 }
@@ -1544,6 +1577,10 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
     background-size: 320px 274px;
   }
   .icon-minimap-popup-preview-arrow-white {
+    background-image: url(../img/icons@2x.png);
+    background-size: 320px 274px;
+  }
+  .icon-settings-changelog-list-white {
     background-image: url(../img/icons@2x.png);
     background-size: 320px 274px;
   }
@@ -1661,6 +1698,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   }
 }
 
+
 .color-picker-slider * {
   box-sizing: border-box;
 }
@@ -1766,6 +1804,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 .color-picker-slider input[type="range"][data-dimension="h"] {
   background-image:linear-gradient(to right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
 }
+
 #dialog-container-wrapper {
   position: absolute;
   z-index: 20000;
@@ -1781,11 +1820,11 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   box-sizing: border-box;
   -moz-box-sizing : border-box;
 
-  background-color: rgb(0 0 0 / 80%);
+  background-color: rgba(0,0,0,0.8);
   opacity: 0;
   pointer-events: none;
 
-  color: #ffffff;
+  color: white;
 }
 
 #dialog-container-wrapper.animated {
@@ -1807,8 +1846,8 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   -moz-box-sizing : border-box;
 
   border-radius: 3px;
-  border : 3px solid #ffd700;
-  background: #121212;
+  border : 3px solid gold;
+  background: #444;
   overflow: auto;
 }
 
@@ -1827,7 +1866,6 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   bottom: 0;
   width: 100%;
   box-sizing: border-box;
-  background-color: #090909;
 }
 
 .dialog-head {
@@ -1871,7 +1909,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   width: 100%;
   height: 10px;
   flex-grow: 1;
-  background: #000000;
+  background: #444;
 
   padding: 20px;
   overflow: auto;
@@ -1924,7 +1962,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 .browse-backups .session-list-empty,
 .browse-backups .snapshot-list-empty {
-  color: #ffffff;
+  color: #bbb;
 }
 
 .browse-backups .session-list-error,
@@ -1954,7 +1992,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   margin-bottom: 10px;
   padding: 0 20px;
 
-  border: 1px solid #000000;
+  border: 1px solid #666;
   box-sizing: border-box;
 }
 
@@ -2137,7 +2175,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 }
 
 .cheatsheet-description {
-  color: #ffffff;
+  color: white;
   font-size : 14px;
   margin-left: 10px;
   line-height : 30px;
@@ -2150,14 +2188,14 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   line-height: 26px;
   padding: 0 10px;
 
-  border : 2px solid #4d0000;
+  border : 2px solid white;
   border-radius: 2px;
 
   text-align: center;
   font-family: monospace;
   font-weight: bold;
   font-size : 18px;
-  color: #ffd700;
+  color: white;
 }
 
 .cheatsheet-shorcut-conflict .cheatsheet-key {
@@ -2170,7 +2208,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 }
 
 .cheatsheet-shortcut-editable .cheatsheet-key {
-  border-color: #312900;
+  border-color: gold;
   color: gold;
 }
 
@@ -2197,14 +2235,14 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   padding : 10px;
   overflow: hidden;
 
-  background-color : #ffd700;
+  background-color : gold;
 }
 
 .cheatsheet-helptext {
   font-size: 14px;
   height : 26px;
   line-height : 26px;
-  color: #ffffff;
+  color: black;
 }
 
 .cheatsheet-helptext-tooltip {
@@ -2328,7 +2366,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   height: 460px;
 
   border: 1px solid black;
-  background: #000000;
+  background: #333;
 }
 
 .color-picker-container {
@@ -2337,7 +2375,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   top:0;
   bottom:0;
   right:0;
-  background: #000000;
+  background: #222;
 }
 
 .create-palette-actions {
@@ -2396,7 +2434,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 
 .create-palette-color {
-  border:1px solid #000000;
+  border:1px solid #2c2c2c;
   transition : border-color 0.2s;
 }
 .create-palette-color:hover {
@@ -2430,7 +2468,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
   font-weight: bold;
   color: rgb(255,255,255);
-  text-shadow : 0 0 1px rgb(0 0 0);
+  text-shadow : 0 0 1px rgb(0,0,0);
 
   transition : opacity 0.3s, color 0.1s;
 }
@@ -2483,8 +2521,8 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  box-shadow: 0 0 2px 0 rgb(0 0 0);
-  background: #000000;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
+  background: #444;
 }
 
 .import-step-content {
@@ -2527,7 +2565,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   text-align: center;
   font-size: 3em;
   color: white;
-  text-shadow: 0 0 60px #000000;
+  text-shadow: 0 0 60px black;
 }
 
 .import-subsection {
@@ -2547,7 +2585,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 .import-section-preview {
   position: absolute;
   display: inline-block;
-  border: 1px dashed #ffffff;
+  border: 1px dashed #999;
   border-radius: 3px;
   margin-left: 50%;
   top: 10px;
@@ -2577,7 +2615,6 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 .dialog-section-radio {
   margin-top: 15px;
   vertical-align: sub;
-  accent-color: #5c0000;
 }
 
 .import-size-field:nth-of-type(2) {
@@ -2667,7 +2704,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   text-align: center;
   line-height: 70px;
   font-style: italic;
-  color: #707070;
+  color: #aaa;
 }
 
 .import-mode-title {
@@ -2676,7 +2713,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 .import-mode-section {
   display: flex;
-  border: 3px solid #2c0000;
+  border: 3px solid #666;
   border-radius: 3px;
   padding: 10px;
   margin-bottom: 10px;
@@ -2793,7 +2830,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 }
 
 .dialog-performance-info-body ul {
-  border: 1px solid #ffffff;
+  border: 1px solid #666;
   padding: 5px;
   border-radius: 3px;
 }
@@ -2867,7 +2904,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   border-right: 0;
   border-bottom: 0;
 
-  color: #1e1e1e;
+  color: #222;
   background-color: gold;
 
   font-weight: bold;
@@ -2901,7 +2938,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   border: gold 2px solid;
   border-left: 0;
   border-bottom: 0;
-  background-color: #535353;
+  background-color: #444;
   font-size: 14px;
   z-index: 30000;
   color: #eee;
@@ -2950,17 +2987,17 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   flex-shrink: 0;
   overflow: hidden;
   border-top: 1px solid #f8f8f8;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #222;
 }
 
 .toolbox-buttons .button {
   /* Override border propery on .button elements from form.css */
   border-style: solid;
-  border-color: #000000;
+  border-color: #000;
   border-width: 0 1px 0 0;
   border-radius: 0;
 
-  background-color: #000000;
+  background-color: #000;
 }
 
 .toolbox-buttons .button[disabled],
@@ -3009,7 +3046,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 .layers-toggle-preview-enabled,
 .layers-toggle-preview-enabled:hover {
-  color : gold;
+  color : var(--sharp-light-gold);
 }
 
 /**
@@ -3068,8 +3105,9 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 .current-layer-item,
 .current-layer-item:hover {
   background : #000000;
-  color: gold;
+  color: var(--sharp-light-gold);
 }
+
 .palettes-list-container {
   min-height: 100px;
   display: flex;
@@ -3088,7 +3126,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
  */
 
 .palettes-list-container .toolbox-buttons {
-  background-color: #2b2b2b;
+  background-color: #3f3f3f;
   height: 24px;
   padding: 0;
 }
@@ -3108,7 +3146,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   height: 100%;
   padding: 0 5px 0 5px;
 
-  color: #ffffff;
+  color: #aaa;
   font-size : 0.75em;
 
   text-align:left;
@@ -3120,7 +3158,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 .palettes-list-select:hover,
 .palettes-list-select:focus {
-  background-color: #000000;
+  background-color: #484848;
   color: white;
 }
 
@@ -3165,7 +3203,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   height: 35px;
   line-height: 35px;
   width: 100%;
-  color: #a3a3a3;
+  color: gray;
   font-size: 0.8em;
   font-style: italic;
   text-align: center
@@ -3221,6 +3259,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   padding: 2px 3px 2px 3px;
   border-radius: 0 0 0 2px;
 }
+
 
 /**
  * Animated preview styles.
@@ -3559,7 +3598,7 @@ License: MIT
     height: 8px;
 }
 .sp-alpha-inner {
-    border: solid 1px #000000;
+    border: solid 1px #333;
 }
 
 /* Don't allow text selection */
@@ -3693,7 +3732,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 
 .sp-container {
     border-radius: 0;
-    background-color: #0f0f0f;
+    background-color: #ECECEC;
     border: solid 1px #f0c49B;
     padding: 0;
 }
@@ -3704,8 +3743,6 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
-
-    color: #ffe557;
 }
 .sp-top
 {
@@ -3740,8 +3777,8 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 }
 .sp-input.sp-validation-error
 {
-    border: 1px solid #ffffff;
-    background: #000000;
+    border: 1px solid red;
+    background: #fdd;
 }
 .sp-picker-container , .sp-palette-container
 {
@@ -3821,7 +3858,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 }
 .sp-replacer.sp-disabled {
     cursor:default;
-    border-color: #b2b2b2;
+    border-color: silver;
     color: silver;
 }
 .sp-dd {
@@ -3959,8 +3996,8 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 /* Widget's main container */
 .sp-container {
   border-radius: 4px;
-  background-color: #121212;
-  border: solid 3.5px #ffd700;
+  background-color: #2B2B2B;
+  border: solid 4px #888;
   padding: 5px 5px 0 5px;
   box-shadow : 0 0 5px 0 black;
 }
@@ -3985,11 +4022,11 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   border-width: 0;
   box-sizing: border-box;
   -moz-box-sizing:border-box;
-  background-color: #544700;
+  background-color: #444;
 }
 
 .sp-replacer:hover {
-  background-color: #7f6b00ad;
+  background-color: #888;
 }
 
 /* Hide the triangle */
@@ -4013,7 +4050,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   margin : 0 5px 5px 0;
   width: 24px;
   height: 24px;
-  border-color: #544700;
+  border-color: #444;
 
 }
 
@@ -4255,7 +4292,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   overflow: hidden;
   width: 96px;
 
-  border: #ffd700 solid 3px;
+  border: var(--sharp-light-gold) solid 3px;
   border-radius: 4px;
 
   color: #ffffff;
@@ -4267,14 +4304,10 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-.add-frame-action:hover {
-  color: #fff2ab;
-  background-color: #1f1f1f;
-}
-
-.add-frame-action-text {
-  margin-top: 5px;
-  margin-bottom: 5px;
+.add-frame-action-icon {
+  margin: 3px;
+  float: left;
+  flex-shrink: 0;
 }
 
 .add-frame-action .label {
@@ -4283,7 +4316,8 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 }
 
 .add-frame-action:hover {
-  border-color: gold;
+  color: #fff2ab;
+  background-color: #1f1f1f;
 }
 
 .preview-tile {
@@ -4571,7 +4605,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   margin-right: 2px;
   border-style: solid;
   border-width: 2px;
-  border-color: #544700;
+  border-color: #444;
   cursor: pointer;
 }
 
@@ -4582,18 +4616,17 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   padding: 4px;
 }
 .size-picker-option[data-size='3'] {
-  padding-left: 2.7px;
-  padding-top: 3px;
-  padding-right: 3.2px;
-  padding-bottom: 2.9px;
+  padding: 3px;
 }
-.size-picker-option[data-size='4'] {padding-right: 1.9px;padding-top: 2.2px;padding-left: 2.2px;padding-bottom: 2px;}
+.size-picker-option[data-size='4'] {
+  padding: 2px;
+}
 
 .size-picker-option:before {
   content: '';
   width: 100%;
   height: 100%;
-  background-color: #836f00;
+  background-color: white;
   display: block;
   text-align: center;
   line-height: 12px;
@@ -4601,7 +4634,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 }
 
 .size-picker-option:hover {
-  border-color: #9d8500;
+  border-color: #888;
 }
 
 .size-picker-option.selected:before {
@@ -4655,7 +4688,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 
 .tab-item.selected {
   border-color: gold;
-  border-bottom-color: #544700;
+  border-bottom-color: #444;
   border-style: solid;
   border-width: 1px;
 }
@@ -4692,17 +4725,31 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
   margin-left: 100%;
 }
 
-.palette_option {
-  background-color: #0e0e0e;
+.dev-button {
+    background: rgb(75 55 31);
+    color: ghostwhite;
 }
 
-.palette_option:hover {
-  background-color: #221d00
+.dev-button:disabled {
+    background: rgb(48 35 20);
 }
 
-.add-frame-button {
-  text-align: center;
-  margin: -4px;
-  font-size: 15px;
-  font-weight: bold;
+.dev-container {
+    position: relative;
+    z-index: 10000;
+    margin: 5px;
+    padding: 10px;
+    background: rgb(25 18 9);
+    color: ghostwhite;
+    text-align: center;
+    font-size: 15px;
+    font-family: monospace;
+    letter-spacing: -0.5px;
+    border-color: var(--sharp-light-gold);
+    border-radius:2px;
+    justify-content: center;
+    display: grid;
+    margin-bottom: -150px;
+    width: 150px;
+    margin-left: 12px;
 }

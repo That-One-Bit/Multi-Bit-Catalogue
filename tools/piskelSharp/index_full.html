@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Piskel Sharp Beta</title>
+  <title>Piskel Sharp: Beta</title>
   <meta name="description" content="A simple web-based pixel art editor based on Piskel, made for beginners.">
   <meta name="author" content="Julian Descottes and ZeroBits">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,9 +22,9 @@
     opacity:1;
     text-align:center;
     z-index : 20000;
-    transition:opacity 1s;
+    transition:opacity 2.5s;
     color:white;">
-      <span style="top:45%">Loading Piskel Sharp ...</span>
+      <span style="top:25% ; position:relative ; font-size: medium">Loading Piskel Sharp ...</span>
   </div>
   <style type="text/css">
   #main-wrapper {
@@ -105,7 +105,7 @@
       </ul>
       <div class="palette-wrapper">
         <div
-          class="tool-icon tool-color-picker"
+          class="tool-icon tool-color-picker-A"
           data-initial-title="Primary - left mouse button"
           rel="tooltip"
           data-placement="right"
@@ -525,6 +525,16 @@
   </div>
 </script>
 
+  <script type="text/template" id="templates/dialogs/changelog-sharp.html">
+  <div class="dialog-wrapper">
+    <h3 class="dialog-head">
+      Piskel Sharp Changelog
+      <span class="dialog-close">X</span>
+    </h3>
+    <div class="dialog-content backups-wizard-container"></div>
+  </div>
+</script>
+
 <script type="text/template" id="backups-select-session">
 <div class="backups-step-container">
   <div class="backups-step-content">
@@ -539,6 +549,24 @@
       </div>
     </div>
     <div class="session-list">
+    </div>
+  </div>
+</div>
+</script>
+
+<script type="text/template" id="changelog-sharp">
+<div class="backups-step-container wizard-step current-step">
+  <div class="backups-step-content">
+    <div class="browse-backups-disclaimer">
+      <div class="backups-icon icon-common-backup-white">&nbsp;</div>
+      <div class="browse-backups-disclaimer-content">
+        <!-- Keep in sync with MAX_SESSIONS in BackupService.js -->
+         This is where you can find the version history of Piskel Sharp. All of the updates starting from the beginning are found here.
+        <br>
+        <br>
+        The foundation of Piskel Sharp and its origin are found at the bottom.</div>
+    </div>
+    <div class="version-list">
     </div>
   </div>
 </div>
@@ -1006,7 +1034,7 @@
     </div>
     <div class="tab-content"></div>
     <div class="settings-version-info">
-      Piskel: Sharp
+      Piskel Sharp
       <span rel="tooltip" data-placement="bottom" title="View Release Notes">
         <a  class="settings-version" target="_blank"
             href="https://that-one-bit.github.io/Multi-Bit-Catalogue/">v0.2.0</a>
@@ -1497,49 +1525,42 @@
   </div>
 </script>
 <script type="text/template" id="templates/settings/changelog.html">
-<div class="settings-section settings-section-import">
+<div class="settings-section settings-section-changelog">
   <div class="settings-title">
     Piskel Sharp Changelog
   </div>
   <div class="settings-item">
-    <span> View the <span class="import-highlight">version history</span> of Piskel Sharp, starting from the top.</span>
-    <div class="import-section">
-      <button type="button" class="button  button-primary changelog-sharp-button">Open</button>
+    <span> View the <span class="changelog-highlight">version history</span> of Piskel Sharp, starting from the top.</span>
+    <div class="changelog-section">
+      <button type="button" class="button button-primary changelog-sharp-button">View Changelog</button>
     </div>
   </div>
   <div class="settings-title">
     Piskel Changelog
   </div>
   <div class="settings-item">
-    <span> View the <span class="import-highlight">version history</span> of Piskel, starting from the top.</span>
+    <span> View the <span class="changelog-highlight">version history</span> of Piskel, starting from the top.</span>
 
-    <div class="import-section">
-      <button type="button" class="button  button-primary open-piskel-button">Browse .piskel files</button>
-      <span class="file-input-open-piskel-status"></span>
-      <input style="display:none"
-        type="file" name="open-piskel-input"
-        value="file" accept=".piskel"/>
+    <div class="changelog-section">
+      <button type="button" class="button button-primary changelog-button">View Changelog</button>
     </div>
   </div>
   <div class="settings-title">
-    Import From Picture
+    Future Update Plans
   </div>
   <div class="settings-item">
-    <div style="margin-top:5px;margin-bottom:5px;">Supports <span class="import-highlight">PNG, JPG, BMP, Animated GIF</span></div>
-    <div class="import-section">
-      <button type="button" class="button  button-primary file-input-button">Browse images</button>
-      <input style="display:none"
-        type="file" name="file-upload-input"
-        value="file" accept="image/*"/>
+    <span> Wondering about what <span class="changelog-highlight">features</span> are coming to Piskel Sharp? Check here, updated per-major. </span>
+    <div class="changelog-section">
+      <button type="button" class="button button-primary future-plans-button">View Planned Featuers</button>
     </div>
   </div>
   <div class="settings-title">
-    Recover recent sessions
+    Piskel Sharp Credits
   </div>
   <div class="settings-item">
-    Browse backups of previous sessions.
-    <div style="margin-top:10px;">
-      <button type="button" class="button button-primary browse-backups-button">Browse backups</button>
+    <span> Look at who <span class="changelog-highlight">made this</span> fork of Piskel, and every contributor in a stylish manor.</span>
+    <div class="changelog-section">
+      <button type="button" class="button button-primary credits-button">View Credits</button>
     </div>
   </div>
 </div>
@@ -1564,7 +1585,7 @@
   window._onPiskelReady = function () {
     var loadingMask = document.getElementById('loading-mask');
     loadingMask.style.opacity = 0;
-    window.setTimeout(function () {loadingMask.parentNode.removeChild(loadingMask);}, 600);
+    window.setTimeout(function () {loadingMask.parentNode.removeChild(loadingMask);}, 1850);
     pskl.app.init();
     pskl._releaseVersion = '0.2.0';
     // cleanup
@@ -1639,7 +1660,6 @@
     } else {
       script = 'js/piskel-packaged-min' + version + '.js';
     }
-
     loadStyle('css/piskel-style-packaged' + version + '.css');
     loadScript(script, '_onPiskelReady()');
   }
