@@ -20,6 +20,10 @@ html {
     -webkit-text-size-adjust: 100%
 }
 
+div {
+    cursor: url('./assets/cursor/pointer.cur')
+}
+
 article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary {
     display: block
 }
