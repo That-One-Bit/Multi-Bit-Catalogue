@@ -282,6 +282,45 @@
     {{description}}
   </div>
 </script>
+
+<!-- ----------------------------------------------------------- -->
+<!-- Resize Tool -->
+<!-- Template for Resize Settings Title -->
+<script type="text/template" id="resize-settings-template">
+  {{text}}
+</script>
+
+<!-- Template for Width and Height -->
+<script type="text/template" id="resize-tool-template">
+  <div class="resize-section">
+    <span class="resize-section-title">{{spanText}}</span>
+    <input type="text" class="textfield resize-size-field" autocomplete="off" name="{{inputName}}"/>
+    <span>px</span>
+  </div>
+</script>
+
+<!-- Template for Ratio and Canvas -->
+<script type="text/template" id="ratio-canvas-template">
+  <div class="resize-section">
+    <label class="checkbox-container">
+      <input type="checkbox" class="{{cssClass}} checkbox-fix" value="true"/>
+      <span>{{spanText}}</span>
+    </label>
+  </div>
+</script>
+
+<!-- Template for Anchor -->
+<script type="text/template" id="resize-anchor-template">
+  <div class="resize-section">
+    <span class="resize-section-title">{{spanText}}</span>
+    <div class="resize-anchor-container"></div>
+  </div>
+</script>
+
+<!-- Template for Resize Submit Button -->
+<script type="text/template" id="resize-button-template">
+  <input type="submit" class="button button-primary resize-button" value="{{valueText}}" />
+</script>
 </div>
 <div style="display:none">
 <script type="text/template" id="data-uri-export-partial">
@@ -1103,57 +1142,22 @@
 <script type="text/html" id="templates/settings/resize.html">
 <div class="settings-section settings-section-resize">
   <!-- RESIZE DRAWING SECTION -->
-  <div class="settings-title">
+  <div class="settings-title" id='settings-title'>
+    <!-- Content comes from ResizeController createResizeTitle() -->
     Resize
   </div>
   <div class="settings-item  resize-canvas">
-    <form action="" method="POST" name="resize-canvas-form">
-      <div class="resize-section">
-        <span  class="resize-section-title">Width</span>
-        <input type="text" class="textfield resize-size-field" autocomplete="off" name="resize-width"/>
-        <span>px</span>
-      </div>
-      <div class="resize-section">
-        <span  class="resize-section-title">Height</span>
-        <input type="text" class="textfield resize-size-field" autocomplete="off" name="resize-height"/>
-        <span>px</span>
-      </div>
-      <div class="resize-section">
-        <label class="checkbox-container">
-          <input type="checkbox" class="resize-ratio-checkbox checkbox-fix" value="true"/>
-          <span>Maintain aspect ratio</span>
-        </label>
-      </div>
-      <div class="resize-section">
-        <label class="checkbox-container">
-          <input type="checkbox" class="resize-content-checkbox checkbox-fix" value="true"/>
-          <span>Resize canvas content</span>
-        </label>
-      </div>
-      <div class="resize-section">
-        <span  class="resize-section-title">Anchor</span>
-        <div class="resize-anchor-container"></div>
-      </div>
-      <input type="submit" class="button button-primary resize-button" value="Resize" />
+    <form action="" method="POST" name="resize-canvas-form" id='resize-canvas-form'>
+      <!-- Content comes from ResizeController createResizeCanvasForm() -->
     </form>
   </div>
   <!-- DEFAULT SIZE SECTION -->
-  <div class="settings-title">
-    Default size
+  <div class="settings-title" id='settings-title-default'>
+    <!-- Content comes from createResizeTitleDefault() -->
   </div>
   <div class="settings-item  settings-default-size">
-    <form action="" method="POST" name="default-size-form">
-      <div class="resize-section">
-        <span  class="resize-section-title">Width</span>
-        <input type="text" class="textfield resize-size-field" autocomplete="off" name="default-width"/>
-        <span>px</span>
-      </div>
-      <div class="resize-section">
-        <span  class="resize-section-title">Height</span>
-        <input type="text" class="textfield resize-size-field" autocomplete="off" name="default-height"/>
-        <span>px</span>
-      </div>
-      <input type="submit" class="button button-primary default-size-button" value="Set default" />
+    <form action="" method="POST" name="default-size-form" id="default-size-form">
+      <!-- Content comes from createResizeCanvasDefaultForm() -->
     </form>
   </div>
 </div>
@@ -1198,10 +1202,6 @@
 
 <!-- save-gallery-unavailable-partial -->
 <script type="text/template" id="save-gallery-unavailable-partial">
-<div class="settings-title">Save online</div>
-<div class="settings-item">
-  <div class="save-status">Login to <a href="https://www.piskelapp.com" target="_blank">piskelapp.com</a> to save and share your sprites online.</div>
-</div>
 </script>
 
 <!-- save-localstorage-partial -->
@@ -1442,9 +1442,9 @@
   (function () {
 
 /**
- * See @Gruntfile.js => after build, -2026-07-09-13-34 is replaced by the build version
+ * See @Gruntfile.js => after build, -2026-07-12-14-30 is replaced by the build version
  */
-var version = '-2026-07-09-13-34';
+var version = '-2026-07-12-14-30';
 var versionHasNotBeenReplaced = version.indexOf('@@') === 0;
 if (versionHasNotBeenReplaced)  {
   version = '';
