@@ -2841,7 +2841,7 @@ video::-webkit-media-controls-panel {
     font-size: 20px;
     color: rgba(255,255,255,.96);
     font-family: "Montserrat";
-    font-weight: 700
+    font-weight: 700;
 }
 
 .edheader .jumpNav {
@@ -2855,7 +2855,7 @@ video::-webkit-media-controls-panel {
     top: -100px;
     padding: 7px 9px;
     z-index: 1040;
-    font-weight: bold
+    font-weight: bold;
 }
 
 .edheader .jumpNav:focus {
@@ -22159,7 +22159,7 @@ span.keybtn2 .back-shade {
 }
 
 .LPVIEW {
-    height: 100%
+    height: 100%;
 }
 
 .LPVIEW #root {
@@ -22175,7 +22175,7 @@ span.keybtn2 .back-shade {
     border-radius: 4px;
     color: #555;
     text-shadow: 0px 1px 10px rgba(255,255,255,.7);
-    cursor: url(../../assets/cursor/text.cur) 15 2, url(../../assets/cursor/text_x16.cur) 7 0, text;
+    cursor: url(../../assets/cursor/text.cur)  15 0, url(../../assets/cursor/text_x16.cur) 7 0, text;
 }
 
 .LPVIEW .sub_header {
@@ -22236,14 +22236,14 @@ span.keybtn2 .back-shade {
     height: 100%;
     overflow: hidden;
     font-family: Montserrat;
-    background-color: #bbb9c4
+    background-color: #bbb9c4;
 }
 
 .LPVIEW .lpbackground {
     position: fixed;
     top: 0;
     left: 50%;
-    transition: .6s ease-out transform;
+    transition: .6s cubic-bezier(0.67, -0.53, 0.05, 1.31) transform;
     pointer-events: none
 }
 
@@ -22289,7 +22289,7 @@ span.keybtn2 .back-shade {
 .LPVIEW .lessons {
     height: 100%;
     padding-top: 100px;
-    outline: none
+    outline: none;
 }
 
 .LPVIEW .lsnrow {
@@ -22309,7 +22309,7 @@ span.keybtn2 .back-shade {
 .LPVIEW .box-container {
     display: table-cell;
     padding: 10px;
-    cursor: url(../../assets/cursor/pointer.cur) 16 4, url(../../assets/cursor/pointer_x16.cur) 7 2, default;
+    cursor: url(../../assets/cursor/default.cur), default;
 }
 
 .LPVIEW .box {
