@@ -257,7 +257,7 @@ a {
 }
 
 a:focus,a:hover {
-    color: #216a94;
+    color: #9db2bf;
     text-decoration: underline
 }
 
@@ -3573,7 +3573,8 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 }
 
 .navbar-inverse .navbar-brand {
-    color: rgba(255,255,255,.8)
+    color: rgba(255,255,255,.8);
+    cursor: url(../../assets/cursor/pointer.cur), url(../../assets/cursor/pointer_x16.cur), pointer;
 }
 
 .navbar-inverse .navbar-brand:focus,.navbar-inverse .navbar-brand:hover {

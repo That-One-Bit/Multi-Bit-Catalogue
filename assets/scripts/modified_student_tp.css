@@ -7671,7 +7671,7 @@ video::-webkit-media-controls-panel {
 .e-qwerty {
     width: 100px;
     height: 100px;
-    background: url("/m/build/img/svgsprite-qwerty.svg?v2") no-repeat
+    background: url("/m/build/img/svgsprite-qwerty.svg?v2") no-repeat;
 }
 
 .qwerty-C-A {
@@ -8307,7 +8307,7 @@ video::-webkit-media-controls-panel {
 }
 
 .qwerty-dk {
-    background-position: 11.111% 70.588%
+    background-position: 11.111% 70.588%;
 }
 
 .qwerty-e-accent {
@@ -22175,7 +22175,7 @@ span.keybtn2 .back-shade {
     border-radius: 4px;
     color: #555;
     text-shadow: 0px 1px 10px rgba(255,255,255,.7);
-    cursor: url(../../assets/cursor/text.cur)  15 0, url(../../assets/cursor/text_x16.cur) 7 0, text;
+    cursor: url(../../assets/cursor/text.cur) 15 8, url(../../assets/cursor/text_x16.cur) 0 0, text;
 }
 
 .LPVIEW .sub_header {
@@ -22211,7 +22211,15 @@ span.keybtn2 .back-shade {
     text-align: center;
     font-size: 13px;
     color: #555;
-    cursor: url(../../assets/cursor/pointer.cur) 16 4, url(../../assets/cursor/pointer_x16.cur) 7 2, default;
+    cursor: url(../../assets/cursor/pointer.cur) 16 4, url(../../assets/cursor/pointer_x16.cur) 7 2, pointer;
+}
+
+.LPVIEW .lsn_num {
+    cursor: url(../../assets/cursor/text.cur) 16 4, url(../../assets/cursor/text_x16.cur) 7 2, text;
+}
+
+.LPVIEW .lsn_name {
+    cursor: url(../../assets/cursor/text_x16.cur) 7 2, text;
 }
 
 .LPVIEW .lsn_name.active {
@@ -22312,8 +22320,12 @@ span.keybtn2 .back-shade {
     cursor: url(../../assets/cursor/default.cur), default;
 }
 
+.box-container:hover {
+    color: #4c6a7e;
+    text-decoration: underline
+}
+
 .LPVIEW .box {
-    cursor: pointer;
     position: relative;
     width: 160px;
     height: 160px;
@@ -22333,6 +22345,7 @@ span.keybtn2 .back-shade {
     height: 43px;
     text-align: center;
     margin-top: -2px;
+    filter: drop-shadow(2px 2px 2px grey);
     cursor: url(../../assets/cursor/pointer.cur) 16 4, url(../../assets/cursor/pointer_x16.cur) 7 2, default;
 }
 
@@ -22444,7 +22457,8 @@ span.keybtn2 .back-shade {
     color: #555;
     background: rgba(255,255,255,.3);
     padding: 3px 10px 3px 15px;
-    border-radius: 6px
+    border-radius: 6px;
+    cursor: url(../../assets/cursor/text_x16.cur) 0 0, text;
 }
 
 .LPVIEW .game_summary_value {
@@ -22455,7 +22469,6 @@ span.keybtn2 .back-shade {
     color: rgba(1,1,1,.2);
     display: inline-block;
     margin: 0 10px;
-    cursor: default
 }
 
 .LPVIEW .lessons-nav {
