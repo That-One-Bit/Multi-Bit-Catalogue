@@ -370,7 +370,7 @@ jQuery.extend({
 
 	// A counter to track how many items to wait for before
 	// the ready event fires. See #6781
-	readyWait: 2,
+	readyWait: 1,
 
 	// Hold (or release) the ready event
 	holdReady: function( hold ) {
@@ -11524,7 +11524,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 
 !function ($) {
 
-  "use strict"; // jshint
+  "use strict"; // jshint ;_;
 
 
  /* TOOLTIP PUBLIC CLASS DEFINITION
@@ -11777,13 +11777,12 @@ $.widget("ui.sortable", $.ui.mouse, {
 
 }(window.jQuery);
 ;// TODO(grosbouddha): put under pskl namespace.
-// default.editor.marker
 var Constants = {
   DEFAULT : {
     HEIGHT : 16,
     WIDTH : 16,
-    FPS : 6,
-    LAYER_OPACITY : 0.2
+    FPS : 0,
+    LAYER_OPACITY : 0.35
   },
 
   MODEL_VERSION : 2,
@@ -11801,7 +11800,7 @@ var Constants = {
   // Keep in sync with padding-left: 10px in layout.css
   RIGHT_COLUMN_PADDING_LEFT : 10,
 
-  DEFAULT_PEN_COLOR : '#000000',
+  DEFAULT_PEN_COLOR : '#070707',
   TRANSPARENT_COLOR : 'rgba(0, 0, 0, 0)',
   SEAMLESS_MODE_OVERLAY_COLOR : 'rgba(255, 255, 255, 0)',
 
@@ -11811,7 +11810,7 @@ var Constants = {
    * Fake semi-transparent color used to highlight transparent
    * strokes and rectangles:
    */
-  SELECTION_TRANSPARENT_COLOR: 'rgba(240, 203, 160, 0.6)',
+  SELECTION_TRANSPARENT_COLOR: 'rgba(218, 170, 103, 0.48)',
 
   /*
    * When a tool is hovering the drawing canvas, we highlight the eventual
@@ -11850,24 +11849,24 @@ var Constants = {
 ;// TODO(grosbouddha): put under pskl namespace.
 var Events = {
 
-  TOOL_SELECTED : 'TOOL_SELECTED',
-  SELECT_TOOL : 'SELECT_TOOL',
+  TOOL_SELECTED: 'TOOL_SELECTED',
+  SELECT_TOOL: 'SELECT_TOOL',
 
-  TOOL_RELEASED : 'TOOL_RELEASED',
-  TOOL_PRESSED : 'TOOL_PRESSED',
+  TOOL_RELEASED: 'TOOL_RELEASED',
+  TOOL_PRESSED: 'TOOL_PRESSED',
   SELECT_PRIMARY_COLOR: 'SELECT_PRIMARY_COLOR',
   SELECT_SECONDARY_COLOR: 'SELECT_SECONDARY_COLOR',
-  PRIMARY_COLOR_SELECTED : 'PRIMARY_COLOR_SELECTED',
-  SECONDARY_COLOR_SELECTED : 'SECONDARY_COLOR_SELECTED',
+  PRIMARY_COLOR_SELECTED: 'PRIMARY_COLOR_SELECTED',
+  SECONDARY_COLOR_SELECTED: 'SECONDARY_COLOR_SELECTED',
 
-  CURSOR_MOVED : 'CURSOR_MOVED',
-  DRAG_START : 'DRAG_START',
-  DRAG_END : 'DRAG_END',
+  CURSOR_MOVED: 'CURSOR_MOVED',
+  DRAG_START: 'DRAG_START',
+  DRAG_END: 'DRAG_END',
 
-  DIALOG_SHOW : 'DIALOG_SHOW',
-  DIALOG_HIDE : 'DIALOG_HIDE',
+  DIALOG_SHOW: 'DIALOG_SHOW',
+  DIALOG_HIDE: 'DIALOG_HIDE',
 
-  PALETTE_LIST_UPDATED : 'PALETTE_LIST_UPDATED',
+  PALETTE_LIST_UPDATED: 'PALETTE_LIST_UPDATED',
 
   /**
    * Fired each time a user setting change.
@@ -11878,7 +11877,7 @@ var Events = {
   USER_SETTINGS_CHANGED: 'USER_SETTINGS_CHANGED',
   SHORTCUTS_CHANGED: 'SHORTCUTS_CHANGED',
 
-  CLOSE_SETTINGS_DRAWER : 'CLOSE_SETTINGS_DRAWER',
+  CLOSE_SETTINGS_DRAWER: 'CLOSE_SETTINGS_DRAWER',
 
   /**
    * The framesheet was reseted and is now probably drastically different.
@@ -11886,13 +11885,13 @@ var Events = {
    */
   PISKEL_RESET: 'PISKEL_RESET',
   PISKEL_SAVE_STATE: 'PISKEL_SAVE_STATE',
-  PISKEL_DESCRIPTOR_UPDATED : 'PISKEL_DESCRIPTOR_UPDATED',
-  PISKEL_SAVED_STATUS_UPDATE : 'PISKEL_SAVED_STATUS_UPDATE',
+  PISKEL_DESCRIPTOR_UPDATED: 'PISKEL_DESCRIPTOR_UPDATED',
+  PISKEL_SAVED_STATUS_UPDATE: 'PISKEL_SAVED_STATUS_UPDATE',
 
   HISTORY_STATE_SAVED: 'HISTORY_STATE_SAVED',
   HISTORY_STATE_LOADED: 'HISTORY_STATE_LOADED',
 
-  PEN_SIZE_CHANGED : 'PEN_SIZE_CHANGED',
+  PEN_SIZE_CHANGED: 'PEN_SIZE_CHANGED',
 
   /**
    * Fired when a Piskel is successfully saved
@@ -11907,8 +11906,8 @@ var Events = {
    */
   AFTER_SAVING_PISKEL: 'AFTER_SAVING_PISKEL',
 
-  FRAME_SIZE_CHANGED : 'FRAME_SIZE_CHANGED',
-  FPS_CHANGED : 'FPS_CHANGED',
+  FRAME_SIZE_CHANGED: 'FRAME_SIZE_CHANGED',
+  FPS_CHANGED: 'FPS_CHANGED',
 
   SELECTION_CREATED: 'SELECTION_CREATED',
   SELECTION_MOVE_REQUEST: 'SELECTION_MOVE_REQUEST',
@@ -11925,22 +11924,26 @@ var Events = {
   UPDATE_PROGRESS: 'UPDATE_PROGRESS',
   HIDE_PROGRESS: 'HIDE_PROGRESS',
 
-  ZOOM_CHANGED : 'ZOOM_CHANGED',
-  EXPORT_SCALE_CHANGED : 'EXPORT_SCALE_CHANGED',
+  ZOOM_CHANGED: 'ZOOM_CHANGED',
+  EXPORT_SCALE_CHANGED: 'EXPORT_SCALE_CHANGED',
 
-  CURRENT_COLORS_UPDATED : 'CURRENT_COLORS_UPDATED',
+  CURRENT_COLORS_UPDATED: 'CURRENT_COLORS_UPDATED',
 
-  PERFORMANCE_REPORT_CHANGED : 'PERFORMANCE_REPORT_CHANGED',
+  PERFORMANCE_REPORT_CHANGED: 'PERFORMANCE_REPORT_CHANGED',
 
-  PISKEL_FILE_IMPORT_FAILED : 'PISKEL_FILE_IMPORT_FAILED',
+  PISKEL_FILE_IMPORT_FAILED: 'PISKEL_FILE_IMPORT_FAILED',
 
   // Tests
-  MOUSE_EVENT : 'MOUSE_EVENT',
-  KEYBOARD_EVENT : 'KEYBOARD_EVENT',
-  TRANSFORMATION_EVENT : 'TRANSFORMATION_EVENT',
-  TEST_RECORD_END : 'TEST_RECORD_END',
-  TEST_CASE_END : 'TEST_CASE_END',
-  TEST_SUITE_END : 'TEST_SUITE_END'
+  MOUSE_EVENT: 'MOUSE_EVENT',
+  KEYBOARD_EVENT: 'KEYBOARD_EVENT',
+  TRANSFORMATION_EVENT: 'TRANSFORMATION_EVENT',
+  TEST_RECORD_END: 'TEST_RECORD_END',
+  TEST_CASE_END: 'TEST_CASE_END',
+  TEST_SUITE_END: 'TEST_SUITE_END',
+
+  // A piskel external to the editor has been loaded and attached
+  // to window._externalPiskel to be applied.
+  EXTERNAL_PISKEL_READY: 'EXTERNAL_PISKEL_READY',
 };
 ;jQuery.namespace = function() {
   var a = arguments;
@@ -13949,6 +13952,17 @@ if (!Uint32Array.prototype.fill) {
   var templates = {};
 
   ns.Template = {
+    /**
+     * Takes in a templateId and values to replace the keys found in the template
+     * @param {string} templateId - ID used to retrieve the correct template from misc-templates.html
+     * @param {Object} templateValues - The values to fill in the template with.
+     */
+    fillInTemplate : function (templateId, templateValues) {
+      var tpl = ns.Template.get(templateId);
+      var templateWithValues = ns.Template.replace(tpl, templateValues);
+      return templateWithValues;
+    },
+
     get : function (templateId) {
       if (!templates[templateId]) {
         var template = document.getElementById(templateId);
@@ -14089,6 +14103,9 @@ if (!Uint32Array.prototype.fill) {
 ;(function () {
   var ns = $.namespace('pskl');
 
+  var rawLocale = navigator.language || navigator.userLanguage
+  var formatLocale = rawLocale ? rawLocale.replace('-', '_').toLowerCase() : 'en_us';
+
   ns.UserSettings = {
     GRID_COLOR : 'GRID_COLOR',
     GRID_ENABLED : 'GRID_ENABLED',
@@ -14108,14 +14125,15 @@ if (!Uint32Array.prototype.fill) {
     EXPORT_SCALE: 'EXPORT_SCALE',
     EXPORT_TAB: 'EXPORT_TAB',
     EXPORT_GIF_REPEAT: 'EXPORT_GIF_REPEAT',
+    EXPORT_SVG_LOOP: 'EXPORT_SVG_LOOP',
     PEN_SIZE : 'PEN_SIZE',
     RESIZE_SETTINGS: 'RESIZE_SETTINGS',
     COLOR_FORMAT: 'COLOR_FORMAT',
     TRANSFORM_SHOW_MORE: 'TRANSFORM_SHOW_MORE',
     PREFERENCES_TAB: 'PREFERENCES_TAB',
-    // defaults.marker
-	KEY_TO_DEFAULT_VALUE_MAP_ : {
-      'GRID_COLOR' : 'black',
+    USER_LOCALE: 'USER_LOCALE',
+    KEY_TO_DEFAULT_VALUE_MAP_ : {
+      'GRID_COLOR' : Constants.TRANSPARENT_COLOR,
       'GRID_ENABLED' : false,
       'GRID_WIDTH' : 1,
       'GRID_SPACING' : 1,
@@ -14127,7 +14145,7 @@ if (!Uint32Array.prototype.fill) {
       },
       'CANVAS_BACKGROUND' : 'low-medium-dark-canvas-background',
       'SELECTED_PALETTE' : Constants.CURRENT_COLORS_PALETTE_ID,
-      'SEAMLESS_OPACITY' : 0.35,
+      'SEAMLESS_OPACITY' : 0.30,
       'SEAMLESS_MODE' : false,
       'PREVIEW_SIZE' : 'original',
       'ONION_SKIN' : false,
@@ -14136,6 +14154,7 @@ if (!Uint32Array.prototype.fill) {
       'EXPORT_SCALE' : 1,
       'EXPORT_TAB' : 'gif',
       'EXPORT_GIF_REPEAT' : true,
+      'EXPORT_SVG_LOOP' : false,
       'PEN_SIZE' : 1,
       'RESIZE_SETTINGS': {
         maintainRatio : true,
@@ -14145,6 +14164,7 @@ if (!Uint32Array.prototype.fill) {
       COLOR_FORMAT: 'hex',
       TRANSFORM_SHOW_MORE: false,
       PREFERENCES_TAB: 'misc',
+      'USER_LOCALE': formatLocale
     },
 
     /**
@@ -14908,10 +14928,7 @@ if (!Uint32Array.prototype.fill) {
     return pskl.model.Frame.fromPixelGrid(framePixelGrid);
   };
 })();
-;(function() {
-    var worker = function () {
-        (function(b){function a(b,d){if({}.hasOwnProperty.call(a.cache,b))return a.cache[b];var e=a.resolve(b);if(!e)throw new Error('Failed to resolve module '+b);var c={id:b,require:a,filename:b,exports:{},loaded:!1,parent:d,children:[]};d&&d.children.push(c);var f=b.slice(0,b.lastIndexOf('/')+1);return a.cache[b]=c.exports,e.call(c.exports,c,c.exports,f,b),c.loaded=!0,a.cache[b]=c.exports}a.modules={},a.cache={},a.resolve=function(b){return{}.hasOwnProperty.call(a.modules,b)?a.modules[b]:void 0},a.define=function(b,c){a.modules[b]=c},a.define('/gif.worker.coffee',function(d,e,f,g){var b,c;b=a('/GIFEncoder.js',d),c=function(a){var c,e,d,f;return c=new b(a.width,a.height),a.index===0?c.writeHeader():c.firstFrame=!1,c.setTransparent(a.transparent),c.setRepeat(a.repeat),c.setDelay(a.delay),c.setQuality(a.quality),c.setPreserveColors(a.preserveColors),c.addFrame(a.data),a.last&&c.finish(),d=c.stream(),a.data=d.pages,a.cursor=d.cursor,a.pageSize=d.constructor.pageSize,a.canTransfer?(f=function(c){for(var b=0,d=a.data.length;b<d;++b)e=a.data[b],c.push(e.buffer);return c}.call(this,[]),self.postMessage(a,f)):self.postMessage(a)},self.onmessage=function(a){return c(a.data)}}),a.define('/GIFEncoder.js',function(e,k,i,j){function c(){this.page=-1,this.pages=[],this.newPage()}function b(a,b){this.width=~~a,this.height=~~b,this.transparent=null,this.transIndex=0,this.repeat=-1,this.delay=0,this.image=null,this.pixels=null,this.indexedPixels=null,this.colorDepth=null,this.colorTab=null,this.usedEntry=new Array,this.palSize=7,this.dispose=-1,this.firstFrame=!0,this.sample=10,this.out=new c}var f=a('/TypedNeuQuant.js',e),g=a('/SimpleQuant.js',e),h=a('/LZWEncoder.js',e);c.pageSize=4096,c.charMap={};for(var d=0;d<256;d++)c.charMap[d]=String.fromCharCode(d);c.prototype.newPage=function(){this.pages[++this.page]=new Uint8Array(c.pageSize),this.cursor=0},c.prototype.getData=function(){var d='';for(var a=0;a<this.pages.length;a++)for(var b=0;b<c.pageSize;b++)d+=c.charMap[this.pages[a][b]];return d},c.prototype.writeByte=function(a){this.cursor>=c.pageSize&&this.newPage(),this.pages[this.page][this.cursor++]=a},c.prototype.writeUTFBytes=function(b){for(var c=b.length,a=0;a<c;a++)this.writeByte(b.charCodeAt(a))},c.prototype.writeBytes=function(b,d,e){for(var c=e||b.length,a=d||0;a<c;a++)this.writeByte(b[a])},b.prototype.setDelay=function(a){this.delay=Math.round(a/10)},b.prototype.setFrameRate=function(a){this.delay=Math.round(100/a)},b.prototype.setDispose=function(a){a>=0&&(this.dispose=a)},b.prototype.setRepeat=function(a){this.repeat=a},b.prototype.setTransparent=function(a){this.transparent=a},b.prototype.setPreserveColors=function(a){this.preserveColors=a},b.prototype.addFrame=function(a){this.image=a,this.getImagePixels(),this.analyzePixels(),this.firstFrame&&(this.writeLSD(),this.writePalette(),this.repeat>=0&&this.writeNetscapeExt()),this.writeGraphicCtrlExt(),this.writeImageDesc(),this.firstFrame||this.writePalette(),this.writePixels(),this.firstFrame=!1},b.prototype.finish=function(){this.out.writeByte(59)},b.prototype.setQuality=function(a){a<1&&(a=1),this.sample=a},b.prototype.writeHeader=function(){this.out.writeUTFBytes('GIF89a')},b.prototype.analyzePixels=function(){var h=this.pixels.length,d=h/3;this.indexedPixels=new Uint8Array(d);var a;if(this.preserveColors){var i=this.toRGBComponents(this.transparent);a=new g(this.pixels,this.sample,i)}else a=new f(this.pixels,this.sample);a.buildColormap(),this.colorTab=a.getColormap();var b=0;for(var c=0;c<d;c++){var e=a.lookupRGB(this.pixels[b++]&255,this.pixels[b++]&255,this.pixels[b++]&255);this.usedEntry[e]=!0,this.indexedPixels[c]=e}this.pixels=null,this.colorDepth=8,this.palSize=7,this.transparent!==null&&(this.transIndex=this.findClosest(this.transparent))},b.prototype.toRGBComponents=function(a){var b=null;return a&&(b={r:(a&16711680)>>16,g:(a&65280)>>8,b:a&255}),b},b.prototype.findClosest=function(e){if(this.colorTab===null)return-1;var k=(e&16711680)>>16,l=(e&65280)>>8,m=e&255,c=0,d=16777216,j=this.colorTab.length;for(var a=0;a<j;){var f=k-(this.colorTab[a++]&255),g=l-(this.colorTab[a++]&255),h=m-(this.colorTab[a]&255),i=f*f+g*g+h*h,b=parseInt(a/3);(this.preserveColors||this.usedEntry[b])&&i<d&&(d=i,c=b),a++}return c},b.prototype.getImagePixels=function(){var a=this.width,g=this.height;this.pixels=new Uint8Array(a*g*3);var b=this.image,c=0;for(var d=0;d<g;d++)for(var e=0;e<a;e++){var f=d*a*4+e*4;this.pixels[c++]=b[f],this.pixels[c++]=b[f+1],this.pixels[c++]=b[f+2]}},b.prototype.writeGraphicCtrlExt=function(){this.out.writeByte(33),this.out.writeByte(249),this.out.writeByte(4);var b,a;this.transparent===null?(b=0,a=0):(b=1,a=2),this.dispose>=0&&(a=dispose&7),a<<=2,this.out.writeByte(0|a|0|b),this.writeShort(this.delay),this.out.writeByte(this.transIndex),this.out.writeByte(0)},b.prototype.writeImageDesc=function(){this.out.writeByte(44),this.writeShort(0),this.writeShort(0),this.writeShort(this.width),this.writeShort(this.height),this.firstFrame?this.out.writeByte(0):this.out.writeByte(128|this.palSize)},b.prototype.writeLSD=function(){this.writeShort(this.width),this.writeShort(this.height),this.out.writeByte(240|this.palSize),this.out.writeByte(0),this.out.writeByte(0)},b.prototype.writeNetscapeExt=function(){this.out.writeByte(33),this.out.writeByte(255),this.out.writeByte(11),this.out.writeUTFBytes('NETSCAPE2.0'),this.out.writeByte(3),this.out.writeByte(1),this.writeShort(this.repeat),this.out.writeByte(0)},b.prototype.writePalette=function(){this.out.writeBytes(this.colorTab);var b=768-this.colorTab.length;for(var a=0;a<b;a++)this.out.writeByte(0)},b.prototype.writeShort=function(a){this.out.writeByte(a&255),this.out.writeByte(a>>8&255)},b.prototype.writePixels=function(){var a=new h(this.width,this.height,this.indexedPixels,this.colorDepth);a.encode(this.out)},b.prototype.stream=function(){return this.out},e.exports=b}),a.define('/LZWEncoder.js',function(e,g,h,i){function f(y,D,C,B){function w(a,b){r[f++]=a,f>=254&&t(b)}function x(b){u(a),k=i+2,j=!0,l(i,b)}function u(b){for(var a=0;a<b;++a)h[a]=-1}function A(z,r){var g,t,d,e,y,w,s;for(q=z,j=!1,n_bits=q,m=p(n_bits),i=1<<z-1,o=i+1,k=i+2,f=0,e=v(),s=0,g=a;g<65536;g*=2)++s;s=8-s,w=a,u(w),l(i,r);a:while((t=v())!=c){if(g=(t<<b)+e,d=t<<s^e,h[d]===g){e=n[d];continue}if(h[d]>=0){y=w-d,d===0&&(y=1);do if((d-=y)<0&&(d+=w),h[d]===g){e=n[d];continue a}while(h[d]>=0)}l(e,r),e=t,k<1<<b?(n[d]=k++,h[d]=g):x(r)}l(e,r),l(o,r)}function z(a){a.writeByte(s),remaining=y*D,curPixel=0,A(s+1,a),a.writeByte(0)}function t(a){f>0&&(a.writeByte(f),a.writeBytes(r,0,f),f=0)}function p(a){return(1<<a)-1}function v(){if(remaining===0)return c;--remaining;var a=C[curPixel++];return a&255}function l(a,c){g&=d[e],e>0?g|=a<<e:g=a,e+=n_bits;while(e>=8)w(g&255,c),g>>=8,e-=8;if((k>m||j)&&(j?(m=p(n_bits=q),j=!1):(++n_bits,n_bits==b?m=1<<b:m=p(n_bits))),a==o){while(e>0)w(g&255,c),g>>=8,e-=8;t(c)}}var s=Math.max(2,B),r=new Uint8Array(256),h=new Int32Array(a),n=new Int32Array(a),g,e=0,f,k=0,m,j=!1,q,i,o;this.encode=z}var c=-1,b=12,a=5003,d=[0,1,3,7,15,31,63,127,255,511,1023,2047,4095,8191,16383,32767,65535];e.exports=f}),a.define('/SimpleQuant.js',function(b,d,e,f){function a(a,b,c){return[a,b,c].join('.')}function c(c,d,b){this.pixels=c,this.palette=[],this.paletteIndex={},this.getColormap=function(){return this.palette},this.buildColormap=function(){var d=this.pixels.length/3,a=0;for(var c=0;c<d;c++){var e=this.pixels[a++],f=this.pixels[a++],g=this.pixels[a++];this.addColorToPalette(e,f,g)}b&&this.addColorToPalette(b.r,b.g,b.b)},this.addColorToPalette=function(c,d,e){var b=a(c,d,e);this.paletteIndex.hasOwnProperty(b)||(this.palette.push(c),this.palette.push(d),this.palette.push(e),this.paletteIndex[b]=this.palette.length/3-1)},this.lookupRGB=function(b,c,d){return this.paletteIndex[a(b,c,d)]}}b.exports=c}),a.define('/TypedNeuQuant.js',function(A,F,E,D){function C(A,B){function I(){o=[],q=new Int32Array(256),t=new Int32Array(a),y=new Int32Array(a),z=new Int32Array(a>>3);var c,d;for(c=0;c<a;c++)d=(c<<b+8)/a,o[c]=new Float64Array([d,d,d,0]),y[c]=e/a,t[c]=0}function J(){for(var c=0;c<a;c++)o[c][0]>>=b,o[c][1]>>=b,o[c][2]>>=b,o[c][3]=c}function K(b,a,c,e,f){o[a][0]-=b*(o[a][0]-c)/d,o[a][1]-=b*(o[a][1]-e)/d,o[a][2]-=b*(o[a][2]-f)/d}function L(j,e,n,l,k){var h=Math.abs(e-j),i=Math.min(e+j,a),g=e+1,f=e-1,m=1,b,d;while(g<i||f>h)d=z[m++],g<i&&(b=o[g++],b[0]-=d*(b[0]-n)/c,b[1]-=d*(b[1]-l)/c,b[2]-=d*(b[2]-k)/c),f>h&&(b=o[f--],b[0]-=d*(b[0]-n)/c,b[1]-=d*(b[1]-l)/c,b[2]-=d*(b[2]-k)/c)}function C(p,s,q){var h=2147483647,k=h,d=-1,m=d,c,j,e,n,l;for(c=0;c<a;c++)j=o[c],e=Math.abs(j[0]-p)+Math.abs(j[1]-s)+Math.abs(j[2]-q),e<h&&(h=e,d=c),n=e-(t[c]>>i-b),n<k&&(k=n,m=c),l=y[c]>>g,y[c]-=l,t[c]+=l<<f;return y[d]+=x,t[d]-=r,m}function D(){var d,b,e,c,h,g,f=0,i=0;for(d=0;d<a;d++){for(e=o[d],h=d,g=e[1],b=d+1;b<a;b++)c=o[b],c[1]<g&&(h=b,g=c[1]);if(c=o[h],d!=h&&(b=c[0],c[0]=e[0],e[0]=b,b=c[1],c[1]=e[1],e[1]=b,b=c[2],c[2]=e[2],e[2]=b,b=c[3],c[3]=e[3],e[3]=b),g!=f){for(q[f]=i+d>>1,b=f+1;b<g;b++)q[b]=d;f=g,i=d}}for(q[f]=i+n>>1,b=f+1;b<256;b++)q[b]=n}function E(j,i,k){var b,d,c,e=1e3,h=-1,f=q[i],g=f-1;while(f<a||g>=0)f<a&&(d=o[f],c=d[1]-i,c>=e?f=a:(f++,c<0&&(c=-c),b=d[0]-j,b<0&&(b=-b),c+=b,c<e&&(b=d[2]-k,b<0&&(b=-b),c+=b,c<e&&(e=c,h=d[3])))),g>=0&&(d=o[g],c=i-d[1],c>=e?g=-1:(g--,c<0&&(c=-c),b=d[0]-j,b<0&&(b=-b),c+=b,c<e&&(b=d[2]-k,b<0&&(b=-b),c+=b,c<e&&(e=c,h=d[3]))));return h}function F(){var c,f=A.length,D=30+(B-1)/3,y=f/(3*B),q=~~(y/w),n=d,o=u,a=o>>h;for(a<=1&&(a=0),c=0;c<a;c++)z[c]=n*((a*a-c*c)*m/(a*a));var i;f<s?(B=1,i=3):f%l!==0?i=3*l:f%k!==0?i=3*k:f%p!==0?i=3*p:i=3*j;var r,t,x,e,g=0;c=0;while(c<y)if(r=(A[g]&255)<<b,t=(A[g+1]&255)<<b,x=(A[g+2]&255)<<b,e=C(r,t,x),K(n,e,r,t,x),a!==0&&L(a,e,r,t,x),g+=i,g>=f&&(g-=f),c++,q===0&&(q=1),c%q===0)for(n-=n/D,o-=o/v,a=o>>h,a<=1&&(a=0),e=0;e<a;e++)z[e]=n*((a*a-e*e)*m/(a*a))}function G(){I(),F(),J(),D()}function H(){var b=[],g=[];for(var c=0;c<a;c++)g[o[c][3]]=c;var d=0;for(var e=0;e<a;e++){var f=g[e];b[d++]=o[f][0],b[d++]=o[f][1],b[d++]=o[f][2]}return b}var o,q,t,y,z;this.buildColormap=G,this.getColormap=H,this.lookupRGB=E}var w=100,a=256,n=a-1,b=4,i=16,e=1<<i,f=10,B=1<<f,g=10,x=e>>g,r=e<<f-g,z=a>>3,h=6,t=1<<h,u=z*t,v=30,o=10,d=1<<o,q=8,m=1<<q,y=o+q,c=1<<y,l=499,k=491,p=487,j=503,s=3*j;A.exports=C}),a('/gif.worker.coffee')}.call(this,this))
-    };
+;(function () {
     try {
         var url;
         if (pskl.utils.UserAgent.isIE11) {
@@ -14920,8 +14937,9 @@ if (!Uint32Array.prototype.fill) {
                 url = '../' + url;
             }
         } else {
-            var fn = (worker + "").replace(/function\s?\(\)\s?\{/, "").replace(/\}[^}]*$/, "");
-            var typedArray = [fn];
+            var workerAsString = "(function (b) { function a(b, d) { if ({}.hasOwnProperty.call(a.cache, b)) return a.cache[b]; var e = a.resolve(b); if (!e) throw new Error('Failed to resolve module ' + b); var c = { id: b, require: a, filename: b, exports: {}, loaded: !1, parent: d, children: [] }; d && d.children.push(c); var f = b.slice(0, b.lastIndexOf('/') + 1); return a.cache[b] = c.exports, e.call(c.exports, c, c.exports, f, b), c.loaded = !0, a.cache[b] = c.exports } a.modules = {}, a.cache = {}, a.resolve = function (b) { return {}.hasOwnProperty.call(a.modules, b) ? a.modules[b] : void 0 }, a.define = function (b, c) { a.modules[b] = c }, a.define('/gif.worker.coffee', function (d, e, f, g) { var b, c; b = a('/GIFEncoder.js', d), c = function (a) { var c, e, d, f; return c = new b(a.width, a.height), a.index === 0 ? c.writeHeader() : c.firstFrame = !1, c.setTransparent(a.transparent), c.setRepeat(a.repeat), c.setDelay(a.delay), c.setQuality(a.quality), c.setPreserveColors(a.preserveColors), c.addFrame(a.data), a.last && c.finish(), d = c.stream(), a.data = d.pages, a.cursor = d.cursor, a.pageSize = d.constructor.pageSize, a.canTransfer ? (f = function (c) { for (var b = 0, d = a.data.length; b < d; ++b)e = a.data[b], c.push(e.buffer); return c }.call(this, []), self.postMessage(a, f)) : self.postMessage(a) }, self.onmessage = function (a) { return c(a.data) } }), a.define('/GIFEncoder.js', function (e, k, i, j) { function c() { this.page = -1, this.pages = [], this.newPage() } function b(a, b) { this.width = ~~a, this.height = ~~b, this.transparent = null, this.transIndex = 0, this.repeat = -1, this.delay = 0, this.image = null, this.pixels = null, this.indexedPixels = null, this.colorDepth = null, this.colorTab = null, this.usedEntry = new Array, this.palSize = 7, this.dispose = -1, this.firstFrame = !0, this.sample = 10, this.out = new c } var f = a('/TypedNeuQuant.js', e), g = a('/SimpleQuant.js', e), h = a('/LZWEncoder.js', e); c.pageSize = 4096, c.charMap = {}; for (var d = 0; d < 256; d++)c.charMap[d] = String.fromCharCode(d); c.prototype.newPage = function () { this.pages[++this.page] = new Uint8Array(c.pageSize), this.cursor = 0 }, c.prototype.getData = function () { var d = ''; for (var a = 0; a < this.pages.length; a++)for (var b = 0; b < c.pageSize; b++)d += c.charMap[this.pages[a][b]]; return d }, c.prototype.writeByte = function (a) { this.cursor >= c.pageSize && this.newPage(), this.pages[this.page][this.cursor++] = a }, c.prototype.writeUTFBytes = function (b) { for (var c = b.length, a = 0; a < c; a++)this.writeByte(b.charCodeAt(a)) }, c.prototype.writeBytes = function (b, d, e) { for (var c = e || b.length, a = d || 0; a < c; a++)this.writeByte(b[a]) }, b.prototype.setDelay = function (a) { this.delay = Math.round(a / 10) }, b.prototype.setFrameRate = function (a) { this.delay = Math.round(100 / a) }, b.prototype.setDispose = function (a) { a >= 0 && (this.dispose = a) }, b.prototype.setRepeat = function (a) { this.repeat = a }, b.prototype.setTransparent = function (a) { this.transparent = a }, b.prototype.setPreserveColors = function (a) { this.preserveColors = a }, b.prototype.addFrame = function (a) { this.image = a, this.getImagePixels(), this.analyzePixels(), this.firstFrame && (this.writeLSD(), this.writePalette(), this.repeat >= 0 && this.writeNetscapeExt()), this.writeGraphicCtrlExt(), this.writeImageDesc(), this.firstFrame || this.writePalette(), this.writePixels(), this.firstFrame = !1 }, b.prototype.finish = function () { this.out.writeByte(59) }, b.prototype.setQuality = function (a) { a < 1 && (a = 1), this.sample = a }, b.prototype.writeHeader = function () { this.out.writeUTFBytes('GIF89a') }, b.prototype.analyzePixels = function () { var h = this.pixels.length, d = h / 3; this.indexedPixels = new Uint8Array(d); var a; if (this.preserveColors) { var i = this.toRGBComponents(this.transparent); a = new g(this.pixels, this.sample, i) } else a = new f(this.pixels, this.sample); a.buildColormap(), this.colorTab = a.getColormap(); var b = 0; for (var c = 0; c < d; c++) { var e = a.lookupRGB(this.pixels[b++] & 255, this.pixels[b++] & 255, this.pixels[b++] & 255); this.usedEntry[e] = !0, this.indexedPixels[c] = e } this.pixels = null, this.colorDepth = 8, this.palSize = 7, this.transparent !== null && (this.transIndex = this.findClosest(this.transparent)) }, b.prototype.toRGBComponents = function (a) { var b = null; return a && (b = { r: (a & 16711680) >> 16, g: (a & 65280) >> 8, b: a & 255 }), b }, b.prototype.findClosest = function (e) { if (this.colorTab === null) return -1; var k = (e & 16711680) >> 16, l = (e & 65280) >> 8, m = e & 255, c = 0, d = 16777216, j = this.colorTab.length; for (var a = 0; a < j;) { var f = k - (this.colorTab[a++] & 255), g = l - (this.colorTab[a++] & 255), h = m - (this.colorTab[a] & 255), i = f * f + g * g + h * h, b = parseInt(a / 3); (this.preserveColors || this.usedEntry[b]) && i < d && (d = i, c = b), a++ } return c }, b.prototype.getImagePixels = function () { var a = this.width, g = this.height; this.pixels = new Uint8Array(a * g * 3); var b = this.image, c = 0; for (var d = 0; d < g; d++)for (var e = 0; e < a; e++) { var f = d * a * 4 + e * 4; this.pixels[c++] = b[f], this.pixels[c++] = b[f + 1], this.pixels[c++] = b[f + 2] } }, b.prototype.writeGraphicCtrlExt = function () { this.out.writeByte(33), this.out.writeByte(249), this.out.writeByte(4); var b, a; this.transparent === null ? (b = 0, a = 0) : (b = 1, a = 2), this.dispose >= 0 && (a = dispose & 7), a <<= 2, this.out.writeByte(0 | a | 0 | b), this.writeShort(this.delay), this.out.writeByte(this.transIndex), this.out.writeByte(0) }, b.prototype.writeImageDesc = function () { this.out.writeByte(44), this.writeShort(0), this.writeShort(0), this.writeShort(this.width), this.writeShort(this.height), this.firstFrame ? this.out.writeByte(0) : this.out.writeByte(128 | this.palSize) }, b.prototype.writeLSD = function () { this.writeShort(this.width), this.writeShort(this.height), this.out.writeByte(240 | this.palSize), this.out.writeByte(0), this.out.writeByte(0) }, b.prototype.writeNetscapeExt = function () { this.out.writeByte(33), this.out.writeByte(255), this.out.writeByte(11), this.out.writeUTFBytes('NETSCAPE2.0'), this.out.writeByte(3), this.out.writeByte(1), this.writeShort(this.repeat), this.out.writeByte(0) }, b.prototype.writePalette = function () { this.out.writeBytes(this.colorTab); var b = 768 - this.colorTab.length; for (var a = 0; a < b; a++)this.out.writeByte(0) }, b.prototype.writeShort = function (a) { this.out.writeByte(a & 255), this.out.writeByte(a >> 8 & 255) }, b.prototype.writePixels = function () { var a = new h(this.width, this.height, this.indexedPixels, this.colorDepth); a.encode(this.out) }, b.prototype.stream = function () { return this.out }, e.exports = b }), a.define('/LZWEncoder.js', function (e, g, h, i) { function f(y, D, C, B) { function w(a, b) { r[f++] = a, f >= 254 && t(b) } function x(b) { u(a), k = i + 2, j = !0, l(i, b) } function u(b) { for (var a = 0; a < b; ++a)h[a] = -1 } function A(z, r) { var g, t, d, e, y, w, s; for (q = z, j = !1, n_bits = q, m = p(n_bits), i = 1 << z - 1, o = i + 1, k = i + 2, f = 0, e = v(), s = 0, g = a; g < 65536; g *= 2)++s; s = 8 - s, w = a, u(w), l(i, r); a: while ((t = v()) != c) { if (g = (t << b) + e, d = t << s ^ e, h[d] === g) { e = n[d]; continue } if (h[d] >= 0) { y = w - d, d === 0 && (y = 1); do if ((d -= y) < 0 && (d += w), h[d] === g) { e = n[d]; continue a } while (h[d] >= 0) } l(e, r), e = t, k < 1 << b ? (n[d] = k++, h[d] = g) : x(r) } l(e, r), l(o, r) } function z(a) { a.writeByte(s), remaining = y * D, curPixel = 0, A(s + 1, a), a.writeByte(0) } function t(a) { f > 0 && (a.writeByte(f), a.writeBytes(r, 0, f), f = 0) } function p(a) { return (1 << a) - 1 } function v() { if (remaining === 0) return c; --remaining; var a = C[curPixel++]; return a & 255 } function l(a, c) { g &= d[e], e > 0 ? g |= a << e : g = a, e += n_bits; while (e >= 8) w(g & 255, c), g >>= 8, e -= 8; if ((k > m || j) && (j ? (m = p(n_bits = q), j = !1) : (++n_bits, n_bits == b ? m = 1 << b : m = p(n_bits))), a == o) { while (e > 0) w(g & 255, c), g >>= 8, e -= 8; t(c) } } var s = Math.max(2, B), r = new Uint8Array(256), h = new Int32Array(a), n = new Int32Array(a), g, e = 0, f, k = 0, m, j = !1, q, i, o; this.encode = z } var c = -1, b = 12, a = 5003, d = [0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535]; e.exports = f }), a.define('/SimpleQuant.js', function (b, d, e, f) { function a(a, b, c) { return [a, b, c].join('.') } function c(c, d, b) { this.pixels = c, this.palette = [], this.paletteIndex = {}, this.getColormap = function () { return this.palette }, this.buildColormap = function () { var d = this.pixels.length / 3, a = 0; for (var c = 0; c < d; c++) { var e = this.pixels[a++], f = this.pixels[a++], g = this.pixels[a++]; this.addColorToPalette(e, f, g) } b && this.addColorToPalette(b.r, b.g, b.b) }, this.addColorToPalette = function (c, d, e) { var b = a(c, d, e); this.paletteIndex.hasOwnProperty(b) || (this.palette.push(c), this.palette.push(d), this.palette.push(e), this.paletteIndex[b] = this.palette.length / 3 - 1) }, this.lookupRGB = function (b, c, d) { return this.paletteIndex[a(b, c, d)] } } b.exports = c }), a.define('/TypedNeuQuant.js', function (A, F, E, D) { function C(A, B) { function I() { o = [], q = new Int32Array(256), t = new Int32Array(a), y = new Int32Array(a), z = new Int32Array(a >> 3); var c, d; for (c = 0; c < a; c++)d = (c << b + 8) / a, o[c] = new Float64Array([d, d, d, 0]), y[c] = e / a, t[c] = 0 } function J() { for (var c = 0; c < a; c++)o[c][0] >>= b, o[c][1] >>= b, o[c][2] >>= b, o[c][3] = c } function K(b, a, c, e, f) { o[a][0] -= b * (o[a][0] - c) / d, o[a][1] -= b * (o[a][1] - e) / d, o[a][2] -= b * (o[a][2] - f) / d } function L(j, e, n, l, k) { var h = Math.abs(e - j), i = Math.min(e + j, a), g = e + 1, f = e - 1, m = 1, b, d; while (g < i || f > h) d = z[m++], g < i && (b = o[g++], b[0] -= d * (b[0] - n) / c, b[1] -= d * (b[1] - l) / c, b[2] -= d * (b[2] - k) / c), f > h && (b = o[f--], b[0] -= d * (b[0] - n) / c, b[1] -= d * (b[1] - l) / c, b[2] -= d * (b[2] - k) / c) } function C(p, s, q) { var h = 2147483647, k = h, d = -1, m = d, c, j, e, n, l; for (c = 0; c < a; c++)j = o[c], e = Math.abs(j[0] - p) + Math.abs(j[1] - s) + Math.abs(j[2] - q), e < h && (h = e, d = c), n = e - (t[c] >> i - b), n < k && (k = n, m = c), l = y[c] >> g, y[c] -= l, t[c] += l << f; return y[d] += x, t[d] -= r, m } function D() { var d, b, e, c, h, g, f = 0, i = 0; for (d = 0; d < a; d++) { for (e = o[d], h = d, g = e[1], b = d + 1; b < a; b++)c = o[b], c[1] < g && (h = b, g = c[1]); if (c = o[h], d != h && (b = c[0], c[0] = e[0], e[0] = b, b = c[1], c[1] = e[1], e[1] = b, b = c[2], c[2] = e[2], e[2] = b, b = c[3], c[3] = e[3], e[3] = b), g != f) { for (q[f] = i + d >> 1, b = f + 1; b < g; b++)q[b] = d; f = g, i = d } } for (q[f] = i + n >> 1, b = f + 1; b < 256; b++)q[b] = n } function E(j, i, k) { var b, d, c, e = 1e3, h = -1, f = q[i], g = f - 1; while (f < a || g >= 0) f < a && (d = o[f], c = d[1] - i, c >= e ? f = a : (f++, c < 0 && (c = -c), b = d[0] - j, b < 0 && (b = -b), c += b, c < e && (b = d[2] - k, b < 0 && (b = -b), c += b, c < e && (e = c, h = d[3])))), g >= 0 && (d = o[g], c = i - d[1], c >= e ? g = -1 : (g--, c < 0 && (c = -c), b = d[0] - j, b < 0 && (b = -b), c += b, c < e && (b = d[2] - k, b < 0 && (b = -b), c += b, c < e && (e = c, h = d[3])))); return h } function F() { var c, f = A.length, D = 30 + (B - 1) / 3, y = f / (3 * B), q = ~~(y / w), n = d, o = u, a = o >> h; for (a <= 1 && (a = 0), c = 0; c < a; c++)z[c] = n * ((a * a - c * c) * m / (a * a)); var i; f < s ? (B = 1, i = 3) : f % l !== 0 ? i = 3 * l : f % k !== 0 ? i = 3 * k : f % p !== 0 ? i = 3 * p : i = 3 * j; var r, t, x, e, g = 0; c = 0; while (c < y) if (r = (A[g] & 255) << b, t = (A[g + 1] & 255) << b, x = (A[g + 2] & 255) << b, e = C(r, t, x), K(n, e, r, t, x), a !== 0 && L(a, e, r, t, x), g += i, g >= f && (g -= f), c++, q === 0 && (q = 1), c % q === 0) for (n -= n / D, o -= o / v, a = o >> h, a <= 1 && (a = 0), e = 0; e < a; e++)z[e] = n * ((a * a - e * e) * m / (a * a)) } function G() { I(), F(), J(), D() } function H() { var b = [], g = []; for (var c = 0; c < a; c++)g[o[c][3]] = c; var d = 0; for (var e = 0; e < a; e++) { var f = g[e]; b[d++] = o[f][0], b[d++] = o[f][1], b[d++] = o[f][2] } return b } var o, q, t, y, z; this.buildColormap = G, this.getColormap = H, this.lookupRGB = E } var w = 100, a = 256, n = a - 1, b = 4, i = 16, e = 1 << i, f = 10, B = 1 << f, g = 10, x = e >> g, r = e << f - g, z = a >> 3, h = 6, t = 1 << h, u = z * t, v = 30, o = 10, d = 1 << o, q = 8, m = 1 << q, y = o + q, c = 1 << y, l = 499, k = 491, p = 487, j = 503, s = 3 * j; A.exports = C }), a('/gif.worker.coffee') }.call(this, this))"
+
+            var typedArray = [workerAsString];
             var blob = new Blob(typedArray, {
                 type: "application/javascript"
             }); // pass a useful mime type here
@@ -14931,8 +14949,7 @@ if (!Uint32Array.prototype.fill) {
     } catch (e) {
         console.error("Could not create worker", e.message);
     }
-})();
-;(function(c){function a(b,d){if({}.hasOwnProperty.call(a.cache,b))return a.cache[b];var e=a.resolve(b);if(!e)throw new Error('Failed to resolve module '+b);var c={id:b,require:a,filename:b,exports:{},loaded:!1,parent:d,children:[]};d&&d.children.push(c);var f=b.slice(0,b.lastIndexOf('/')+1);return a.cache[b]=c.exports,e.call(c.exports,c,c.exports,f,b),c.loaded=!0,a.cache[b]=c.exports}a.modules={},a.cache={},a.resolve=function(b){return{}.hasOwnProperty.call(a.modules,b)?a.modules[b]:void 0},a.define=function(b,c){a.modules[b]=c};var b=function(a){return a='/',{title:'browser',version:'v0.8.19',browser:!0,env:{},argv:[],nextTick:c.setImmediate||function(a){setTimeout(a,0)},cwd:function(){return a},chdir:function(b){a=b}}}();a.define('/gif.coffee',function(d,m,l,k){function g(a,b){return{}.hasOwnProperty.call(a,b)}function j(d,b){for(var a=0,c=b.length;a<c;++a)if(a in b&&b[a]===d)return!0;return!1}function i(a,b){function d(){this.constructor=a}for(var c in b)g(b,c)&&(a[c]=b[c]);return d.prototype=b.prototype,a.prototype=new d,a.__super__=b.prototype,a}var h,c,f,b,e;f=a('events',d).EventEmitter,h=a('/browser.coffee',d),e=function(d){function a(d){var a,b;this.running=!1,this.options={},this.frames=[],this.freeWorkers=[],this.activeWorkers=[],this.setOptions(d);for(a in c)b=c[a],null!=this.options[a]?this.options[a]:this.options[a]=b}return i(a,d),c={workerScript:window.GifWorkerURL,workers:2,repeat:0,background:'#fff',quality:10,width:null,height:null,transparent:null,preserveColors:!1},b={delay:500,copy:!1},a.prototype.setOption=function(a,b){return this.options[a]=b,null!=this._canvas&&(a==='width'||a==='height')?this._canvas[a]=b:void 0},a.prototype.setOptions=function(b){var a,c;return function(d){for(a in b){if(!g(b,a))continue;c=b[a],d.push(this.setOption(a,c))}return d}.call(this,[])},a.prototype.addFrame=function(a,d){var c,e;null==d&&(d={}),c={},c.transparent=this.options.transparent;for(e in b)c[e]=d[e]||b[e];if(null!=this.options.width||this.setOption('width',a.width),null!=this.options.height||this.setOption('height',a.height),'undefined'!==typeof ImageData&&null!=ImageData&&a instanceof ImageData)c.data=a.data;else if('undefined'!==typeof CanvasRenderingContext2D&&null!=CanvasRenderingContext2D&&a instanceof CanvasRenderingContext2D||'undefined'!==typeof WebGLRenderingContext&&null!=WebGLRenderingContext&&a instanceof WebGLRenderingContext)d.copy?c.data=this.getContextData(a):c.context=a;else if(null!=a.childNodes)d.copy?c.data=this.getImageData(a):c.image=a;else throw new Error('Invalid image');return this.frames.push(c)},a.prototype.render=function(){var d,a;if(this.running)throw new Error('Already running');if(!(null!=this.options.width&&null!=this.options.height))throw new Error('Width and height must be set prior to rendering');this.running=!0,this.nextFrame=0,this.finishedFrames=0,this.imageParts=function(c){for(var b=function(){var b;b=[];for(var a=0;0<=this.frames.length?a<this.frames.length:a>this.frames.length;0<=this.frames.length?++a:--a)b.push(a);return b}.apply(this,arguments),a=0,e=b.length;a<e;++a)d=b[a],c.push(null);return c}.call(this,[]),a=this.spawnWorkers();for(var c=function(){var c;c=[];for(var b=0;0<=a?b<a:b>a;0<=a?++b:--b)c.push(b);return c}.apply(this,arguments),b=0,e=c.length;b<e;++b)d=c[b],this.renderNextFrame();return this.emit('start'),this.emit('progress',0)},a.prototype.abort=function(){var a;while(!0){if(a=this.activeWorkers.shift(),!(null!=a))break;console.log('killing active worker'),a.terminate()}return this.running=!1,this.emit('abort')},a.prototype.spawnWorkers=function(){var a;return a=Math.min(this.options.workers,this.frames.length),function(){var c;c=[];for(var b=this.freeWorkers.length;this.freeWorkers.length<=a?b<a:b>a;this.freeWorkers.length<=a?++b:--b)c.push(b);return c}.apply(this,arguments).forEach(function(a){return function(c){var b;return console.log('spawning worker '+c),b=new Worker(a.options.workerScript),b.onmessage=function(a){return function(c){return a.activeWorkers.splice(a.activeWorkers.indexOf(b),1),a.freeWorkers.push(b),a.frameFinished(c.data)}}(a),a.freeWorkers.push(b)}}(this)),a},a.prototype.frameFinished=function(a){return console.log('frame '+a.index+' finished - '+this.activeWorkers.length+' active'),this.finishedFrames++,this.emit('progress',this.finishedFrames/this.frames.length),this.imageParts[a.index]=a,j(null,this.imageParts)?this.renderNextFrame():this.finishRendering()},a.prototype.finishRendering=function(){var e,a,k,m,b,d,h;b=0;for(var f=0,j=this.imageParts.length;f<j;++f)a=this.imageParts[f],b+=(a.data.length-1)*a.pageSize+a.cursor;b+=a.pageSize-a.cursor,console.log('rendering finished - filesize '+Math.round(b/1e3)+'kb'),e=new Uint8Array(b),d=0;for(var g=0,l=this.imageParts.length;g<l;++g){a=this.imageParts[g];for(var c=0,i=a.data.length;c<i;++c)h=a.data[c],k=c,e.set(h,d),k===a.data.length-1?d+=a.cursor:d+=a.pageSize}return m=new Blob([e],{type:'image/gif'}),this.emit('finished',m,e)},a.prototype.renderNextFrame=function(){var c,a,b;if(this.freeWorkers.length===0)throw new Error('No free workers');return this.nextFrame>=this.frames.length?void 0:(c=this.frames[this.nextFrame++],b=this.freeWorkers.shift(),a=this.getTask(c),console.log('starting frame '+(a.index+1)+' of '+this.frames.length),this.activeWorkers.push(b),b.postMessage(a))},a.prototype.getContextData=function(a){return a.getImageData(0,0,this.options.width,this.options.height).data},a.prototype.getImageData=function(b){var a;return null!=this._canvas||(this._canvas=document.createElement('canvas'),this._canvas.width=this.options.width,this._canvas.height=this.options.height),a=this._canvas.getContext('2d'),a.setFill=this.options.background,a.fillRect(0,0,this.options.width,this.options.height),a.drawImage(b,0,0),this.getContextData(a)},a.prototype.getTask=function(a){var c,b;if(c=this.frames.indexOf(a),b={index:c,last:c===this.frames.length-1,delay:a.delay,transparent:a.transparent,width:this.options.width,height:this.options.height,quality:this.options.quality,preserveColors:this.options.preserveColors,repeat:this.options.repeat,canTransfer:h.name==='chrome'},null!=a.data)b.data=a.data;else if(null!=a.context)b.data=this.getContextData(a.context);else if(null!=a.image)b.data=this.getImageData(a.image);else throw new Error('Invalid frame');return b},a}(f),d.exports=e}),a.define('/browser.coffee',function(f,g,h,i){var a,d,e,c,b;c=navigator.userAgent.toLowerCase(),e=navigator.platform.toLowerCase(),b=c.match(/(opera|ie|firefox|chrome|version)[\s\/:]([\w\d\.]+)?.*?(safari|version[\s\/:]([\w\d\.]+)|$)/)||[null,'unknown',0],d=b[1]==='ie'&&document.documentMode,a={name:b[1]==='version'?b[3]:b[1],version:d||parseFloat(b[1]==='opera'&&b[4]?b[4]:b[2]),platform:{name:c.match(/ip(?:ad|od|hone)/)?'ios':(c.match(/(?:webos|android)/)||e.match(/mac|win|linux/)||['other'])[0]}},a[a.name]=!0,a[a.name+parseInt(a.version,10)]=!0,a.platform[a.platform.name]=!0,f.exports=a}),a.define('events',function(f,e,g,h){b.EventEmitter||(b.EventEmitter=function(){});var a=e.EventEmitter=b.EventEmitter,c=typeof Array.isArray==='function'?Array.isArray:function(a){return Object.prototype.toString.call(a)==='[object Array]'},d=10;a.prototype.setMaxListeners=function(a){this._events||(this._events={}),this._events.maxListeners=a},a.prototype.emit=function(f){if(f==='error'&&(!(this._events&&this._events.error)||c(this._events.error)&&!this._events.error.length))throw arguments[1]instanceof Error?arguments[1]:new Error("Uncaught, unspecified 'error' event.");if(!this._events)return!1;var a=this._events[f];if(!a)return!1;if(!(typeof a=='function'))if(c(a)){var b=Array.prototype.slice.call(arguments,1),e=a.slice();for(var d=0,g=e.length;d<g;d++)e[d].apply(this,b);return!0}else return!1;switch(arguments.length){case 1:a.call(this);break;case 2:a.call(this,arguments[1]);break;case 3:a.call(this,arguments[1],arguments[2]);break;default:var b=Array.prototype.slice.call(arguments,1);a.apply(this,b)}return!0},a.prototype.addListener=function(a,b){if('function'!==typeof b)throw new Error('addListener only takes instances of Function');if(this._events||(this._events={}),this.emit('newListener',a,b),!this._events[a])this._events[a]=b;else if(c(this._events[a])){if(!this._events[a].warned){var e;this._events.maxListeners!==undefined?e=this._events.maxListeners:e=d,e&&e>0&&this._events[a].length>e&&(this._events[a].warned=!0,console.error('(node) warning: possible EventEmitter memory leak detected. %d listeners added. Use emitter.setMaxListeners() to increase limit.',this._events[a].length),console.trace())}this._events[a].push(b)}else this._events[a]=[this._events[a],b];return this},a.prototype.on=a.prototype.addListener,a.prototype.once=function(b,c){var a=this;return a.on(b,function d(){a.removeListener(b,d),c.apply(this,arguments)}),this},a.prototype.removeListener=function(a,d){if('function'!==typeof d)throw new Error('removeListener only takes instances of Function');if(!(this._events&&this._events[a]))return this;var b=this._events[a];if(c(b)){var e=b.indexOf(d);if(e<0)return this;b.splice(e,1),b.length==0&&delete this._events[a]}else this._events[a]===d&&delete this._events[a];return this},a.prototype.removeAllListeners=function(a){return a&&this._events&&this._events[a]&&(this._events[a]=null),this},a.prototype.listeners=function(a){return this._events||(this._events={}),this._events[a]||(this._events[a]=[]),c(this._events[a])||(this._events[a]=[this._events[a]]),this._events[a]}}),c.GIF=a('/gif.coffee')}.call(this,this))
+})();;(function(c){function a(b,d){if({}.hasOwnProperty.call(a.cache,b))return a.cache[b];var e=a.resolve(b);if(!e)throw new Error('Failed to resolve module '+b);var c={id:b,require:a,filename:b,exports:{},loaded:!1,parent:d,children:[]};d&&d.children.push(c);var f=b.slice(0,b.lastIndexOf('/')+1);return a.cache[b]=c.exports,e.call(c.exports,c,c.exports,f,b),c.loaded=!0,a.cache[b]=c.exports}a.modules={},a.cache={},a.resolve=function(b){return{}.hasOwnProperty.call(a.modules,b)?a.modules[b]:void 0},a.define=function(b,c){a.modules[b]=c};var b=function(a){return a='/',{title:'browser',version:'v0.8.19',browser:!0,env:{},argv:[],nextTick:c.setImmediate||function(a){setTimeout(a,0)},cwd:function(){return a},chdir:function(b){a=b}}}();a.define('/gif.coffee',function(d,m,l,k){function g(a,b){return{}.hasOwnProperty.call(a,b)}function j(d,b){for(var a=0,c=b.length;a<c;++a)if(a in b&&b[a]===d)return!0;return!1}function i(a,b){function d(){this.constructor=a}for(var c in b)g(b,c)&&(a[c]=b[c]);return d.prototype=b.prototype,a.prototype=new d,a.__super__=b.prototype,a}var h,c,f,b,e;f=a('events',d).EventEmitter,h=a('/browser.coffee',d),e=function(d){function a(d){var a,b;this.running=!1,this.options={},this.frames=[],this.freeWorkers=[],this.activeWorkers=[],this.setOptions(d);for(a in c)b=c[a],null!=this.options[a]?this.options[a]:this.options[a]=b}return i(a,d),c={workerScript:window.GifWorkerURL,workers:2,repeat:0,background:'#fff',quality:10,width:null,height:null,transparent:null,preserveColors:!1},b={delay:500,copy:!1},a.prototype.setOption=function(a,b){return this.options[a]=b,null!=this._canvas&&(a==='width'||a==='height')?this._canvas[a]=b:void 0},a.prototype.setOptions=function(b){var a,c;return function(d){for(a in b){if(!g(b,a))continue;c=b[a],d.push(this.setOption(a,c))}return d}.call(this,[])},a.prototype.addFrame=function(a,d){var c,e;null==d&&(d={}),c={},c.transparent=this.options.transparent;for(e in b)c[e]=d[e]||b[e];if(null!=this.options.width||this.setOption('width',a.width),null!=this.options.height||this.setOption('height',a.height),'undefined'!==typeof ImageData&&null!=ImageData&&a instanceof ImageData)c.data=a.data;else if('undefined'!==typeof CanvasRenderingContext2D&&null!=CanvasRenderingContext2D&&a instanceof CanvasRenderingContext2D||'undefined'!==typeof WebGLRenderingContext&&null!=WebGLRenderingContext&&a instanceof WebGLRenderingContext)d.copy?c.data=this.getContextData(a):c.context=a;else if(null!=a.childNodes)d.copy?c.data=this.getImageData(a):c.image=a;else throw new Error('Invalid image');return this.frames.push(c)},a.prototype.render=function(){var d,a;if(this.running)throw new Error('Already running');if(!(null!=this.options.width&&null!=this.options.height))throw new Error('Width and height must be set prior to rendering');this.running=!0,this.nextFrame=0,this.finishedFrames=0,this.imageParts=function(c){for(var b=function(){var b;b=[];for(var a=0;0<=this.frames.length?a<this.frames.length:a>this.frames.length;0<=this.frames.length?++a:--a)b.push(a);return b}.apply(this,arguments),a=0,e=b.length;a<e;++a)d=b[a],c.push(null);return c}.call(this,[]),a=this.spawnWorkers();for(var c=function(){var c;c=[];for(var b=0;0<=a?b<a:b>a;0<=a?++b:--b)c.push(b);return c}.apply(this,arguments),b=0,e=c.length;b<e;++b)d=c[b],this.renderNextFrame();return this.emit('start'),this.emit('progress',0)},a.prototype.abort=function(){var a;while(!0){if(a=this.activeWorkers.shift(),!(null!=a))break;console.log('killing active worker'),a.terminate()}return this.running=!1,this.emit('abort')},a.prototype.spawnWorkers=function(){var a;return a=Math.min(this.options.workers,this.frames.length),function(){var c;c=[];for(var b=this.freeWorkers.length;this.freeWorkers.length<=a?b<a:b>a;this.freeWorkers.length<=a?++b:--b)c.push(b);return c}.apply(this,arguments).forEach(function(a){return function(c){var b;return console.log('spawning worker '+c),b=new Worker(a.options.workerScript),b.onmessage=function(a){return function(c){return a.activeWorkers.splice(a.activeWorkers.indexOf(b),1),a.freeWorkers.push(b),a.frameFinished(c.data)}}(a),a.freeWorkers.push(b)}}(this)),a},a.prototype.frameFinished=function(a){return console.log('frame '+a.index+' finished - '+this.activeWorkers.length+' active'),this.finishedFrames++,this.emit('progress',this.finishedFrames/this.frames.length),this.imageParts[a.index]=a,j(null,this.imageParts)?this.renderNextFrame():this.finishRendering()},a.prototype.finishRendering=function(){var e,a,k,m,b,d,h;b=0;for(var f=0,j=this.imageParts.length;f<j;++f)a=this.imageParts[f],b+=(a.data.length-1)*a.pageSize+a.cursor;b+=a.pageSize-a.cursor,console.log('rendering finished - filesize '+Math.round(b/1e3)+'kb'),e=new Uint8Array(b),d=0;for(var g=0,l=this.imageParts.length;g<l;++g){a=this.imageParts[g];for(var c=0,i=a.data.length;c<i;++c)h=a.data[c],k=c,e.set(h,d),k===a.data.length-1?d+=a.cursor:d+=a.pageSize}return m=new Blob([e],{type:'image/gif'}),this.emit('finished',m,e)},a.prototype.renderNextFrame=function(){var c,a,b;if(this.freeWorkers.length===0)throw new Error('No free workers');return this.nextFrame>=this.frames.length?void 0:(c=this.frames[this.nextFrame++],b=this.freeWorkers.shift(),a=this.getTask(c),console.log('starting frame '+(a.index+1)+' of '+this.frames.length),this.activeWorkers.push(b),b.postMessage(a))},a.prototype.getContextData=function(a){return a.getImageData(0,0,this.options.width,this.options.height).data},a.prototype.getImageData=function(b){var a;return null!=this._canvas||(this._canvas=document.createElement('canvas'),this._canvas.width=this.options.width,this._canvas.height=this.options.height),a=this._canvas.getContext('2d'),a.setFill=this.options.background,a.fillRect(0,0,this.options.width,this.options.height),a.drawImage(b,0,0),this.getContextData(a)},a.prototype.getTask=function(a){var c,b;if(c=this.frames.indexOf(a),b={index:c,last:c===this.frames.length-1,delay:a.delay,transparent:a.transparent,width:this.options.width,height:this.options.height,quality:this.options.quality,preserveColors:this.options.preserveColors,repeat:this.options.repeat,canTransfer:h.name==='chrome'},null!=a.data)b.data=a.data;else if(null!=a.context)b.data=this.getContextData(a.context);else if(null!=a.image)b.data=this.getImageData(a.image);else throw new Error('Invalid frame');return b},a}(f),d.exports=e}),a.define('/browser.coffee',function(f,g,h,i){var a,d,e,c,b;c=navigator.userAgent.toLowerCase(),e=navigator.platform.toLowerCase(),b=c.match(/(opera|ie|firefox|chrome|version)[\s\/:]([\w\d\.]+)?.*?(safari|version[\s\/:]([\w\d\.]+)|$)/)||[null,'unknown',0],d=b[1]==='ie'&&document.documentMode,a={name:b[1]==='version'?b[3]:b[1],version:d||parseFloat(b[1]==='opera'&&b[4]?b[4]:b[2]),platform:{name:c.match(/ip(?:ad|od|hone)/)?'ios':(c.match(/(?:webos|android)/)||e.match(/mac|win|linux/)||['other'])[0]}},a[a.name]=!0,a[a.name+parseInt(a.version,10)]=!0,a.platform[a.platform.name]=!0,f.exports=a}),a.define('events',function(f,e,g,h){b.EventEmitter||(b.EventEmitter=function(){});var a=e.EventEmitter=b.EventEmitter,c=typeof Array.isArray==='function'?Array.isArray:function(a){return Object.prototype.toString.call(a)==='[object Array]'},d=10;a.prototype.setMaxListeners=function(a){this._events||(this._events={}),this._events.maxListeners=a},a.prototype.emit=function(f){if(f==='error'&&(!(this._events&&this._events.error)||c(this._events.error)&&!this._events.error.length))throw arguments[1]instanceof Error?arguments[1]:new Error("Uncaught, unspecified 'error' event.");if(!this._events)return!1;var a=this._events[f];if(!a)return!1;if(!(typeof a=='function'))if(c(a)){var b=Array.prototype.slice.call(arguments,1),e=a.slice();for(var d=0,g=e.length;d<g;d++)e[d].apply(this,b);return!0}else return!1;switch(arguments.length){case 1:a.call(this);break;case 2:a.call(this,arguments[1]);break;case 3:a.call(this,arguments[1],arguments[2]);break;default:var b=Array.prototype.slice.call(arguments,1);a.apply(this,b)}return!0},a.prototype.addListener=function(a,b){if('function'!==typeof b)throw new Error('addListener only takes instances of Function');if(this._events||(this._events={}),this.emit('newListener',a,b),!this._events[a])this._events[a]=b;else if(c(this._events[a])){if(!this._events[a].warned){var e;this._events.maxListeners!==undefined?e=this._events.maxListeners:e=d,e&&e>0&&this._events[a].length>e&&(this._events[a].warned=!0,console.error('(node) warning: possible EventEmitter memory leak detected. %d listeners added. Use emitter.setMaxListeners() to increase limit.',this._events[a].length),console.trace())}this._events[a].push(b)}else this._events[a]=[this._events[a],b];return this},a.prototype.on=a.prototype.addListener,a.prototype.once=function(b,c){var a=this;return a.on(b,function d(){a.removeListener(b,d),c.apply(this,arguments)}),this},a.prototype.removeListener=function(a,d){if('function'!==typeof d)throw new Error('removeListener only takes instances of Function');if(!(this._events&&this._events[a]))return this;var b=this._events[a];if(c(b)){var e=b.indexOf(d);if(e<0)return this;b.splice(e,1),b.length==0&&delete this._events[a]}else this._events[a]===d&&delete this._events[a];return this},a.prototype.removeAllListeners=function(a){return a&&this._events&&this._events[a]&&(this._events[a]=null),this},a.prototype.listeners=function(a){return this._events||(this._events={}),this._events[a]||(this._events[a]=[]),c(this._events[a])||(this._events[a]=[this._events[a]]),this._events[a]}}),c.GIF=a('/gif.coffee')}.call(this,this))
 //# sourceMappingURL=gif.js.map
 // gif.js 0.1.6 - https://github.com/jnordberg/gif.js
 ;( function( window ) { 'use strict';
@@ -15612,7 +15629,7 @@ Dual licenced under the MIT license or GPLv3. See https://raw.github.com/Stuk/js
 JSZip uses the library zlib.js released under the following license :
 zlib.js 2012 - imaya [ https://github.com/imaya/zlib.js ] The MIT License
 */
-!function(a){"object"==typeof exports?module.exports=a():"function"==typeof define&&define.amd?define(a):"undefined"!=typeof window?window.JSZip=a():"undefined"!=typeof global?global.JSZip=a():"undefined"!=typeof self&&(self.JSZip=a())}(function(){return function a(b,c,d){function e(g,h){if(!c[g]){if(!b[g]){var i="function"==typeof require&&require;if(!h&&i)return i(g,!0);if(f)return f(g,!0);throw new Error("Cannot find module '"+g+"'")}var j=c[g]={exports:{}};b[g][0].call(j.exports,function(a){var c=b[g][1][a];return e(c?c:a)},j,j.exports,a,b,c,d)}return c[g].exports}for(var f="function"==typeof require&&require,g=0;g<d.length;g++)e(d[g]);return e}({1:[function(a,b,c){"use strict";var d="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";c.encode=function(a){for(var b,c,e,f,g,h,i,j="",k=0;k<a.length;)b=a.charCodeAt(k++),c=a.charCodeAt(k++),e=a.charCodeAt(k++),f=b>>2,g=(3&b)<<4|c>>4,h=(15&c)<<2|e>>6,i=63&e,isNaN(c)?h=i=64:isNaN(e)&&(i=64),j=j+d.charAt(f)+d.charAt(g)+d.charAt(h)+d.charAt(i);return j},c.decode=function(a){var b,c,e,f,g,h,i,j="",k=0;for(a=a.replace(/[^A-Za-z0-9\+\/\=]/g,"");k<a.length;)f=d.indexOf(a.charAt(k++)),g=d.indexOf(a.charAt(k++)),h=d.indexOf(a.charAt(k++)),i=d.indexOf(a.charAt(k++)),b=f<<2|g>>4,c=(15&g)<<4|h>>2,e=(3&h)<<6|i,j+=String.fromCharCode(b),64!=h&&(j+=String.fromCharCode(c)),64!=i&&(j+=String.fromCharCode(e));return j}},{}],2:[function(a,b){"use strict";function c(){this.compressedSize=0,this.uncompressedSize=0,this.crc32=0,this.compressionMethod=null,this.compressedContent=null}c.prototype={getContent:function(){return null},getCompressedContent:function(){return null}},b.exports=c},{}],3:[function(a,b,c){"use strict";c.STORE={magic:"\x00\x00",compress:function(a){return a},uncompress:function(a){return a},compressInputType:null,uncompressInputType:null},c.DEFLATE=a("./flate")},{"./flate":6}],4:[function(a,b){"use strict";function c(){this.data=null,this.length=0,this.index=0}var d=a("./utils");c.prototype={checkOffset:function(a){this.checkIndex(this.index+a)},checkIndex:function(a){if(this.length<a||0>a)throw new Error("End of data reached (data length = "+this.length+", asked index = "+a+"). Corrupted zip ?")},setIndex:function(a){this.checkIndex(a),this.index=a},skip:function(a){this.setIndex(this.index+a)},byteAt:function(){},readInt:function(a){var b,c=0;for(this.checkOffset(a),b=this.index+a-1;b>=this.index;b--)c=(c<<8)+this.byteAt(b);return this.index+=a,c},readString:function(a){return d.transformTo("string",this.readData(a))},readData:function(){},lastIndexOfSignature:function(){},readDate:function(){var a=this.readInt(4);return new Date((a>>25&127)+1980,(a>>21&15)-1,a>>16&31,a>>11&31,a>>5&63,(31&a)<<1)}},b.exports=c},{"./utils":14}],5:[function(a,b,c){"use strict";c.base64=!1,c.binary=!1,c.dir=!1,c.date=null,c.compression=null},{}],6:[function(a,b,c){"use strict";var d="undefined"!=typeof Uint8Array&&"undefined"!=typeof Uint16Array&&"undefined"!=typeof Uint32Array,e=a("zlibjs/bin/rawdeflate.min").Zlib,f=a("zlibjs/bin/rawinflate.min").Zlib;c.uncompressInputType=d?"uint8array":"array",c.compressInputType=d?"uint8array":"array",c.magic="\b\x00",c.compress=function(a){var b=new e.RawDeflate(a);return b.compress()},c.uncompress=function(a){var b=new f.RawInflate(a);return b.decompress()}},{"zlibjs/bin/rawdeflate.min":19,"zlibjs/bin/rawinflate.min":20}],7:[function(a,b){"use strict";function c(a,b){return this instanceof c?(this.files={},this.root="",a&&this.load(a,b),void(this.clone=function(){var a=new c;for(var b in this)"function"!=typeof this[b]&&(a[b]=this[b]);return a})):new c(a,b)}c.prototype=a("./object"),c.prototype.load=a("./load"),c.support=a("./support"),c.defaults=a("./defaults"),c.utils=a("./utils"),c.base64=a("./base64"),c.compressions=a("./compressions"),b.exports=c},{"./base64":1,"./compressions":3,"./defaults":5,"./load":8,"./object":9,"./support":12,"./utils":14}],8:[function(a,b){"use strict";var c=a("./base64"),d=a("./zipEntries");b.exports=function(a,b){var e,f,g,h;for(b=b||{},b.base64&&(a=c.decode(a)),f=new d(a,b),e=f.files,g=0;g<e.length;g++)h=e[g],this.file(h.fileName,h.decompressed,{binary:!0,optimizedBinaryString:!0,date:h.date,dir:h.dir});return this}},{"./base64":1,"./zipEntries":15}],9:[function(a,b){"use strict";var c,d,e=a("./support"),f=a("./utils"),g=a("./signature"),h=a("./defaults"),i=a("./base64"),j=a("./compressions"),k=a("./compressedObject"),l=a("./nodeBuffer");e.uint8array&&"function"==typeof TextEncoder&&"function"==typeof TextDecoder&&(c=new TextEncoder("utf-8"),d=new TextDecoder("utf-8"));var m=function(a){if(a._data instanceof k&&(a._data=a._data.getContent(),a.options.binary=!0,a.options.base64=!1,"uint8array"===f.getTypeOf(a._data))){var b=a._data;a._data=new Uint8Array(b.length),0!==b.length&&a._data.set(b,0)}return a._data},n=function(a){var b=m(a),d=f.getTypeOf(b);if("string"===d){if(!a.options.binary){if(c)return c.encode(b);if(e.nodebuffer)return l(b,"utf-8")}return a.asBinary()}return b},o=function(a){var b=m(this);return null===b||"undefined"==typeof b?"":(this.options.base64&&(b=i.decode(b)),b=a&&this.options.binary?A.utf8decode(b):f.transformTo("string",b),a||this.options.binary||(b=A.utf8encode(b)),b)},p=function(a,b,c){this.name=a,this._data=b,this.options=c};p.prototype={asText:function(){return o.call(this,!0)},asBinary:function(){return o.call(this,!1)},asNodeBuffer:function(){var a=n(this);return f.transformTo("nodebuffer",a)},asUint8Array:function(){var a=n(this);return f.transformTo("uint8array",a)},asArrayBuffer:function(){return this.asUint8Array().buffer}};var q=function(a,b){var c,d="";for(c=0;b>c;c++)d+=String.fromCharCode(255&a),a>>>=8;return d},r=function(){var a,b,c={};for(a=0;a<arguments.length;a++)for(b in arguments[a])arguments[a].hasOwnProperty(b)&&"undefined"==typeof c[b]&&(c[b]=arguments[a][b]);return c},s=function(a){return a=a||{},a.base64!==!0||null!==a.binary&&void 0!==a.binary||(a.binary=!0),a=r(a,h),a.date=a.date||new Date,null!==a.compression&&(a.compression=a.compression.toUpperCase()),a},t=function(a,b,c){var d=u(a),e=f.getTypeOf(b);if(d&&v.call(this,d),c=s(c),c.dir||null===b||"undefined"==typeof b)c.base64=!1,c.binary=!1,b=null;else if("string"===e)c.binary&&!c.base64&&c.optimizedBinaryString!==!0&&(b=f.string2binary(b));else{if(c.base64=!1,c.binary=!0,!(e||b instanceof k))throw new Error("The data of '"+a+"' is in an unsupported format !");"arraybuffer"===e&&(b=f.transformTo("uint8array",b))}var g=new p(a,b,c);return this.files[a]=g,g},u=function(a){"/"==a.slice(-1)&&(a=a.substring(0,a.length-1));var b=a.lastIndexOf("/");return b>0?a.substring(0,b):""},v=function(a){return"/"!=a.slice(-1)&&(a+="/"),this.files[a]||t.call(this,a,null,{dir:!0}),this.files[a]},w=function(a,b){var c,d=new k;return a._data instanceof k?(d.uncompressedSize=a._data.uncompressedSize,d.crc32=a._data.crc32,0===d.uncompressedSize||a.options.dir?(b=j.STORE,d.compressedContent="",d.crc32=0):a._data.compressionMethod===b.magic?d.compressedContent=a._data.getCompressedContent():(c=a._data.getContent(),d.compressedContent=b.compress(f.transformTo(b.compressInputType,c)))):(c=n(a),(!c||0===c.length||a.options.dir)&&(b=j.STORE,c=""),d.uncompressedSize=c.length,d.crc32=this.crc32(c),d.compressedContent=b.compress(f.transformTo(b.compressInputType,c))),d.compressedSize=d.compressedContent.length,d.compressionMethod=b.magic,d},x=function(a,b,c,d){var e,f,h=(c.compressedContent,this.utf8encode(b.name)),i=h!==b.name,j=b.options,k="",l="";e=j.date.getHours(),e<<=6,e|=j.date.getMinutes(),e<<=5,e|=j.date.getSeconds()/2,f=j.date.getFullYear()-1980,f<<=4,f|=j.date.getMonth()+1,f<<=5,f|=j.date.getDate(),i&&(l=q(1,1)+q(this.crc32(h),4)+h,k+="up"+q(l.length,2)+l);var m="";m+="\n\x00",m+=i?"\x00\b":"\x00\x00",m+=c.compressionMethod,m+=q(e,2),m+=q(f,2),m+=q(c.crc32,4),m+=q(c.compressedSize,4),m+=q(c.uncompressedSize,4),m+=q(h.length,2),m+=q(k.length,2);var n=g.LOCAL_FILE_HEADER+m+h+k,o=g.CENTRAL_FILE_HEADER+"\x00"+m+"\x00\x00\x00\x00\x00\x00"+(b.options.dir===!0?"\x00\x00\x00":"\x00\x00\x00\x00")+q(d,4)+h+k;return{fileRecord:n,dirRecord:o,compressedObject:c}},y=function(){this.data=[]};y.prototype={append:function(a){a=f.transformTo("string",a),this.data.push(a)},finalize:function(){return this.data.join("")}};var z=function(a){this.data=new Uint8Array(a),this.index=0};z.prototype={append:function(a){0!==a.length&&(a=f.transformTo("uint8array",a),this.data.set(a,this.index),this.index+=a.length)},finalize:function(){return this.data}};var A={load:function(){throw new Error("Load method is not defined. Is the file jszip-load.js included ?")},filter:function(a){var b,c,d,e,f=[];for(b in this.files)this.files.hasOwnProperty(b)&&(d=this.files[b],e=new p(d.name,d._data,r(d.options)),c=b.slice(this.root.length,b.length),b.slice(0,this.root.length)===this.root&&a(c,e)&&f.push(e));return f},file:function(a,b,c){if(1===arguments.length){if(f.isRegExp(a)){var d=a;return this.filter(function(a,b){return!b.options.dir&&d.test(a)})}return this.filter(function(b,c){return!c.options.dir&&b===a})[0]||null}return a=this.root+a,t.call(this,a,b,c),this},folder:function(a){if(!a)return this;if(f.isRegExp(a))return this.filter(function(b,c){return c.options.dir&&a.test(b)});var b=this.root+a,c=v.call(this,b),d=this.clone();return d.root=c.name,d},remove:function(a){a=this.root+a;var b=this.files[a];if(b||("/"!=a.slice(-1)&&(a+="/"),b=this.files[a]),b)if(b.options.dir)for(var c=this.filter(function(b,c){return c.name.slice(0,a.length)===a}),d=0;d<c.length;d++)delete this.files[c[d].name];else delete this.files[a];return this},generate:function(a){a=r(a||{},{base64:!0,compression:"STORE",type:"base64"}),f.checkSupport(a.type);var b,c,d=[],e=0,h=0;for(var k in this.files)if(this.files.hasOwnProperty(k)){var l=this.files[k],m=l.options.compression||a.compression.toUpperCase(),n=j[m];if(!n)throw new Error(m+" is not a valid compression method !");var o=w.call(this,l,n),p=x.call(this,k,l,o,e);e+=p.fileRecord.length+o.compressedSize,h+=p.dirRecord.length,d.push(p)}var s="";s=g.CENTRAL_DIRECTORY_END+"\x00\x00\x00\x00"+q(d.length,2)+q(d.length,2)+q(h,4)+q(e,4)+"\x00\x00";var t=a.type.toLowerCase();for(b="uint8array"===t||"arraybuffer"===t||"blob"===t||"nodebuffer"===t?new z(e+h+s.length):new y(e+h+s.length),c=0;c<d.length;c++)b.append(d[c].fileRecord),b.append(d[c].compressedObject.compressedContent);for(c=0;c<d.length;c++)b.append(d[c].dirRecord);b.append(s);var u=b.finalize();switch(a.type.toLowerCase()){case"uint8array":case"arraybuffer":case"nodebuffer":return f.transformTo(a.type.toLowerCase(),u);case"blob":return f.arrayBuffer2Blob(f.transformTo("arraybuffer",u));case"base64":return a.base64?i.encode(u):u;default:return u}},crc32:function(a,b){if("undefined"==typeof a||!a.length)return 0;var c="string"!==f.getTypeOf(a),d=[0,1996959894,3993919788,2567524794,124634137,1886057615,3915621685,2657392035,249268274,2044508324,3772115230,2547177864,162941995,2125561021,3887607047,2428444049,498536548,1789927666,4089016648,2227061214,450548861,1843258603,4107580753,2211677639,325883990,1684777152,4251122042,2321926636,335633487,1661365465,4195302755,2366115317,997073096,1281953886,3579855332,2724688242,1006888145,1258607687,3524101629,2768942443,901097722,1119000684,3686517206,2898065728,853044451,1172266101,3705015759,2882616665,651767980,1373503546,3369554304,3218104598,565507253,1454621731,3485111705,3099436303,671266974,1594198024,3322730930,2970347812,795835527,1483230225,3244367275,3060149565,1994146192,31158534,2563907772,4023717930,1907459465,112637215,2680153253,3904427059,2013776290,251722036,2517215374,3775830040,2137656763,141376813,2439277719,3865271297,1802195444,476864866,2238001368,4066508878,1812370925,453092731,2181625025,4111451223,1706088902,314042704,2344532202,4240017532,1658658271,366619977,2362670323,4224994405,1303535960,984961486,2747007092,3569037538,1256170817,1037604311,2765210733,3554079995,1131014506,879679996,2909243462,3663771856,1141124467,855842277,2852801631,3708648649,1342533948,654459306,3188396048,3373015174,1466479909,544179635,3110523913,3462522015,1591671054,702138776,2966460450,3352799412,1504918807,783551873,3082640443,3233442989,3988292384,2596254646,62317068,1957810842,3939845945,2647816111,81470997,1943803523,3814918930,2489596804,225274430,2053790376,3826175755,2466906013,167816743,2097651377,4027552580,2265490386,503444072,1762050814,4150417245,2154129355,426522225,1852507879,4275313526,2312317920,282753626,1742555852,4189708143,2394877945,397917763,1622183637,3604390888,2714866558,953729732,1340076626,3518719985,2797360999,1068828381,1219638859,3624741850,2936675148,906185462,1090812512,3747672003,2825379669,829329135,1181335161,3412177804,3160834842,628085408,1382605366,3423369109,3138078467,570562233,1426400815,3317316542,2998733608,733239954,1555261956,3268935591,3050360625,752459403,1541320221,2607071920,3965973030,1969922972,40735498,2617837225,3943577151,1913087877,83908371,2512341634,3803740692,2075208622,213261112,2463272603,3855990285,2094854071,198958881,2262029012,4057260610,1759359992,534414190,2176718541,4139329115,1873836001,414664567,2282248934,4279200368,1711684554,285281116,2405801727,4167216745,1634467795,376229701,2685067896,3608007406,1308918612,956543938,2808555105,3495958263,1231636301,1047427035,2932959818,3654703836,1088359270,936918e3,2847714899,3736837829,1202900863,817233897,3183342108,3401237130,1404277552,615818150,3134207493,3453421203,1423857449,601450431,3009837614,3294710456,1567103746,711928724,3020668471,3272380065,1510334235,755167117];"undefined"==typeof b&&(b=0);var e=0,g=0,h=0;b=-1^b;for(var i=0,j=a.length;j>i;i++)h=c?a[i]:a.charCodeAt(i),g=255&(b^h),e=d[g],b=b>>>8^e;return-1^b},utf8encode:function(a){if(c){var b=c.encode(a);return f.transformTo("string",b)}if(e.nodebuffer)return f.transformTo("string",l(a,"utf-8"));for(var d=[],g=0,h=0;h<a.length;h++){var i=a.charCodeAt(h);128>i?d[g++]=String.fromCharCode(i):i>127&&2048>i?(d[g++]=String.fromCharCode(i>>6|192),d[g++]=String.fromCharCode(63&i|128)):(d[g++]=String.fromCharCode(i>>12|224),d[g++]=String.fromCharCode(i>>6&63|128),d[g++]=String.fromCharCode(63&i|128))}return d.join("")},utf8decode:function(a){var b=[],c=0,g=f.getTypeOf(a),h="string"!==g,i=0,j=0,k=0,l=0;if(d)return d.decode(f.transformTo("uint8array",a));if(e.nodebuffer)return f.transformTo("nodebuffer",a).toString("utf-8");for(;i<a.length;)j=h?a[i]:a.charCodeAt(i),128>j?(b[c++]=String.fromCharCode(j),i++):j>191&&224>j?(k=h?a[i+1]:a.charCodeAt(i+1),b[c++]=String.fromCharCode((31&j)<<6|63&k),i+=2):(k=h?a[i+1]:a.charCodeAt(i+1),l=h?a[i+2]:a.charCodeAt(i+2),b[c++]=String.fromCharCode((15&j)<<12|(63&k)<<6|63&l),i+=3);return b.join("")}};b.exports=A},{"./base64":1,"./compressedObject":2,"./compressions":3,"./defaults":5,"./nodeBuffer":17,"./signature":10,"./support":12,"./utils":14}],10:[function(a,b,c){"use strict";c.LOCAL_FILE_HEADER="PK",c.CENTRAL_FILE_HEADER="PK",c.CENTRAL_DIRECTORY_END="PK",c.ZIP64_CENTRAL_DIRECTORY_LOCATOR="PK ",c.ZIP64_CENTRAL_DIRECTORY_END="PK",c.DATA_DESCRIPTOR="PK \b"},{}],11:[function(a,b){"use strict";function c(a,b){this.data=a,b||(this.data=e.string2binary(this.data)),this.length=this.data.length,this.index=0}var d=a("./dataReader"),e=a("./utils");c.prototype=new d,c.prototype.byteAt=function(a){return this.data.charCodeAt(a)},c.prototype.lastIndexOfSignature=function(a){return this.data.lastIndexOf(a)},c.prototype.readData=function(a){this.checkOffset(a);var b=this.data.slice(this.index,this.index+a);return this.index+=a,b},b.exports=c},{"./dataReader":4,"./utils":14}],12:[function(a,b,c){var d=a("__browserify_process");if(c.base64=!0,c.array=!0,c.string=!0,c.arraybuffer="undefined"!=typeof ArrayBuffer&&"undefined"!=typeof Uint8Array,c.nodebuffer=!d.browser,c.uint8array="undefined"!=typeof Uint8Array,"undefined"==typeof ArrayBuffer)c.blob=!1;else{var e=new ArrayBuffer(0);try{c.blob=0===new Blob([e],{type:"application/zip"}).size}catch(f){try{var g=window.BlobBuilder||window.WebKitBlobBuilder||window.MozBlobBuilder||window.MSBlobBuilder,h=new g;h.append(e),c.blob=0===h.getBlob("application/zip").size}catch(f){c.blob=!1}}}},{__browserify_process:18}],13:[function(a,b){"use strict";function c(a){a&&(this.data=a,this.length=this.data.length,this.index=0)}var d=a("./dataReader");c.prototype=new d,c.prototype.byteAt=function(a){return this.data[a]},c.prototype.lastIndexOfSignature=function(a){for(var b=a.charCodeAt(0),c=a.charCodeAt(1),d=a.charCodeAt(2),e=a.charCodeAt(3),f=this.length-4;f>=0;--f)if(this.data[f]===b&&this.data[f+1]===c&&this.data[f+2]===d&&this.data[f+3]===e)return f;return-1},c.prototype.readData=function(a){this.checkOffset(a);var b=this.data.subarray(this.index,this.index+a);return this.index+=a,b},b.exports=c},{"./dataReader":4}],14:[function(a,b,c){"use strict";function d(a){return a}function e(a,b){for(var c=0;c<a.length;++c)b[c]=255&a.charCodeAt(c);return b}function f(a){var b=65536,d=[],e=a.length,f=c.getTypeOf(a),g=0,h=!0;try{switch(f){case"uint8array":String.fromCharCode.apply(null,new Uint8Array(0));break;case"nodebuffer":String.fromCharCode.apply(null,j(0))}}catch(i){h=!1}if(!h){for(var k="",l=0;l<a.length;l++)k+=String.fromCharCode(a[l]);return k}for(;e>g&&b>1;)try{d.push("array"===f||"nodebuffer"===f?String.fromCharCode.apply(null,a.slice(g,Math.min(g+b,e))):String.fromCharCode.apply(null,a.subarray(g,Math.min(g+b,e)))),g+=b}catch(i){b=Math.floor(b/2)}return d.join("")}function g(a,b){for(var c=0;c<a.length;c++)b[c]=a[c];return b}var h=a("./support"),i=a("./compressions"),j=a("./nodeBuffer");c.string2binary=function(a){for(var b="",c=0;c<a.length;c++)b+=String.fromCharCode(255&a.charCodeAt(c));return b},c.string2Uint8Array=function(a){return c.transformTo("uint8array",a)},c.uint8Array2String=function(a){return c.transformTo("string",a)},c.string2Blob=function(a){var b=c.transformTo("arraybuffer",a);return c.arrayBuffer2Blob(b)},c.arrayBuffer2Blob=function(a){c.checkSupport("blob");try{return new Blob([a],{type:"application/zip"})}catch(b){try{var d=window.BlobBuilder||window.WebKitBlobBuilder||window.MozBlobBuilder||window.MSBlobBuilder,e=new d;return e.append(a),e.getBlob("application/zip")}catch(b){throw new Error("Bug : can't construct the Blob.")}}};var k={};k.string={string:d,array:function(a){return e(a,new Array(a.length))},arraybuffer:function(a){return k.string.uint8array(a).buffer},uint8array:function(a){return e(a,new Uint8Array(a.length))},nodebuffer:function(a){return e(a,j(a.length))}},k.array={string:f,array:d,arraybuffer:function(a){return new Uint8Array(a).buffer},uint8array:function(a){return new Uint8Array(a)},nodebuffer:function(a){return j(a)}},k.arraybuffer={string:function(a){return f(new Uint8Array(a))},array:function(a){return g(new Uint8Array(a),new Array(a.byteLength))},arraybuffer:d,uint8array:function(a){return new Uint8Array(a)},nodebuffer:function(a){return j(new Uint8Array(a))}},k.uint8array={string:f,array:function(a){return g(a,new Array(a.length))},arraybuffer:function(a){return a.buffer},uint8array:d,nodebuffer:function(a){return j(a)}},k.nodebuffer={string:f,array:function(a){return g(a,new Array(a.length))},arraybuffer:function(a){return k.nodebuffer.uint8array(a).buffer},uint8array:function(a){return g(a,new Uint8Array(a.length))},nodebuffer:d},c.transformTo=function(a,b){if(b||(b=""),!a)return b;c.checkSupport(a);var d=c.getTypeOf(b),e=k[d][a](b);return e},c.getTypeOf=function(a){return"string"==typeof a?"string":"[object Array]"===Object.prototype.toString.call(a)?"array":h.nodebuffer&&j.test(a)?"nodebuffer":h.uint8array&&a instanceof Uint8Array?"uint8array":h.arraybuffer&&a instanceof ArrayBuffer?"arraybuffer":void 0},c.checkSupport=function(a){var b=h[a.toLowerCase()];if(!b)throw new Error(a+" is not supported by this browser")},c.MAX_VALUE_16BITS=65535,c.MAX_VALUE_32BITS=-1,c.pretty=function(a){var b,c,d="";for(c=0;c<(a||"").length;c++)b=a.charCodeAt(c),d+="\\x"+(16>b?"0":"")+b.toString(16).toUpperCase();return d},c.findCompression=function(a){for(var b in i)if(i.hasOwnProperty(b)&&i[b].magic===a)return i[b];return null},c.isRegExp=function(a){return"[object RegExp]"===Object.prototype.toString.call(a)}},{"./compressions":3,"./nodeBuffer":17,"./support":12}],15:[function(a,b){"use strict";function c(a,b){this.files=[],this.loadOptions=b,a&&this.load(a)}var d=a("./stringReader"),e=a("./nodeBufferReader"),f=a("./uint8ArrayReader"),g=a("./utils"),h=a("./signature"),i=a("./zipEntry"),j=a("./support");c.prototype={checkSignature:function(a){var b=this.reader.readString(4);if(b!==a)throw new Error("Corrupted zip or bug : unexpected signature ("+g.pretty(b)+", expected "+g.pretty(a)+")")},readBlockEndOfCentral:function(){this.diskNumber=this.reader.readInt(2),this.diskWithCentralDirStart=this.reader.readInt(2),this.centralDirRecordsOnThisDisk=this.reader.readInt(2),this.centralDirRecords=this.reader.readInt(2),this.centralDirSize=this.reader.readInt(4),this.centralDirOffset=this.reader.readInt(4),this.zipCommentLength=this.reader.readInt(2),this.zipComment=this.reader.readString(this.zipCommentLength)},readBlockZip64EndOfCentral:function(){this.zip64EndOfCentralSize=this.reader.readInt(8),this.versionMadeBy=this.reader.readString(2),this.versionNeeded=this.reader.readInt(2),this.diskNumber=this.reader.readInt(4),this.diskWithCentralDirStart=this.reader.readInt(4),this.centralDirRecordsOnThisDisk=this.reader.readInt(8),this.centralDirRecords=this.reader.readInt(8),this.centralDirSize=this.reader.readInt(8),this.centralDirOffset=this.reader.readInt(8),this.zip64ExtensibleData={};for(var a,b,c,d=this.zip64EndOfCentralSize-44,e=0;d>e;)a=this.reader.readInt(2),b=this.reader.readInt(4),c=this.reader.readString(b),this.zip64ExtensibleData[a]={id:a,length:b,value:c}},readBlockZip64EndOfCentralLocator:function(){if(this.diskWithZip64CentralDirStart=this.reader.readInt(4),this.relativeOffsetEndOfZip64CentralDir=this.reader.readInt(8),this.disksCount=this.reader.readInt(4),this.disksCount>1)throw new Error("Multi-volumes zip are not supported")},readLocalFiles:function(){var a,b;for(a=0;a<this.files.length;a++)b=this.files[a],this.reader.setIndex(b.localHeaderOffset),this.checkSignature(h.LOCAL_FILE_HEADER),b.readLocalPart(this.reader),b.handleUTF8()},readCentralDir:function(){var a;for(this.reader.setIndex(this.centralDirOffset);this.reader.readString(4)===h.CENTRAL_FILE_HEADER;)a=new i({zip64:this.zip64},this.loadOptions),a.readCentralPart(this.reader),this.files.push(a)},readEndOfCentral:function(){var a=this.reader.lastIndexOfSignature(h.CENTRAL_DIRECTORY_END);if(-1===a)throw new Error("Corrupted zip : can't find end of central directory");if(this.reader.setIndex(a),this.checkSignature(h.CENTRAL_DIRECTORY_END),this.readBlockEndOfCentral(),this.diskNumber===g.MAX_VALUE_16BITS||this.diskWithCentralDirStart===g.MAX_VALUE_16BITS||this.centralDirRecordsOnThisDisk===g.MAX_VALUE_16BITS||this.centralDirRecords===g.MAX_VALUE_16BITS||this.centralDirSize===g.MAX_VALUE_32BITS||this.centralDirOffset===g.MAX_VALUE_32BITS){if(this.zip64=!0,a=this.reader.lastIndexOfSignature(h.ZIP64_CENTRAL_DIRECTORY_LOCATOR),-1===a)throw new Error("Corrupted zip : can't find the ZIP64 end of central directory locator");this.reader.setIndex(a),this.checkSignature(h.ZIP64_CENTRAL_DIRECTORY_LOCATOR),this.readBlockZip64EndOfCentralLocator(),this.reader.setIndex(this.relativeOffsetEndOfZip64CentralDir),this.checkSignature(h.ZIP64_CENTRAL_DIRECTORY_END),this.readBlockZip64EndOfCentral()}},prepareReader:function(a){var b=g.getTypeOf(a);this.reader="string"!==b||j.uint8array?"nodebuffer"===b?new e(a):new f(g.transformTo("uint8array",a)):new d(a,this.loadOptions.optimizedBinaryString)},load:function(a){this.prepareReader(a),this.readEndOfCentral(),this.readCentralDir(),this.readLocalFiles()}},b.exports=c},{"./nodeBufferReader":17,"./signature":10,"./stringReader":11,"./support":12,"./uint8ArrayReader":13,"./utils":14,"./zipEntry":16}],16:[function(a,b){"use strict";function c(a,b){this.options=a,this.loadOptions=b}var d=a("./stringReader"),e=a("./utils"),f=a("./compressedObject"),g=a("./object");c.prototype={isEncrypted:function(){return 1===(1&this.bitFlag)},useUTF8:function(){return 2048===(2048&this.bitFlag)},prepareCompressedContent:function(a,b,c){return function(){var d=a.index;a.setIndex(b);var e=a.readData(c);return a.setIndex(d),e}},prepareContent:function(a,b,c,d,f){return function(){var a=e.transformTo(d.uncompressInputType,this.getCompressedContent()),b=d.uncompress(a);if(b.length!==f)throw new Error("Bug : uncompressed data size mismatch");return b}},readLocalPart:function(a){var b,c;if(a.skip(22),this.fileNameLength=a.readInt(2),c=a.readInt(2),this.fileName=a.readString(this.fileNameLength),a.skip(c),-1==this.compressedSize||-1==this.uncompressedSize)throw new Error("Bug or corrupted zip : didn't get enough informations from the central directory (compressedSize == -1 || uncompressedSize == -1)");if(b=e.findCompression(this.compressionMethod),null===b)throw new Error("Corrupted zip : compression "+e.pretty(this.compressionMethod)+" unknown (inner file : "+this.fileName+")");if(this.decompressed=new f,this.decompressed.compressedSize=this.compressedSize,this.decompressed.uncompressedSize=this.uncompressedSize,this.decompressed.crc32=this.crc32,this.decompressed.compressionMethod=this.compressionMethod,this.decompressed.getCompressedContent=this.prepareCompressedContent(a,a.index,this.compressedSize,b),this.decompressed.getContent=this.prepareContent(a,a.index,this.compressedSize,b,this.uncompressedSize),this.loadOptions.checkCRC32&&(this.decompressed=e.transformTo("string",this.decompressed.getContent()),g.crc32(this.decompressed)!==this.crc32))throw new Error("Corrupted zip : CRC32 mismatch")},readCentralPart:function(a){if(this.versionMadeBy=a.readString(2),this.versionNeeded=a.readInt(2),this.bitFlag=a.readInt(2),this.compressionMethod=a.readString(2),this.date=a.readDate(),this.crc32=a.readInt(4),this.compressedSize=a.readInt(4),this.uncompressedSize=a.readInt(4),this.fileNameLength=a.readInt(2),this.extraFieldsLength=a.readInt(2),this.fileCommentLength=a.readInt(2),this.diskNumberStart=a.readInt(2),this.internalFileAttributes=a.readInt(2),this.externalFileAttributes=a.readInt(4),this.localHeaderOffset=a.readInt(4),this.isEncrypted())throw new Error("Encrypted zip are not supported");this.fileName=a.readString(this.fileNameLength),this.readExtraFields(a),this.parseZIP64ExtraField(a),this.fileComment=a.readString(this.fileCommentLength),this.dir=16&this.externalFileAttributes?!0:!1},parseZIP64ExtraField:function(){if(this.extraFields[1]){var a=new d(this.extraFields[1].value);this.uncompressedSize===e.MAX_VALUE_32BITS&&(this.uncompressedSize=a.readInt(8)),this.compressedSize===e.MAX_VALUE_32BITS&&(this.compressedSize=a.readInt(8)),this.localHeaderOffset===e.MAX_VALUE_32BITS&&(this.localHeaderOffset=a.readInt(8)),this.diskNumberStart===e.MAX_VALUE_32BITS&&(this.diskNumberStart=a.readInt(4))}},readExtraFields:function(a){var b,c,d,e=a.index;for(this.extraFields=this.extraFields||{};a.index<e+this.extraFieldsLength;)b=a.readInt(2),c=a.readInt(2),d=a.readString(c),this.extraFields[b]={id:b,length:c,value:d}},handleUTF8:function(){if(this.useUTF8())this.fileName=g.utf8decode(this.fileName),this.fileComment=g.utf8decode(this.fileComment);else{var a=this.findExtraFieldUnicodePath();null!==a&&(this.fileName=a)}},findExtraFieldUnicodePath:function(){var a=this.extraFields[28789];if(a){var b=new d(a.value);return 1!==b.readInt(1)?null:g.crc32(this.fileName)!==b.readInt(4)?null:g.utf8decode(b.readString(a.length-5))}return null}},b.exports=c},{"./compressedObject":2,"./object":9,"./stringReader":11,"./utils":14}],17:[function(){},{}],18:[function(a,b){var c=b.exports={};c.nextTick=function(){var a="undefined"!=typeof window&&window.setImmediate,b="undefined"!=typeof window&&window.postMessage&&window.addEventListener;if(a)return function(a){return window.setImmediate(a)};if(b){var c=[];return window.addEventListener("message",function(a){var b=a.source;if((b===window||null===b)&&"process-tick"===a.data&&(a.stopPropagation(),c.length>0)){var d=c.shift();d()}},!0),function(a){c.push(a),window.postMessage("process-tick","*")}}return function(a){setTimeout(a,0)}}(),c.title="browser",c.browser=!0,c.env={},c.argv=[],c.binding=function(){throw new Error("process.binding is not supported")},c.cwd=function(){return"/"},c.chdir=function(){throw new Error("process.chdir is not supported")}},{}],19:[function(){/** @license zlib.js 2012 - imaya [ https://github.com/imaya/zlib.js ] The MIT License */
+!function(a){"object"==typeof exports?module.exports=a():"function"==typeof define&&define.amd?define(a):"undefined"!=typeof window?window.JSZip=a():"undefined"!=typeof global?global.JSZip=a():"undefined"!=typeof self&&(self.JSZip=a())}(function(){return function a(b,c,d){function e(g,h){if(!c[g]){if(!b[g]){var i="function"==typeof require&&require;if(!h&&i)return i(g,!0);if(f)return f(g,!0);throw new Error("Cannot find module '"+g+"'")}var j=c[g]={exports:{}};b[g][0].call(j.exports,function(a){var c=b[g][1][a];return e(c?c:a)},j,j.exports,a,b,c,d)}return c[g].exports}for(var f="function"==typeof require&&require,g=0;g<d.length;g++)e(d[g]);return e}({1:[function(a,b,c){"use strict";var d="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";c.encode=function(a){for(var b,c,e,f,g,h,i,j="",k=0;k<a.length;)b=a.charCodeAt(k++),c=a.charCodeAt(k++),e=a.charCodeAt(k++),f=b>>2,g=(3&b)<<4|c>>4,h=(15&c)<<2|e>>6,i=63&e,isNaN(c)?h=i=64:isNaN(e)&&(i=64),j=j+d.charAt(f)+d.charAt(g)+d.charAt(h)+d.charAt(i);return j},c.decode=function(a){var b,c,e,f,g,h,i,j="",k=0;for(a=a.replace(/[^A-Za-z0-9\+\/\=]/g,"");k<a.length;)f=d.indexOf(a.charAt(k++)),g=d.indexOf(a.charAt(k++)),h=d.indexOf(a.charAt(k++)),i=d.indexOf(a.charAt(k++)),b=f<<2|g>>4,c=(15&g)<<4|h>>2,e=(3&h)<<6|i,j+=String.fromCharCode(b),64!=h&&(j+=String.fromCharCode(c)),64!=i&&(j+=String.fromCharCode(e));return j}},{}],2:[function(a,b){"use strict";function c(){this.compressedSize=0,this.uncompressedSize=0,this.crc32=0,this.compressionMethod=null,this.compressedContent=null}c.prototype={getContent:function(){return null},getCompressedContent:function(){return null}},b.exports=c},{}],3:[function(a,b,c){"use strict";c.STORE={magic:"\x00\x00",compress:function(a){return a},uncompress:function(a){return a},compressInputType:null,uncompressInputType:null},c.DEFLATE=a("./flate")},{"./flate":6}],4:[function(a,b){"use strict";function c(){this.data=null,this.length=0,this.index=0}var d=a("./utils");c.prototype={checkOffset:function(a){this.checkIndex(this.index+a)},checkIndex:function(a){if(this.length<a||0>a)throw new Error("End of data reached (data length = "+this.length+", asked index = "+a+"). Corrupted zip ?")},setIndex:function(a){this.checkIndex(a),this.index=a},skip:function(a){this.setIndex(this.index+a)},byteAt:function(){},readInt:function(a){var b,c=0;for(this.checkOffset(a),b=this.index+a-1;b>=this.index;b--)c=(c<<8)+this.byteAt(b);return this.index+=a,c},readString:function(a){return d.transformTo("string",this.readData(a))},readData:function(){},lastIndexOfSignature:function(){},readDate:function(){var a=this.readInt(4);return new Date((a>>25&127)+1980,(a>>21&15)-1,a>>16&31,a>>11&31,a>>5&63,(31&a)<<1)}},b.exports=c},{"./utils":14}],5:[function(a,b,c){"use strict";c.base64=!1,c.binary=!1,c.dir=!1,c.date=null,c.compression=null},{}],6:[function(a,b,c){"use strict";var d="undefined"!=typeof Uint8Array&&"undefined"!=typeof Uint16Array&&"undefined"!=typeof Uint32Array,e=a("zlibjs/bin/rawdeflate.min").Zlib,f=a("zlibjs/bin/rawinflate.min").Zlib;c.uncompressInputType=d?"uint8array":"array",c.compressInputType=d?"uint8array":"array",c.magic="\b\x00",c.compress=function(a){var b=new e.RawDeflate(a);return b.compress()},c.uncompress=function(a){var b=new f.RawInflate(a);return b.decompress()}},{"zlibjs/bin/rawdeflate.min":19,"zlibjs/bin/rawinflate.min":20}],7:[function(a,b){"use strict";function c(a,b){return this instanceof c?(this.files={},this.root="",a&&this.load(a,b),void(this.clone=function(){var a=new c;for(var b in this)"function"!=typeof this[b]&&(a[b]=this[b]);return a})):new c(a,b)}c.prototype=a("./object"),c.prototype.load=a("./load"),c.support=a("./support"),c.defaults=a("./defaults"),c.utils=a("./utils"),c.base64=a("./base64"),c.compressions=a("./compressions"),b.exports=c},{"./base64":1,"./compressions":3,"./defaults":5,"./load":8,"./object":9,"./support":12,"./utils":14}],8:[function(a,b){"use strict";var c=a("./base64"),d=a("./zipEntries");b.exports=function(a,b){var e,f,g,h;for(b=b||{},b.base64&&(a=c.decode(a)),f=new d(a,b),e=f.files,g=0;g<e.length;g++)h=e[g],this.file(h.fileName,h.decompressed,{binary:!0,optimizedBinaryString:!0,date:h.date,dir:h.dir});return this}},{"./base64":1,"./zipEntries":15}],9:[function(a,b){"use strict";var c,d,e=a("./support"),f=a("./utils"),g=a("./signature"),h=a("./defaults"),i=a("./base64"),j=a("./compressions"),k=a("./compressedObject"),l=a("./nodeBuffer");e.uint8array&&"function"==typeof TextEncoder&&"function"==typeof TextDecoder&&(c=new TextEncoder("utf-8"),d=new TextDecoder("utf-8"));var m=function(a){if(a._data instanceof k&&(a._data=a._data.getContent(),a.options.binary=!0,a.options.base64=!1,"uint8array"===f.getTypeOf(a._data))){var b=a._data;a._data=new Uint8Array(b.length),0!==b.length&&a._data.set(b,0)}return a._data},n=function(a){var b=m(a),d=f.getTypeOf(b);if("string"===d){if(!a.options.binary){if(c)return c.encode(b);if(e.nodebuffer)return l(b,"utf-8")}return a.asBinary()}return b},o=function(a){var b=m(this);return null===b||"undefined"==typeof b?"":(this.options.base64&&(b=i.decode(b)),b=a&&this.options.binary?A.utf8decode(b):f.transformTo("string",b),a||this.options.binary||(b=A.utf8encode(b)),b)},p=function(a,b,c){this.name=a,this._data=b,this.options=c};p.prototype={asText:function(){return o.call(this,!0)},asBinary:function(){return o.call(this,!1)},asNodeBuffer:function(){var a=n(this);return f.transformTo("nodebuffer",a)},asUint8Array:function(){var a=n(this);return f.transformTo("uint8array",a)},asArrayBuffer:function(){return this.asUint8Array().buffer}};var q=function(a,b){var c,d="";for(c=0;b>c;c++)d+=String.fromCharCode(255&a),a>>>=8;return d},r=function(){var a,b,c={};for(a=0;a<arguments.length;a++)for(b in arguments[a])arguments[a].hasOwnProperty(b)&&"undefined"==typeof c[b]&&(c[b]=arguments[a][b]);return c},s=function(a){return a=a||{},a.base64!==!0||null!==a.binary&&void 0!==a.binary||(a.binary=!0),a=r(a,h),a.date=a.date||new Date,null!==a.compression&&(a.compression=a.compression.toUpperCase()),a},t=function(a,b,c){var d=u(a),e=f.getTypeOf(b);if(d&&v.call(this,d),c=s(c),c.dir||null===b||"undefined"==typeof b)c.base64=!1,c.binary=!1,b=null;else if("string"===e)c.binary&&!c.base64&&c.optimizedBinaryString!==!0&&(b=f.string2binary(b));else{if(c.base64=!1,c.binary=!0,!(e||b instanceof k))throw new Error("The data of '"+a+"' is in an unsupported format !");"arraybuffer"===e&&(b=f.transformTo("uint8array",b))}var g=new p(a,b,c);return this.files[a]=g,g},u=function(a){"/"==a.slice(-1)&&(a=a.substring(0,a.length-1));var b=a.lastIndexOf("/");return b>0?a.substring(0,b):""},v=function(a){return"/"!=a.slice(-1)&&(a+="/"),this.files[a]||t.call(this,a,null,{dir:!0}),this.files[a]},w=function(a,b){var c,d=new k;return a._data instanceof k?(d.uncompressedSize=a._data.uncompressedSize,d.crc32=a._data.crc32,0===d.uncompressedSize||a.options.dir?(b=j.STORE,d.compressedContent="",d.crc32=0):a._data.compressionMethod===b.magic?d.compressedContent=a._data.getCompressedContent():(c=a._data.getContent(),d.compressedContent=b.compress(f.transformTo(b.compressInputType,c)))):(c=n(a),(!c||0===c.length||a.options.dir)&&(b=j.STORE,c=""),d.uncompressedSize=c.length,d.crc32=this.crc32(c),d.compressedContent=b.compress(f.transformTo(b.compressInputType,c))),d.compressedSize=d.compressedContent.length,d.compressionMethod=b.magic,d},x=function(a,b,c,d){var e,f,h=(c.compressedContent,this.utf8encode(b.name)),i=h!==b.name,j=b.options,k="",l="";e=j.date.getHours(),e<<=6,e|=j.date.getMinutes(),e<<=5,e|=j.date.getSeconds()/2,f=j.date.getFullYear()-1980,f<<=4,f|=j.date.getMonth()+1,f<<=5,f|=j.date.getDate(),i&&(l=q(1,1)+q(this.crc32(h),4)+h,k+="up"+q(l.length,2)+l);var m="";m+="\n\x00",m+=i?"\x00\b":"\x00\x00",m+=c.compressionMethod,m+=q(e,2),m+=q(f,2),m+=q(c.crc32,4),m+=q(c.compressedSize,4),m+=q(c.uncompressedSize,4),m+=q(h.length,2),m+=q(k.length,2);var n=g.LOCAL_FILE_HEADER+m+h+k,o=g.CENTRAL_FILE_HEADER+"\x00"+m+"\x00\x00\x00\x00\x00\x00"+(b.options.dir===!0?"\x00\x00\x00":"\x00\x00\x00\x00")+q(d,4)+h+k;return{fileRecord:n,dirRecord:o,compressedObject:c}},y=function(){this.data=[]};y.prototype={append:function(a){a=f.transformTo("string",a),this.data.push(a)},finalize:function(){return this.data.join("")}};var z=function(a){this.data=new Uint8Array(a),this.index=0};z.prototype={append:function(a){0!==a.length&&(a=f.transformTo("uint8array",a),this.data.set(a,this.index),this.index+=a.length)},finalize:function(){return this.data}};var A={load:function(){throw new Error("Load method is not defined. Is the file jszip-load.js included ?")},filter:function(a){var b,c,d,e,f=[];for(b in this.files)this.files.hasOwnProperty(b)&&(d=this.files[b],e=new p(d.name,d._data,r(d.options)),c=b.slice(this.root.length,b.length),b.slice(0,this.root.length)===this.root&&a(c,e)&&f.push(e));return f},file:function(a,b,c){if(1===arguments.length){if(f.isRegExp(a)){var d=a;return this.filter(function(a,b){return!b.options.dir&&d.test(a)})}return this.filter(function(b,c){return!c.options.dir&&b===a})[0]||null}return a=this.root+a,t.call(this,a,b,c),this},folder:function(a){if(!a)return this;if(f.isRegExp(a))return this.filter(function(b,c){return c.options.dir&&a.test(b)});var b=this.root+a,c=v.call(this,b),d=this.clone();return d.root=c.name,d},remove:function(a){a=this.root+a;var b=this.files[a];if(b||("/"!=a.slice(-1)&&(a+="/"),b=this.files[a]),b)if(b.options.dir)for(var c=this.filter(function(b,c){return c.name.slice(0,a.length)===a}),d=0;d<c.length;d++)delete this.files[c[d].name];else delete this.files[a];return this},generate:function(a){a=r(a||{},{base64:!0,compression:"STORE",type:"base64"}),f.checkSupport(a.type);var b,c,d=[],e=0,h=0;for(var k in this.files)if(this.files.hasOwnProperty(k)){var l=this.files[k],m=l.options.compression||a.compression.toUpperCase(),n=j[m];if(!n)throw new Error(m+" is not a valid compression method !");var o=w.call(this,l,n),p=x.call(this,k,l,o,e);e+=p.fileRecord.length+o.compressedSize,h+=p.dirRecord.length,d.push(p)}var s="";s=g.CENTRAL_DIRECTORY_END+"\x00\x00\x00\x00"+q(d.length,2)+q(d.length,2)+q(h,4)+q(e,4)+"\x00\x00";var t=a.type.toLowerCase();for(b="uint8array"===t||"arraybuffer"===t||"blob"===t||"nodebuffer"===t?new z(e+h+s.length):new y(e+h+s.length),c=0;c<d.length;c++)b.append(d[c].fileRecord),b.append(d[c].compressedObject.compressedContent);for(c=0;c<d.length;c++)b.append(d[c].dirRecord);b.append(s);var u=b.finalize();switch(a.type.toLowerCase()){case"uint8array":case"arraybuffer":case"nodebuffer":return f.transformTo(a.type.toLowerCase(),u);case"blob":return f.arrayBuffer2Blob(f.transformTo("arraybuffer",u));case"base64":return a.base64?i.encode(u):u;default:return u}},crc32:function(a,b){if("undefined"==typeof a||!a.length)return 0;var c="string"!==f.getTypeOf(a),d=[0,1996959894,3993919788,2567524794,124634137,1886057615,3915621685,2657392035,249268274,2044508324,3772115230,2547177864,162941995,2125561021,3887607047,2428444049,498536548,1789927666,4089016648,2227061214,450548861,1843258603,4107580753,2211677639,325883990,1684777152,4251122042,2321926636,335633487,1661365465,4195302755,2366115317,997073096,1281953886,3579855332,2724688242,1006888145,1258607687,3524101629,2768942443,901097722,1119000684,3686517206,2898065728,853044451,1172266101,3705015759,2882616665,651767980,1373503546,3369554304,3218104598,565507253,1454621731,3485111705,3099436303,671266974,1594198024,3322730930,2970347812,795835527,1483230225,3244367275,3060149565,1994146192,31158534,2563907772,4023717930,1907459465,112637215,2680153253,3904427059,2013776290,251722036,2517215374,3775830040,2137656763,141376813,2439277719,3865271297,1802195444,476864866,2238001368,4066508878,1812370925,453092731,2181625025,4111451223,1706088902,314042704,2344532202,4240017532,1658658271,366619977,2362670323,4224994405,1303535960,984961486,2747007092,3569037538,1256170817,1037604311,2765210733,3554079995,1131014506,879679996,2909243462,3663771856,1141124467,855842277,2852801631,3708648649,1342533948,654459306,3188396048,3373015174,1466479909,544179635,3110523913,3462522015,1591671054,702138776,2966460450,3352799412,1504918807,783551873,3082640443,3233442989,3988292384,2596254646,62317068,1957810842,3939845945,2647816111,81470997,1943803523,3814918930,2489596804,225274430,2053790376,3826175755,2466906013,167816743,2097651377,4027552580,2265490386,503444072,1762050814,4150417245,2154129355,426522225,1852507879,4275313526,2312317920,282753626,1742555852,4189708143,2394877945,397917763,1622183637,3604390888,2714866558,953729732,1340076626,3518719985,2797360999,1068828381,1219638859,3624741850,2936675148,906185462,1090812512,3747672003,2825379669,829329135,1181335161,3412177804,3160834842,628085408,1382605366,3423369109,3138078467,570562233,1426400815,3317316542,2998733608,733239954,1555261956,3268935591,3050360625,752459403,1541320221,2607071920,3965973030,1969922972,40735498,2617837225,3943577151,1913087877,83908371,2512341634,3803740692,2075208622,213261112,2463272603,3855990285,2094854071,198958881,2262029012,4057260610,1759359992,534414190,2176718541,4139329115,1873836001,414664567,2282248934,4279200368,1711684554,285281116,2405801727,4167216745,1634467795,376229701,2685067896,3608007406,1308918612,956543938,2808555105,3495958263,1231636301,1047427035,2932959818,3654703836,1088359270,936918e3,2847714899,3736837829,1202900863,817233897,3183342108,3401237130,1404277552,615818150,3134207493,3453421203,1423857449,601450431,3009837614,3294710456,1567103746,711928724,3020668471,3272380065,1510334235,755167117];"undefined"==typeof b&&(b=0);var e=0,g=0,h=0;b=-1^b;for(var i=0,j=a.length;j>i;i++)h=c?a[i]:a.charCodeAt(i),g=255&(b^h),e=d[g],b=b>>>8^e;return-1^b},utf8encode:function(a){if(c){var b=c.encode(a);return f.transformTo("string",b)}if(e.nodebuffer)return f.transformTo("string",l(a,"utf-8"));for(var d=[],g=0,h=0;h<a.length;h++){var i=a.charCodeAt(h);128>i?d[g++]=String.fromCharCode(i):i>127&&2048>i?(d[g++]=String.fromCharCode(i>>6|192),d[g++]=String.fromCharCode(63&i|128)):(d[g++]=String.fromCharCode(i>>12|224),d[g++]=String.fromCharCode(i>>6&63|128),d[g++]=String.fromCharCode(63&i|128))}return d.join("")},utf8decode:function(a){var b=[],c=0,g=f.getTypeOf(a),h="string"!==g,i=0,j=0,k=0,l=0;if(d)return d.decode(f.transformTo("uint8array",a));if(e.nodebuffer)return f.transformTo("nodebuffer",a).toString("utf-8");for(;i<a.length;)j=h?a[i]:a.charCodeAt(i),128>j?(b[c++]=String.fromCharCode(j),i++):j>191&&224>j?(k=h?a[i+1]:a.charCodeAt(i+1),b[c++]=String.fromCharCode((31&j)<<6|63&k),i+=2):(k=h?a[i+1]:a.charCodeAt(i+1),l=h?a[i+2]:a.charCodeAt(i+2),b[c++]=String.fromCharCode((15&j)<<12|(63&k)<<6|63&l),i+=3);return b.join("")}};b.exports=A},{"./base64":1,"./compressedObject":2,"./compressions":3,"./defaults":5,"./nodeBuffer":17,"./signature":10,"./support":12,"./utils":14}],10:[function(a,b,c){"use strict";c.LOCAL_FILE_HEADER="PK",c.CENTRAL_FILE_HEADER="PK",c.CENTRAL_DIRECTORY_END="PK",c.ZIP64_CENTRAL_DIRECTORY_LOCATOR="PK",c.ZIP64_CENTRAL_DIRECTORY_END="PK",c.DATA_DESCRIPTOR="PK\b"},{}],11:[function(a,b){"use strict";function c(a,b){this.data=a,b||(this.data=e.string2binary(this.data)),this.length=this.data.length,this.index=0}var d=a("./dataReader"),e=a("./utils");c.prototype=new d,c.prototype.byteAt=function(a){return this.data.charCodeAt(a)},c.prototype.lastIndexOfSignature=function(a){return this.data.lastIndexOf(a)},c.prototype.readData=function(a){this.checkOffset(a);var b=this.data.slice(this.index,this.index+a);return this.index+=a,b},b.exports=c},{"./dataReader":4,"./utils":14}],12:[function(a,b,c){var d=a("__browserify_process");if(c.base64=!0,c.array=!0,c.string=!0,c.arraybuffer="undefined"!=typeof ArrayBuffer&&"undefined"!=typeof Uint8Array,c.nodebuffer=!d.browser,c.uint8array="undefined"!=typeof Uint8Array,"undefined"==typeof ArrayBuffer)c.blob=!1;else{var e=new ArrayBuffer(0);try{c.blob=0===new Blob([e],{type:"application/zip"}).size}catch(f){try{var g=window.BlobBuilder||window.WebKitBlobBuilder||window.MozBlobBuilder||window.MSBlobBuilder,h=new g;h.append(e),c.blob=0===h.getBlob("application/zip").size}catch(f){c.blob=!1}}}},{__browserify_process:18}],13:[function(a,b){"use strict";function c(a){a&&(this.data=a,this.length=this.data.length,this.index=0)}var d=a("./dataReader");c.prototype=new d,c.prototype.byteAt=function(a){return this.data[a]},c.prototype.lastIndexOfSignature=function(a){for(var b=a.charCodeAt(0),c=a.charCodeAt(1),d=a.charCodeAt(2),e=a.charCodeAt(3),f=this.length-4;f>=0;--f)if(this.data[f]===b&&this.data[f+1]===c&&this.data[f+2]===d&&this.data[f+3]===e)return f;return-1},c.prototype.readData=function(a){this.checkOffset(a);var b=this.data.subarray(this.index,this.index+a);return this.index+=a,b},b.exports=c},{"./dataReader":4}],14:[function(a,b,c){"use strict";function d(a){return a}function e(a,b){for(var c=0;c<a.length;++c)b[c]=255&a.charCodeAt(c);return b}function f(a){var b=65536,d=[],e=a.length,f=c.getTypeOf(a),g=0,h=!0;try{switch(f){case"uint8array":String.fromCharCode.apply(null,new Uint8Array(0));break;case"nodebuffer":String.fromCharCode.apply(null,j(0))}}catch(i){h=!1}if(!h){for(var k="",l=0;l<a.length;l++)k+=String.fromCharCode(a[l]);return k}for(;e>g&&b>1;)try{d.push("array"===f||"nodebuffer"===f?String.fromCharCode.apply(null,a.slice(g,Math.min(g+b,e))):String.fromCharCode.apply(null,a.subarray(g,Math.min(g+b,e)))),g+=b}catch(i){b=Math.floor(b/2)}return d.join("")}function g(a,b){for(var c=0;c<a.length;c++)b[c]=a[c];return b}var h=a("./support"),i=a("./compressions"),j=a("./nodeBuffer");c.string2binary=function(a){for(var b="",c=0;c<a.length;c++)b+=String.fromCharCode(255&a.charCodeAt(c));return b},c.string2Uint8Array=function(a){return c.transformTo("uint8array",a)},c.uint8Array2String=function(a){return c.transformTo("string",a)},c.string2Blob=function(a){var b=c.transformTo("arraybuffer",a);return c.arrayBuffer2Blob(b)},c.arrayBuffer2Blob=function(a){c.checkSupport("blob");try{return new Blob([a],{type:"application/zip"})}catch(b){try{var d=window.BlobBuilder||window.WebKitBlobBuilder||window.MozBlobBuilder||window.MSBlobBuilder,e=new d;return e.append(a),e.getBlob("application/zip")}catch(b){throw new Error("Bug : can't construct the Blob.")}}};var k={};k.string={string:d,array:function(a){return e(a,new Array(a.length))},arraybuffer:function(a){return k.string.uint8array(a).buffer},uint8array:function(a){return e(a,new Uint8Array(a.length))},nodebuffer:function(a){return e(a,j(a.length))}},k.array={string:f,array:d,arraybuffer:function(a){return new Uint8Array(a).buffer},uint8array:function(a){return new Uint8Array(a)},nodebuffer:function(a){return j(a)}},k.arraybuffer={string:function(a){return f(new Uint8Array(a))},array:function(a){return g(new Uint8Array(a),new Array(a.byteLength))},arraybuffer:d,uint8array:function(a){return new Uint8Array(a)},nodebuffer:function(a){return j(new Uint8Array(a))}},k.uint8array={string:f,array:function(a){return g(a,new Array(a.length))},arraybuffer:function(a){return a.buffer},uint8array:d,nodebuffer:function(a){return j(a)}},k.nodebuffer={string:f,array:function(a){return g(a,new Array(a.length))},arraybuffer:function(a){return k.nodebuffer.uint8array(a).buffer},uint8array:function(a){return g(a,new Uint8Array(a.length))},nodebuffer:d},c.transformTo=function(a,b){if(b||(b=""),!a)return b;c.checkSupport(a);var d=c.getTypeOf(b),e=k[d][a](b);return e},c.getTypeOf=function(a){return"string"==typeof a?"string":"[object Array]"===Object.prototype.toString.call(a)?"array":h.nodebuffer&&j.test(a)?"nodebuffer":h.uint8array&&a instanceof Uint8Array?"uint8array":h.arraybuffer&&a instanceof ArrayBuffer?"arraybuffer":void 0},c.checkSupport=function(a){var b=h[a.toLowerCase()];if(!b)throw new Error(a+" is not supported by this browser")},c.MAX_VALUE_16BITS=65535,c.MAX_VALUE_32BITS=-1,c.pretty=function(a){var b,c,d="";for(c=0;c<(a||"").length;c++)b=a.charCodeAt(c),d+="\\x"+(16>b?"0":"")+b.toString(16).toUpperCase();return d},c.findCompression=function(a){for(var b in i)if(i.hasOwnProperty(b)&&i[b].magic===a)return i[b];return null},c.isRegExp=function(a){return"[object RegExp]"===Object.prototype.toString.call(a)}},{"./compressions":3,"./nodeBuffer":17,"./support":12}],15:[function(a,b){"use strict";function c(a,b){this.files=[],this.loadOptions=b,a&&this.load(a)}var d=a("./stringReader"),e=a("./nodeBufferReader"),f=a("./uint8ArrayReader"),g=a("./utils"),h=a("./signature"),i=a("./zipEntry"),j=a("./support");c.prototype={checkSignature:function(a){var b=this.reader.readString(4);if(b!==a)throw new Error("Corrupted zip or bug : unexpected signature ("+g.pretty(b)+", expected "+g.pretty(a)+")")},readBlockEndOfCentral:function(){this.diskNumber=this.reader.readInt(2),this.diskWithCentralDirStart=this.reader.readInt(2),this.centralDirRecordsOnThisDisk=this.reader.readInt(2),this.centralDirRecords=this.reader.readInt(2),this.centralDirSize=this.reader.readInt(4),this.centralDirOffset=this.reader.readInt(4),this.zipCommentLength=this.reader.readInt(2),this.zipComment=this.reader.readString(this.zipCommentLength)},readBlockZip64EndOfCentral:function(){this.zip64EndOfCentralSize=this.reader.readInt(8),this.versionMadeBy=this.reader.readString(2),this.versionNeeded=this.reader.readInt(2),this.diskNumber=this.reader.readInt(4),this.diskWithCentralDirStart=this.reader.readInt(4),this.centralDirRecordsOnThisDisk=this.reader.readInt(8),this.centralDirRecords=this.reader.readInt(8),this.centralDirSize=this.reader.readInt(8),this.centralDirOffset=this.reader.readInt(8),this.zip64ExtensibleData={};for(var a,b,c,d=this.zip64EndOfCentralSize-44,e=0;d>e;)a=this.reader.readInt(2),b=this.reader.readInt(4),c=this.reader.readString(b),this.zip64ExtensibleData[a]={id:a,length:b,value:c}},readBlockZip64EndOfCentralLocator:function(){if(this.diskWithZip64CentralDirStart=this.reader.readInt(4),this.relativeOffsetEndOfZip64CentralDir=this.reader.readInt(8),this.disksCount=this.reader.readInt(4),this.disksCount>1)throw new Error("Multi-volumes zip are not supported")},readLocalFiles:function(){var a,b;for(a=0;a<this.files.length;a++)b=this.files[a],this.reader.setIndex(b.localHeaderOffset),this.checkSignature(h.LOCAL_FILE_HEADER),b.readLocalPart(this.reader),b.handleUTF8()},readCentralDir:function(){var a;for(this.reader.setIndex(this.centralDirOffset);this.reader.readString(4)===h.CENTRAL_FILE_HEADER;)a=new i({zip64:this.zip64},this.loadOptions),a.readCentralPart(this.reader),this.files.push(a)},readEndOfCentral:function(){var a=this.reader.lastIndexOfSignature(h.CENTRAL_DIRECTORY_END);if(-1===a)throw new Error("Corrupted zip : can't find end of central directory");if(this.reader.setIndex(a),this.checkSignature(h.CENTRAL_DIRECTORY_END),this.readBlockEndOfCentral(),this.diskNumber===g.MAX_VALUE_16BITS||this.diskWithCentralDirStart===g.MAX_VALUE_16BITS||this.centralDirRecordsOnThisDisk===g.MAX_VALUE_16BITS||this.centralDirRecords===g.MAX_VALUE_16BITS||this.centralDirSize===g.MAX_VALUE_32BITS||this.centralDirOffset===g.MAX_VALUE_32BITS){if(this.zip64=!0,a=this.reader.lastIndexOfSignature(h.ZIP64_CENTRAL_DIRECTORY_LOCATOR),-1===a)throw new Error("Corrupted zip : can't find the ZIP64 end of central directory locator");this.reader.setIndex(a),this.checkSignature(h.ZIP64_CENTRAL_DIRECTORY_LOCATOR),this.readBlockZip64EndOfCentralLocator(),this.reader.setIndex(this.relativeOffsetEndOfZip64CentralDir),this.checkSignature(h.ZIP64_CENTRAL_DIRECTORY_END),this.readBlockZip64EndOfCentral()}},prepareReader:function(a){var b=g.getTypeOf(a);this.reader="string"!==b||j.uint8array?"nodebuffer"===b?new e(a):new f(g.transformTo("uint8array",a)):new d(a,this.loadOptions.optimizedBinaryString)},load:function(a){this.prepareReader(a),this.readEndOfCentral(),this.readCentralDir(),this.readLocalFiles()}},b.exports=c},{"./nodeBufferReader":17,"./signature":10,"./stringReader":11,"./support":12,"./uint8ArrayReader":13,"./utils":14,"./zipEntry":16}],16:[function(a,b){"use strict";function c(a,b){this.options=a,this.loadOptions=b}var d=a("./stringReader"),e=a("./utils"),f=a("./compressedObject"),g=a("./object");c.prototype={isEncrypted:function(){return 1===(1&this.bitFlag)},useUTF8:function(){return 2048===(2048&this.bitFlag)},prepareCompressedContent:function(a,b,c){return function(){var d=a.index;a.setIndex(b);var e=a.readData(c);return a.setIndex(d),e}},prepareContent:function(a,b,c,d,f){return function(){var a=e.transformTo(d.uncompressInputType,this.getCompressedContent()),b=d.uncompress(a);if(b.length!==f)throw new Error("Bug : uncompressed data size mismatch");return b}},readLocalPart:function(a){var b,c;if(a.skip(22),this.fileNameLength=a.readInt(2),c=a.readInt(2),this.fileName=a.readString(this.fileNameLength),a.skip(c),-1==this.compressedSize||-1==this.uncompressedSize)throw new Error("Bug or corrupted zip : didn't get enough informations from the central directory (compressedSize == -1 || uncompressedSize == -1)");if(b=e.findCompression(this.compressionMethod),null===b)throw new Error("Corrupted zip : compression "+e.pretty(this.compressionMethod)+" unknown (inner file : "+this.fileName+")");if(this.decompressed=new f,this.decompressed.compressedSize=this.compressedSize,this.decompressed.uncompressedSize=this.uncompressedSize,this.decompressed.crc32=this.crc32,this.decompressed.compressionMethod=this.compressionMethod,this.decompressed.getCompressedContent=this.prepareCompressedContent(a,a.index,this.compressedSize,b),this.decompressed.getContent=this.prepareContent(a,a.index,this.compressedSize,b,this.uncompressedSize),this.loadOptions.checkCRC32&&(this.decompressed=e.transformTo("string",this.decompressed.getContent()),g.crc32(this.decompressed)!==this.crc32))throw new Error("Corrupted zip : CRC32 mismatch")},readCentralPart:function(a){if(this.versionMadeBy=a.readString(2),this.versionNeeded=a.readInt(2),this.bitFlag=a.readInt(2),this.compressionMethod=a.readString(2),this.date=a.readDate(),this.crc32=a.readInt(4),this.compressedSize=a.readInt(4),this.uncompressedSize=a.readInt(4),this.fileNameLength=a.readInt(2),this.extraFieldsLength=a.readInt(2),this.fileCommentLength=a.readInt(2),this.diskNumberStart=a.readInt(2),this.internalFileAttributes=a.readInt(2),this.externalFileAttributes=a.readInt(4),this.localHeaderOffset=a.readInt(4),this.isEncrypted())throw new Error("Encrypted zip are not supported");this.fileName=a.readString(this.fileNameLength),this.readExtraFields(a),this.parseZIP64ExtraField(a),this.fileComment=a.readString(this.fileCommentLength),this.dir=16&this.externalFileAttributes?!0:!1},parseZIP64ExtraField:function(){if(this.extraFields[1]){var a=new d(this.extraFields[1].value);this.uncompressedSize===e.MAX_VALUE_32BITS&&(this.uncompressedSize=a.readInt(8)),this.compressedSize===e.MAX_VALUE_32BITS&&(this.compressedSize=a.readInt(8)),this.localHeaderOffset===e.MAX_VALUE_32BITS&&(this.localHeaderOffset=a.readInt(8)),this.diskNumberStart===e.MAX_VALUE_32BITS&&(this.diskNumberStart=a.readInt(4))}},readExtraFields:function(a){var b,c,d,e=a.index;for(this.extraFields=this.extraFields||{};a.index<e+this.extraFieldsLength;)b=a.readInt(2),c=a.readInt(2),d=a.readString(c),this.extraFields[b]={id:b,length:c,value:d}},handleUTF8:function(){if(this.useUTF8())this.fileName=g.utf8decode(this.fileName),this.fileComment=g.utf8decode(this.fileComment);else{var a=this.findExtraFieldUnicodePath();null!==a&&(this.fileName=a)}},findExtraFieldUnicodePath:function(){var a=this.extraFields[28789];if(a){var b=new d(a.value);return 1!==b.readInt(1)?null:g.crc32(this.fileName)!==b.readInt(4)?null:g.utf8decode(b.readString(a.length-5))}return null}},b.exports=c},{"./compressedObject":2,"./object":9,"./stringReader":11,"./utils":14}],17:[function(){},{}],18:[function(a,b){var c=b.exports={};c.nextTick=function(){var a="undefined"!=typeof window&&window.setImmediate,b="undefined"!=typeof window&&window.postMessage&&window.addEventListener;if(a)return function(a){return window.setImmediate(a)};if(b){var c=[];return window.addEventListener("message",function(a){var b=a.source;if((b===window||null===b)&&"process-tick"===a.data&&(a.stopPropagation(),c.length>0)){var d=c.shift();d()}},!0),function(a){c.push(a),window.postMessage("process-tick","*")}}return function(a){setTimeout(a,0)}}(),c.title="browser",c.browser=!0,c.env={},c.argv=[],c.binding=function(){throw new Error("process.binding is not supported")},c.cwd=function(){return"/"},c.chdir=function(){throw new Error("process.chdir is not supported")}},{}],19:[function(){/** @license zlib.js 2012 - imaya [ https://github.com/imaya/zlib.js ] The MIT License */
 (function(){"use strict";function a(a,b){var c=a.split("."),d=n;!(c[0]in d)&&d.execScript&&d.execScript("var "+c[0]);for(var e;c.length&&(e=c.shift());)c.length||b===l?d=d[e]?d[e]:d[e]={}:d[e]=b}function b(a,b){if(this.index="number"==typeof b?b:0,this.d=0,this.buffer=a instanceof(o?Uint8Array:Array)?a:new(o?Uint8Array:Array)(32768),2*this.buffer.length<=this.index)throw Error("invalid index");this.buffer.length<=this.index&&c(this)}function c(a){var b,c=a.buffer,d=c.length,e=new(o?Uint8Array:Array)(d<<1);if(o)e.set(c);else for(b=0;d>b;++b)e[b]=c[b];return a.buffer=e}function d(a){this.buffer=new(o?Uint16Array:Array)(2*a),this.length=0}function e(a,b){this.e=w,this.f=0,this.input=o&&a instanceof Array?new Uint8Array(a):a,this.c=0,b&&(b.lazy&&(this.f=b.lazy),"number"==typeof b.compressionType&&(this.e=b.compressionType),b.outputBuffer&&(this.b=o&&b.outputBuffer instanceof Array?new Uint8Array(b.outputBuffer):b.outputBuffer),"number"==typeof b.outputIndex&&(this.c=b.outputIndex)),this.b||(this.b=new(o?Uint8Array:Array)(32768))}function f(a,b){this.length=a,this.g=b}function g(a,b){function c(a,b){var c,d=a.g,e=[],f=0;c=z[a.length],e[f++]=65535&c,e[f++]=c>>16&255,e[f++]=c>>24;var g;switch(m){case 1===d:g=[0,d-1,0];break;case 2===d:g=[1,d-2,0];break;case 3===d:g=[2,d-3,0];break;case 4===d:g=[3,d-4,0];break;case 6>=d:g=[4,d-5,1];break;case 8>=d:g=[5,d-7,1];break;case 12>=d:g=[6,d-9,2];break;case 16>=d:g=[7,d-13,2];break;case 24>=d:g=[8,d-17,3];break;case 32>=d:g=[9,d-25,3];break;case 48>=d:g=[10,d-33,4];break;case 64>=d:g=[11,d-49,4];break;case 96>=d:g=[12,d-65,5];break;case 128>=d:g=[13,d-97,5];break;case 192>=d:g=[14,d-129,6];break;case 256>=d:g=[15,d-193,6];break;case 384>=d:g=[16,d-257,7];break;case 512>=d:g=[17,d-385,7];break;case 768>=d:g=[18,d-513,8];break;case 1024>=d:g=[19,d-769,8];break;case 1536>=d:g=[20,d-1025,9];break;case 2048>=d:g=[21,d-1537,9];break;case 3072>=d:g=[22,d-2049,10];break;case 4096>=d:g=[23,d-3073,10];break;case 6144>=d:g=[24,d-4097,11];break;case 8192>=d:g=[25,d-6145,11];break;case 12288>=d:g=[26,d-8193,12];break;case 16384>=d:g=[27,d-12289,12];break;case 24576>=d:g=[28,d-16385,13];break;case 32768>=d:g=[29,d-24577,13];break;default:throw"invalid distance"}c=g,e[f++]=c[0],e[f++]=c[1],e[f++]=c[2];var h,i;for(h=0,i=e.length;i>h;++h)r[s++]=e[h];u[e[0]]++,v[e[3]]++,t=a.length+b-1,n=null}var d,e,f,g,i,j,k,n,p,q={},r=o?new Uint16Array(2*b.length):[],s=0,t=0,u=new(o?Uint32Array:Array)(286),v=new(o?Uint32Array:Array)(30),w=a.f;if(!o){for(f=0;285>=f;)u[f++]=0;for(f=0;29>=f;)v[f++]=0}for(u[256]=1,d=0,e=b.length;e>d;++d){for(f=i=0,g=3;g>f&&d+f!==e;++f)i=i<<8|b[d+f];if(q[i]===l&&(q[i]=[]),j=q[i],!(0<t--)){for(;0<j.length&&32768<d-j[0];)j.shift();if(d+3>=e){for(n&&c(n,-1),f=0,g=e-d;g>f;++f)p=b[d+f],r[s++]=p,++u[p];break}0<j.length?(k=h(b,d,j),n?n.length<k.length?(p=b[d-1],r[s++]=p,++u[p],c(k,0)):c(n,-1):k.length<w?n=k:c(k,0)):n?c(n,-1):(p=b[d],r[s++]=p,++u[p])}j.push(d)}return r[s++]=256,u[256]++,a.j=u,a.i=v,o?r.subarray(0,s):r}function h(a,b,c){var d,e,g,h,i,j,k=0,l=a.length;h=0,j=c.length;a:for(;j>h;h++){if(d=c[j-h-1],g=3,k>3){for(i=k;i>3;i--)if(a[d+i-1]!==a[b+i-1])continue a;g=k}for(;258>g&&l>b+g&&a[d+g]===a[b+g];)++g;if(g>k&&(e=d,k=g),258===g)break}return new f(k,b-e)}function i(a,b){var c,e,f,g,h,i=a.length,k=new d(572),l=new(o?Uint8Array:Array)(i);if(!o)for(g=0;i>g;g++)l[g]=0;for(g=0;i>g;++g)0<a[g]&&k.push(g,a[g]);if(c=Array(k.length/2),e=new(o?Uint32Array:Array)(k.length/2),1===c.length)return l[k.pop().index]=1,l;for(g=0,h=k.length/2;h>g;++g)c[g]=k.pop(),e[g]=c[g].value;for(f=j(e,e.length,b),g=0,h=c.length;h>g;++g)l[c[g].index]=f[g];return l}function j(a,b,c){function d(a){var c=n[a][p[a]];c===b?(d(a+1),d(a+1)):--l[c],++p[a]}var e,f,g,h,i,j=new(o?Uint16Array:Array)(c),k=new(o?Uint8Array:Array)(c),l=new(o?Uint8Array:Array)(b),m=Array(c),n=Array(c),p=Array(c),q=(1<<c)-b,r=1<<c-1;for(j[c-1]=b,f=0;c>f;++f)r>q?k[f]=0:(k[f]=1,q-=r),q<<=1,j[c-2-f]=(j[c-1-f]/2|0)+b;for(j[0]=k[0],m[0]=Array(j[0]),n[0]=Array(j[0]),f=1;c>f;++f)j[f]>2*j[f-1]+k[f]&&(j[f]=2*j[f-1]+k[f]),m[f]=Array(j[f]),n[f]=Array(j[f]);for(e=0;b>e;++e)l[e]=c;for(g=0;g<j[c-1];++g)m[c-1][g]=a[g],n[c-1][g]=g;for(e=0;c>e;++e)p[e]=0;for(1===k[c-1]&&(--l[0],++p[c-1]),f=c-2;f>=0;--f){for(h=e=0,i=p[f+1],g=0;g<j[f];g++)h=m[f+1][i]+m[f+1][i+1],h>a[e]?(m[f][g]=h,n[f][g]=b,i+=2):(m[f][g]=a[e],n[f][g]=e,++e);p[f]=0,1===k[f]&&d(f)}return l}function k(a){var b,c,d,e,f=new(o?Uint16Array:Array)(a.length),g=[],h=[],i=0;for(b=0,c=a.length;c>b;b++)g[a[b]]=(0|g[a[b]])+1;for(b=1,c=16;c>=b;b++)h[b]=i,i+=0|g[b],i<<=1;for(b=0,c=a.length;c>b;b++)for(i=h[a[b]],h[a[b]]+=1,d=f[b]=0,e=a[b];e>d;d++)f[b]=f[b]<<1|1&i,i>>>=1;return f}var l=void 0,m=!0,n=this,o="undefined"!=typeof Uint8Array&&"undefined"!=typeof Uint16Array&&"undefined"!=typeof Uint32Array&&"undefined"!=typeof DataView;b.prototype.a=function(a,b,d){var e,f=this.buffer,g=this.index,h=this.d,i=f[g];if(d&&b>1&&(a=b>8?(u[255&a]<<24|u[a>>>8&255]<<16|u[a>>>16&255]<<8|u[a>>>24&255])>>32-b:u[a]>>8-b),8>b+h)i=i<<b|a,h+=b;else for(e=0;b>e;++e)i=i<<1|a>>b-e-1&1,8===++h&&(h=0,f[g++]=u[i],i=0,g===f.length&&(f=c(this)));f[g]=i,this.buffer=f,this.d=h,this.index=g},b.prototype.finish=function(){var a,b=this.buffer,c=this.index;return 0<this.d&&(b[c]<<=8-this.d,b[c]=u[b[c]],c++),o?a=b.subarray(0,c):(b.length=c,a=b),a};var p,q=new(o?Uint8Array:Array)(256);for(p=0;256>p;++p){for(var r=p,s=r,t=7,r=r>>>1;r;r>>>=1)s<<=1,s|=1&r,--t;q[p]=(s<<t&255)>>>0}var u=q;d.prototype.getParent=function(a){return 2*((a-2)/4|0)},d.prototype.push=function(a,b){var c,d,e,f=this.buffer;for(c=this.length,f[this.length++]=b,f[this.length++]=a;c>0&&(d=this.getParent(c),f[c]>f[d]);)e=f[c],f[c]=f[d],f[d]=e,e=f[c+1],f[c+1]=f[d+1],f[d+1]=e,c=d;return this.length},d.prototype.pop=function(){var a,b,c,d,e,f=this.buffer;for(b=f[0],a=f[1],this.length-=2,f[0]=f[this.length],f[1]=f[this.length+1],e=0;(d=2*e+2,!(d>=this.length))&&(d+2<this.length&&f[d+2]>f[d]&&(d+=2),f[d]>f[e]);)c=f[e],f[e]=f[d],f[d]=c,c=f[e+1],f[e+1]=f[d+1],f[d+1]=c,e=d;return{index:a,value:b,length:this.length}};var v,w=2,x=[];for(v=0;288>v;v++)switch(m){case 143>=v:x.push([v+48,8]);break;case 255>=v:x.push([v-144+400,9]);break;case 279>=v:x.push([v-256+0,7]);break;case 287>=v:x.push([v-280+192,8]);break;default:throw"invalid literal: "+v}e.prototype.h=function(){var a,c,d,e,f=this.input;switch(this.e){case 0:for(d=0,e=f.length;e>d;){c=o?f.subarray(d,d+65535):f.slice(d,d+65535),d+=c.length;var h=c,j=d===e,n=l,p=l,q=l,r=l,s=l,t=this.b,u=this.c;if(o){for(t=new Uint8Array(this.b.buffer);t.length<=u+h.length+5;)t=new Uint8Array(t.length<<1);t.set(this.b)}if(n=j?1:0,t[u++]=0|n,p=h.length,q=~p+65536&65535,t[u++]=255&p,t[u++]=p>>>8&255,t[u++]=255&q,t[u++]=q>>>8&255,o)t.set(h,u),u+=h.length,t=t.subarray(0,u);else{for(r=0,s=h.length;s>r;++r)t[u++]=h[r];t.length=u}this.c=u,this.b=t}break;case 1:var v=new b(o?new Uint8Array(this.b.buffer):this.b,this.c);v.a(1,1,m),v.a(1,2,m);var y,z,A,B=g(this,f);for(y=0,z=B.length;z>y;y++)if(A=B[y],b.prototype.a.apply(v,x[A]),A>256)v.a(B[++y],B[++y],m),v.a(B[++y],5),v.a(B[++y],B[++y],m);else if(256===A)break;this.b=v.finish(),this.c=this.b.length;break;case w:var C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R=new b(o?new Uint8Array(this.b.buffer):this.b,this.c),S=[16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15],T=Array(19);for(C=w,R.a(1,1,m),R.a(C,2,m),D=g(this,f),H=i(this.j,15),I=k(H),J=i(this.i,7),K=k(J),E=286;E>257&&0===H[E-1];E--);for(F=30;F>1&&0===J[F-1];F--);var U,V,W,X,Y,Z,$=E,_=F,ab=new(o?Uint32Array:Array)($+_),bb=new(o?Uint32Array:Array)(316),cb=new(o?Uint8Array:Array)(19);for(U=V=0;$>U;U++)ab[V++]=H[U];for(U=0;_>U;U++)ab[V++]=J[U];if(!o)for(U=0,X=cb.length;X>U;++U)cb[U]=0;for(U=Y=0,X=ab.length;X>U;U+=V){for(V=1;X>U+V&&ab[U+V]===ab[U];++V);if(W=V,0===ab[U])if(3>W)for(;0<W--;)bb[Y++]=0,cb[0]++;else for(;W>0;)Z=138>W?W:138,Z>W-3&&W>Z&&(Z=W-3),10>=Z?(bb[Y++]=17,bb[Y++]=Z-3,cb[17]++):(bb[Y++]=18,bb[Y++]=Z-11,cb[18]++),W-=Z;else if(bb[Y++]=ab[U],cb[ab[U]]++,W--,3>W)for(;0<W--;)bb[Y++]=ab[U],cb[ab[U]]++;else for(;W>0;)Z=6>W?W:6,Z>W-3&&W>Z&&(Z=W-3),bb[Y++]=16,bb[Y++]=Z-3,cb[16]++,W-=Z}for(a=o?bb.subarray(0,Y):bb.slice(0,Y),L=i(cb,7),P=0;19>P;P++)T[P]=L[S[P]];for(G=19;G>4&&0===T[G-1];G--);for(M=k(L),R.a(E-257,5,m),R.a(F-1,5,m),R.a(G-4,4,m),P=0;G>P;P++)R.a(T[P],3,m);for(P=0,Q=a.length;Q>P;P++)if(N=a[P],R.a(M[N],L[N],m),N>=16){switch(P++,N){case 16:O=2;break;case 17:O=3;break;case 18:O=7;break;default:throw"invalid code: "+N}R.a(a[P],O,m)}var db,eb,fb,gb,hb,ib,jb,kb,lb=[I,H],mb=[K,J];for(hb=lb[0],ib=lb[1],jb=mb[0],kb=mb[1],db=0,eb=D.length;eb>db;++db)if(fb=D[db],R.a(hb[fb],ib[fb],m),fb>256)R.a(D[++db],D[++db],m),gb=D[++db],R.a(jb[gb],kb[gb],m),R.a(D[++db],D[++db],m);else if(256===fb)break;this.b=R.finish(),this.c=this.b.length;break;default:throw"invalid compression type"}return this.b};var y=function(){function a(a){switch(m){case 3===a:return[257,a-3,0];case 4===a:return[258,a-4,0];case 5===a:return[259,a-5,0];case 6===a:return[260,a-6,0];case 7===a:return[261,a-7,0];case 8===a:return[262,a-8,0];case 9===a:return[263,a-9,0];case 10===a:return[264,a-10,0];case 12>=a:return[265,a-11,1];case 14>=a:return[266,a-13,1];case 16>=a:return[267,a-15,1];case 18>=a:return[268,a-17,1];case 22>=a:return[269,a-19,2];case 26>=a:return[270,a-23,2];case 30>=a:return[271,a-27,2];case 34>=a:return[272,a-31,2];case 42>=a:return[273,a-35,3];case 50>=a:return[274,a-43,3];case 58>=a:return[275,a-51,3];case 66>=a:return[276,a-59,3];case 82>=a:return[277,a-67,4];case 98>=a:return[278,a-83,4];case 114>=a:return[279,a-99,4];case 130>=a:return[280,a-115,4];case 162>=a:return[281,a-131,5];case 194>=a:return[282,a-163,5];case 226>=a:return[283,a-195,5];case 257>=a:return[284,a-227,5];case 258===a:return[285,a-258,0];default:throw"invalid length: "+a}}var b,c,d=[];for(b=3;258>=b;b++)c=a(b),d[b]=c[2]<<24|c[1]<<16|c[0];return d}(),z=o?new Uint32Array(y):y;a("Zlib.RawDeflate",e),a("Zlib.RawDeflate.prototype.compress",e.prototype.h);var A,B,C,D,E={NONE:0,FIXED:1,DYNAMIC:w};if(Object.keys)A=Object.keys(E);else for(B in A=[],C=0,E)A[C++]=B;for(C=0,D=A.length;D>C;++C)B=A[C],a("Zlib.RawDeflate.CompressionType."+B,E[B])}).call(this)},{}],20:[function(){/** @license zlib.js 2012 - imaya [ https://github.com/imaya/zlib.js ] The MIT License */
 (function(){"use strict";function a(a,b){var c=a.split("."),d=g;!(c[0]in d)&&d.execScript&&d.execScript("var "+c[0]);for(var e;c.length&&(e=c.shift());)c.length||void 0===b?d=d[e]?d[e]:d[e]={}:d[e]=b}function b(a){var b,c,d,e,f,g,i,j,k,l,m=a.length,n=0,o=Number.POSITIVE_INFINITY;for(j=0;m>j;++j)a[j]>n&&(n=a[j]),a[j]<o&&(o=a[j]);for(b=1<<n,c=new(h?Uint32Array:Array)(b),d=1,e=0,f=2;n>=d;){for(j=0;m>j;++j)if(a[j]===d){for(g=0,i=e,k=0;d>k;++k)g=g<<1|1&i,i>>=1;for(l=d<<16|j,k=g;b>k;k+=f)c[k]=l;++e}++d,e<<=1,f<<=1}return[c,n,o]}function c(a,b){switch(this.g=[],this.h=32768,this.c=this.f=this.d=this.k=0,this.input=h?new Uint8Array(a):a,this.l=!1,this.i=j,this.q=!1,(b||!(b={}))&&(b.index&&(this.d=b.index),b.bufferSize&&(this.h=b.bufferSize),b.bufferType&&(this.i=b.bufferType),b.resize&&(this.q=b.resize)),this.i){case i:this.a=32768,this.b=new(h?Uint8Array:Array)(32768+this.h+258);break;case j:this.a=0,this.b=new(h?Uint8Array:Array)(this.h),this.e=this.v,this.m=this.s,this.j=this.t;break;default:throw Error("invalid inflate mode")}}function d(a,b){for(var c,d=a.f,e=a.c,f=a.input,g=a.d,h=f.length;b>e;){if(g>=h)throw Error("input buffer is broken");d|=f[g++]<<e,e+=8}return c=d&(1<<b)-1,a.f=d>>>b,a.c=e-b,a.d=g,c}function e(a,b){for(var c,d,e=a.f,f=a.c,g=a.input,h=a.d,i=g.length,j=b[0],k=b[1];k>f&&!(h>=i);)e|=g[h++]<<f,f+=8;return c=j[e&(1<<k)-1],d=c>>>16,a.f=e>>d,a.c=f-d,a.d=h,65535&c}function f(a){function c(a,b,c){var f,g,h,i=this.p;for(h=0;a>h;)switch(f=e(this,b)){case 16:for(g=3+d(this,2);g--;)c[h++]=i;break;case 17:for(g=3+d(this,3);g--;)c[h++]=0;i=0;break;case 18:for(g=11+d(this,7);g--;)c[h++]=0;i=0;break;default:i=c[h++]=f}return this.p=i,c}var f,g,i,j,k=d(a,5)+257,l=d(a,5)+1,m=d(a,4)+4,o=new(h?Uint8Array:Array)(n.length);for(j=0;m>j;++j)o[n[j]]=d(a,3);if(!h)for(j=m,m=o.length;m>j;++j)o[n[j]]=0;f=b(o),g=new(h?Uint8Array:Array)(k),i=new(h?Uint8Array:Array)(l),a.p=0,a.j(b(c.call(a,k,f,g)),b(c.call(a,l,f,i)))}var g=this,h="undefined"!=typeof Uint8Array&&"undefined"!=typeof Uint16Array&&"undefined"!=typeof Uint32Array&&"undefined"!=typeof DataView,i=0,j=1;c.prototype.u=function(){for(;!this.l;){var a=d(this,3);switch(1&a&&(this.l=!0),a>>>=1){case 0:var b=this.input,c=this.d,e=this.b,g=this.a,k=b.length,l=void 0,m=void 0,n=e.length,o=void 0;if(this.c=this.f=0,c+1>=k)throw Error("invalid uncompressed block header: LEN");if(l=b[c++]|b[c++]<<8,c+1>=k)throw Error("invalid uncompressed block header: NLEN");if(m=b[c++]|b[c++]<<8,l===~m)throw Error("invalid uncompressed block header: length verify");if(c+l>b.length)throw Error("input buffer is broken");switch(this.i){case i:for(;g+l>e.length;){if(o=n-g,l-=o,h)e.set(b.subarray(c,c+o),g),g+=o,c+=o;else for(;o--;)e[g++]=b[c++];this.a=g,e=this.e(),g=this.a}break;case j:for(;g+l>e.length;)e=this.e({o:2});break;default:throw Error("invalid inflate mode")}if(h)e.set(b.subarray(c,c+l),g),g+=l,c+=l;else for(;l--;)e[g++]=b[c++];this.d=c,this.a=g,this.b=e;break;case 1:this.j(z,B);break;case 2:f(this);break;default:throw Error("unknown BTYPE: "+a)}}return this.m()};var k,l,m=[16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15],n=h?new Uint16Array(m):m,o=[3,4,5,6,7,8,9,10,11,13,15,17,19,23,27,31,35,43,51,59,67,83,99,115,131,163,195,227,258,258,258],p=h?new Uint16Array(o):o,q=[0,0,0,0,0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,0,0,0],r=h?new Uint8Array(q):q,s=[1,2,3,4,5,7,9,13,17,25,33,49,65,97,129,193,257,385,513,769,1025,1537,2049,3073,4097,6145,8193,12289,16385,24577],t=h?new Uint16Array(s):s,u=[0,0,0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13],v=h?new Uint8Array(u):u,w=new(h?Uint8Array:Array)(288);for(k=0,l=w.length;l>k;++k)w[k]=143>=k?8:255>=k?9:279>=k?7:8;var x,y,z=b(w),A=new(h?Uint8Array:Array)(30);for(x=0,y=A.length;y>x;++x)A[x]=5;var B=b(A);c.prototype.j=function(a,b){var c=this.b,f=this.a;this.n=a;for(var g,h,i,j,k=c.length-258;256!==(g=e(this,a));)if(256>g)f>=k&&(this.a=f,c=this.e(),f=this.a),c[f++]=g;else for(h=g-257,j=p[h],0<r[h]&&(j+=d(this,r[h])),g=e(this,b),i=t[g],0<v[g]&&(i+=d(this,v[g])),f>=k&&(this.a=f,c=this.e(),f=this.a);j--;)c[f]=c[f++-i];for(;8<=this.c;)this.c-=8,this.d--;this.a=f},c.prototype.t=function(a,b){var c=this.b,f=this.a;this.n=a;for(var g,h,i,j,k=c.length;256!==(g=e(this,a));)if(256>g)f>=k&&(c=this.e(),k=c.length),c[f++]=g;else for(h=g-257,j=p[h],0<r[h]&&(j+=d(this,r[h])),g=e(this,b),i=t[g],0<v[g]&&(i+=d(this,v[g])),f+j>k&&(c=this.e(),k=c.length);j--;)c[f]=c[f++-i];for(;8<=this.c;)this.c-=8,this.d--;this.a=f},c.prototype.e=function(){var a,b,c=new(h?Uint8Array:Array)(this.a-32768),d=this.a-32768,e=this.b;if(h)c.set(e.subarray(32768,c.length));else for(a=0,b=c.length;b>a;++a)c[a]=e[a+32768];if(this.g.push(c),this.k+=c.length,h)e.set(e.subarray(d,d+32768));else for(a=0;32768>a;++a)e[a]=e[d+a];return this.a=32768,e},c.prototype.v=function(a){var b,c,d,e,f=this.input.length/this.d+1|0,g=this.input,i=this.b;return a&&("number"==typeof a.o&&(f=a.o),"number"==typeof a.r&&(f+=a.r)),2>f?(c=(g.length-this.d)/this.n[2],e=258*(c/2)|0,d=e<i.length?i.length+e:i.length<<1):d=i.length*f,h?(b=new Uint8Array(d),b.set(i)):b=i,this.b=b},c.prototype.m=function(){var a,b,c,d,e,f=0,g=this.b,i=this.g,j=new(h?Uint8Array:Array)(this.k+(this.a-32768));if(0===i.length)return h?this.b.subarray(32768,this.a):this.b.slice(32768,this.a);for(b=0,c=i.length;c>b;++b)for(a=i[b],d=0,e=a.length;e>d;++d)j[f++]=a[d];for(b=32768,c=this.a;c>b;++b)j[f++]=g[b];return this.g=[],this.buffer=j},c.prototype.s=function(){var a,b=this.a;return h?this.q?(a=new Uint8Array(b),a.set(this.b.subarray(0,b))):a=this.b.subarray(0,b):(this.b.length>b&&(this.b.length=b),a=this.b),this.buffer=a},a("Zlib.RawInflate",c),a("Zlib.RawInflate.prototype.decompress",c.prototype.u);var C,D,E,F,G={ADAPTIVE:j,BLOCK:i};if(Object.keys)C=Object.keys(G);else for(D in C=[],E=0,G)C[E++]=D;for(E=0,F=C.length;F>E;++E)D=C[E],a("Zlib.RawInflate.BufferType."+D,G[D])}).call(this)},{}]},{},[7])(7)});;if (!Element.prototype.scrollIntoViewIfNeeded) {
   Element.prototype.scrollIntoViewIfNeeded = function (centerIfNeeded) {
@@ -17700,20 +17717,14 @@ zlib.js 2012 - imaya [ https://github.com/imaya/zlib.js ] The MIT License
         whitesmoke: "f5f5f5",
         yellow: "ff0",
         yellowgreen: "9acd32",
-		sharpyellow: "e1bd01",
-		sharpgold: "c28f00",
-		sharpred: "5c0000",
-		sharpblack: "0d0a06",
-		sharporange: "e89100",
-		pomegranate: "e8586a",
-		microsoftblue: "58c0f0",
-		microsoftred: "f25123",
-		microsoftgreen: "80ba01",
-		microsoftyellow: "ffb903",
-		googleblue: "4285f4",
-		googlered: "e94235",
-		googlegreen: "34a853",
-		googleyellow: "fabb05"
+        'sharp-light-gold': "ffd700",
+        'sharp-gold': "b49700",
+        'sharp-dark-gold-a': "c28f00",
+        'sharp-dark-gold-b': "764c00",
+        'sharp-light-red': "af0000",
+        'sharp-dark-red': "5c0000",
+        'sharp-black': "0d0a06",
+        'sharp-orange': "e89100",
     };
 
     // Make it easy to access colors via `hexNames[hex]`
@@ -23606,7 +23617,8 @@ return Q;
     TOGGLE: 'toggle'
   };
 
-  ns.FramesListController = function (piskelController, container) {
+  ns.FramesListController = function (piskelController, container, i18n) {
+    this.i18n = i18n;
     this.piskelController = piskelController;
     this.container = container;
     this.previewList = container.querySelector('#preview-list');
@@ -23877,7 +23889,7 @@ return Q;
     cloneFrameButton.setAttribute('data-placement', 'right');
     cloneFrameButton.setAttribute('data-tile-number', tileNumber);
     cloneFrameButton.setAttribute('data-tile-action', ACTION.CLONE);
-    cloneFrameButton.setAttribute('title', 'Duplicate this frame');
+    cloneFrameButton.setAttribute('title', this.i18n.duplicateThisFrameFramesListTool());
     cloneFrameButton.className = 'tile-overlay duplicate-frame-action icon-frame-duplicate-white';
     previewTileRoot.appendChild(cloneFrameButton);
 
@@ -23885,7 +23897,7 @@ return Q;
     var deleteButton = document.createElement('button');
     deleteButton.setAttribute('rel', 'tooltip');
     deleteButton.setAttribute('data-placement', 'right');
-    deleteButton.setAttribute('title', 'Delete this frame');
+    deleteButton.setAttribute('title', this.i18n.deleteThisFrameFramesListTool());
     deleteButton.setAttribute('data-tile-number', tileNumber);
     deleteButton.setAttribute('data-tile-action', ACTION.DELETE);
     deleteButton.className = 'tile-overlay delete-frame-action icon-frame-recyclebin-white';
@@ -23936,6 +23948,22 @@ return Q;
     var frameSize = Math.max(frame.getHeight(), frame.getWidth());
 
     return Constants.PREVIEW_FILM_SIZE / frameSize;
+  };
+
+  ns.FramesListController.prototype.switchLocale_ = function (i18n) {
+    this.i18n = i18n;
+
+    if (typeof this.render === 'function') {
+      this.render(); 
+    } else {
+    // Fallback if render is named differently or deferred
+      this.container.querySelectorAll('.delete-frame-action').forEach(button => { 
+        button.setAttribute('title', this.i18n.deleteThisFrameFramesListTool()); 
+      });
+      this.container.querySelectorAll('.duplicate-frame-action').forEach(button => { 
+        button.setAttribute('title', this.i18n.duplicateThisFrameFramesListTool()); 
+      });
+    }
   };
 })();
 ;(function () {
@@ -24569,7 +24597,8 @@ return Q;
   var PREVIEW_SIZE = 200;
   var RENDER_MINIMUM_DELAY = 300;
 
-  ns.PreviewController = function (piskelController, container) {
+  ns.PreviewController = function (piskelController, container, i18n) {
+    this.i18n = i18n;
     this.piskelController = piskelController;
     this.container = container;
 
@@ -24583,7 +24612,7 @@ return Q;
     this.previewActionsController = new ns.PreviewActionsController(this, container);
   };
 
-  ns.PreviewController.prototype.init = function () {
+  ns.PreviewController.prototype.init = function() {
     var width = Constants.ANIMATED_PREVIEW_WIDTH + Constants.RIGHT_COLUMN_PADDING_LEFT;
     document.querySelector('.right-column').style.width = width + 'px';
 
@@ -24880,27 +24909,27 @@ return Q;
 ;(function () {
   var ns = $.namespace('pskl.controller');
 
-  ns.ToolController = function () {
+  ns.ToolController = function (i18n) {
 
     this.tools = [
-      new pskl.tools.drawing.TogglePen(),
-      new pskl.tools.drawing.SimplePen(),
-      new pskl.tools.drawing.VerticalMirrorPen(),
-      new pskl.tools.drawing.Eraser(),
-      new pskl.tools.drawing.ColorSwap(),
-      new pskl.tools.drawing.Stroke(),
-      new pskl.tools.drawing.Rectangle(),
-      new pskl.tools.drawing.Circle(),
-      new pskl.tools.drawing.Move(),
-      new pskl.tools.drawing.selection.ShapeSelect(),
-      new pskl.tools.drawing.selection.RectangleSelect(),
-      new pskl.tools.drawing.selection.LassoSelect(),
-      new pskl.tools.drawing.Lighten(),
-      new pskl.tools.drawing.ShiftIndex(),
-      new pskl.tools.drawing.DitheringTool(),
-      new pskl.tools.drawing.ColorPicker(),
-      new pskl.tools.drawing.PaintBucket(),
-      new pskl.tools.drawing.Outliner()
+      new pskl.tools.drawing.TogglePen(i18n),
+      new pskl.tools.drawing.SimplePen(i18n),
+      new pskl.tools.drawing.VerticalMirrorPen(i18n),
+      new pskl.tools.drawing.Eraser(i18n),
+      new pskl.tools.drawing.ColorSwap(i18n),
+      new pskl.tools.drawing.Stroke(i18n),
+      new pskl.tools.drawing.Rectangle(i18n),
+      new pskl.tools.drawing.Circle(i18n),
+      new pskl.tools.drawing.Move(i18n),
+      new pskl.tools.drawing.selection.ShapeSelect(i18n),
+      new pskl.tools.drawing.selection.RectangleSelect(i18n),
+      new pskl.tools.drawing.selection.LassoSelect(i18n),
+      new pskl.tools.drawing.Lighten(i18n),
+      new pskl.tools.drawing.ShiftIndex(i18n),
+      new pskl.tools.drawing.DitheringTool(i18n),
+      new pskl.tools.drawing.ColorPicker(i18n),
+      new pskl.tools.drawing.PaintBucket(i18n),
+      new pskl.tools.drawing.Outliner(i18n)
     ];
 
     this.toolIconBuilder = new pskl.tools.ToolIconBuilder();
@@ -25197,7 +25226,7 @@ return Q;
     var palettes = this.paletteService.getPalettes();
 
     var html = palettes.map(function (palette) {
-      return pskl.utils.Template.replace('<option class="palette_option" value="{{id}}">{{name}}</option>', palette);
+      return pskl.utils.Template.replace('<option value="{{id}}">{{name}}</option>', palette);
     }).join('');
     this.colorPaletteSelect_.innerHTML = html;
   };
@@ -25515,13 +25544,13 @@ return Q;
   var ns = $.namespace('pskl.controller');
   var SHOW_MORE_CLASS = 'show-more';
 
-  ns.TransformationsController = function () {
+  ns.TransformationsController = function (i18n) {
     this.tools = [
-      new pskl.tools.transform.Flip(),
-      new pskl.tools.transform.Rotate(),
-      new pskl.tools.transform.Clone(),
-      new pskl.tools.transform.Center(),
-      new pskl.tools.transform.Crop(),
+      new pskl.tools.transform.Flip(i18n),
+      new pskl.tools.transform.Rotate(i18n),
+      new pskl.tools.transform.Clone(i18n),
+      new pskl.tools.transform.Center(i18n),
+      new pskl.tools.transform.Crop(i18n),
     ];
 
     this.toolIconBuilder = new pskl.tools.ToolIconBuilder();
@@ -25694,6 +25723,59 @@ return Q;
   };
 })();
 ;(function () {
+  var ns = $.namespace('pskl.controller.settings');
+
+  ns.ChangelogController = function (piskelController) {
+    this.piskelController = piskelController;
+  };
+
+  pskl.utils.inherit(ns.ChangelogController, pskl.controller.settings.AbstractSettingController);
+
+  ns.ChangelogController.prototype.init = function() {
+    var container = document.querySelector('.settings-section-changelog');
+    
+	this.addEventListener('.changelog-sharp-button', 'click', this.viewPiskelSharpChangelog_);
+    this.addEventListener('.changelog-button', 'click', this.viewPiskelChangelog_);
+    this.addEventListener('.future-plans-button', 'click', this.viewFuturePlans_);
+    this.addEventListener('.credits-button', 'click', this.viewCredits_);
+    };
+
+  ns.ChangelogController.prototype.destroy = function () {
+	console.log('ChangelogController closed successfully!')
+  };
+
+  ns.ChangelogController.prototype.closeDrawer = function () {
+	$.publish(Events.CLOSE_SETTINGS_DRAWER);
+  };
+
+   ns.ChangelogController.prototype.viewPiskelSharpChangelog_ = function (evt) {
+    $.publish(Events.DIALOG_SHOW, {
+      dialogId : 'changelog-sharp'
+    });
+    this.closeDrawer_();
+  };
+
+  ns.ChangelogController.prototype.viewPiskelChangelog_ = function (evt) {
+    $.publish(Events.DIALOG_SHOW, {
+      dialogId : 'changelog-piskel'
+    });
+    this.closeDrawer_();
+  };
+
+  ns.ChangelogController.prototype.viewFuturePlans_ = function (evt) {
+    $.publish(Events.DIALOG_SHOW, {
+      dialogId : 'changelog-future'
+    });
+    this.closeDrawer_();
+  };
+
+  ns.ChangelogController.prototype.viewCredits_ = function (evt) {
+    $.publish(Events.DIALOG_SHOW, {
+      dialogId : 'credits'
+    });
+    this.closeDrawer_();
+  };
+})();;(function () {
   var ns = $.namespace('pskl.controller.settings.preferences');
 
   var colorsMap = {
@@ -25710,7 +25792,7 @@ return Q;
     'pink': '#FF77A8',
     'yellow': '#FFEC27',
     'orange': '#FFA300',
-    'red': '#FF004D'
+    'red': '#FF004D',
   };
 
   ns.GridPreferencesController = function (piskelController, preferencesController) {
@@ -25805,11 +25887,10 @@ return Q;
   pskl.utils.inherit(ns.MiscPreferencesController, pskl.controller.settings.AbstractSettingController);
 
   ns.MiscPreferencesController.prototype.init = function () {
-
     this.backgroundContainer = document.querySelector('.background-picker-wrapper');
     this.addEventListener(this.backgroundContainer, 'click', this.onBackgroundClick_);
 
-    // Highlight selected background :
+    // Highlight selected background
     var background = pskl.UserSettings.get(pskl.UserSettings.CANVAS_BACKGROUND);
     var selectedBackground = this.backgroundContainer.querySelector('[data-background=' + background + ']');
     if (selectedBackground) {
@@ -25821,14 +25902,29 @@ return Q;
     maxFpsInput.value = pskl.UserSettings.get(pskl.UserSettings.MAX_FPS);
     this.addEventListener(maxFpsInput, 'change', this.onMaxFpsChange_);
 
-    // Color format
-    var colorFormat = pskl.UserSettings.get(pskl.UserSettings.COLOR_FORMAT);
-    var colorFormatSelect = document.querySelector('.color-format-select');
-    var selectedColorFormatOption = colorFormatSelect.querySelector('option[value="' + colorFormat + '"]');
-    if (selectedColorFormatOption) {
-      selectedColorFormatOption.setAttribute('selected', 'selected');
+    // === REFACTORED: Custom Color Format Dropdown ===
+    var colorFormat = pskl.UserSettings.get(pskl.UserSettings.COLOR_FORMAT) || 'hex';
+    var colorDisplay = document.getElementById('current-color-format-display');
+    if (colorDisplay) {
+      // Set initial loaded state text (Capitalize first letter safely for Hex/RGB presentation)
+      colorDisplay.textContent = colorFormat === 'rgb' ? 'RGB' : 'Hex';
     }
-    this.addEventListener(colorFormatSelect, 'change', this.onColorFormatChange_);
+    var colorOptionsList = document.querySelector('.color-format-options');
+    if (colorOptionsList) {
+      this.addEventListener(colorOptionsList, 'click', this.onColorFormatCustomClick_);
+    }
+
+    // === REFACTORED: Custom Language Dropdown ===
+    var currentLocale = window.piskel_locale || 'en_US';
+    var localeDisplay = document.getElementById('current-locale-display');
+    if (localeDisplay) {
+      // Set initial loaded state text
+      localeDisplay.textContent = currentLocale;
+    }
+    var languageOptionsList = document.querySelector('.language-options');
+    if (languageOptionsList) {
+      this.addEventListener(languageOptionsList, 'click', this.onLanguageCustomClick_);
+    }
 
     // Layer preview opacity
     var layerOpacityInput = document.querySelector('.layer-opacity-input');
@@ -25844,7 +25940,6 @@ return Q;
       ignoreWarningsCheckbox.setAttribute('checked', 'true');
     }
     this.addEventListener(ignoreWarningsCheckbox, 'change', this.onIgnoreWarningsChange_);
-
   };
 
   ns.MiscPreferencesController.prototype.onBackgroundClick_ = function (evt) {
@@ -25860,8 +25955,37 @@ return Q;
     }
   };
 
-  ns.MiscPreferencesController.prototype.onColorFormatChange_ = function (evt) {
-    pskl.UserSettings.set(pskl.UserSettings.COLOR_FORMAT, evt.target.value);
+  // === NEW HANDLER: Custom Color Format Option Click ===
+  ns.MiscPreferencesController.prototype.onColorFormatCustomClick_ = function (evt) {
+    var button = evt.target.closest('button');
+    if (!button) return;
+
+    var formatValue = button.getAttribute('data-value');
+    if (formatValue) {
+      // 1. Set values natively
+      pskl.UserSettings.set(pskl.UserSettings.COLOR_FORMAT, formatValue);
+      
+      // 2. Refresh UI text and break CSS checkbox toggle loop to close layout
+      document.getElementById('current-color-format-display').textContent = button.textContent;
+      document.getElementById('color-format-toggle').checked = false;
+    }
+  };
+
+  // === NEW HANDLER: Custom Language Option Click ===
+  ns.MiscPreferencesController.prototype.onLanguageCustomClick_ = function (evt) {
+    var button = evt.target.closest('button');
+    if (!button) return;
+
+    var localeValue = button.getAttribute('data-value');
+    if (localeValue) {
+      setTimeout(function() {
+        pskl.app.switchLocale(localeValue);
+      }, 1)
+
+      // 2. Refresh UI text and break CSS checkbox toggle loop to close layout
+      document.getElementById('current-locale-display').textContent = button.textContent;
+      document.getElementById('locale-toggle').checked = false;
+    }
   };
 
   ns.MiscPreferencesController.prototype.onMaxFpsChange_ = function (evt) {
@@ -25894,7 +26018,6 @@ return Q;
   ns.MiscPreferencesController.prototype.onIgnoreWarningsChange_ = function (evt) {
     pskl.UserSettings.set(pskl.UserSettings.IGNORE_ENABLED, evt.currentTarget.checked);
   };
-
 })();
 ;(function () {
   var ns = $.namespace('pskl.controller.settings.preferences');
@@ -25977,60 +26100,6 @@ return Q;
     this.superclass.destroy.call(this);
   };
 
-})();
-;(function () {
-  var ns = $.namespace('pskl.controller.settings');
-
-  ns.ChangelogController = function (piskelController) {
-    this.piskelController = piskelController;
-  };
-
-  pskl.utils.inherit(ns.ChangelogController, pskl.controller.settings.AbstractSettingController);
-
-  ns.ChangelogController.prototype.init = function() {
-    var container = document.querySelector('.settings-section-changelog');
-    
-	this.addEventListener('.changelog-sharp-button', 'click', this.viewPiskelSharpChangelog_);
-    this.addEventListener('.changelog-button', 'click', this.viewPiskelChangelog_);
-    this.addEventListener('.future-plans-button', 'click', this.viewFuturePlans_);
-    this.addEventListener('.credits-button', 'click', this.viewCredits_);
-    };
-
-  ns.ChangelogController.prototype.destroy = function () {
-	console.log('ChangelogController closed successfully!')
-  };
-
-  ns.ChangelogController.prototype.closeDrawer = function () {
-	$.publish(Events.CLOSE_SETTINGS_DRAWER);
-  };
-
-   ns.ChangelogController.prototype.viewPiskelSharpChangelog_ = function (evt) {
-    $.publish(Events.DIALOG_SHOW, {
-      dialogId : 'changelog-sharp'
-    });
-    this.destroy();
-  };
-
-  ns.ChangelogController.prototype.viewPiskelChangelog_ = function (evt) {
-    $.publish(Events.DIALOG_SHOW, {
-      dialogId : 'changelog-piskel'
-    });
-    this.closeDrawer_();
-  };
-
-  ns.ChangelogController.prototype.viewFuturePlans_ = function (evt) {
-    $.publish(Events.DIALOG_SHOW, {
-      dialogId : 'changelog-future'
-    });
-    this.closeDrawer_();
-  };
-
-  ns.ChangelogController.prototype.viewCredits_ = function (evt) {
-    $.publish(Events.DIALOG_SHOW, {
-      dialogId : 'credits'
-    });
-    this.closeDrawer_();
-  };
 })();
 ;(function () {
   var ns = $.namespace('pskl.controller.settings.exportimage');
@@ -26562,38 +26631,524 @@ return Q;
 ;(function () {
   var ns = $.namespace('pskl.controller.settings.exportimage');
 
-  var BLACK = '#000000';
+  // BMP format constants for 32-bit BGRA export
+  var BMP_FILE_HEADER_SIZE = 14;
+  var BMP_V4_HEADER_SIZE = 108;
+  var BMP_HEADER_TOTAL = BMP_FILE_HEADER_SIZE + BMP_V4_HEADER_SIZE;
 
-  ns.MiscExportController = function (piskelController) {
+  /**
+   * BMP exporter for piskel frames.
+   * Exports all frames as 32-bit BGRA BMP files in a ZIP archive.
+   * @param {Object} piskelController - The piskel controller instance
+   */
+  ns.BmpExporter = function (piskelController) {
     this.piskelController = piskelController;
   };
 
-  pskl.utils.inherit(ns.MiscExportController, pskl.controller.settings.AbstractSettingController);
+  pskl.utils.inherit(ns.BmpExporter,
+    pskl.controller.settings.AbstractSettingController);
 
-  ns.MiscExportController.prototype.init = function () {
-    var cDownloadButton = document.querySelector('.c-download-button');
-    this.addEventListener(cDownloadButton, 'click', this.onDownloadCFileClick_);
+  /**
+   * Initializes the BMP exporter by binding UI events.
+   */
+  ns.BmpExporter.prototype.init = function () {
+    var downloadButton = document.querySelector('.bmp-download-button');
+    this.addEventListener(downloadButton, 'click', this.onDownloadClick_);
   };
 
-  ns.MiscExportController.prototype.onDownloadCFileClick_ = function (evt) {
+  /**
+   * Handles BMP download button click.
+   * Exports all frames as 32-bit BMP files in a ZIP archive.
+   * @private
+   */
+  ns.BmpExporter.prototype.onDownloadClick_ = function () {
+    var zip = new window.JSZip();
+    var frameCount = this.piskelController.getFrameCount();
+    var paddingLength = ('' + frameCount).length;
+    var baseName = this.getPiskelName_();
+
+    for (var i = 0; i < frameCount; i++) {
+      var canvas = this.piskelController.renderFrameAt(i, true);
+      var bmpData = this.generateBmpData_(canvas);
+      var frameId = pskl.utils.StringUtils.leftPad(i, paddingLength, '0');
+      var fileName = baseName + '_' + frameId + '.bmp';
+      zip.file(fileName, bmpData);
+    }
+
+    var zipFileName = baseName + '_bmp.zip';
+    var blob = zip.generate({type: 'blob'});
+    pskl.utils.FileUtils.downloadAsFile(blob, zipFileName);
+  };
+
+  /**
+   * Gets the piskel name for file naming.
+   * @return {string} Piskel name
+   * @private
+   */
+  ns.BmpExporter.prototype.getPiskelName_ = function () {
+    return this.piskelController.getPiskel().getDescriptor().name;
+  };
+
+  /**
+   * Generates 32-bit BGRA BMP data from a canvas element.
+   *
+   * BMP 32-bit format with BITMAPV4HEADER:
+   *   - File Header: 14 bytes (signature, file size, pixel data offset)
+   *   - DIB Header: 108 bytes (BITMAPV4HEADER with RGBA channel masks)
+   *   - Pixel Data: width * height * 4 bytes (BGRA order, top-down)
+   *
+   * Uses negative height for top-down row order (avoids row reversal).
+   * Channel masks specify BGRA layout for proper alpha support.
+   *
+   * @param {HTMLCanvasElement} canvas - Source canvas to encode
+   * @return {Uint8Array} Complete BMP file as byte array
+   * @private
+   */
+  ns.BmpExporter.prototype.generateBmpData_ = function (canvas) {
+    var width = canvas.width;
+    var height = canvas.height;
+    var ctx = canvas.getContext('2d');
+    var imgData = ctx.getImageData(0, 0, width, height);
+    var pixels = imgData.data;
+
+    var pixelDataSize = width * height * 4;
+    var fileSize = BMP_HEADER_TOTAL + pixelDataSize;
+    var bmpData = new Uint8Array(fileSize);
+    var view = new DataView(bmpData.buffer);
+
+    // === File Header (14 bytes) ===
+    bmpData[0] = 0x42;  // 'B'
+    bmpData[1] = 0x4D;  // 'M'
+    view.setUint32(2, fileSize, true);       // File size
+    view.setUint16(6, 0, true);              // Reserved1
+    view.setUint16(8, 0, true);              // Reserved2
+    view.setUint32(10, BMP_HEADER_TOTAL, true);  // Pixel data offset
+
+    // === BITMAPV4HEADER (108 bytes) ===
+    view.setUint32(14, BMP_V4_HEADER_SIZE, true);  // Header size
+    view.setInt32(18, width, true);                // Width
+    view.setInt32(22, -height, true);              // Height (negative = top-down)
+    view.setUint16(26, 1, true);                   // Planes (always 1)
+    view.setUint16(28, 32, true);                  // Bits per pixel (32-bit)
+    view.setUint32(30, 3, true);                   // Compression (BI_BITFIELDS)
+    view.setUint32(34, pixelDataSize, true);       // Image size
+    view.setInt32(38, 2835, true);                 // X pixels per meter (~72 DPI)
+    view.setInt32(42, 2835, true);                 // Y pixels per meter (~72 DPI)
+    view.setUint32(46, 0, true);                   // Colors used
+    view.setUint32(50, 0, true);                   // Important colors
+
+    // Channel masks for BGRA (32-bit with alpha)
+    view.setUint32(54, 0x00FF0000, true);   // Red mask
+    view.setUint32(58, 0x0000FF00, true);   // Green mask
+    view.setUint32(62, 0x000000FF, true);   // Blue mask
+    view.setUint32(66, 0xFF000000, true);   // Alpha mask
+
+    // Color space type (LCS_sRGB = 0x73524742)
+    view.setUint32(70, 0x73524742, true);
+
+    // CIEXYZTRIPLE endpoints (36 bytes of zeros for sRGB)
+    // Offsets 74-109 are already zero from Uint8Array initialization
+
+    // Gamma values (unused for sRGB, leave as zero)
+    // Offsets 110-121 are already zero
+
+    // === Pixel Data (BGRA, top-down order) ===
+    var offset = BMP_HEADER_TOTAL;
+    for (var i = 0; i < pixels.length; i += 4) {
+      bmpData[offset++] = pixels[i + 2];  // Blue
+      bmpData[offset++] = pixels[i + 1];  // Green
+      bmpData[offset++] = pixels[i];      // Red
+      bmpData[offset++] = pixels[i + 3];  // Alpha
+    }
+
+    return bmpData;
+  };
+})();;(function () {
+  var ns = $.namespace('pskl.controller.settings.exportimage');
+
+  var DEFAULT_FPS = 12;
+
+  /**
+   * SVG exporter for piskel frames.
+   * Exports single frame as static SVG or multiple frames as animated SVG.
+   * @param {Object} piskelController - The piskel controller instance
+   */
+  ns.SvgExporter = function (piskelController) {
+    this.piskelController = piskelController;
+  };
+
+  pskl.utils.inherit(ns.SvgExporter,
+    pskl.controller.settings.AbstractSettingController);
+
+  /**
+   * Initializes the SVG exporter by binding UI events.
+   */
+  ns.SvgExporter.prototype.init = function () {
+    var downloadButton = document.querySelector('.svg-download-button');
+    this.addEventListener(downloadButton, 'click', this.onDownloadClick_);
+
+    this.loopCheckbox = document.querySelector('.svg-loop-checkbox');
+    this.loopCheckbox.checked = this.getLoopSetting_();
+    this.addEventListener(this.loopCheckbox, 'change',
+      this.onLoopCheckboxChange_);
+
+    // Hide loop option if single frame
+    this.updateLoopVisibility_();
+  };
+
+  /**
+   * Hides loop checkbox when only one frame exists.
+   * @private
+   */
+  ns.SvgExporter.prototype.updateLoopVisibility_ = function () {
+    var loopRow = document.querySelector('.svg-loop-row');
+    if (loopRow) {
+      var hasMultipleFrames = this.piskelController.getFrameCount() > 1;
+      loopRow.style.display = hasMultipleFrames ? 'block' : 'none';
+    }
+  };
+
+  /**
+   * Handles SVG loop checkbox change.
+   * @private
+   */
+  ns.SvgExporter.prototype.onLoopCheckboxChange_ = function () {
+    var checked = this.loopCheckbox.checked;
+    pskl.UserSettings.set(pskl.UserSettings.EXPORT_SVG_LOOP, checked);
+  };
+
+  /**
+   * Gets SVG loop setting from user settings.
+   * @return {boolean} True if loop is enabled
+   * @private
+   */
+  ns.SvgExporter.prototype.getLoopSetting_ = function () {
+    return pskl.UserSettings.get(pskl.UserSettings.EXPORT_SVG_LOOP);
+  };
+
+  /**
+   * Handles SVG download button click.
+   * Exports current piskel as SVG (animated if multiple frames).
+   * @private
+   */
+  ns.SvgExporter.prototype.onDownloadClick_ = function () {
+    var frameCount = this.piskelController.getFrameCount();
+    var svgContent;
+
+    if (frameCount === 1) {
+      svgContent = this.generateStaticSvg_();
+    } else {
+      svgContent = this.generateAnimatedSvg_();
+    }
+
+    var fileName = this.getPiskelName_() + '.svg';
+    pskl.utils.BlobUtils.stringToBlob(svgContent, function (blob) {
+      pskl.utils.FileUtils.downloadAsFile(blob, fileName);
+    }, 'image/svg+xml');
+  };
+
+  /**
+   * Gets the piskel name for file naming.
+   * @return {string} Piskel name
+   * @private
+   */
+  ns.SvgExporter.prototype.getPiskelName_ = function () {
+    return this.piskelController.getPiskel().getDescriptor().name;
+  };
+
+  /**
+   * Generates a static SVG for a single frame.
+   * Uses CSS classes for color deduplication.
+   * @return {string} SVG markup
+   * @private
+   */
+  ns.SvgExporter.prototype.generateStaticSvg_ = function () {
+    var width = this.piskelController.getWidth();
+    var height = this.piskelController.getHeight();
+    var canvas = this.piskelController.renderFrameAt(0, true);
+    var ctx = canvas.getContext('2d');
+    var imgData = ctx.getImageData(0, 0, width, height);
+    var pixels = imgData.data;
+
+    var colorMap = {};
+    var colorIndex = 0;
+    var rects = [];
+
+    for (var y = 0; y < height; y++) {
+      for (var x = 0; x < width; x++) {
+        var i = (y * width + x) * 4;
+        var r = pixels[i];
+        var g = pixels[i + 1];
+        var b = pixels[i + 2];
+        var a = pixels[i + 3];
+
+        // Skip fully transparent pixels
+        if (a === 0) {
+          continue;
+        }
+
+        var colorKey = this.rgbaToSvgColor_(r, g, b, a);
+        if (!(colorKey in colorMap)) {
+          colorMap[colorKey] = 'c' + colorIndex++;
+        }
+
+        rects.push({x: x, y: y, colorClass: colorMap[colorKey]});
+      }
+    }
+
+    return this.buildSvgDocument_(width, height, colorMap, rects);
+  };
+
+  /**
+   * Generates an animated SVG using SMIL for multiple frames.
+   * Each frame is a <g> with visibility animated.
+   * @return {string} SVG markup
+   * @private
+   */
+  ns.SvgExporter.prototype.generateAnimatedSvg_ = function () {
+    var width = this.piskelController.getWidth();
+    var height = this.piskelController.getHeight();
+    var frameCount = this.piskelController.getFrameCount();
+    var fps = this.piskelController.getFPS() || DEFAULT_FPS;
+    var loop = this.getLoopSetting_();
+
+    var totalDuration = frameCount / fps;
+    var colorMap = {};
+    var colorIndex = 0;
+    var frameGroups = [];
+
+    // Process each frame
+    for (var f = 0; f < frameCount; f++) {
+      var canvas = this.piskelController.renderFrameAt(f, true);
+      var ctx = canvas.getContext('2d');
+      var imgData = ctx.getImageData(0, 0, width, height);
+      var pixels = imgData.data;
+      var rects = [];
+
+      for (var y = 0; y < height; y++) {
+        for (var x = 0; x < width; x++) {
+          var i = (y * width + x) * 4;
+          var r = pixels[i];
+          var g = pixels[i + 1];
+          var b = pixels[i + 2];
+          var a = pixels[i + 3];
+
+          if (a === 0) {
+            continue;
+          }
+
+          var colorKey = this.rgbaToSvgColor_(r, g, b, a);
+          if (!(colorKey in colorMap)) {
+            colorMap[colorKey] = 'c' + colorIndex++;
+          }
+
+          rects.push({x: x, y: y, colorClass: colorMap[colorKey]});
+        }
+      }
+
+      frameGroups.push(rects);
+    }
+
+    return this.buildAnimatedSvgDocument_(width, height, colorMap, frameGroups,
+      totalDuration, loop);
+  };
+
+  /**
+   * Converts RGBA values to SVG-compatible color string.
+   * @param {number} r - Red (0-255)
+   * @param {number} g - Green (0-255)
+   * @param {number} b - Blue (0-255)
+   * @param {number} a - Alpha (0-255)
+   * @return {string} CSS color value
+   * @private
+   */
+  ns.SvgExporter.prototype.rgbaToSvgColor_ = function (r, g, b, a) {
+    if (a === 255) {
+      // Use hex for fully opaque colors (shorter)
+      return '#' +
+        ('0' + r.toString(16)).slice(-2) +
+        ('0' + g.toString(16)).slice(-2) +
+        ('0' + b.toString(16)).slice(-2);
+    }
+    // Use rgba for semi-transparent
+    var alpha = (a / 255).toFixed(3).replace(/\.?0+$/, '');
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
+  };
+
+  /**
+   * Builds complete SVG document for static export.
+   * @param {number} width - Canvas width
+   * @param {number} height - Canvas height
+   * @param {Object} colorMap - Map of color string to class name
+   * @param {Array} rects - Array of rect objects {x, y, colorClass}
+   * @return {string} Complete SVG document
+   * @private
+   */
+  ns.SvgExporter.prototype.buildSvgDocument_ = function (
+    width, height, colorMap, rects) {
+    var svg = '<?xml version="1.0" encoding="UTF-8"?>\n';
+    svg += '<svg xmlns="http://www.w3.org/2000/svg" ';
+    svg += 'viewBox="0 0 ' + width + ' ' + height + '" ';
+    svg += 'width="' + width + '" height="' + height + '" ';
+    svg += 'shape-rendering="crispEdges">\n';
+
+    // Style block with color classes
+    svg += '<style>\n';
+    for (var color in colorMap) {
+      if (colorMap.hasOwnProperty(color)) {
+        svg += '.' + colorMap[color] + '{fill:' + color + '}\n';
+      }
+    }
+    svg += '</style>\n';
+
+    // Rectangles
+    for (var i = 0; i < rects.length; i++) {
+      var rect = rects[i];
+      svg += '<rect x="' + rect.x + '" y="' + rect.y + '" ';
+      svg += 'width="1" height="1" class="' + rect.colorClass + '"/>\n';
+    }
+
+    svg += '</svg>';
+    return svg;
+  };
+
+  /**
+   * Builds animated SVG document using SMIL.
+   * @param {number} width - Canvas width
+   * @param {number} height - Canvas height
+   * @param {Object} colorMap - Map of color string to class name
+   * @param {Array} frameGroups - Array of frame rect arrays
+   * @param {number} duration - Total animation duration in seconds
+   * @param {boolean} loop - Whether to loop indefinitely
+   * @return {string} Complete animated SVG document
+   * @private
+   */
+  ns.SvgExporter.prototype.buildAnimatedSvgDocument_ = function (
+    width, height, colorMap, frameGroups, duration, loop) {
+    var frameCount = frameGroups.length;
+    var repeatCount = loop ? 'indefinite' : '1';
+
+    var svg = '<?xml version="1.0" encoding="UTF-8"?>\n';
+    svg += '<svg xmlns="http://www.w3.org/2000/svg" ';
+    svg += 'viewBox="0 0 ' + width + ' ' + height + '" ';
+    svg += 'width="' + width + '" height="' + height + '" ';
+    svg += 'shape-rendering="crispEdges">\n';
+
+    // Style block with color classes
+    svg += '<style>\n';
+    for (var color in colorMap) {
+      if (colorMap.hasOwnProperty(color)) {
+        svg += '.' + colorMap[color] + '{fill:' + color + '}\n';
+      }
+    }
+    svg += '</style>\n';
+
+    // Generate frame groups with SMIL animation
+    for (var f = 0; f < frameCount; f++) {
+      var rects = frameGroups[f];
+      var visibility = this.buildVisibilityValues_(f, frameCount);
+      var keyTimes = this.buildKeyTimes_(frameCount);
+
+      svg += '<g id="frame' + f + '">\n';
+      svg += '  <animate attributeName="visibility" ';
+      svg += 'values="' + visibility + '" ';
+      svg += 'keyTimes="' + keyTimes + '" ';
+      svg += 'dur="' + duration.toFixed(3) + 's" ';
+      svg += 'repeatCount="' + repeatCount + '" ';
+      svg += 'calcMode="discrete" fill="freeze"/>\n';
+
+      for (var i = 0; i < rects.length; i++) {
+        var rect = rects[i];
+        svg += '  <rect x="' + rect.x + '" y="' + rect.y + '" ';
+        svg += 'width="1" height="1" class="' + rect.colorClass + '"/>\n';
+      }
+
+      svg += '</g>\n';
+    }
+
+    svg += '</svg>';
+    return svg;
+  };
+
+  /**
+   * Builds visibility values string for SMIL animate.
+   * @param {number} frameIndex - Current frame index
+   * @param {number} frameCount - Total frame count
+   * @return {string} Semicolon-separated visibility values
+   * @private
+   */
+  ns.SvgExporter.prototype.buildVisibilityValues_ = function (
+    frameIndex, frameCount) {
+    var values = [];
+    for (var i = 0; i < frameCount; i++) {
+      values.push(i === frameIndex ? 'visible' : 'hidden');
+    }
+    return values.join(';');
+  };
+
+  /**
+   * Builds keyTimes string for SMIL animate.
+   * @param {number} frameCount - Total frame count
+   * @return {string} Semicolon-separated keyTime values (0 to 1)
+   * @private
+   */
+  ns.SvgExporter.prototype.buildKeyTimes_ = function (frameCount) {
+    var times = [];
+    for (var i = 0; i < frameCount; i++) {
+      times.push((i / frameCount).toFixed(4));
+    }
+    return times.join(';');
+  };
+})();;(function () {
+  var ns = $.namespace('pskl.controller.settings.exportimage');
+
+  /**
+   * C file exporter for piskel frames.
+   * Exports frames as a C header file with pixel data arrays.
+   * @param {Object} piskelController - The piskel controller instance
+   */
+  ns.CExporter = function (piskelController) {
+    this.piskelController = piskelController;
+  };
+
+  pskl.utils.inherit(ns.CExporter,
+    pskl.controller.settings.AbstractSettingController);
+
+  /**
+   * Initializes the C exporter by binding UI events.
+   */
+  ns.CExporter.prototype.init = function () {
+    var downloadButton = document.querySelector('.c-download-button');
+    this.addEventListener(downloadButton, 'click', this.onDownloadClick_);
+  };
+
+  /**
+   * Handles C file download button click.
+   * Exports all frames as a C header file with pixel data.
+   * @private
+   */
+  ns.CExporter.prototype.onDownloadClick_ = function () {
     var fileName = this.getPiskelName_() + '.c';
-    var cName = this.getPiskelName_().replace(' ','_');
+    var cName = this.getPiskelName_().replace(' ', '_');
     var width = this.piskelController.getWidth();
     var height = this.piskelController.getHeight();
     var frameCount = this.piskelController.getFrameCount();
 
     // Useful defines for C routines
     var frameStr = '#include <stdint.h>\n\n';
-    frameStr += '#define ' + cName.toUpperCase() + '_FRAME_COUNT ' +  this.piskelController.getFrameCount() + '\n';
-    frameStr += '#define ' + cName.toUpperCase() + '_FRAME_WIDTH ' + width + '\n';
-    frameStr += '#define ' + cName.toUpperCase() + '_FRAME_HEIGHT ' + height + '\n\n';
+    frameStr += '#define ' + cName.toUpperCase() + '_FRAME_COUNT ';
+    frameStr += frameCount + '\n';
+    frameStr += '#define ' + cName.toUpperCase() + '_FRAME_WIDTH ';
+    frameStr += width + '\n';
+    frameStr += '#define ' + cName.toUpperCase() + '_FRAME_HEIGHT ';
+    frameStr += height + '\n\n';
 
     frameStr += '/* Piskel data for \"' + this.getPiskelName_() + '\" */\n\n';
 
     frameStr += 'static const uint32_t ' + cName.toLowerCase();
     frameStr += '_data[' + frameCount + '][' + width * height + '] = {\n';
 
-    for (var i = 0 ; i < frameCount ; i++) {
+    for (var i = 0; i < frameCount; i++) {
       var render = this.piskelController.renderFrameAt(i, true);
       var context = render.getContext('2d');
       var imgd = context.getImageData(0, 0, width, height);
@@ -26601,7 +27156,7 @@ return Q;
 
       frameStr += '{\n';
       for (var j = 0; j < pix.length; j += 4) {
-        frameStr += this.rgbToCHex(pix[j], pix[j + 1], pix[j + 2], pix[j + 3]);
+        frameStr += this.rgbToCHex_(pix[j], pix[j + 1], pix[j + 2], pix[j + 3]);
         if (j != pix.length - 4) {
           frameStr += ', ';
         }
@@ -26617,25 +27172,66 @@ return Q;
     }
 
     frameStr += '};\n';
-    pskl.utils.BlobUtils.stringToBlob(frameStr, function(blob) {
+    pskl.utils.BlobUtils.stringToBlob(frameStr, function (blob) {
       pskl.utils.FileUtils.downloadAsFile(blob, fileName);
     }.bind(this), 'application/text');
   };
 
-  ns.MiscExportController.prototype.getPiskelName_ = function () {
+  /**
+   * Gets the piskel name for file naming.
+   * @return {string} Piskel name
+   * @private
+   */
+  ns.CExporter.prototype.getPiskelName_ = function () {
     return this.piskelController.getPiskel().getDescriptor().name;
   };
 
-  ns.MiscExportController.prototype.rgbToCHex = function (r, g, b, a) {
+  /**
+   * Converts RGBA values to C hex format.
+   * @param {number} r - Red (0-255)
+   * @param {number} g - Green (0-255)
+   * @param {number} b - Blue (0-255)
+   * @param {number} a - Alpha (0-255)
+   * @return {string} C hex string (e.g., 0xAABBGGRR)
+   * @private
+   */
+  ns.CExporter.prototype.rgbToCHex_ = function (r, g, b, a) {
     var hexStr = '0x';
-    hexStr += ('00' + a.toString(16)).substr(-2);
-    hexStr += ('00' + b.toString(16)).substr(-2);
-    hexStr += ('00' + g.toString(16)).substr(-2);
     hexStr += ('00' + r.toString(16)).substr(-2);
+    hexStr += ('00' + g.toString(16)).substr(-2);
+    hexStr += ('00' + b.toString(16)).substr(-2);
+    hexStr += ('00' + a.toString(16)).substr(-2);
     return hexStr;
   };
-})();
-;(function () {
+})();;(function () {
+  var ns = $.namespace('pskl.controller.settings.exportimage');
+
+  /**
+   * Orchestrator controller for miscellaneous export formats.
+   * Delegates to specialized exporters: BMP, C, and SVG.
+   * @param {Object} piskelController - The piskel controller instance
+   */
+  ns.MiscExportController = function (piskelController) {
+    this.piskelController = piskelController;
+
+    // Initialize specialized exporters
+    this.bmpExporter = new ns.BmpExporter(piskelController);
+    this.cExporter = new ns.CExporter(piskelController);
+    this.svgExporter = new ns.SvgExporter(piskelController);
+  };
+
+  pskl.utils.inherit(ns.MiscExportController,
+    pskl.controller.settings.AbstractSettingController);
+
+  /**
+   * Initializes all exporters by calling their init methods.
+   */
+  ns.MiscExportController.prototype.init = function () {
+    this.bmpExporter.init();
+    this.cExporter.init();
+    this.svgExporter.init();
+  };
+})();;(function () {
   var ns = $.namespace('pskl.controller.settings.exportimage');
 
   var tabs = {
@@ -26733,7 +27329,8 @@ return Q;
 ;(function () {
   var ns = $.namespace('pskl.controller.settings.resize');
 
-  ns.ResizeController = function (piskelController) {
+  ns.ResizeController = function (piskelController, i18n) {
+    this.createResizeDom_(i18n);
     this.piskelController = piskelController;
 
     this.container = document.querySelector('.resize-canvas');
@@ -26749,6 +27346,8 @@ return Q;
     this.widthInput = this.container.querySelector('[name="resize-width"]');
     this.heightInput = this.container.querySelector('[name="resize-height"]');
     this.resizeForm = this.container.querySelector('form');
+
+    // Make sure that the classes are correct in the template, as this has been an issue before
     this.resizeContentCheckbox = this.container.querySelector('.resize-content-checkbox');
     this.maintainRatioCheckbox = this.container.querySelector('.resize-ratio-checkbox');
 
@@ -26832,6 +27431,158 @@ return Q;
       resizeContent : !!this.resizeContentCheckbox.checked,
       maintainRatio : !!this.maintainRatioCheckbox.checked
     });
+  };
+
+  ns.ResizeController.prototype.createResizeTitleDefault = function (i18n) {
+    var templateData = {
+      text: i18n.resizeSettingSectionDefaultTitle()
+    };
+    var templateId = 'resize-settings-template';
+    return pskl.utils.Template.fillInTemplate(templateId, templateData);
+  };
+
+  ns.ResizeController.prototype.createResizeTitle = function (i18n) {
+    var templateData = {
+      text: i18n.resizeSettingSectionTitle()
+    };
+    var templateId = 'resize-settings-template';
+    return pskl.utils.Template.fillInTemplate(templateId, templateData);
+  };
+
+  ns.ResizeController.prototype.createResizeCanvasForm = function (i18n) {
+    var html = '';
+
+    // Width
+    // ----------------------------
+    var templateData = {
+      inputName: 'resize-width',
+      spanText: i18n.resizeSettingSectionWidth()
+    };
+    var templateId = 'resize-tool-template';
+    html += pskl.utils.Template.fillInTemplate(templateId, templateData);
+
+    // Height
+    // ----------------------------
+    templateData = {
+      inputName: 'resize-height',
+      spanText: i18n.resizeSettingSectionHeight()
+    };
+    templateId = 'resize-tool-template';
+    html += pskl.utils.Template.fillInTemplate(templateId, templateData);
+
+    // Checkbox
+    // ----------------------------
+    templateData = {
+      cssClass: 'resize-ratio-checkbox',
+      spanText: i18n.resizeSettingSectionMaintainAspectRatio()
+    };
+    templateId = 'ratio-canvas-template';
+    html += pskl.utils.Template.fillInTemplate(templateId, templateData);
+
+    // Ratio
+    // ----------------------------
+    templateData = {
+      cssClass: 'resize-content-checkbox',
+      spanText: i18n.resizeSettingSectionResizeCanvasContent()
+    };
+    templateId = 'ratio-canvas-template';
+    html += pskl.utils.Template.fillInTemplate(templateId, templateData);
+
+    // Anchor
+    // ----------------------------
+    templateData = {
+      spanText: i18n.resizeSettingSectionAnchor()
+    };
+    templateId = 'resize-anchor-template';
+    html += pskl.utils.Template.fillInTemplate(templateId, templateData);
+
+    // Submit Button
+    // ----------------------------
+    templateData = {
+      valueText: i18n.resizeSettingSectionSubmitButton()
+    };
+    templateId = 'resize-button-template';
+    html += pskl.utils.Template.fillInTemplate(templateId, templateData);
+
+    return html;
+  };
+
+  ns.ResizeController.prototype.createResizeCanvasDefaultForm = function (i18n) {
+    var html = '';
+
+    // Default Width
+    // ----------------------------
+    var templateData = {
+      spanText: i18n.resizeSettingSectionDefaultWidth(),
+      inputName: 'default-width'
+    };
+    var templateId = 'resize-tool-template';
+    html += pskl.utils.Template.fillInTemplate(templateId, templateData);
+
+    // Default Height
+    // ----------------------------
+    templateData = {
+      spanText: i18n.resizeSettingSectionDefaultHeight(),
+      inputName: 'default-height'
+    };
+    templateId = 'resize-tool-template';
+    html += pskl.utils.Template.fillInTemplate(templateId, templateData);
+
+    // Default Submit Button
+    // ----------------------------
+    templateData = {
+      valueText: i18n.resizeSettingSectionDefaultSubmitButton()
+    };
+    templateId = 'resize-button-template';
+    html += pskl.utils.Template.fillInTemplate(templateId, templateData);
+
+    return html;
+  };
+
+   /**
+   * @private
+   */
+  ns.ResizeController.prototype.createResizeDom_ = function (i18n) {
+    var html = '';
+    var resizeTitleHtml = this.createResizeTitle(i18n);
+    html += resizeTitleHtml;
+    $('#settings-title').html(html);
+
+    html = '';
+    var resizeCanvasFormHtml = this.createResizeCanvasForm(i18n);
+    html += resizeCanvasFormHtml;
+    $('#resize-canvas-form').html(html);
+
+    html = '';
+    var resizeTitleDefaultHtml = this.createResizeTitleDefault(i18n);
+    html += resizeTitleDefaultHtml;
+    $('#settings-title-default').html(html);
+
+    html = '';
+    var resizeCanvasFormDefaultHtml = this.createResizeCanvasDefaultForm(i18n);
+    html += resizeCanvasFormDefaultHtml;
+    $('#default-size-form').html(html);
+  };
+
+  ns.ResizeController.prototype.switchLocale_ = function (i18n) {
+    this.i18n = i18n;
+    this.this = ns.ResizeController;
+
+    var selection = document.querySelector(
+      '.icon-settings-resize-white'
+    );
+
+    if (selection) {
+      selection.setAttribute(
+        'data-original-title',
+        '<span class="highlight">' +
+          this.i18n.resizeSetting() +
+          '</span><br>' +
+          this.i18n.resizeSettingDescriptorResizeTheDrawingArea()
+      );
+    }
+
+    this.this(i18n);
   };
 })();
 ;(function () {
@@ -27080,9 +27831,7 @@ return Q;
 
     this.hiddenOpenPiskelInput = document.querySelector('[name="open-piskel-input"]');
 
-	// import.function.marker
-
-	this.addEventListener('.browse-local-button', 'click', this.onBrowseLocalClick_);
+    this.addEventListener('.browse-local-button', 'click', this.onBrowseLocalClick_);
     this.addEventListener('.browse-backups-button', 'click', this.onBrowseBackupsClick_);
     this.addEventListener('.file-input-button', 'click', this.onFileInputClick_);
 
@@ -27186,10 +27935,10 @@ return Q;
   var ns = $.namespace('pskl.controller.settings');
 
   var settings = {
-	'changelog' : {
-	  template : 'templates/settings/changelog.html',
-	  controller : ns.ChangelogController
-	},
+    'changelog' : {
+      template : 'templates/settings/changelog.html',
+      controller : ns.ChangelogController
+    },
     'user' : {
       template : 'templates/settings/preferences.html',
       controller : ns.PreferencesController
@@ -27219,7 +27968,8 @@ return Q;
   var SEL_SETTING_CLS = 'has-expanded-drawer';
   var EXP_DRAWER_CLS = 'expanded';
 
-  ns.SettingsController = function (piskelController) {
+  ns.SettingsController = function (piskelController, i18n) {
+    this.i18n = i18n;
     this.piskelController = piskelController;
     this.closeDrawerShortcut = pskl.service.keyboard.Shortcuts.MISC.CLOSE_POPUP;
     this.settingsContainer = document.querySelector('[data-pskl-controller=settings]');
@@ -27273,7 +28023,7 @@ return Q;
     this.destroyCurrentController_();
 
     this.currentSetting = setting;
-    this.currentController = new settings[setting].controller(this.piskelController);
+    this.currentController = new settings[setting].controller(this.piskelController, this.i18n);
     this.currentController.init();
 
     pskl.app.shortcutService.registerShortcut(this.closeDrawerShortcut, this.closeDrawer_.bind(this));
@@ -27307,6 +28057,13 @@ return Q;
         this.currentController = null;
       }
     }
+  };
+
+  ns.SettingsController.prototype.switchLocale_ = function (i18n) {
+    this.i18n = i18n;
+
+    // Only in resize Controller as of Unique (0.2.1)
+    this.currentController.switchLocale_(i18n);
   };
 })();
 ;(function () {
@@ -28827,6 +29584,10 @@ return Q;
     },
     'browse-backups' : {
       template : 'templates/dialogs/browse-backups.html',
+      controller : ns.backups.BrowseBackups
+    },
+    'piskel-sharp-changelog' : {
+      template : 'templates/dialogs/piskel-sharp-changelog.html',
       controller : ns.backups.BrowseBackups
     }
   };
@@ -31643,8 +32404,6 @@ return Q;
     return new ns.Shortcut(id, description, defaultKey, displayKey);
   };
 
-// keyboard.marker
-
   ns.Shortcuts = {
     /**
      * List of keys that cannot be remapped. Either alternate keys, which are not displayed.
@@ -32615,13 +33374,14 @@ ns.ToolsHelper = {
    * Abstract shape tool class, parent to all shape tools (rectangle, circle).
    * Shape tools should override only the draw method
    */
-  ns.ShapeTool = function() {
+  ns.ShapeTool = function(i18n) {
     // Shapes's first point coordinates (set in applyToolAt)
     this.startCol = null;
     this.startRow = null;
 
     this.tooltipDescriptors = [
-      {key : 'shift', description : 'Keep 1 to 1 ratio'}
+      {key : 'ctrl', description : i18n.shapeToolDrawingDescriptorFillShape()},
+      {key : 'shift', description : i18n.shapeToolDrawingDescriptorKeep1To1Ratio()}
     ];
   };
 
@@ -32738,9 +33498,9 @@ ns.ToolsHelper = {
 (function() {
   var ns = $.namespace('pskl.tools.drawing');
 
-  ns.SimplePen = function() {
+ns.SimplePen = function(i18n) {
     this.toolId = 'tool-pen';
-    this.helpText = 'Pen tool';
+    this.helpText = i18n.simplePenDrawingTool();
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.PEN;
 
     this.previousCol = null;
@@ -32844,18 +33604,12 @@ ns.ToolsHelper = {
 (function() {
   var ns = $.namespace('pskl.tools.drawing');
 
-  ns.TogglePen = function() {
+  ns.TogglePen = function(i18n) {
     this.toolId = 'tool-toggle-pen';
-    this.helpText = 'Pencil tool';
+    this.helpText = i18n.pencilDrawingTool();
     this.tooltipDescriptors = [
       {
-        description: 'Classic Macintosh style Pencil. ' +
-        'Draws in the opposite color of the pixel the stroke begins on. ' +
-        'If the stroke begins on transparent, or the secondary color, it draws in the primary color. ' +
-        'If the stroke begins on the primary color, it draws in the secondary color. ' +
-        'This minimizes the need to switch between selected colors. ' +
-        'To draw in a single color you won\'t need to change colors or tools at all. '
-      },
+        description: i18n.pencilDrawingToolDescriptorDescription() },
     ];
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.TOGGLE_PEN;
 
@@ -32980,16 +33734,16 @@ ns.ToolsHelper = {
   var ns = $.namespace('pskl.tools.drawing');
   var DEFAULT_STEP = 3;
 
-  ns.Lighten = function() {
-    this.superclass.constructor.call(this);
+  ns.Lighten = function(i18n) {
+    this.superclass.constructor.call(this, i18n);
 
     this.toolId = 'tool-lighten';
-    this.helpText = 'Lighten';
+    this.helpText = i18n.lightenDrawingTool();
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.LIGHTEN;
 
     this.tooltipDescriptors = [
-      {key : 'ctrl', description : 'Darken'},
-      {key : 'shift', description : 'Apply only once per pixel'}
+      {key : 'ctrl', description : i18n.lightenDrawingToolDescriptorDarken()},
+      {key : 'shift', description : i18n.lightenDrawingToolDescriptorApplyOncePerPixel()}
     ];
   };
 
@@ -33051,24 +33805,16 @@ ns.ToolsHelper = {
 (function() {
   var ns = $.namespace('pskl.tools.drawing');
 
-  ns.ShiftIndex = function() {
-    this.superclass.constructor.call(this);
+  ns.ShiftIndex = function(i18n) {
+    this.superclass.constructor.call(this, i18n);
 
     this.toolId = 'tool-shift-index';
-    this.helpText = 'Shift Palette Color Index Brush';
+    this.helpText = i18n.shiftIndexDrawingTool();
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.SHIFT_INDEX;
 
     this.tooltipDescriptors = [
-			{ key: 'none', description: 'Shift Index forwards' },
- 			{ key: ' ', description: 'Changes the color of pixels'},
-			{ key: ' ', description: 'which are in the current palette.'},
-			{ key: ' ', description: 'For each pixel it touches, the next or previous color within the palette will be used.'},
-			{ key: ' ', description: 'Use the primary and secondary colors in the palette to set'},
-			{ key: ' ', description: 'cell shade range boundaries. For example if your palette has:'},
-			{ key: ' ', description: '- light red, dark red, light blue, dark blue -'},
-			{ key: ' ', description: 'you would want to set the primary colour to light red and secondary to dark red.'},
-			{ key: ' ', description: 'This will prevent the brush from cycling red to blue'},
-			{ key: 'ctrl', description: 'Shift Index backwards' }
+      { description: i18n.shiftIndexDescriptorUsage() },
+			{ key: 'ctrl', description: i18n.shiftIndexDescriptorShiftBack() },
     ];
   };
 
@@ -33136,16 +33882,16 @@ ns.ToolsHelper = {
 })();;(function() {
   var ns = $.namespace('pskl.tools.drawing');
 
-  ns.VerticalMirrorPen = function() {
-    this.superclass.constructor.call(this);
+  ns.VerticalMirrorPen = function(i18n) {
+    this.superclass.constructor.call(this, i18n);
 
     this.toolId = 'tool-vertical-mirror-pen';
-    this.helpText = 'Vertical Mirror pen';
+    this.helpText = i18n.verticalMirrorPenDrawingTool();
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.MIRROR_PEN;
 
     this.tooltipDescriptors = [
-      {key : 'ctrl', description : 'Use horizontal axis'},
-      {key : 'shift', description : 'Use horizontal and vertical axis'}
+      {key : 'ctrl', description : i18n.verticalMirrorPenDrawingToolDescriptorHorizAxis()},
+      {key : 'shift', description : i18n.verticalMirrorPenDrawingToolDescriptorHorizAndVertAxis()}
     ];
   };
 
@@ -33202,11 +33948,11 @@ ns.ToolsHelper = {
 (function() {
   var ns = $.namespace('pskl.tools.drawing');
 
-  ns.Eraser = function() {
-    this.superclass.constructor.call(this);
+  ns.Eraser = function(i18n) {
+    this.superclass.constructor.call(this, i18n);
 
     this.toolId = 'tool-eraser';
-    this.helpText = 'Eraser tool';
+    this.helpText = i18n.eraserDrawingTool();
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.ERASER;
   };
 
@@ -33227,14 +33973,12 @@ ns.ToolsHelper = {
 (function() {
   var ns = $.namespace('pskl.tools.drawing');
 
-  ns.Stroke = function() {
+  ns.Stroke = function(i18n) {
     this.toolId = 'tool-stroke';
-    this.helpText = 'Stroke tool';
+    this.helpText = i18n.strokeDrawingTool();
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.STROKE;
     this.tooltipDescriptors = [
-      {key : 'none', description : 'Can draw uneven diagonale'},
-      {key : ' ', description : 'lines'},
-      {key : 'shift', description : 'Hold shift to draw straight lines'}
+      {key : 'shift', description : i18n.strokeDrawingToolDescriptorDrawStraightLine()}
     ];
 
     // Stroke's first point coordinates (set in applyToolAt)
@@ -33363,9 +34107,9 @@ ns.ToolsHelper = {
 (function() {
   var ns = $.namespace('pskl.tools.drawing');
 
-  ns.PaintBucket = function() {
+  ns.PaintBucket = function(i18n) {
     this.toolId = 'tool-paint-bucket';
-    this.helpText = 'Paint bucket tool';
+    this.helpText = i18n.paintBucketDrawingTool();
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.PAINT_BUCKET;
   };
 
@@ -33397,12 +34141,13 @@ ns.ToolsHelper = {
 (function() {
   var ns = $.namespace('pskl.tools.drawing');
 
-  ns.Outliner = function() {
+  ns.Outliner = function(i18n) {
     this.toolId = 'tool-outliner';
-    this.helpText = 'Outliner tool';
+    this.helpText = i18n.outlinerDrawingTool();
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.OUTLINER;
+
     this.tooltipDescriptors = [
-      {key : 'ctrl', description : 'Fill corners'}
+      {key : 'ctrl', description : i18n.outlinerDrawingToolDescriptorFillCorners()}
     ];
   };
 
@@ -33441,11 +34186,11 @@ ns.ToolsHelper = {
 (function() {
   var ns = $.namespace('pskl.tools.drawing');
 
-  ns.Rectangle = function() {
-    ns.ShapeTool.call(this);
+  ns.Rectangle = function(i18n) {
+    ns.ShapeTool.call(this, i18n);
 
     this.toolId = 'tool-rectangle';
-    this.helpText = 'Rectangle tool';
+    this.helpText = i18n.rectangleDrawingTool();
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.RECTANGLE;
   };
 
@@ -33457,7 +34202,12 @@ ns.ToolsHelper = {
   ns.Rectangle.prototype.draw = function (col, row, color, targetFrame, penSize) {
     var rectangle = pskl.PixelUtils.getOrderedRectangleCoordinates(this.startCol, this.startRow, col, row);
 
-    for (var x = rectangle.x0; x <= rectangle.x1; x++) {
+    if (event.ctrlKey) {
+      for (var x = rectangle.x0; x <= rectangle.x1; x++) {
+      for (var y = rectangle.y0; y <= rectangle.y1; y++) {
+        targetFrame.setPixel(x, y, color);
+    }}} else {
+      for (var x = rectangle.x0; x <= rectangle.x1; x++) {
       for (var y = rectangle.y0; y <= rectangle.y1; y++) {
         if (
           x > rectangle.x1 - penSize ||
@@ -33469,6 +34219,7 @@ ns.ToolsHelper = {
         }
       }
     }
+    }
   };
 })();
 ;/**
@@ -33479,11 +34230,11 @@ ns.ToolsHelper = {
 (function() {
   var ns = $.namespace('pskl.tools.drawing');
 
-  ns.Circle = function() {
-    ns.ShapeTool.call(this);
+  ns.Circle = function(i18n) {
+    ns.ShapeTool.call(this, i18n);
 
     this.toolId = 'tool-circle';
-    this.helpText = 'Circle tool';
+    this.helpText = i18n.circleDrawingTool();
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.CIRCLE;
   };
 
@@ -33513,6 +34264,25 @@ ns.ToolsHelper = {
     var y;
     var angle;
     var r;
+
+    if (event.ctrlKey) {
+      for (x = coords.x0; x <= xC; x++) {
+        angle = Math.acos((x - xC) / rX);
+        y = Math.round(rY * Math.sin(angle) + yC);
+        for (var yCoord = 2 * yC - y - evenY; yCoord <= y; yCoord++) {
+          pixels.push([x - evenX, yCoord]);
+          pixels.push([2 * xC - x, yCoord]);
+        }
+      }
+      for (y = coords.y0; y <= yC; y++) {
+        angle = Math.asin((y - yC) / rY);
+        x = Math.round(rX * Math.cos(angle) + xC);
+        for (var xCoord = 2 * xC - x - evenX; xCoord <= x; xCoord++) {
+          pixels.push([xCoord, y - evenY]);
+          pixels.push([xCoord, 2 * yC - y]);
+        }
+      }
+    } else {
 
     if (penSize == 1) {
       for (x = coords.x0 ; x <= xC ; x++) {
@@ -33559,6 +34329,7 @@ ns.ToolsHelper = {
         }
       }
     }
+    }
 
     return pixels;
   };
@@ -33571,15 +34342,15 @@ ns.ToolsHelper = {
 (function() {
   var ns = $.namespace('pskl.tools.drawing');
 
-  ns.Move = function() {
+  ns.Move = function(i18n) {
     this.toolId = ns.Move.TOOL_ID;
-    this.helpText = 'Move tool';
+    this.helpText = i18n.moveDrawingTool();
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.MOVE;
 
     this.tooltipDescriptors = [
-      {key : 'ctrl', description : 'Apply to all layers'},
-      {key : 'shift', description : 'Apply to all frames'},
-      {key : 'alt', description : 'Wrap canvas borders'}
+      {key : 'ctrl', description : i18n.moveDrawingToolDescriptorApplyToAllLayers()},
+      {key : 'shift', description : i18n.moveDrawingToolDescriptorApplyToAllFrames()},
+      {key : 'alt', description :  i18n.moveDrawingToolDescriptorWrapCanvas()}
     ];
 
     // Stroke's first point coordinates (set in applyToolAt)
@@ -33680,8 +34451,9 @@ ns.ToolsHelper = {
 (function() {
   var ns = $.namespace('pskl.tools.drawing.selection');
 
-  ns.BaseSelect = function() {
+  ns.BaseSelect = function(i18n) {
     this.secondaryToolId = pskl.tools.drawing.Move.TOOL_ID;
+    this.bodyRoot = $('body');
 
     // Select's first point coordinates (set in applyToolAt)
     this.startCol = null;
@@ -33694,12 +34466,13 @@ ns.ToolsHelper = {
     this.hasSelection = false;
 
     this.tooltipDescriptors = [
-      {description : 'Drag the selection to move it. You may switch to other layers and frames.'},
-      {key : 'ctrl+c', description : 'Copy the selected area'},
-      {key : 'ctrl+v', description : 'Paste the copied area'},
-      {key : 'shift', description : 'Hold to move the content'}
+      {description : i18n.baseSelectDrawingSelectionToolDescriptorDragTheSelection()},
+      {key : 'ctrl+c', description : i18n.baseSelectDrawingSelectionToolDescriptorDuplicateTheSelectedArea()},
+      {key : 'shift', description : i18n.baseSelectDrawingSelectionToolDescriptorMoveTheContent()}
     ];
-
+    if (!Constants.ENABLE_MULTIPLE_LAYERS) {
+      this.tooltipDescriptors[0] = {description : i18n.baseSelectDrawingSelectionToolDescriptorDragTheSelectionMaySwitchToOtherFrames()};
+    }
     $.subscribe(Events.SELECTION_DISMISSED, this.onSelectionDismissed_.bind(this));
   };
 
@@ -33716,7 +34489,7 @@ ns.ToolsHelper = {
     this.lastMoveRow = row;
 
     // The select tool can be in two different state.
-    // If the initial click of the tool is not on a selection, we go in 'select'
+    // If the inital click of the tool is not on a selection, we go in 'select'
     // mode to create a selection.
     // If the initial click is on a previous selection, we go in 'moveSelection'
     // mode to allow to move the selection by drag'n dropping it.
@@ -33765,12 +34538,12 @@ ns.ToolsHelper = {
     if (overlay.containsPixel(col, row)) {
       if (this.isInSelection(col, row)) {
         // We're hovering the selection, show the move tool:
-        document.body.classList.add(this.secondaryToolId);
-        document.body.classList.remove(this.toolId);
+        this.bodyRoot.addClass(this.secondaryToolId);
+        this.bodyRoot.removeClass(this.toolId);
       } else {
         // We're not hovering the selection, show create selection tool:
-        document.body.classList.add(this.toolId);
-        document.body.classList.remove(this.secondaryToolId);
+        this.bodyRoot.addClass(this.toolId);
+        this.bodyRoot.removeClass(this.secondaryToolId);
       }
     }
 
@@ -33860,12 +34633,17 @@ ns.ToolsHelper = {
     this.lastMoveRow = row;
   };
 
+  // Redraw a given overlay.
+  ns.BaseSelect.prototype.reDraw = function (overlay) {
+    overlay.clear();
+    this.drawSelectionOnOverlay_(overlay);
+  };
+
   /** @private */
   ns.BaseSelect.prototype.onSelectionMoveEnd_ = function (col, row, frame, overlay) {
     this.onSelectionMove_(col, row, frame, overlay);
   };
-})();
-;/**
+})();;/**
  * Base class for all select tools that use a dragging mechanism to define the selection.
  *
  * @provide pskl.tools.drawing.selection.AbstractDragSelect
@@ -33873,8 +34651,8 @@ ns.ToolsHelper = {
 (function () {
   var ns = $.namespace('pskl.tools.drawing.selection');
 
-  ns.AbstractDragSelect = function () {
-    ns.BaseSelect.call(this);
+  ns.AbstractDragSelect = function(i18n) {
+    ns.BaseSelect.call(this, i18n);
   };
 
   pskl.utils.inherit(ns.AbstractDragSelect, ns.BaseSelect);
@@ -33923,8 +34701,7 @@ ns.ToolsHelper = {
   ns.AbstractDragSelect.prototype.onDragSelect_ = function (col, row, frame, overlay) {};
   /** @protected */
   ns.AbstractDragSelect.prototype.onDragSelectEnd_ = function (col, row, frame, overlay) {};
-})();
-;/**
+})();;/**
  * @provide pskl.tools.drawing.selection.LassoSelect
  *
  * @require pskl.utils
@@ -33932,11 +34709,11 @@ ns.ToolsHelper = {
 (function() {
   var ns = $.namespace('pskl.tools.drawing.selection');
 
-  ns.LassoSelect = function() {
-    ns.AbstractDragSelect.call(this);
+  ns.LassoSelect = function(i18n) {
+    ns.AbstractDragSelect.call(this, i18n);
 
     this.toolId = 'tool-lasso-select';
-    this.helpText = 'Lasso selection';
+    this.helpText = i18n.lassoSelectDrawingSelectionTool();
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.LASSO_SELECT;
   };
 
@@ -34011,8 +34788,7 @@ ns.ToolsHelper = {
     overlay.clear();
     this.drawSelectionOnOverlay_(overlay);
   };
-})();
-;/**
+})();;/**
  * @provide pskl.tools.drawing.selection.RectangleSelect
  *
  * @require pskl.utils
@@ -34020,11 +34796,11 @@ ns.ToolsHelper = {
 (function() {
   var ns = $.namespace('pskl.tools.drawing.selection');
 
-  ns.RectangleSelect = function() {
-    ns.AbstractDragSelect.call(this);
+  ns.RectangleSelect = function(i18n) {
+    ns.AbstractDragSelect.call(this, i18n);
 
     this.toolId = 'tool-rectangle-select';
-    this.helpText = 'Rectangle selection';
+    this.helpText = i18n.rectangleSelectDrawingSelectionTool();
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.RECTANGLE_SELECT;
 
   };
@@ -34038,8 +34814,8 @@ ns.ToolsHelper = {
 
   /**
    * When creating the rectangle selection, we clear the current overlayFrame and
-   * redraw the current rectangle based on the origin coordinate and
-   * the current mouse coordinate in sprite.
+   * redraw the current rectangle based on the orgin coordinate and
+   * the current mouse coordiinate in sprite.
    * @override
    */
   ns.RectangleSelect.prototype.onDragSelect_ = function (col, row, frame, overlay) {
@@ -34055,8 +34831,7 @@ ns.ToolsHelper = {
     $.publish(Events.DRAG_END);
   };
 
-})();
-;/**
+})();;/**
  * @provide pskl.tools.drawing.selection.ShapeSelect
  *
  * @require pskl.utils
@@ -34064,11 +34839,11 @@ ns.ToolsHelper = {
 (function() {
   var ns = $.namespace('pskl.tools.drawing.selection');
 
-  ns.ShapeSelect = function() {
-    ns.BaseSelect.call(this);
+  ns.ShapeSelect = function(i18n) {
+    ns.BaseSelect.call(this, i18n);
 
     this.toolId = 'tool-shape-select';
-    this.helpText = 'Shape selection';
+    this.helpText = i18n.shapeSelectDrawingSelectionTool();
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.SHAPE_SELECT;
   };
 
@@ -34076,7 +34851,7 @@ ns.ToolsHelper = {
 
   /**
    * For the shape select tool, you just need to click one time to create a selection.
-   * So we just need to implement onSelectStart_ (no need for onSelect_ & onSelectEnd_)
+   * So we jsut need to implement onSelectStart_ (no need for onSelect_ & onSelectEnd_)
    * @override
    */
   ns.ShapeSelect.prototype.onSelectStart_ = function (col, row, frame, overlay) {
@@ -34094,8 +34869,7 @@ ns.ToolsHelper = {
     }
   };
 
-})();
-;/**
+})();;/**
  * @provide pskl.tools.drawing.ColorPicker
  *
  * @require pskl.utils
@@ -34103,9 +34877,9 @@ ns.ToolsHelper = {
 (function() {
   var ns = $.namespace('pskl.tools.drawing');
 
-  ns.ColorPicker = function() {
+  ns.ColorPicker = function(i18n) {
     this.toolId = 'tool-colorpicker';
-    this.helpText = 'Color picker';
+    this.helpText = i18n.colorPickerDrawingTool();
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.COLORPICKER;
   };
 
@@ -34132,14 +34906,14 @@ ns.ToolsHelper = {
 (function() {
   var ns = $.namespace('pskl.tools.drawing');
 
-  ns.ColorSwap = function() {
+  ns.ColorSwap = function(i18n) {
     this.toolId = 'tool-colorswap';
-    this.helpText = 'Paint all pixels of the same color';
+    this.helpText = i18n.colorSwapDrawingTool();
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.COLORSWAP;
 
     this.tooltipDescriptors = [
-      {key : 'ctrl', description : 'Apply to all layers'},
-      {key : 'shift', description : 'Apply to all frames'}
+      {key : 'ctrl', description : i18n.colorSwapDrawingToolDescriptorApplyToAllLayers()},
+      {key : 'shift', description : i18n.colorSwapDrawingToolDescriptorApplyToAllFrames()},
     ];
   };
 
@@ -34199,15 +34973,15 @@ ns.ToolsHelper = {
 (function() {
   var ns = $.namespace('pskl.tools.drawing');
 
-  ns.DitheringTool = function() {
-    ns.SimplePen.call(this);
+  ns.DitheringTool = function(i18n) {
+    ns.SimplePen.call(this, i18n);
     this.toolId = 'tool-dithering';
-    this.helpText = 'Dithering tool';
+    this.helpText = i18n.ditheringDrawingTool();
     this.shortcut = pskl.service.keyboard.Shortcuts.TOOL.DITHERING;
 
     this.tooltipDescriptors = [
-      {key : 'ctrl', description : 'Use 25% dither'},
-      {key : 'shift', description : 'Use 75% dither'},
+      {key : 'ctrl', description : i18n.ditheringDrawingToolDescriptorUse25()},
+      {key : 'shift', description : i18n.ditheringDrawingToolDescriptorUse75()}
     ];
   };
 
@@ -34293,13 +35067,15 @@ ns.ToolsHelper = {
 ;(function () {
   var ns = $.namespace('pskl.tools.transform');
 
-  ns.Center = function () {
+  ns.Center = function (i18n) {
+    this.i18n = i18n;
     this.toolId = 'tool-center';
-    this.helpText = 'Align image to the center';
-    this.tooltipDescriptors = [
-      {key : 'ctrl', description : 'Apply to all layers'},
-      {key : 'shift', description : 'Apply to all frames'}
-    ];
+    this.helpText = this.i18n.centerTransformTool();
+    this.tooltipDescriptors = [];
+    if (Constants.ENABLE_MULTIPLE_LAYERS) {
+      this.tooltipDescriptors.push({key : 'ctrl', description : i18n.centerTransformToolDescriptorApplyToAllLayers()});
+    }
+    this.tooltipDescriptors.push({key : 'shift', description : i18n.centerTransformToolDescriptorApplyToAllFrames()});
   };
 
   pskl.utils.inherit(ns.Center, ns.AbstractTransformTool);
@@ -34308,13 +35084,12 @@ ns.ToolsHelper = {
     ns.TransformUtils.center(frame);
   };
 
-})();
-;(function () {
+})();;(function () {
   var ns = $.namespace('pskl.tools.transform');
 
-  ns.Clone = function () {
+  ns.Clone = function (i18n) {
     this.toolId = 'tool-clone';
-    this.helpText = 'Clone current layer to all frames';
+    this.helpText = i18n.cloneTransformTool();
     this.tooltipDescriptors = [];
   };
 
@@ -34329,17 +35104,16 @@ ns.ToolsHelper = {
       }
     });
   };
-})();
-;(function () {
+})();;(function () {
   var ns = $.namespace('pskl.tools.transform');
 
-  ns.Crop = function () {
+  ns.Crop = function (i18n) {
     this.toolId = 'tool-crop';
-    this.helpText = 'Crop the sprite';
+    this.helpText = i18n.cropTransformTool();
     this.tooltipDescriptors = [
       {
-        description : 'Crop to fit the content or the selection. ' +
-                      'Applies to all frames and layers!'
+        description : i18n.cropTransformToolDescriptorCropToFit() +
+                      i18n.cropTransformToolDescriptorAppliesToAllFramesLayers()
       }
     ];
   };
@@ -34456,18 +35230,18 @@ ns.ToolsHelper = {
 
     return pskl.tools.transform.TransformUtils.getBoundaries([selectionFrame]);
   };
-})();
-;(function () {
+})();;(function () {
   var ns = $.namespace('pskl.tools.transform');
 
-  ns.Flip = function () {
+  ns.Flip = function (i18n) {
     this.toolId = 'tool-flip';
-    this.helpText = 'Flip horizontally';
-    this.tooltipDescriptors = [
-      {key : 'alt', description : 'Flip vertically'},
-      {key : 'ctrl', description : 'Apply to all layers'},
-      {key : 'shift', description : 'Apply to all frames'}
-    ];
+    this.helpText = i18n.flipTransformToolDescriptorHorizAxis();
+
+    this.tooltipDescriptors = [{key : 'alt', description : i18n.flipTransformToolVertAxis()}];
+    if (Constants.ENABLE_MULTIPLE_LAYERS) {
+      this.tooltipDescriptors.push({key : 'ctrl', description : i18n.flipTransformToolDescriptorApplyToAllLayers()});
+    }
+    this.tooltipDescriptors.push({key : 'shift', description : i18n.flipTransformToolDescriptorApplyToAllFrames()});
   };
 
   pskl.utils.inherit(ns.Flip, ns.AbstractTransformTool);
@@ -34484,17 +35258,18 @@ ns.ToolsHelper = {
     ns.TransformUtils.flip(frame, axis);
   };
 
-})();
-;(function () {
+})();;(function () {
   var ns = $.namespace('pskl.tools.transform');
 
-  ns.Rotate = function () {
+  ns.Rotate = function (i18n) {
     this.toolId = 'tool-rotate';
-    this.helpText = 'Counter-clockwise rotation';
-    this.tooltipDescriptors = [
-      {key : 'alt', description : 'Clockwise rotation'},
-      {key : 'ctrl', description : 'Apply to all layers'},
-      {key : 'shift', description : 'Apply to all frames'}];
+    this.helpText = i18n.rotateTransformTool();
+
+    this.tooltipDescriptors = [{key : 'alt', description : i18n.rotateTransformToolDescriptorClockwiseRotation()}];
+    if (Constants.ENABLE_MULTIPLE_LAYERS) {
+      this.tooltipDescriptors.push({key : 'ctrl', description : i18n.rotateTransformToolDescriptorApplyToAllLayers()});
+    }
+    this.tooltipDescriptors.push({key : 'shift', description : i18n.rotateTransformToolDescriptorApplyToAllFrames()});
   };
 
   pskl.utils.inherit(ns.Rotate, ns.AbstractTransformTool);
@@ -34511,8 +35286,7 @@ ns.ToolsHelper = {
     ns.TransformUtils.rotate(frame, direction);
   };
 
-})();
-;(function () {
+})();;(function () {
   var ns = $.namespace('pskl.tools.transform');
 
   ns.TransformUtils = {
@@ -34643,6 +35417,942 @@ ns.ToolsHelper = {
   };
 })();
 ;(function () {
+  var ns = $.namespace('pskl.devtools');
+
+  ns.DrawingTestPlayer = function (testRecord, step) {
+    this.initialState = testRecord.initialState;
+    this.events = testRecord.events;
+    this.referencePng = testRecord.png;
+    this.step = step || this.initialState.step || ns.DrawingTestPlayer.DEFAULT_STEP;
+    this.callbacks = [];
+    this.shim = null;
+    this.performance = 0;
+
+  };
+
+  ns.DrawingTestPlayer.DEFAULT_STEP = 50;
+
+  ns.DrawingTestPlayer.prototype.start = function () {
+    this.setupInitialState_();
+    this.createMouseShim_();
+
+    // Override the main drawing loop to record the time spent rendering.
+    this.loopBackup = pskl.app.drawingLoop.loop;
+    pskl.app.drawingLoop.loop = function () {
+      var before = window.performance.now();
+      this.loopBackup.call(pskl.app.drawingLoop);
+      this.performance += window.performance.now() - before;
+    }.bind(this);
+
+    this.regenerateReferencePng(function () {
+      this.playEvent_(0);
+    }.bind(this));
+  };
+
+  ns.DrawingTestPlayer.prototype.setupInitialState_ = function () {
+
+    var size = this.initialState.size;
+    var piskel = this.createPiskel_(size.width, size.height);
+    pskl.app.piskelController.setPiskel(piskel);
+
+    $.publish(Events.SELECT_PRIMARY_COLOR, [this.initialState.primaryColor]);
+    $.publish(Events.SELECT_SECONDARY_COLOR, [this.initialState.secondaryColor]);
+    $.publish(Events.SELECT_TOOL, [this.initialState.selectedTool]);
+
+    // Old tests do not have penSize stored in initialState, fallback to 1.
+    var penSize = this.initialState.penSize || 1;
+    pskl.app.penSizeService.setPenSize(this.initialState.penSize);
+  };
+
+  ns.DrawingTestPlayer.prototype.createPiskel_ = function (width, height) {
+    var descriptor = new pskl.model.piskel.Descriptor('TestPiskel', '');
+    var piskel = new pskl.model.Piskel(width, height, 12, descriptor);
+    var layer = new pskl.model.Layer('Layer 1');
+    var frame = new pskl.model.Frame(width, height);
+
+    layer.addFrame(frame);
+    piskel.addLayer(layer);
+
+    return piskel;
+  };
+
+  ns.DrawingTestPlayer.prototype.regenerateReferencePng = function (callback) {
+    var image = new Image();
+    image.onload = function () {
+      this.referenceCanvas = pskl.utils.CanvasUtils.createFromImage(image);
+      callback();
+    }.bind(this);
+    image.src = this.referencePng;
+  };
+
+  /**
+   * Catch all mouse events to avoid perturbations during the test
+   */
+  ns.DrawingTestPlayer.prototype.createMouseShim_ = function () {
+    this.shim = document.createElement('DIV');
+    this.shim.style.cssText = 'position:fixed;top:0;left:0;right:0;left:0;bottom:0;z-index:15000';
+    this.shim.addEventListener('mousemove', function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }, true);
+    document.body.appendChild(this.shim);
+  };
+
+  ns.DrawingTestPlayer.prototype.removeMouseShim_ = function () {
+    this.shim.parentNode.removeChild(this.shim);
+    this.shim = null;
+  };
+
+  ns.DrawingTestPlayer.prototype.playEvent_ = function (index) {
+    this.timer = window.setTimeout(function () {
+      var recordEvent = this.events[index];
+
+      // All events have already been replayed, finish the test.
+      if (!recordEvent) {
+        this.onTestEnd_();
+        return;
+      }
+
+      var before = window.performance.now();
+      if (recordEvent.type === 'mouse-event') {
+        this.playMouseEvent_(recordEvent);
+      } else if (recordEvent.type === 'keyboard-event') {
+        this.playKeyboardEvent_(recordEvent);
+      } else if (recordEvent.type === 'color-event') {
+        this.playColorEvent_(recordEvent);
+      } else if (recordEvent.type === 'tool-event') {
+        this.playToolEvent_(recordEvent);
+      } else if (recordEvent.type === 'pensize-event') {
+        this.playPenSizeEvent_(recordEvent);
+      } else if (recordEvent.type === 'transformtool-event') {
+        this.playTransformToolEvent_(recordEvent);
+      } else if (recordEvent.type === 'instrumented-event') {
+        this.playInstrumentedEvent_(recordEvent);
+      } else if (recordEvent.type === 'clipboard-event') {
+        this.playClipboardEvent_(recordEvent);
+      }
+
+      // Record the time spent replaying the event
+      this.performance += window.performance.now() - before;
+
+      this.playEvent_(index + 1);
+    }.bind(this), this.step);
+  };
+
+  ns.DrawingTestPlayer.prototype.playMouseEvent_ = function (recordEvent) {
+    var event = recordEvent.event;
+    var screenCoordinates = pskl.app.drawingController.getScreenCoordinates(recordEvent.coords.x, recordEvent.coords.y);
+    event.clientX = screenCoordinates.x;
+    event.clientY = screenCoordinates.y;
+    if (pskl.utils.UserAgent.isMac && event.ctrlKey) {
+      event.metaKey = true;
+    }
+
+    if (event.type == 'mousedown') {
+      pskl.app.drawingController.onMousedown_(event);
+    } else if (event.type == 'mouseup') {
+      pskl.app.drawingController.onMouseup_(event);
+    } else if (event.type == 'mousemove') {
+      pskl.app.drawingController.onMousemove_(event);
+    }
+  };
+
+  ns.DrawingTestPlayer.prototype.playKeyboardEvent_ = function (recordEvent) {
+    var event = recordEvent.event;
+    if (pskl.utils.UserAgent.isMac) {
+      event.metaKey = event.ctrlKey;
+    }
+
+    event.preventDefault = function () {};
+    pskl.app.shortcutService.onKeyDown_(event);
+  };
+
+  ns.DrawingTestPlayer.prototype.playColorEvent_ = function (recordEvent) {
+    if (recordEvent.isPrimary) {
+      $.publish(Events.SELECT_PRIMARY_COLOR, [recordEvent.color]);
+    } else {
+      $.publish(Events.SELECT_SECONDARY_COLOR, [recordEvent.color]);
+    }
+  };
+
+  ns.DrawingTestPlayer.prototype.playToolEvent_ = function (recordEvent) {
+    $.publish(Events.SELECT_TOOL, [recordEvent.toolId]);
+  };
+
+  ns.DrawingTestPlayer.prototype.playPenSizeEvent_ = function (recordEvent) {
+    pskl.app.penSizeService.setPenSize(recordEvent.penSize);
+  };
+
+  ns.DrawingTestPlayer.prototype.playTransformToolEvent_ = function (recordEvent) {
+    pskl.app.transformationsController.applyTool(recordEvent.toolId, recordEvent.event);
+  };
+
+  ns.DrawingTestPlayer.prototype.playInstrumentedEvent_ = function (recordEvent) {
+    pskl.app.piskelController[recordEvent.methodName].apply(pskl.app.piskelController, recordEvent.args);
+  };
+
+  ns.DrawingTestPlayer.prototype.playClipboardEvent_ = function (recordEvent) {
+    $.publish(recordEvent.event.type, {
+      preventDefault: function () {},
+      clipboardData: {
+        items: [],
+        setData: function () {}
+      }
+    });
+  };
+
+  ns.DrawingTestPlayer.prototype.onTestEnd_ = function () {
+    this.removeMouseShim_();
+    // Restore the original drawing loop.
+    pskl.app.drawingLoop.loop = this.loopBackup;
+
+    // Retrieve the imageData corresponding to the spritesheet created by the test.
+    var renderer = new pskl.rendering.PiskelRenderer(pskl.app.piskelController);
+    var canvas = renderer.renderAsCanvas();
+    var testData = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
+
+    // Retrieve the reference imageData corresponding to the reference data-url png stored for this test.
+    var refCanvas = this.referenceCanvas;
+    this.referenceData = refCanvas.getContext('2d').getImageData(0, 0, refCanvas.width, refCanvas.height);
+
+    // Compare the two imageData arrays.
+    var success = true;
+    for (var i = 0 ; i < this.referenceData.data.length ; i++) {
+      if (this.referenceData.data[i] != testData.data[i]) {
+        success = false;
+      }
+    }
+
+    $.publish(Events.TEST_RECORD_END, [success]);
+    this.callbacks.forEach(function (callback) {
+      callback({
+        success: success,
+        performance: this.performance
+      });
+    }.bind(this));
+  };
+
+  ns.DrawingTestPlayer.prototype.addEndTestCallback = function (callback) {
+    this.callbacks.push(callback);
+  };
+
+})();
+;(function () {
+  var ns = $.namespace('pskl.devtools');
+
+  ns.DrawingTestRecorder = function (piskelController) {
+    this.piskelController = piskelController;
+    this.isRecording = false;
+    this.reset();
+  };
+
+  ns.DrawingTestRecorder.prototype.init = function () {
+    $.subscribe(Events.MOUSE_EVENT, this.onMouseEvent_.bind(this));
+    $.subscribe(Events.KEYBOARD_EVENT, this.onKeyboardEvent_.bind(this));
+    $.subscribe(Events.TOOL_SELECTED, this.onToolEvent_.bind(this));
+    $.subscribe(Events.PEN_SIZE_CHANGED, this.onPenSizeChanged_.bind(this));
+    $.subscribe(Events.TRANSFORMATION_EVENT, this.onTransformationEvent_.bind(this));
+    $.subscribe(Events.PRIMARY_COLOR_SELECTED, this.onColorEvent_.bind(this, true));
+    $.subscribe(Events.SECONDARY_COLOR_SELECTED, this.onColorEvent_.bind(this, false));
+    $.subscribe(Events.CLIPBOARD_COPY, this.onClipboardEvent_.bind(this));
+    $.subscribe(Events.CLIPBOARD_CUT, this.onClipboardEvent_.bind(this));
+    $.subscribe(Events.CLIPBOARD_PASTE, this.onClipboardEvent_.bind(this));
+
+
+    for (var key in this.piskelController) {
+      if (typeof this.piskelController[key] == 'function') {
+        var methodTriggersReset = this.piskelController[key].toString().indexOf('Events.PISKEL_RESET') != -1;
+        if (methodTriggersReset) {
+          this.piskelController[key] = this.instrumentMethod_(this.piskelController, key);
+        }
+      }
+    }
+  };
+
+  ns.DrawingTestRecorder.prototype.instrumentMethod_ = function (object, methodName) {
+    var method = object[methodName];
+    var testRecorder = this;
+    return function () {
+      testRecorder.onInstrumentedMethod_(object, methodName, arguments);
+      return method.apply(this, arguments);
+    };
+  };
+
+  ns.DrawingTestRecorder.prototype.reset = function () {
+    this.initialState = {};
+    this.events = [];
+  };
+
+  ns.DrawingTestRecorder.prototype.startRecord = function () {
+    this.isRecording = true;
+    this.initialState = {
+      size : {
+        width : this.piskelController.getWidth(),
+        height : this.piskelController.getHeight()
+      },
+      primaryColor : pskl.app.selectedColorsService.getPrimaryColor(),
+      secondaryColor : pskl.app.selectedColorsService.getSecondaryColor(),
+      selectedTool : pskl.app.toolController.currentSelectedTool.toolId,
+      penSize : pskl.app.penSizeService.getPenSize()
+    };
+  };
+
+  ns.DrawingTestRecorder.prototype.stopRecord = function () {
+    this.isRecording = false;
+
+    var renderer = new pskl.rendering.PiskelRenderer(this.piskelController);
+    var png = renderer.renderAsCanvas().toDataURL();
+
+    var testRecord = JSON.stringify({
+      events : this.events,
+      initialState : this.initialState,
+      png : png
+    }, null, ' ');
+
+    this.reset();
+
+    return testRecord;
+  };
+
+  ns.DrawingTestRecorder.prototype.onMouseEvent_ = function (evt, mouseEvent, originator) {
+    if (this.isRecording) {
+      this.recordMouseEvent_(mouseEvent);
+    }
+  };
+
+  ns.DrawingTestRecorder.prototype.onKeyboardEvent_ = function (evt, domEvent) {
+    if (this.isRecording) {
+      var recordEvent = {};
+      recordEvent.type = 'keyboard-event';
+      recordEvent.event = {
+        which : domEvent.which,
+        shiftKey : domEvent.shiftKey,
+        altKey : domEvent.altKey,
+        ctrlKey : domEvent.ctrlKey || domEvent.metaKey,
+        target : {
+          nodeName : domEvent.target.nodeName
+        }
+      };
+      this.events.push(recordEvent);
+    }
+  };
+
+  ns.DrawingTestRecorder.prototype.onColorEvent_ = function (isPrimary, evt, color) {
+    if (this.isRecording) {
+      var recordEvent = {};
+      recordEvent.type = 'color-event';
+      recordEvent.color = color;
+      recordEvent.isPrimary = isPrimary;
+      this.events.push(recordEvent);
+    }
+  };
+
+  ns.DrawingTestRecorder.prototype.onToolEvent_ = function (evt, tool) {
+    if (this.isRecording) {
+      var recordEvent = {};
+      recordEvent.type = 'tool-event';
+      recordEvent.toolId = tool.toolId;
+      this.events.push(recordEvent);
+    }
+  };
+
+  ns.DrawingTestRecorder.prototype.onPenSizeChanged_ = function (evt) {
+    if (this.isRecording) {
+      var recordEvent = {};
+      recordEvent.type = 'pensize-event';
+      recordEvent.penSize = pskl.app.penSizeService.getPenSize();
+      this.events.push(recordEvent);
+    }
+  };
+
+  ns.DrawingTestRecorder.prototype.onTransformationEvent_ = function (evt, toolId, domEvent) {
+    if (this.isRecording) {
+      var recordEvent = {};
+      recordEvent.type = 'transformtool-event';
+      recordEvent.toolId = toolId;
+      recordEvent.event = {
+        shiftKey : domEvent.shiftKey,
+        altKey : domEvent.altKey,
+        ctrlKey : domEvent.ctrlKey
+      };
+      this.events.push(recordEvent);
+    }
+  };
+
+  ns.DrawingTestRecorder.prototype.onClipboardEvent_ = function (evt) {
+    if (this.isRecording) {
+      var recordEvent = {};
+      recordEvent.type = 'clipboard-event';
+      recordEvent.event = evt;
+      this.events.push(recordEvent);
+    }
+  };
+
+  ns.DrawingTestRecorder.prototype.onInstrumentedMethod_ = function (callee, methodName, args) {
+    if (this.isRecording) {
+      var recordEvent = {};
+      recordEvent.type = 'instrumented-event';
+      recordEvent.methodName = methodName;
+      recordEvent.args = Array.prototype.slice.call(args, 0);
+
+      if (methodName === 'setPiskel' && args[1].noSnapshot) {
+        // Skip recording calls to setPiskel that don't trigger a save.
+        return;
+      }
+
+      this.events.push(recordEvent);
+    }
+  };
+
+  ns.DrawingTestRecorder.prototype.recordMouseEvent_ = function (mouseEvent) {
+    var coords = pskl.app.drawingController.getSpriteCoordinates(mouseEvent.clientX, mouseEvent.clientY);
+    var recordEvent = new ns.MouseEvent(mouseEvent, coords);
+    var lastEvent = this.events[this.events.length - 1];
+
+    if (!recordEvent.equals(lastEvent)) {
+      this.events.push(recordEvent);
+    }
+  };
+
+})();
+;(function () {
+  var ns = $.namespace('pskl.devtools');
+
+  ns.DrawingTestRunner = function (testName) {
+    this.testName = testName;
+    $.subscribe(Events.TEST_RECORD_END, this.onTestRecordEnd_.bind(this));
+  };
+
+  ns.DrawingTestRunner.prototype.start = function () {
+    pskl.utils.Xhr.get(this.testName, function (response) {
+      var res = response.responseText;
+      var recordPlayer = new ns.DrawingTestPlayer(JSON.parse(res));
+      recordPlayer.start();
+    }.bind(this));
+  };
+
+  ns.DrawingTestRunner.prototype.onTestRecordEnd_ = function (evt, success) {
+    var testResult = document.createElement('div');
+    testResult.id = 'drawing-test-result';
+    testResult.setAttribute('data-test-name', this.testName);
+    testResult.setAttribute('data-testid', 'drawing-test-result');
+    testResult.innerHTML = success ? 'OK' : 'KO';
+    document.body.appendChild(testResult);
+  };
+})();
+;(function () {
+  var ns = $.namespace('pskl.devtools');
+
+  ns.DrawingTestSuiteController = function (suitePath) {
+    if (suitePath.indexOf('/') === -1) {
+      suitePath = [Constants.DRAWING_TEST_FOLDER, suitePath].join('/');
+    }
+    this.suitePath = suitePath;
+    this.testSuiteRunner = null;
+  };
+
+  ns.DrawingTestSuiteController.prototype.init = function () {
+    $.subscribe(Events.TEST_CASE_END, this.onTestCaseEnd_.bind(this));
+    $.subscribe(Events.TEST_SUITE_END, this.onTestSuiteEnd_.bind(this));
+  };
+
+  ns.DrawingTestSuiteController.prototype.start = function () {
+    this.reset();
+    this.startTime_ = Date.now();
+    pskl.utils.Xhr.get(this.suitePath, this.onTestSuiteLoaded_.bind(this));
+
+    var testSuiteStatus = document.createElement('li');
+    testSuiteStatus.innerHTML = pskl.utils.Template.replace(
+      '<b>Test Suite [{{path}}]</b>',
+      {path : this.shortenPath_(this.suitePath)}
+    );
+    this.testListElt.appendChild(testSuiteStatus);
+  };
+
+  ns.DrawingTestSuiteController.prototype.reset = function () {
+    this.domElt = document.createElement('div');
+    this.domElt.style.cssText = 'position:absolute;z-index:10000;margin:5px;padding:10px;background:lightgrey';
+
+    this.testListElt = document.createElement('ul');
+
+    this.domElt.appendChild(this.testListElt);
+
+    document.body.appendChild(this.domElt);
+  };
+
+  ns.DrawingTestSuiteController.prototype.onTestSuiteLoaded_ = function (response) {
+    var testPaths = JSON.parse(response.responseText).tests;
+    testPaths = testPaths.map(function (path) {
+      return [Constants.DRAWING_TEST_FOLDER, 'tests', path].join('/');
+    }.bind(this));
+    this.testSuiteRunner = new ns.DrawingTestSuiteRunner(testPaths);
+    this.testSuiteRunner.start();
+  };
+
+  ns.DrawingTestSuiteController.prototype.onTestCaseEnd_ = function (evt, testPath, success, performance) {
+    var testCaseStatus = document.createElement('li');
+
+    testCaseStatus.innerHTML = pskl.utils.Template.replace(
+      '[{{path}}] finished : <b style="color:{{color}}">{{status}} ({{performance}})</b>',
+      {
+        path : this.shortenPath_(testPath),
+        status : success ? 'OK' : 'KO',
+        color : success ? 'green' : 'red',
+        performance: performance.toFixed(2)
+      }
+    );
+    this.testListElt.appendChild(testCaseStatus);
+  };
+
+  ns.DrawingTestSuiteController.prototype.onTestSuiteEnd_ = function (evt, status, performance) {
+    var elapsed = Date.now() - this.startTime_;
+    elapsed = (elapsed / 1000).toFixed(4);
+
+    var testSuiteStatus = document.createElement('li');
+    testSuiteStatus.innerHTML = pskl.utils.Template.replace(
+      '<b>Test finished : {{status}}</b> ({{elapsed}}s, performance: {{performance}})',
+      {
+        status : status,
+        elapsed : elapsed,
+        performance: performance.toFixed(2)
+      }
+    );
+    this.testListElt.appendChild(testSuiteStatus);
+  };
+
+  ns.DrawingTestSuiteController.prototype.shortenPath_ = function (path) {
+    // keep only the part after the last '/'
+    return path.replace(/^.*\/([^\/]+.json$)/, '$1');
+  };
+})();
+;(function () {
+  var ns = $.namespace('pskl.devtools');
+
+  ns.DrawingTestSuiteRunner = function (testPaths) {
+    if (Array.isArray(testPaths)) {
+      this.testStatus = {};
+      this.testPaths = testPaths;
+      this.status = ns.DrawingTestSuiteRunner.STATUS.NOT_STARTED;
+      this.currentIndex = -1;
+    } else {
+      throw new Error('testPaths should be an array of string (test paths)');
+    }
+  };
+
+  ns.DrawingTestSuiteRunner.STATUS = {
+    ERROR : 'ERROR',
+    FAILED : 'FAILED',
+    SUCCESS : 'SUCCESS',
+    ONGOING : 'ONGOING',
+    NOT_STARTED : 'NOT_STARTED'
+  };
+
+  ns.DrawingTestSuiteRunner.prototype.start = function () {
+    this.status = ns.DrawingTestSuiteRunner.STATUS.ONGOING;
+    this.runTest(0);
+  };
+
+  ns.DrawingTestSuiteRunner.prototype.runTest = function (testIndex) {
+    this.currentIndex = testIndex;
+    var path = this.testPaths[testIndex];
+    if (path) {
+      pskl.utils.Xhr.get(path, this.onTestLoaded_.bind(this));
+    } else {
+      this.onTestSuiteEnd_();
+    }
+  };
+
+  ns.DrawingTestSuiteRunner.prototype.onTestLoaded_ = function (response) {
+    var testRecord = JSON.parse(response.responseText);
+
+    var testPlayer = new ns.DrawingTestPlayer(testRecord);
+
+    testPlayer.addEndTestCallback(this.onTestEnd_.bind(this));
+    testPlayer.start();
+  };
+
+  ns.DrawingTestSuiteRunner.prototype.onTestEnd_ = function (data /* {success, performance} */) {
+    var path = this.testPaths[this.currentIndex];
+    this.testStatus[path] = data;
+
+    $.publish(Events.TEST_CASE_END, [path, data.success, data.performance]);
+
+    this.runTest(this.currentIndex + 1);
+  };
+
+  ns.DrawingTestSuiteRunner.prototype.onTestSuiteEnd_ = function () {
+    var success = this.testPaths.every(function (path) {
+      return this.testStatus[path].success;
+    }.bind(this));
+
+    var performance = this.testPaths.reduce(function (p, path) {
+      return this.testStatus[path].performance + p;
+    }.bind(this), 0);
+
+    this.status = success ? ns.DrawingTestSuiteRunner.STATUS.SUCCESS : ns.DrawingTestSuiteRunner.STATUS.ERROR;
+    $.publish(Events.TEST_SUITE_END, [this.status, performance]);
+  };
+})();
+;(function () {
+  var ns = $.namespace('pskl.devtools');
+
+  ns.MouseEvent = function (event, coords) {
+    this.event = {
+      type : event.type,
+      button : event.button,
+      shiftKey : event.shiftKey,
+      altKey : event.altKey,
+      ctrlKey : event.ctrlKey
+    };
+    this.coords = coords;
+    this.type = 'mouse-event';
+  };
+
+  ns.MouseEvent.prototype.equals = function (otherEvent) {
+    if (otherEvent && otherEvent instanceof ns.MouseEvent) {
+      var sameEvent = JSON.stringify(otherEvent.event) == JSON.stringify(this.event);
+      var sameCoords = JSON.stringify(otherEvent.coords) == JSON.stringify(this.coords);
+      return sameEvent && sameCoords;
+    } else {
+      return false;
+    }
+  };
+})();
+;(function () {
+  var ns = $.namespace('pskl.devtools');
+
+  ns.TestRecordController = function (testRecorder) {
+    this.testRecorder = testRecorder;
+    $.subscribe(Events.TEST_RECORD_END, this.onTestRecordEnd_.bind(this));
+    $.subscribe(Events.TEST_MENU_CLOSE, this.onTestMenuClose_.bind(this));
+  };
+
+  ns.TestRecordController.prototype.init  = function () {
+    var fileInput = document.createElement('input');
+    fileInput.setAttribute('type', 'file');
+    fileInput.addEventListener('change', this.onFileInputChange_.bind(this));
+    fileInput.style.display = 'none';
+
+    var column = document.getElementsByClassName('main-column');
+
+    var container = document.createElement('div');
+    container.classList.add('dev-container')
+    container.innerHTML = 'Sharp Testing Suite <br><br> ';
+    document.body.appendChild(container);
+
+    column[0].prepend(container);
+
+    var loadInput = document.createElement('button');
+    loadInput.classList.add('dev-button')
+    loadInput.title = "Load a testing script of the JSON format. Examples found on official Piskel Github."
+    loadInput.innerHTML = 'Load Test Script';
+    loadInput.addEventListener('click', this.onLoadInputClick_.bind(this));
+
+    var startInput = document.createElement('button');
+    startInput.classList.add('dev-button')
+    startInput.title = "Start recording the testing session."
+    startInput.innerHTML = 'Start record';
+    startInput.addEventListener('click', this.onStartInputClick_.bind(this));
+
+    var stopInput = document.createElement('button');
+    stopInput.classList.add('dev-button')
+    stopInput.title = "Stop recording the testing session and save the session log file."
+    stopInput.innerHTML = 'Stop record';
+    stopInput.addEventListener('click', this.onStopInputClick_.bind(this));
+    stopInput.setAttribute('disabled', 'disabled');
+
+    var closeInput = document.createElement('button');
+    closeInput.classList.add('dev-button')
+    closeInput.title = "Close the testing menu."
+    closeInput.innerHTML = 'Close Suite';
+    closeInput.addEventListener('click', this.closeSuiteInput_.bind(this));
+
+    this.container = container;
+    this.fileInput = this.container.appendChild(fileInput);
+    this.loadInput = this.container.appendChild(loadInput);
+    this.startInput = this.container.appendChild(startInput);
+    this.stopInput = this.container.appendChild(stopInput);
+    this.closeInput = this.container.appendChild(closeInput);
+  };
+
+  ns.TestRecordController.prototype.onLoadInputClick_  = function () {
+    this.fileInput.click();
+  };
+
+  ns.TestRecordController.prototype.onFileInputChange_  = function () {
+    var files = this.fileInput.files;
+    if (files.length == 1) {
+      var file = files[0];
+      pskl.utils.FileUtils.readFile(file, function (content) {
+        var testRecord = JSON.parse(window.atob(content.replace(/data\:.*?\;base64\,/, '')));
+        var testPlayer = new ns.DrawingTestPlayer(testRecord);
+        testPlayer.start();
+      }.bind(this));
+    }
+  };
+
+  ns.TestRecordController.prototype.onStartInputClick_  = function () {
+    this.testRecorder.startRecord();
+    this.startInput.setAttribute('disabled', 'disabled');
+    this.stopInput.removeAttribute('disabled');
+  };
+
+  ns.TestRecordController.prototype.onStopInputClick_  = function () {
+    var testRecord = this.testRecorder.stopRecord();
+
+    pskl.utils.BlobUtils.stringToBlob(testRecord, function(blob) {
+      pskl.utils.FileUtils.downloadAsFile(blob, 'record_piskel.json');
+    }.bind(this), 'application/json');
+
+    this.startInput.removeAttribute('disabled');
+    this.stopInput.setAttribute('disabled', 'disabled');
+  };
+
+  ns.TestRecordController.prototype.onTestRecordEnd_  = function (evt, success) {
+    window.alert('Test finished : ' + (success ? 'success' : 'failed'));
+  };
+
+  ns.TestRecordController.prototype.onTestMenuClose_  = function (evt, success) {
+    window.alert('Test menu close : ' + (success ? 'success' : 'failed'));
+  };
+
+  ns.TestRecordController.prototype.closeSuiteInput_  = function () {
+    var remove = document.getElementsByClassName('dev-container');
+
+    Array.from(remove).forEach(element => {
+      element.remove();
+  })};
+
+})();
+;(function () {
+  var ns = $.namespace('pskl.devtools');
+
+  ns.init = function () {
+    var href = document.location.href.toLowerCase();
+    // test tools
+    var testModeOn = href.indexOf('test=true') !== -1;
+    if (testModeOn) {
+      this.testRecorder = new pskl.devtools.DrawingTestRecorder(pskl.app.piskelController);
+      this.testRecorder.init();
+
+      this.testRecordController = new pskl.devtools.TestRecordController(this.testRecorder);
+      this.testRecordController.init();
+    }
+
+    // test tools
+    var runTestModeOn = href.indexOf('test-run=') !== -1;
+    if (runTestModeOn) {
+      var testPath = href.split('test-run=')[1];
+      this.testRunner = new pskl.devtools.DrawingTestRunner(testPath);
+      this.testRunner.start();
+    }
+
+    // test tools
+    var runSuiteModeOn = href.indexOf('test-suite=') !== -1;
+    if (runSuiteModeOn) {
+      var suitePath = href.split('test-suite=')[1];
+      this.testSuiteController = new pskl.devtools.DrawingTestSuiteController(suitePath);
+      this.testSuiteController.init();
+      this.testSuiteController.start();
+    }
+  };
+
+})();
+;(function (view) {
+  "use strict";
+
+  view.URL = view.URL || view.webkitURL;
+
+  if (view.Blob && view.URL) {
+    try {
+      new Blob;
+      return;
+    } catch (e) {}
+  }
+
+  // Internally we use a BlobBuilder implementation to base Blob off of
+  // in order to support older browsers that only have BlobBuilder
+  var BlobBuilder = view.BlobBuilder || view.WebKitBlobBuilder || view.MozBlobBuilder || (function(view) {
+    var
+        get_class = function(object) {
+        return Object.prototype.toString.call(object).match(/^\[object\s(.*)\]$/)[1];
+      }
+      , FakeBlobBuilder = function BlobBuilder() {
+        this.data = [];
+      }
+      , FakeBlob = function Blob(data, type, encoding) {
+        this.data = data;
+        this.size = data.length;
+        this.type = type;
+        this.encoding = encoding;
+      }
+      , FBB_proto = FakeBlobBuilder.prototype
+      , FB_proto = FakeBlob.prototype
+      , FileReaderSync = view.FileReaderSync
+      , FileException = function(type) {
+        this.code = this[this.name = type];
+      }
+      , file_ex_codes = (
+          "NOT_FOUND_ERR SECURITY_ERR ABORT_ERR NOT_READABLE_ERR ENCODING_ERR "
+        + "NO_MODIFICATION_ALLOWED_ERR INVALID_STATE_ERR SYNTAX_ERR"
+      ).split(" ")
+      , file_ex_code = file_ex_codes.length
+      , real_URL = view.URL || view.webkitURL || view
+      , real_create_object_URL = real_URL.createObjectURL
+      , real_revoke_object_URL = real_URL.revokeObjectURL
+      , URL = real_URL
+      , btoa = view.btoa
+      , atob = view.atob
+
+      , ArrayBuffer = view.ArrayBuffer
+      , Uint8Array = view.Uint8Array
+
+      , origin = /^[\w-]+:\/*\[?[\w\.:-]+\]?(?::[0-9]+)?/
+    ;
+    FakeBlob.fake = FB_proto.fake = true;
+    while (file_ex_code--) {
+      FileException.prototype[file_ex_codes[file_ex_code]] = file_ex_code + 1;
+    }
+    // Polyfill URL
+    if (!real_URL.createObjectURL) {
+      URL = view.URL = function(uri) {
+        var
+            uri_info = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
+          , uri_origin
+        ;
+        uri_info.href = uri;
+        if (!("origin" in uri_info)) {
+          if (uri_info.protocol.toLowerCase() === "data:") {
+            uri_info.origin = null;
+          } else {
+            uri_origin = uri.match(origin);
+            uri_info.origin = uri_origin && uri_origin[1];
+          }
+        }
+        return uri_info;
+      };
+    }
+    URL.createObjectURL = function(blob) {
+      var
+          type = blob.type
+        , data_URI_header
+      ;
+      if (type === null) {
+        type = "application/octet-stream";
+      }
+      if (blob instanceof FakeBlob) {
+        data_URI_header = "data:" + type;
+        if (blob.encoding === "base64") {
+          return data_URI_header + ";base64," + blob.data;
+        } else if (blob.encoding === "URI") {
+          return data_URI_header + "," + decodeURIComponent(blob.data);
+        } if (btoa) {
+          return data_URI_header + ";base64," + btoa(blob.data);
+        } else {
+          return data_URI_header + "," + encodeURIComponent(blob.data);
+        }
+      } else if (real_create_object_URL) {
+        return real_create_object_URL.call(real_URL, blob);
+      }
+    };
+    URL.revokeObjectURL = function(object_URL) {
+      if (object_URL.substring(0, 5) !== "data:" && real_revoke_object_URL) {
+        real_revoke_object_URL.call(real_URL, object_URL);
+      }
+    };
+    FBB_proto.append = function(data/*, endings*/) {
+      var bb = this.data;
+      // decode data to a binary string
+      if (Uint8Array && (data instanceof ArrayBuffer || data instanceof Uint8Array)) {
+        var
+            str = ""
+          , buf = new Uint8Array(data)
+          , i = 0
+          , buf_len = buf.length
+        ;
+        for (; i < buf_len; i++) {
+          str += String.fromCharCode(buf[i]);
+        }
+        bb.push(str);
+      } else if (get_class(data) === "Blob" || get_class(data) === "File") {
+        if (FileReaderSync) {
+          var fr = new FileReaderSync;
+          bb.push(fr.readAsBinaryString(data));
+        } else {
+          // async FileReader won't work as BlobBuilder is sync
+          throw new FileException("NOT_READABLE_ERR");
+        }
+      } else if (data instanceof FakeBlob) {
+        if (data.encoding === "base64" && atob) {
+          bb.push(atob(data.data));
+        } else if (data.encoding === "URI") {
+          bb.push(decodeURIComponent(data.data));
+        } else if (data.encoding === "raw") {
+          bb.push(data.data);
+        }
+      } else {
+        if (typeof data !== "string") {
+          data += ""; // convert unsupported types to strings
+        }
+        // decode UTF-16 to binary string
+        bb.push(unescape(encodeURIComponent(data)));
+      }
+    };
+    FBB_proto.getBlob = function(type) {
+      if (!arguments.length) {
+        type = null;
+      }
+      return new FakeBlob(this.data.join(""), type, "raw");
+    };
+    FBB_proto.toString = function() {
+      return "[object BlobBuilder]";
+    };
+    FB_proto.slice = function(start, end, type) {
+      var args = arguments.length;
+      if (args < 3) {
+        type = null;
+      }
+      return new FakeBlob(
+          this.data.slice(start, args > 1 ? end : this.data.length)
+        , type
+        , this.encoding
+      );
+    };
+    FB_proto.toString = function() {
+      return "[object Blob]";
+    };
+    FB_proto.close = function() {
+      this.size = 0;
+      delete this.data;
+    };
+    return FakeBlobBuilder;
+  }(view));
+
+  view.Blob = function(blobParts, options) {
+    var type = options ? (options.type || "") : "";
+    var builder = new BlobBuilder();
+    if (blobParts) {
+      for (var i = 0, len = blobParts.length; i < len; i++) {
+        if (Uint8Array && blobParts[i] instanceof Uint8Array) {
+          builder.append(blobParts[i].buffer);
+        }
+        else {
+          builder.append(blobParts[i]);
+        }
+      }
+    }
+    var blob = builder.getBlob(type);
+    if (!blob.slice && blob.webkitSlice) {
+      blob.slice = blob.webkitSlice;
+    }
+    return blob;
+  };
+
+  var getPrototypeOf = Object.getPrototypeOf || function(object) {
+    return object.__proto__;
+  };
+  view.Blob.prototype = getPrototypeOf(new view.Blob());
+}(typeof self !== "undefined" && self || typeof window !== "undefined" && window || this.content || this));;(function () {
   var ns = $.namespace('pskl.worker.framecolors');
 
   if (Constants.TRANSPARENT_COLOR !== 'rgba(0, 0, 0, 0)') {
@@ -34967,7 +36677,44 @@ ns.ToolsHelper = {
    */
   ns.app = {
 
-    init : function () {
+    init: function () {
+      
+      /**
+        * Piskel Sharp supports Internalization(i18n) by providing translations of its UI elements.
+        *
+        * The available strings are in `src/js/locales.js` directory and each locale has its own file.
+        * For example: `en_us` where `en` is English and `us` is United States
+        * Note that `en_us` should contain all available strings because this is the locale other
+        * languages will fallback to if a translation from English doesn't exist.
+        *
+        * The strings that we will be used depend on the window.piskel_locale. window.piskel_locale is the 4 letter locale
+        * code defined by users of the Piskel library so they can optionally load non-English strings
+        * into the Piskel UI. For example "en_us" or "es_es"
+        *
+        * window.piskel_locales will contains all strings available, then we will use window.piskel_locale to select the language
+        * we want strings to be in. All of this is happening here: var i18n = window.piskel_locales[window.piskel_locale];
+        * In the case that window.piskel_locale is undefined, we set the strings to English by default
+        *
+        * Example Usage tools/drawing/SimplePen.js:
+        * this.helpText = i18n.simplePenDrawingTool()
+        * Now when the user hovers over the Pen tool, they will see the translation based on the locale
+        * The i18n object is passed in the Controllers that have text to translate. For example ToolController takes in the
+        * i18n object so that it can be used in all the Tools like Stroke and Pen Tool
+        *
+        * To see how each key becomes a function look at the tasks/build-i18n.js file where we use the MessageFormat API
+        * 
+        * Piskel Sharp has added a new switchLocale() function that
+        * can be called from either the console or the dropdown in the
+        * settings drawer. You can find switchLocale()'s logic at the
+        * bottom of this file.
+      */
+
+      if (window.piskel_locale === undefined) {
+        window.piskel_locale = pskl.UserSettings.get(pskl.UserSettings.USER_LOCALE);
+      }
+      var i18n = window.piskel_locales[window.piskel_locale];
+      console.log("UserSettings Locale: ", pskl.UserSettings.get(pskl.UserSettings.USER_LOCALE));
+
       /**
        * When started from APP Engine, appEngineToken_ (Boolean) should be set on window.pskl
        */
@@ -34984,7 +36731,7 @@ ns.ToolsHelper = {
 
       var size = pskl.UserSettings.get(pskl.UserSettings.DEFAULT_SIZE);
       var fps = Constants.DEFAULT.FPS;
-      var descriptor = new pskl.model.piskel.Descriptor('New Piskel', '');
+      var descriptor = new pskl.model.piskel.Descriptor('New Piskel', 'The base piskel, made when loading piskel.');
       var piskel = new pskl.model.Piskel(size.width, size.height, fps, descriptor);
 
       var layer = new pskl.model.Layer('Layer 1');
@@ -35030,7 +36777,7 @@ ns.ToolsHelper = {
 
       this.previewController = new pskl.controller.preview.PreviewController(
         this.piskelController,
-        document.querySelector('#animated-preview-canvas-container'));
+        document.querySelector('#animated-preview-canvas-container'), i18n);
       this.previewController.init();
 
       this.minimapController = new pskl.controller.MinimapController(
@@ -35042,19 +36789,19 @@ ns.ToolsHelper = {
 
       this.framesListController = new pskl.controller.FramesListController(
         this.piskelController,
-        document.querySelector('#preview-list-wrapper'));
-      this.framesListController.init();
+        document.querySelector('#preview-list-wrapper'), i18n);
+      this.framesListController.init(i18n);
 
       this.layersListController = new pskl.controller.LayersListController(this.piskelController);
       this.layersListController.init();
 
-      this.settingsController = new pskl.controller.settings.SettingsController(this.piskelController);
-      this.settingsController.init();
+      this.settingsController = new pskl.controller.settings.SettingsController(this.piskelController, i18n);
+      this.settingsController.init(i18n);
 
       this.dialogsController = new pskl.controller.dialogs.DialogsController(this.piskelController);
       this.dialogsController.init();
 
-      this.toolController = new pskl.controller.ToolController();
+      this.toolController = new pskl.controller.ToolController(i18n);
       this.toolController.init();
 
       this.selectionManager = new pskl.selection.SelectionManager(this.piskelController);
@@ -35066,7 +36813,7 @@ ns.ToolsHelper = {
       this.notificationController = new pskl.controller.NotificationController();
       this.notificationController.init();
 
-      this.transformationsController = new pskl.controller.TransformationsController();
+      this.transformationsController = new pskl.controller.TransformationsController(i18n);
       this.transformationsController.init();
 
       this.progressBarController = new pskl.controller.ProgressBarController();
@@ -35140,6 +36887,17 @@ ns.ToolsHelper = {
       this.drawingLoop.start();
 
       this.initTooltips_();
+
+      $.subscribe(Events.EXTERNAL_PISKEL_READY, function() {
+        const externalPiskel = window._externalPiskel;
+        if (!externalPiskel) {
+          console.error('No external piskel found');
+          return;
+        }
+        pskl.utils.serialization.Deserializer.deserialize(externalPiskel, function (piskel) {
+          pskl.app.piskelController.setPiskel(piskel);
+        });
+      });
 
       var piskelData = this.getPiskelInitData_();
       if (piskelData && piskelData.piskel) {
@@ -35217,8 +36975,361 @@ ns.ToolsHelper = {
       var renderer = new pskl.rendering.PiskelRenderer(this.piskelController);
       var framesheetCanvas = renderer.renderAsCanvas();
       return framesheetCanvas.toDataURL('image/png');
+    },
+
+    switchLocale : function switchLocale(localeCode) {
+      window.piskel_locale = localeCode;
+      window.i18n = window.piskel_locales[localeCode];
+
+      this.toolController = new pskl.controller.ToolController(i18n);
+
+      this.toolController.init();
+      // this.transformationsController.init();
+      this.framesListController.switchLocale_(i18n);
+      
+      // Don't forget to add an sL_ function to each drawer controller
+      this.settingsController.switchLocale_(i18n);
+      this.initTooltips_();
+
+      // Add USER_LOCALE saving to Misc. Pref C before release
     }
   };
 })();
 
 ;(function () {})();
+;(window.piskel_locales = window.piskel_locales || {}).en_us = {
+  circleDrawingTool: function(d) { return "Circle tool"; },
+  colorPickerDrawingTool: function(d) { return "Color picker"; },
+  colorSwapDrawingTool: function(d) { return "Paint all pixels of the same color"; },
+  colorSwapDrawingToolDescriptorApplyToAllLayers: function(d) { return "Apply to all layers"; },
+  colorSwapDrawingToolDescriptorApplyToAllFrames: function(d) { return "Apply to all frames"; },
+  ditheringDrawingTool: function(d) { return "Dithering tool"; },
+  ditheringDrawingToolDescriptorUse25: function(d) { return "Use 25% dithering"},
+  ditheringDrawingToolDescriptorUse75: function(d) { return "Use 75% dithering"},
+  eraserDrawingTool: function(d) { return "Eraser tool"; },
+  filledCircleDrawingTool: function(d) { return "Filled Circle tool"; },
+  filledRectangleDrawingTool: function(d) { return "Filled Rectangle Tool"; },
+  lightenDrawingTool: function(d) { return "Lighten"; },
+  lightenDrawingToolDescriptorDarken: function(d) { return "Darken"; },
+  lightenDrawingToolDescriptorApplyOncePerPixel: function(d) { return "Apply only once per pixel"; },
+  moveDrawingTool: function(d) { return "Move tool"; },
+  moveDrawingToolDescriptorApplyToAllLayers: function(d) { return "Apply to all layers"; },
+  moveDrawingToolDescriptorApplyToAllFrames: function(d) { return "Apply to all frames"; },
+  moveDrawingToolDescriptorWrapCanvas: function(d) { return "Wrap canvas borders"; },
+  paintBucketDrawingTool: function(d) { return "Paint bucket tool"; },
+  rectangleDrawingTool: function(d) { return "Rectangle tool"; },
+  shapeToolDrawingDescriptorKeep1To1Ratio: function(d) { return "Keep 1 to 1 ratio"; },
+  shapeToolDrawingDescriptorFillShape: function(d) { return "Fill created shape"; },
+  simplePenDrawingTool: function(d) { return "Pen tool"; },
+  strokeDrawingTool: function(d) { return "Stroke tool"; },
+  strokeDrawingToolDescriptorDrawStraightLine: function(d) { return "Hold shift to draw straight lines"; },
+  verticalMirrorPenDrawingTool: function(d) { return "Vertical Mirror pen"; },
+  verticalMirrorPenDrawingToolDescriptorHorizAxis: function(d) { return "Use horizontal axis"; },
+  verticalMirrorPenDrawingToolDescriptorHorizAndVertAxis: function(d) { return "Use horizontal and vertical axis"; },
+  centerTransformTool: function(d) { return "Align image to the center"; },
+  centerTransformToolDescriptorApplyToAllLayers: function(d) { return "Apply to all layers"; },
+  centerTransformToolDescriptorApplyToAllFrames: function(d) { return "Apply to all frames"; },
+  cloneTransformTool: function(d) { return "Clone current layer to all frames"; },
+  cropTransformTool: function(d) { return "Crop the sprite"; },
+  flipTransformToolVertAxis: function(d) { return "Flip vertically"; },
+  rotateTransformTool: function(d) { return "Counter-clockwise rotation"; },
+  rotateTransformToolDescriptorClockwiseRotation: function(d) { return "Clockwise rotation"; },
+  rotateTransformToolDescriptorApplyToAllLayers: function(d) { return "Apply to all layers"; },
+  rotateTransformToolDescriptorApplyToAllFrames: function(d) { return "Apply to all frames"; },
+  cropTransformToolDescriptorCropToFit: function(d) { return "Crop to fit the content or the selection."; },
+  cropTransformToolDescriptorAppliesToAllFramesLayers: function(d) { return "Applies to all frames and layers!"; },
+  flipTransformToolDescriptorHorizAxis: function(d) { return "Flip horizontally"; },
+  flipTransformToolDescriptorApplyToAllLayers: function(d) { return "Apply to all layers"; },
+  flipTransformToolDescriptorApplyToAllFrames: function(d) { return "Apply to all frames"; },
+  baseSelectDrawingSelectionToolDescriptorDragTheSelection: function(d) { return "Drag the selection to move it. You may switch to other layers and frames."; },
+  baseSelectDrawingSelectionToolDescriptorDuplicateTheSelectedArea: function(d) { return "Duplicate the selected area"; },
+  baseSelectDrawingSelectionToolDescriptorMoveTheContent: function(d) { return "Hold to move the content"; },
+  baseSelectDrawingSelectionToolDescriptorDragTheSelectionMaySwitchToOtherFrames: function(d) { return "Drag the selection to move it. You may switch to other frames."; },
+  lassoSelectDrawingSelectionTool: function(d) { return "Lasso selection"; },
+  rectangleSelectDrawingSelectionTool: function(d) { return "Rectangle Selection"; },
+  shapeSelectDrawingSelectionTool: function(d) { return "Shape selection"; },
+  onionSkinTogglePreviewTool: function(d) { return "Toggle onion skin"; },
+  duplicateThisFrameFramesListTool: function(d) { return "Duplicate this frame"; },
+  deleteThisFrameFramesListTool: function(d) { return "Delete this frame"; },
+  addNewFrameFramesListTool: function(d) { return "Add new frame"; },
+  loadingPiskelMessage: function(d) { return "Loading Piskel..."; },
+  penSizeChangeTitle: function(d) { return "Pen size"; },
+  penSizeChangeAvailableSizes: function(d) { return "at 1, 4, 8, or 16 pixels"; },
+  preferencesSetting: function(d) { return "PREFERENCES"; },
+  resizeSetting: function(d) { return "RESIZE"; },
+  resizeSettingDescriptorResizeTheDrawingArea: function(d) { return "Resize the drawing area"; },
+  saveSetting: function(d) { return "SAVE"; },
+  saveSettingDescriptorSaveToGallerySaveLocallyExportAsFile: function(d) { return "Save to your gallery, save locally, export as a file"; },
+  exportSetting: function(d) { return "EXPORT"; },
+  exportSettingDescriptorExportAsImageSpriteSheetOrGif: function(d) { return "Export as Image, as Spritesheet or as Animated GIF"; },
+  importSetting: function(d) { return "IMPORT"; },
+  importSettingDescriptorImportAsExistingImageGifOrPiskelFile: function(d) { return "Import an existing image, an animated GIF or a .piskel file"; },
+  exportSettingSectionTitle: function(d) { return "Export"; },
+  exportSettingSectionScaleTheAnimation: function(d) { return "Scale the animation for export"; },
+  exportSettingSectionScale: function(d) { return "Scale"; },
+  exportSettingSectionResolution: function(d) { return "Resolution"; },
+  exportSettingSectionOthersTab: function(d) { return "Others"; },
+  resizeSettingSectionTitle: function(d) { return "Resize"; },
+  resizeSettingSectionSubmitButton: function(d) { return "Resize"; },
+  resizeSettingSectionWidth: function(d) { return "Width"; },
+  resizeSettingSectionHeight: function(d) { return "Height"; },
+  resizeSettingSectionMaintainAspectRatio: function(d) { return "Maintain aspect ratio"; },
+  resizeSettingSectionResizeCanvasContent: function(d) { return "Resize canvas content"; },
+  resizeSettingSectionAnchor: function(d) { return "Anchor"; },
+  resizeSettingSectionDefaultTitle: function(d) { return "Default size"; },
+  resizeSettingSectionDefaultSubmitButton: function(d) { return "Set Default"; },
+  resizeSettingSectionDefaultWidth: function(d) { return "Width"; },
+  resizeSettingSectionDefaultHeight: function(d) { return "Height"; },
+  colorPalettePrimary: function(d) { return "Primary - left mouse button"; },
+  colorPaletteSecondary: function(d) { return "Secondary - right mouse button"; },
+  colorPaletteSwapColors: function(d) { return "Swap colors (X)"; },
+  zipExportSettingSectionDesc: function(d) { return "ZIP archive containing one PNG for each frame. File names will start with the prefix below."; },
+  zipExportSettingSectionPrefix: function(d) { return "Prefix"; },
+  zipExportSettingSectionPNGFilePrefix: function(d) { return "PNG file prefix ..."; },
+  zipExportSettingSectionSplitByLayers: function(d) { return "Split by layers"; },
+  zipExportSettingSectionDownloadZip: function(d) { return "Download ZIP"; },
+  gifExportSettingSectionDesc: function(d) { return "Convert your sprite to an animated GIF."; },
+  gifExportSettingSectionWarningMessage: function(d) { return "Too many colors: can not preserve original colors or transparency."; },
+  gifExportSettingSectionLoopRepeatedly: function(d) { return "Loop repeatedly"; },
+  gifExportSettingSectionDownload: function(d) { return "Download"; },
+  gifExportSettingSectionDownloadDesc: function(d) { return "Download as an animated GIF."; },
+  gifExportSettingSectionUpload: function(d) { return "Upload"; },
+  gifExportSettingSectionUploadDesc: function(d) { return "Upload as an animated GIF to a public URL."; },
+  gifExportSettingSectionUncheckToPlay: function(d) { return "Uncheck to play the animation only one time."; },
+  gifExportSettingSectionBuildingAnimatedGif: function(d) { return "Building animated GIF ..."; },
+  gifExportSettingSectionYourImageAvailableAt: function(d) { return "Your image is now available at " + d.url; },
+
+  outlinerDrawingTool: function(d) { return "Outliner tool"; },
+  outlinerDrawingToolDescriptorFillCorners: function(d) { return "Fill corners"; },
+  shiftIndexDrawingTool: function(d) { return "Shift Pallete Color Index Tool"; },
+  shiftIndexDescriptorUsage: function(d) { return "Changes the color of pixels which are in the current palette. \n For each pixel it touches, the next or previous color within the palette will be used. \n Use the primary and secondary colors in the palette to set \n cell shade range boundaries. For example if your palette has: \n - light red, dark red, light blue, dark blue - \n you would want to set the primary colour to light red and secondary to dark red. \n This will prevent the brush from cycling red to blue"; },
+  shiftIndexDescriptorShiftBack: function(d) { return "Shift index backwards"; },
+  pencilDrawingTool: function(d) { return "Pencil tool"; },
+  pencilDrawingToolDescriptorDescription: function(d) { return "Classic Macintosh style Pencil. \n Draws in the opposite color of the pixel the stroke begins on. \n If the stroke begins on transparent, or the secondary color, it draws in the primary color. \n If the stroke begins on the primary color, it draws in the secondary color. \n This minimizes the need to switch between selected colors. \n To draw in a single color you won't need to change colors or tools at all."; },
+  changelogSetting: function(d) { return "CHANGELOG" },
+  changelogSettingDescriptorDescription: function(d) { return "View the changelog for every version of Piskel and Piskel Sharp, including future update plans." }
+};
+(window.piskel_locales = window.piskel_locales || {}).es_mx = {
+  circleDrawingTool: function(d) { return "Herramienta de círculo"; },
+  colorPickerDrawingTool: function(d) { return "Selector de color"; },
+  colorSwapDrawingTool: function(d) { return "Pintar todos los píxeles del mismo color"; },
+  colorSwapDrawingToolDescriptorApplyToAllLayers: function(d) { return "Aplicar a todas las capas"; },
+  colorSwapDrawingToolDescriptorApplyToAllFrames: function(d) { return "Aplicar a todos los fotogramas"; },
+  ditheringDrawingTool: function(d) { return "Herramienta de tramado"; },
+  ditheringDrawingToolDescriptorUse25: function(d) { return "Utilizar un 25% de tramado"},
+  ditheringDrawingToolDescriptorUse75: function(d) { return "Utilizar un 75% de tramado"},
+  eraserDrawingTool: function(d) { return "Herramienta de borrado"; },
+  filledCircleDrawingTool: function(d) { return "Herramienta de círculo relleno"; },
+  filledRectangleDrawingTool: function(d) { return "Herramienta de rectángulo relleno"; },
+  lightenDrawingTool: function(d) { return "Aclarar"; },
+  lightenDrawingToolDescriptorDarken: function(d) { return "Oscurecer"; },
+  lightenDrawingToolDescriptorApplyOncePerPixel: function(d) { return "Aplicar solo una vez por píxel"; },
+  moveDrawingTool: function(d) { return "Herramienta de desplazamiento"; },
+  moveDrawingToolDescriptorApplyToAllLayers: function(d) { return "Aplicar a todas las capas"; },
+  moveDrawingToolDescriptorApplyToAllFrames: function(d) { return "Aplicar a todos los fotogramas"; },
+  moveDrawingToolDescriptorWrapCanvas: function(d) { return "Envolver los bordes del lienzo"; },
+  paintBucketDrawingTool: function(d) { return "Herramienta de relleno"; },
+  rectangleDrawingTool: function(d) { return "Herramienta de rectángulo"; },
+  shapeToolDrawingDescriptorKeep1To1Ratio: function(d) { return "Mantener la proporción 1 a 1"; },
+  shapeToolDrawingDescriptorFillShape: function(d) { return "Rellenar la figura creada"; },
+  simplePenDrawingTool: function(d) { return "Herramienta de pluma"; },
+  strokeDrawingTool: function(d) { return "Herramienta de trazo"; },
+  strokeDrawingToolDescriptorDrawStraightLine: function(d) { return "Mantener pulsada la tecla Mayús para dibujar líneas rectas"; },
+  verticalMirrorPenDrawingTool: function(d) { return "Lápiz con reflejo vertical"; },
+  verticalMirrorPenDrawingToolDescriptorHorizAxis: function(d) { return "Usar el eje horizontal"; },
+  verticalMirrorPenDrawingToolDescriptorHorizAndVertAxis: function(d) { return "Utilizar los ejes horizontal y vertical"; },
+  centerTransformTool: function(d) { return "Alinear la imagen al centro"; },
+  centerTransformToolDescriptorApplyToAllLayers: function(d) { return "Aplicar a todas las capas"; },
+  centerTransformToolDescriptorApplyToAllFrames: function(d) { return "Aplicar a todos los fotogramas"; },
+  cloneTransformTool: function(d) { return "Clonar la capa actual en todos los fotogramas"; },
+  cropTransformTool: function(d) { return "Recortar el sprite"; },
+  flipTransformToolVertAxis: function(d) { return "Voltear verticalmente"; },
+  rotateTransformTool: function(d) { return "Rotación en sentido antihorario"; },
+  rotateTransformToolDescriptorClockwiseRotation: function(d) { return "Rotación en sentido horario"; },
+  rotateTransformToolDescriptorApplyToAllLayers: function(d) { return "Aplicar a todas las capas"; },
+  rotateTransformToolDescriptorApplyToAllFrames: function(d) { return "Aplicar a todos los fotogramas"; },
+  cropTransformToolDescriptorCropToFit: function(d) { return "Recortar para ajustar al contenido o a la selección."; },
+  cropTransformToolDescriptorAppliesToAllFramesLayers: function(d) { return "¡Se aplica a todos los fotogramas y capas!"; },
+  flipTransformToolDescriptorHorizAxis: function(d) { return "Voltear horizontalmente"; },
+  flipTransformToolDescriptorApplyToAllLayers: function(d) { return "Aplicar a todas las capas"; },
+  flipTransformToolDescriptorApplyToAllFrames: function(d) { return "Aplicar a todos los fotogramas"; },
+  baseSelectDrawingSelectionToolDescriptorDragTheSelection: function(d) { return "Arrastra la selección para moverla. Puedes cambiar a otras capas y fotogramas."; },
+  baseSelectDrawingSelectionToolDescriptorDuplicateTheSelectedArea: function(d) { return "Duplicar el área seleccionada"; },
+  baseSelectDrawingSelectionToolDescriptorMoveTheContent: function(d) { return "Mantener pulsado para mover el contenido"; },
+  baseSelectDrawingSelectionToolDescriptorDragTheSelectionMaySwitchToOtherFrames: function(d) { return "Arrastra la selección para moverla. Es posible que cambies a otros fotogramas."; },
+  lassoSelectDrawingSelectionTool: function(d) { return "Selección con lazo"; },
+  rectangleSelectDrawingSelectionTool: function(d) { return "Selección rectangular"; },
+  shapeSelectDrawingSelectionTool: function(d) { return "Selección de forma"; },
+  onionSkinTogglePreviewTool: function(d) { return "Activar/desactivar la transparencia"; },
+  duplicateThisFrameFramesListTool: function(d) { return "Duplicar este fotograma"; },
+  deleteThisFrameFramesListTool: function(d) { return "Eliminar este fotograma"; },
+  addNewFrameFramesListTool: function(d) { return "Añadir nuevo fotograma"; },
+  loadingPiskelMessage: function(d) { return "Cargando Piskel..."; },
+  penSizeChangeTitle: function(d) { return "Tamaño del lápiz"; },
+  penSizeChangeAvailableSizes: function(d) { return "1, 2, 3 o 4 píxeles"; },
+  preferencesSetting: function(d) { return "PREFERENCIAS"; },
+  resizeSetting: function(d) { return "CAMBIAR TAMAÑO"; },
+  resizeSettingDescriptorResizeTheDrawingArea: function(d) { return "Cambiar el tamaño del área de dibujo"; },
+  saveSetting: function(d) { return "GUARDAR"; },
+  saveSettingDescriptorSaveToGallerySaveLocallyExportAsFile: function(d) { return "Guardar en tu galería, guardar localmente, exportar como archivo"; },
+  exportSetting: function(d) { return "EXPORTAR"; },
+  exportSettingDescriptorExportAsImageSpriteSheetOrGif: function(d) { return "Exportar como imagen, como hoja de sprites o como GIF animado"; },
+  importSetting: function(d) { return "IMPORTAR"; },
+  importSettingDescriptorImportAsExistingImageGifOrPiskelFile: function(d) { return "Importar una imagen existente, un GIF animado o un archivo .piskel"; },
+  exportSettingSectionTitle: function(d) { return "Exportar"; },
+  exportSettingSectionScaleTheAnimation: function(d) { return "Escalar la animación para la exportación"; },
+  exportSettingSectionScale: function(d) { return "Escala"; },
+  exportSettingSectionResolution: function(d) { return "Resolución"; },
+  exportSettingSectionOthersTab: function(d) { return "Otros"; },
+  resizeSettingSectionTitle: function(d) { return "Cambiar tamaño"; },
+  resizeSettingSectionSubmitButton: function(d) { return "Cambiar tamaño"; },
+  resizeSettingSectionWidth: function(d) { return "Ancho"; },
+  resizeSettingSectionHeight: function(d) { return "Altura"; },
+  resizeSettingSectionMaintainAspectRatio: function(d) { return "Mantener la relación de aspecto"; },
+  resizeSettingSectionResizeCanvasContent: function(d) { return "Cambiar el tamaño del contenido del lienzo"; },
+  resizeSettingSectionAnchor: function(d) { return "Ancla"; },
+  resizeSettingSectionDefaultTitle: function(d) { return "Tamaño predeterminado"; },
+  resizeSettingSectionDefaultSubmitButton: function(d) { return "Establecer como predeterminado"; },
+  resizeSettingSectionDefaultWidth: function(d) { return "Ancho"; },
+  resizeSettingSectionDefaultHeight: function(d) { return "Altura"; },
+  colorPalettePrimary: function(d) { return "Primario - botón izquierdo del ratón"; },
+  colorPaletteSecondary: function(d) { return "Secundario - botón derecho del ratón"; },
+  colorPaletteSwapColors: function(d) { return "Intercambiar colores (X)"; },
+  zipExportSettingSectionDesc: function(d) { return "Archivo ZIP que contiene un PNG por cada fotograma. Los nombres de los archivos comenzarán con el prefijo que se indica a continuación."; },
+  zipExportSettingSectionPrefix: function(d) { return "Prefijo"; },
+  zipExportSettingSectionPNGFilePrefix: function(d) { return "Prefijo del archivo PNG..."; },
+  zipExportSettingSectionSplitByLayers: function(d) { return "Dividir por capas"; },
+  zipExportSettingSectionDownloadZip: function(d) { return "Descargar ZIP"; },
+  gifExportSettingSectionDesc: function(d) { return "Convierte tu sprite en un GIF animado."; },
+  gifExportSettingSectionWarningMessage: function(d) { return "Demasiados colores: no se pueden conservar los colores originales ni la transparencia."; },
+  gifExportSettingSectionLoopRepeatedly: function(d) { return "Repetir en bucle"; },
+  gifExportSettingSectionDownload: function(d) { return "Descargar"; },
+  gifExportSettingSectionDownloadDesc: function(d) { return "Descargar como GIF animado."; },
+  gifExportSettingSectionUpload: function(d) { return "Subir"; },
+  gifExportSettingSectionUploadDesc: function(d) { return "Subir como GIF animado a una URL pública."; },
+  gifExportSettingSectionUncheckToPlay: function(d) { return "Desmarca esta casilla para reproducir la animación solo una vez."; },
+  gifExportSettingSectionBuildingAnimatedGif: function(d) { return "Creando GIF animado..."; },
+  gifExportSettingSectionYourImageAvailableAt: function(d) { return "Tu imagen ya está disponible en " + d.url; },
+
+  outlinerDrawingTool: function(d) { return "Herramienta de contorno"; },
+  outlinerDrawingToolDescriptorFillCorners: function(d) { return "Rellenar esquinas"; },
+  shiftIndexDrawingTool: function(d) { return "Herramienta para cambiar el índice de colores de la paleta"; },
+  shiftIndexDescriptorUsage: function(d) { return "Cambia el color de los píxeles que se encuentran en la paleta actual. \n Por cada píxel que toque, se utilizará el color siguiente o anterior dentro de la paleta. \n Utiliza los colores primario y secundario de la paleta para establecer \n los límites del rango de tonos de las celdas. Por ejemplo, si tu paleta tiene: \n - rojo claro, rojo oscuro, azul claro, azul oscuro - \n te interesaría establecer el color primario como rojo claro y el secundario como rojo oscuro. \n Esto evitará que el pincel alterne entre el rojo y el azul"; },
+  shiftIndexDescriptorShiftBack: function(d) { return "Desplazar el índice hacia atrás"; },
+  pencilDrawingTool: function(d) { return "Herramienta de lápiz"; },
+  pencilDrawingToolDescriptorDescription: function(d) { return "Lápiz al estilo clásico de Macintosh. \n Dibuja en el color opuesto al del píxel en el que comienza el trazo. \n Si el trazo comienza en un área transparente o en el color secundario, dibuja en el color primario. \n Si el trazo comienza en el color primario, dibuja en el color secundario. \n Esto minimiza la necesidad de cambiar entre los colores seleccionados. \n Para dibujar en un solo color, no tendrás que cambiar de color ni de herramienta en absoluto."; },
+  changelogSetting: function(d) { return "REGISTRO DE CAMBIOS" },
+  changelogSettingDescriptorDescription: function(d) { return "Consulta el registro de cambios de todas las versiones de Piskel y Piskel Sharp, incluyendo planes de actualización futura." }
+
+};
+(window.piskel_locales = window.piskel_locales || {}).enp = {
+  circleDrawingTool: function(d) { return "The Witch's Ring"; },
+  colorPickerDrawingTool: function(d) { return "Plunder the Hue"; },
+  colorSwapDrawingTool: function(d) { return "Paint all timbers of the same color"; },
+  colorSwapDrawingToolDescriptorApplyToAllLayers: function(d) { return "Curse all decks"; },
+  colorSwapDrawingToolDescriptorApplyToAllFrames: function(d) { return "Curse all maps"; },
+  ditheringDrawingTool: function(d) { return "Sea-Spray tool"; },
+  ditheringDrawingToolDescriptorUse25: function(d) { return "Quarter-blast spray (25%)"},
+  ditheringDrawingToolDescriptorUse75: function(d) { return "Three-quarter-blast spray (75%)"},
+  eraserDrawingTool: function(d) { return "Scrub the Deck"; },
+  filledCircleDrawingTool: function(d) { return "Cannonball tool"; },
+  filledRectangleDrawingTool: function(d) { return "Treasure Chest Tool"; },
+  lightenDrawingTool: function(d) { return "Flash o' Lightning"; },
+  lightenDrawingToolDescriptorDarken: function(d) { return "The Deep Abyss"; },
+  lightenDrawingToolDescriptorApplyOncePerPixel: function(d) { return "Strike but once per timber"; },
+  moveDrawingTool: function(d) { return "Heave Ho! tool"; },
+  moveDrawingToolDescriptorApplyToAllLayers: function(d) { return "Heave all decks"; },
+  moveDrawingToolDescriptorApplyToAllFrames: function(d) { return "Heave all maps"; },
+  moveDrawingToolDescriptorWrapCanvas: function(d) { return "Sail around the world's borders"; },
+  paintBucketDrawingTool: function(d) { return "Barrel o' Tar tool"; },
+  rectangleDrawingTool: function(d) { return "Parchment tool"; },
+  shapeToolDrawingDescriptorKeep1To1Ratio: function(d) { return "Keep a balanced cargo (1 to 1 ratio)"; },
+  shapeToolDrawingDescriptorFillShape: function(d) { return "Stuff the cargo bay full"; },
+  simplePenDrawingTool: function(d) { return "The Trusty Quill"; },
+  strokeDrawingTool: function(d) { return "Rigging Line"; },
+  strokeDrawingToolDescriptorDrawStraightLine: function(d) { return "Hold down the anchor (Shift) to draw straight lines"; },
+  verticalMirrorPenDrawingTool: function(d) { return "Double-Sighted Spyglass"; },
+  verticalMirrorPenDrawingToolDescriptorHorizAxis: function(d) { return "Peer across the Horizon"; },
+  verticalMirrorPenDrawingToolDescriptorHorizAndVertAxis: function(d) { return "Peer across all the Four Winds"; },
+  centerTransformTool: function(d) { return "Maroon the image dead center"; },
+  centerTransformToolDescriptorApplyToAllLayers: function(d) { return "Maroon across all decks"; },
+  centerTransformToolDescriptorApplyToAllFrames: function(d) { return "Maroon across all maps"; },
+  cloneTransformTool: function(d) { return "Clone the current deck to all maps in the ledger"; },
+  cropTransformTool: function(d) { return "Trimming the Sails"; },
+  flipTransformToolVertAxis: function(d) { return "Capsize Head-to-Tail"; },
+  rotateTransformTool: function(d) { return "Steer Portside (Counter-clockwise)"; },
+  rotateTransformToolDescriptorClockwiseRotation: function(d) { return "Steer Starboard (Clockwise)"; },
+  rotateTransformToolDescriptorApplyToAllLayers: function(d) { return "Turn all decks!"; },
+  rotateTransformToolDescriptorApplyToAllFrames: function(d) { return "Turn all maps!"; },
+  cropTransformToolDescriptorCropToFit: function(d) { return "Trim the excess canvas down to the loot."; },
+  cropTransformToolDescriptorAppliesToAllFramesLayers: function(d) { return "Applies to every map and deck aboard!"; },
+  flipTransformToolDescriptorHorizAxis: function(d) { return "Capsize Port-to-Starboard"; },
+  flipTransformToolDescriptorApplyToAllLayers: function(d) { return "Capsize all decks"; },
+  flipTransformToolDescriptorApplyToAllFrames: function(d) { return "Capsize all maps"; },
+  baseSelectDrawingSelectionToolDescriptorDragTheSelection: function(d) { return "Drag your stolen plunder to move it. Ye may hop between other decks and maps."; },
+  baseSelectDrawingSelectionToolDescriptorDuplicateTheSelectedArea: function(d) { return "Clone the marked booty"; },
+  baseSelectDrawingSelectionToolDescriptorMoveTheContent: function(d) { return "Hold fast to drag the loot"; },
+  baseSelectDrawingSelectionToolDescriptorDragTheSelectionMaySwitchToOtherFrames: function(d) { return "Drag the marked loot to move it. Ye may hop to other maps."; },
+  lassoSelectDrawingSelectionTool: function(d) { return "Lasso the Loot"; },
+  rectangleSelectDrawingSelectionTool: function(d) { return "Grid the Loot"; },
+  shapeSelectDrawingSelectionTool: function(d) { return "Map out the Loot"; },
+  onionSkinTogglePreviewTool: function(d) { return "Peer through the Ghostly Veil (Onion Skin)"; },
+  duplicateThisFrameFramesListTool: function(d) { return "Clone this Map"; },
+  deleteThisFrameFramesListTool: function(d) { return "Walk the plank with this map"; },
+  addNewFrameFramesListTool: function(d) { return "Summon a fresh map"; },
+  loadingPiskelMessage: function(d) { return "Prepping the Galleon..."; },
+  penSizeChangeTitle: function(d) { return "Quill girth"; },
+  penSizeChangeAvailableSizes: function(d) { return "at 1, 4, 8, or 16 timbers wide"; },
+  preferencesSetting: function(d) { return "CAPTAIN'S LOG"; },
+  resizeSetting: function(d) { return "STRETCH THE SAILS"; },
+  resizeSettingDescriptorResizeTheDrawingArea: function(d) { return "Stretch or shrink the parchment area"; },
+  saveSetting: function(d) { return "BURY THE LOOT"; },
+  saveSettingDescriptorSaveToGallerySaveLocallyExportAsFile: function(d) { return "Stash in your grand archive, lock it away locally, or forge it as a file"; },
+  exportSetting: function(d) { return "SMUGGLE"; },
+  exportSettingDescriptorExportAsImageSpriteSheetOrGif: function(d) { return "Smuggle as an Image, a grand Spritesheet, or a Magical Moving Parchment (.GIF)"; },
+  importSetting: function(d) { return "PLUNDER"; },
+  importSettingDescriptorImportAsExistingImageGifOrPiskelFile: function(d) { return "Plunder a foreign image, an animated glyph, or an old .piskel ledger"; },
+  exportSettingSectionTitle: function(d) { return "Smuggle Out"; },
+  exportSettingSectionScaleTheAnimation: function(d) { return "Blow up the parchment size for smuggling"; },
+  exportSettingSectionScale: function(d) { return "Magnification"; },
+  exportSettingSectionResolution: function(d) { return "Timber Count (Resolution)"; },
+  exportSettingSectionOthersTab: function(d) { return "Other Ports"; },
+  resizeSettingSectionTitle: function(d) { return "Stretch the Sails"; },
+  resizeSettingSectionSubmitButton: function(d) { return "Re-tailor"; },
+  resizeSettingSectionWidth: function(d) { return "Beams (Width)"; },
+  resizeSettingSectionHeight: function(d) { return "Masts (Height)"; },
+  resizeSettingSectionMaintainAspectRatio: function(d) { return "Keep the ship balanced"; },
+  resizeSettingSectionResizeCanvasContent: function(d) { return "Stretch the cargo inside"; },
+  resizeSettingSectionAnchor: function(d) { return "The Anchor Point"; },
+  resizeSettingSectionDefaultTitle: function(d) { return "Standard Vessel Size"; },
+  resizeSettingSectionDefaultSubmitButton: function(d) { return "Drop Anchor as Default"; },
+  resizeSettingSectionDefaultWidth: function(d) { return "Default Beams"; },
+  resizeSettingSectionDefaultHeight: function(d) { return "Default Masts"; },
+  colorPalettePrimary: function(d) { return "Primary Grog - Left Click"; },
+  colorPaletteSecondary: function(d) { return "Secondary Grog - Right Click"; },
+  colorPaletteSwapColors: function(d) { return "Swap Grogs (X)"; },
+  zipExportSettingSectionDesc: function(d) { return "A locked chest (ZIP) containing one flat PNG ledger for each map. File tags will begin with the mark below."; },
+  zipExportSettingSectionPrefix: function(d) { return "The Flag's Mark"; },
+  zipExportSettingSectionPNGFilePrefix: function(d) { return "PNG file mark..."; },
+  zipExportSettingSectionSplitByLayers: function(d) { return "Tear apart by decks"; },
+  zipExportSettingSectionDownloadZip: function(d) { return "Haul the ZIP Chest"; },
+  gifExportSettingSectionDesc: function(d) { return "Forge your work into a magical moving animation (.GIF)"; },
+  gifExportSettingSectionWarningMessage: function(d) { return "Too many colors on deck! We cannot preserve the pure transparency or tints."; },
+  gifExportSettingSectionLoopRepeatedly: function(d) { return "Sail in a continuous loop"; },
+  gifExportSettingSectionDownload: function(d) { return "Haul Loot Natively"; },
+  gifExportSettingSectionDownloadDesc: function(d) { return "Haul away onto your machine as an animated GIF."; },
+  gifExportSettingSectionUpload: function(d) { return "Send up the Flare"; },
+  gifExportSettingSectionUploadDesc: function(d) { return "Blast this animated work onto a public message crow URL."; },
+  gifExportSettingSectionUncheckToPlay: function(d) { return "Lower flag to play the sorcery only once."; },
+  gifExportSettingSectionBuildingAnimatedGif: function(d) { return "Brewing the moving spell (.GIF)..."; },
+  gifExportSettingSectionYourImageAvailableAt: function(d) { return "Ye can spy your artwork floating at " + d.url; },
+  outlinerDrawingTool: function(d) { return "Border-Tracer tool"; },
+  outlinerDrawingToolDescriptorFillCorners: function(d) { return "Seal the cracks"; },
+  shiftIndexDrawingTool: function(d) { return "Shifting Palette Crew Tool"; },
+  shiftIndexDescriptorUsage: function(d) { return "Shifts the hues of timbers already inside the crew list. \n For every pixel touched, the next or prior hue inside the chest is used. \n Set your boundaries with primary and secondary anchors to avoid \n cycling from standard red straight into royal blue."; },
+  shiftIndexDescriptorShiftBack: function(d) { return "Heave index backwards"; },
+  pencilDrawingTool: function(d) { return "Macintosh Smuggler's Pencil"; },
+  pencilDrawingToolDescriptorDescription: function(d) { return "Classic retro-style pencil tool. \n Draws in the inverse hue of the pixel the stroke strikes upon. \n If you strike on nothingness, it paints in your primary grog color. \n This saves the crew from swapping tools back and forth across the table."; },
+  changelogSetting: function(d) { return "SHIP'S MANIFEST (CHANGELOG)" },
+  changelogSettingDescriptorDescription: function(d) { return "Inspect the updates to Piskel and Piskel Sharp, and gaze at future voyage plans." }
+};
