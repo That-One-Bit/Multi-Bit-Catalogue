@@ -10,18 +10,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <div id="vita-console" style="position:fixed;top:0;left:0;width:100%;max-height:150px;background:rgba(0,0,0,0.85);color:#0f0;font-family:monospace;font-size:12px;z-index:999999;overflow-y:auto;pointer-events:none;padding:5px;">
-    Vita Console Initialized...
-  </div>
-  <script>
-    window.onerror = function(message, source, lineno, colno, error) {
-      var consoleDiv = document.getElementById('vita-console');
-      var errorMessage = '[' + lineno + ':' + colno + '] ' + message;
-      consoleDiv.innerHTML += '<br><span style="color:#f33">' + errorMessage + '</span>';
-      return false;
-    };
-  </script>
-
   <div
     id="loading-mask"
     style="
@@ -1588,9 +1576,9 @@
     (function () {
 
   /**
-   * See @Gruntfile.js => after build, -2026-08-14-02-47 is replaced by the build version
+   * See @Gruntfile.js => after build, -2026-08-14-03-17 is replaced by the build version
    */
-  var version = '-2026-08-14-02-47';
+  var version = '-2026-08-14-03-17';
   var versionHasNotBeenReplaced = version.indexOf('@@') === 0;
   if (versionHasNotBeenReplaced)  {
     version = '';
