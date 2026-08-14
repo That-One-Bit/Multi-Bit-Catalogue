@@ -1,12 +1,12 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/x-icon" href="./img/favicon.png">
+  <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Piskel Sharp: Beta</title>
-  <meta name="description" content="A simple web-based pixel art editor based on Piskel, made for beginner and expierenced users alike.">
-  <meta name="author" content="Julian Descottes, That-One-Bit">
+  <meta name="description" content="A simple web-based pixel art editor based on Piskel, made for beginners.">
+  <meta name="author" content="Julian Descottes and ZeroBits">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -29,6 +29,7 @@
   <style type="text/css">
   #main-wrapper {
     margin-top: 40px;
+    margin-bottom: -5px;
   }
 
   .fake-piskelapp-header {
@@ -37,9 +38,17 @@
     height: 40px;
     line-height: 40px;
     font-size: 24px;
-    background: black;
-    color: gold;
+    background: linear-gradient(180deg, #110e08, #060500);
+    box-shadow: 0 2px 6px 6px rgb(255 187 0 / 12%);
+    color: rgb(255, 196, 0);
     z-index: 100;
+  }
+
+  .fill-bar {
+    background: black;
+    position: fixed;
+    height: 10px;
+    width: 10000px;
   }
 
   .piskel-name.piskel-name-saving {
@@ -59,7 +68,6 @@
     border-radius: 3px;
     font-size: 22px;
     color: black;
-    background: gold;
     text-decoration: none;
 
     align-items: center;
@@ -74,10 +82,10 @@
     title="Create a new sprite"
     rel="tooltip"
     data-placement="left"
-    >+</a>
+    > + </a>
   <span class="piskel-name"></span>
 </div>
-  <div class="fill-bar"></div>
+<div class="fill-bar"></div>
 
   <!-- the comment below indicates the beginning of markup reused by the editor integrated in piskelapp.com -->
   <!-- do not delete, do not move :) -->
@@ -97,7 +105,7 @@
       </ul>
       <div class="palette-wrapper">
         <div
-          class="tool-icon tool-color-picker"
+          class="tool-icon tool-color-picker-A"
           data-initial-title="Primary - left mouse button"
           rel="tooltip"
           data-placement="right"
@@ -280,11 +288,10 @@
         <div class="vertical-centerer">
   <div
     data-setting="changelog"
-    class="tool-icon icon-settings-changelog-list-white"
+    class="tool-icon  icon-settings-changelog-list-white"
     title="<span class='highlight'>CHANGELOG</span></br>View the changelog for every version of Piskel and Piskel Sharp, including future update plans."
     rel="tooltip" data-placement="left">
   </div>
-
   <div
     data-setting="user"
     class="tool-icon icon-settings-gear-white"
@@ -364,45 +371,6 @@
     <div class='tooltip-descriptor'>
       {{description}}
     </div>
-  </script>
-
-  <!-- ----------------------------------------------------------- -->
-  <!-- Resize Tool -->
-  <!-- Template for Resize Settings Title -->
-  <script type="text/template" id="resize-settings-template">
-    {{text}}
-  </script>
-
-  <!-- Template for Width and Height -->
-  <script type="text/template" id="resize-tool-template">
-    <div class="resize-section">
-      <span class="resize-section-title">{{spanText}}</span>
-      <input type="text" class="textfield resize-size-field" autocomplete="off" name="{{inputName}}"/>
-      <span>px</span>
-    </div>
-  </script>
-
-  <!-- Template for Ratio and Canvas -->
-  <script type="text/template" id="ratio-canvas-template">
-    <div class="resize-section">
-      <label class="checkbox-container">
-        <input type="checkbox" class="{{cssClass}} checkbox-fix" value="true"/>
-        <span>{{spanText}}</span>
-      </label>
-    </div>
-  </script>
-
-  <!-- Template for Anchor -->
-  <script type="text/template" id="resize-anchor-template">
-    <div class="resize-section">
-      <span class="resize-section-title">{{spanText}}</span>
-      <div class="resize-anchor-container"></div>
-    </div>
-  </script>
-
-  <!-- Template for Resize Submit Button -->
-  <script type="text/template" id="resize-button-template">
-    <input type="submit" class="button button-primary resize-button" value="{{valueText}}" />
   </script>
 </div>
   <div style="display:none">
@@ -557,6 +525,16 @@
   </div>
 </script>
 
+  <script type="text/template" id="templates/dialogs/changelog-sharp.html">
+  <div class="dialog-wrapper">
+    <h3 class="dialog-head">
+      Piskel Sharp Changelog
+      <span class="dialog-close">X</span>
+    </h3>
+    <div class="dialog-content backups-wizard-container"></div>
+  </div>
+</script>
+
 <script type="text/template" id="backups-select-session">
 <div class="backups-step-container">
   <div class="backups-step-content">
@@ -571,6 +549,24 @@
       </div>
     </div>
     <div class="session-list">
+    </div>
+  </div>
+</div>
+</script>
+
+<script type="text/template" id="changelog-sharp">
+<div class="backups-step-container wizard-step current-step">
+  <div class="backups-step-content">
+    <div class="browse-backups-disclaimer">
+      <div class="backups-icon icon-common-backup-white">&nbsp;</div>
+      <div class="browse-backups-disclaimer-content">
+        <!-- Keep in sync with MAX_SESSIONS in BackupService.js -->
+         This is where you can find the version history of Piskel Sharp. All of the updates starting from the beginning are found here.
+        <br>
+        <br>
+        The foundation of Piskel Sharp and its origin are found at the bottom.</div>
+    </div>
+    <div class="version-list">
     </div>
   </div>
 </div>
@@ -1000,7 +996,7 @@
       </ul>
       <p>We strive to improve Piskel, its performance and stability, but this is a personal project with limited time and resources.
          We prefer to warn you early rather than having you lose your work.</p>
-      <p>Feedback welcome at <a href="https://github.com/piskelapp/piskel" target="_blank">https://github.com/piskelapp/piskel</a></p>
+      <p>Feedback welcome at <a href="https://that-one-bit.github.io/Multi-Bit-Catalogue/" target="_blank">https://that-one-bit.github.io/Multi-Bit-Catalogue/</a></p>
       <p>
         <div class="warning-icon icon-common-warning-red">&nbsp;</div>
         <div class="warning-icon-info">This icon will remain on the bottom-right of the application until the performance issue is fixed. You can click on it at anytime to display this information again.</div>
@@ -1028,47 +1024,6 @@
 </script>
 
   <!-- settings-panel partials -->
-  <script type="text/template" id="templates/settings/changelog.html">
-<div class="settings-section settings-section-changelog">
-  <div class="settings-title">
-    Piskel Sharp Changelog
-  </div>
-  <div class="settings-item">
-    <span> View the <span class="changelog-highlight">version history</span> of Piskel Sharp, starting from the top.</span>
-    <div class="changelog-section">
-      <button type="button" class="button button-primary changelog-sharp-button">View Changelog</button>
-    </div>
-  </div>
-  <div class="settings-title">
-    Piskel Changelog
-  </div>
-  <div class="settings-item">
-    <span> View the <span class="changelog-highlight">version history</span> of Piskel, starting from the top.</span>
-
-    <div class="changelog-section">
-      <button type="button" class="button button-primary changelog-button">View Changelog</button>
-    </div>
-  </div>
-  <div class="settings-title">
-    Future Update Plans
-  </div>
-  <div class="settings-item">
-    <span> Wondering about what <span class="changelog-highlight">features</span> are coming to Piskel Sharp? Check here, updated per-major. </span>
-    <div class="changelog-section">
-      <button type="button" class="button button-primary future-plans-button">View Planned Featuers</button>
-    </div>
-  </div>
-  <div class="settings-title">
-    Piskel Sharp Credits
-  </div>
-  <div class="settings-item">
-    <span> Look at who <span class="changelog-highlight">made this</span> fork of Piskel, and every contributor in a stylish manor.</span>
-    <div class="changelog-section">
-      <button type="button" class="button button-primary credits-button">View Credits</button>
-    </div>
-  </div>
-</div>
-</script>
   <script type="text/html" id="templates/settings/preferences.html">
   <div class="settings-section settings-section-preferences">
     <div class="settings-title">Settings</div>
@@ -1082,14 +1037,14 @@
       Piskel Sharp
       <span rel="tooltip" data-placement="bottom" title="View Release Notes">
         <a  class="settings-version" target="_blank"
-            href="https://github.com/that-one-bit/piskel-sharp/releases/tag/v0.2.0">v0.2.0</a>
+            href="https://that-one-bit.github.io/Multi-Bit-Catalogue/">v0.2.0</a>
       </span>
     </div>
     <div class="settings-based-info">
-      Based on PFP:
+      Based On PFP:
       <span rel="tooltip" data-placement="bottom" title="View Release Notes">
         <a  class="settings-version" target="_blank"
-            href="https://blog.gingerbeardman.com/2023/05/10/piskel-for-playdate/">1.16.1</a>
+            href="https://blog.gingerbeardman.com/2023/05/10/piskel-for-playdate/">v0.16.1</a>
       </span>
     </div>
   </div>
@@ -1155,25 +1110,35 @@
     <div class="settings-item">
       <label>Background</label>
       <div class="background-picker-wrapper">
-<div class="background-picker high-light-picker-background selected" data-background="high-light-canvas-background" rel="tooltip" data-placement="bottom" data-original-title="light / high contrast">
+        <div class="background-picker high-light-picker-background" data-background="high-light-canvas-background" 
+        rel="tooltip" data-placement="bottom" data-original-title="light / high contrast">
         </div>
-        <div class="background-picker low-light-picker-background" data-background="low-light-canvas-background" rel="tooltip" data-placement="bottom" title="light / low contrast">
+        <div class="background-picker low-light-picker-background" data-background="low-light-canvas-background"
+              rel="tooltip" data-placement="bottom" title="light / low contrast">
         </div>
-        <div class="background-picker high-medium-light-picker-background" data-background="high-medium-light-canvas-background" rel="tooltip" data-placement="bottom" title="medium light / high contrast">
+        <div class="background-picker high-medium-light-picker-background" data-background="high-medium-light-canvas-background"
+              rel="tooltip" data-placement="bottom" title="medium light / high contrast">
         </div>
-        <div class="background-picker low-medium-light-picker-background" data-background="low-medium-light-canvas-background" rel="tooltip" data-placement="bottom" title="medium light / low contrast">
+        <div class="background-picker low-medium-light-picker-background" data-background="low-medium-light-canvas-background"
+              rel="tooltip" data-placement="bottom" title="medium light / low contrast">
         </div>
-        <div class="background-picker very-low-medium-light-picker-background" data-background="very-low-medium-light-canvas-background" rel="tooltip" data-placement="bottom" title="medium light / very low contrast">
+        <div class="background-picker very-low-medium-light-picker-background" data-background="very-low-medium-light-canvas-background"
+              rel="tooltip" data-placement="bottom" title="medium light / very low contrast">
         </div>
-        <div class="background-picker high-medium-dark-picker-background" data-background="high-medium-dark-canvas-background" rel="tooltip" data-placement="bottom" title="medium dark / high contrast">
+        <div class="background-picker high-medium-dark-picker-background" data-background="high-medium-dark-canvas-background"
+              rel="tooltip" data-placement="bottom" title="medium dark / high contrast">
         </div>
-        <div class="background-picker low-medium-dark-picker-background" data-background="low-medium-dark-canvas-background" rel="tooltip" data-placement="bottom" title="medium dark / low contrast">
+        <div class="background-picker low-medium-dark-picker-background" data-background="low-medium-dark-canvas-background"
+              rel="tooltip" data-placement="bottom" title="medium dark / low contrast">
         </div>
-        <div class="background-picker very-low-medium-dark-picker-background" data-background="very-low-medium-dark-canvas-background" rel="tooltip" data-placement="bottom" title="medium dark / very low contrast">
+        <div class="background-picker very-low-medium-dark-picker-background" data-background="very-low-medium-dark-canvas-background"
+              rel="tooltip" data-placement="bottom" title="medium dark / very low contrast">
         </div>
-        <div class="background-picker high-dark-picker-background" data-background="high-dark-canvas-background" rel="tooltip" data-placement="bottom" title="dark / high contrast">
+        <div class="background-picker high-dark-picker-background" data-background="high-dark-canvas-background"
+              rel="tooltip" data-placement="bottom" title="dark / high contrast">
         </div>
-        <div class="background-picker low-dark-picker-background" data-background="low-dark-canvas-background" rel="tooltip" data-placement="bottom" title="dark / low contrast">
+        <div class="background-picker low-dark-picker-background" data-background="low-dark-canvas-background"
+              rel="tooltip" data-placement="bottom" title="dark / low contrast">
         </div>
       </div>
     </div>
@@ -1197,9 +1162,9 @@
       </select>
     </div>
 
-    <div class="settings-item">
+    <div class="settings-item ignore-warnings">
       <label>
-        Ignore warnings
+        Ignore Browser Warnings
         <input type="checkbox" value="1" class="ignore-warnings-checkbox" name="ignore-warnings-checkbox" />
       </label>
     </div>
@@ -1209,13 +1174,13 @@
   <div class="preferences-panel-tile">
     <div class="settings-item">
       <label>
-        Enable tile mode
+        Enable Tile Mode
         <input type="checkbox" value="1" class="tile-mode-checkbox" name="tile-mode-checkbox"/>
       </label>
     </div>
 
     <div class="settings-item">
-      <label>Mask opacity</label>
+      <label rel="tooltip" data-original-title="How opaque should the mask on the simulated tiles appear?" data-placement="bottom"> Mask Opacity</label>
       <input type="range" min="0" max="0.5" step="0.01"
         class="settings-opacity-input tile-mask-opacity-input" name="tile-mask-opacity"/>
       <span class="settings-opacity-text tile-mask-opacity-text"></span>
@@ -1225,22 +1190,57 @@
   <script type="text/html" id="templates/settings/resize.html">
   <div class="settings-section settings-section-resize">
     <!-- RESIZE DRAWING SECTION -->
-    <div class="settings-title" id='settings-title'>
-      <!-- Content comes from ResizeController createResizeTitle() -->
+    <div class="settings-title">
       Resize
     </div>
     <div class="settings-item  resize-canvas">
-      <form action="" method="POST" name="resize-canvas-form" id='resize-canvas-form'>
-        <!-- Content comes from ResizeController createResizeCanvasForm() -->
+      <form action="" method="POST" name="resize-canvas-form">
+        <div class="resize-section">
+          <span  class="resize-section-title">Width</span>
+          <input type="text" class="textfield resize-size-field" autocomplete="off" name="resize-width"/>
+          <span>px</span>
+        </div>
+        <div class="resize-section">
+          <span  class="resize-section-title">Height</span>
+          <input type="text" class="textfield resize-size-field" autocomplete="off" name="resize-height"/>
+          <span>px</span>
+        </div>
+        <div class="resize-section">
+          <label class="checkbox-container">
+            <input type="checkbox" class="resize-ratio-checkbox checkbox-fix" value="true"/>
+            <span>Maintain aspect ratio</span>
+          </label>
+        </div>
+        <div class="resize-section">
+          <label class="checkbox-container">
+            <input type="checkbox" class="resize-content-checkbox checkbox-fix" value="true"/>
+            <span>Resize canvas content</span>
+          </label>
+        </div>
+        <div class="resize-section">
+          <span  class="resize-section-title">Anchor</span>
+          <div class="resize-anchor-container"></div>
+        </div>
+        <input type="submit" class="button button-primary resize-button" value="Resize" />
       </form>
     </div>
     <!-- DEFAULT SIZE SECTION -->
-    <div class="settings-title" id='settings-title-default'>
-      <!-- Content comes from createResizeTitleDefault() -->
+    <div class="settings-title">
+      Default size
     </div>
     <div class="settings-item  settings-default-size">
-      <form action="" method="POST" name="default-size-form" id="default-size-form">
-        <!-- Content comes from createResizeCanvasDefaultForm() -->
+      <form action="" method="POST" name="default-size-form">
+        <div class="resize-section">
+          <span  class="resize-section-title">Width</span>
+          <input type="text" class="textfield resize-size-field" autocomplete="off" name="default-width"/>
+          <span>px</span>
+        </div>
+        <div class="resize-section">
+          <span  class="resize-section-title">Height</span>
+          <input type="text" class="textfield resize-size-field" autocomplete="off" name="default-height"/>
+          <span>px</span>
+        </div>
+        <input type="submit" class="button button-primary default-size-button" value="Set default" />
       </form>
     </div>
   </div>
@@ -1285,6 +1285,10 @@
 
 <!-- save-gallery-unavailable-partial -->
 <script type="text/template" id="save-gallery-unavailable-partial">
+  <div class="settings-title">Save online</div>
+  <div class="settings-item">
+    <div class="save-status">Login to <a href="https://www.piskelapp.com" target="_blank">piskelapp.com</a> to save and share your sprites online.</div>
+  </div>
 </script>
 
 <!-- save-localstorage-partial -->
@@ -1520,14 +1524,55 @@
     </div>
   </div>
 </script>
+<script type="text/template" id="templates/settings/changelog.html">
+<div class="settings-section settings-section-changelog">
+  <div class="settings-title">
+    Piskel Sharp Changelog
+  </div>
+  <div class="settings-item">
+    <span> View the <span class="changelog-highlight">version history</span> of Piskel Sharp, starting from the top.</span>
+    <div class="changelog-section">
+      <button type="button" class="button button-primary changelog-sharp-button">View Changelog</button>
+    </div>
+  </div>
+  <div class="settings-title">
+    Piskel Changelog
+  </div>
+  <div class="settings-item">
+    <span> View the <span class="changelog-highlight">version history</span> of Piskel, starting from the top.</span>
+
+    <div class="changelog-section">
+      <button type="button" class="button button-primary changelog-button">View Changelog</button>
+    </div>
+  </div>
+  <div class="settings-title">
+    Future Update Plans
+  </div>
+  <div class="settings-item">
+    <span> Wondering about what <span class="changelog-highlight">features</span> are coming to Piskel Sharp? Check here, updated per-major. </span>
+    <div class="changelog-section">
+      <button type="button" class="button button-primary future-plans-button">View Planned Featuers</button>
+    </div>
+  </div>
+  <div class="settings-title">
+    Piskel Sharp Credits
+  </div>
+  <div class="settings-item">
+    <span> Look at who <span class="changelog-highlight">made this</span> fork of Piskel, and every contributor in a stylish manor.</span>
+    <div class="changelog-section">
+      <button type="button" class="button button-primary credits-button">View Credits</button>
+    </div>
+  </div>
+</div>
+</script>
 
   <script type="text/javascript">
     (function () {
 
   /**
-   * See @Gruntfile.js => after build, -2026-07-12-14-30 is replaced by the build version
+   * See @Gruntfile.js => after build, -2026-06-29-07-08 is replaced by the build version
    */
-  var version = '-2026-07-12-14-30';
+  var version = '-2026-6-30';
   var versionHasNotBeenReplaced = version.indexOf('@@') === 0;
   if (versionHasNotBeenReplaced)  {
     version = '';
@@ -1540,7 +1585,7 @@
   window._onPiskelReady = function () {
     var loadingMask = document.getElementById('loading-mask');
     loadingMask.style.opacity = 0;
-    window.setTimeout(function () {loadingMask.parentNode.removeChild(loadingMask);}, 600);
+    window.setTimeout(function () {loadingMask.parentNode.removeChild(loadingMask);}, 1850);
     pskl.app.init();
     pskl._releaseVersion = '0.2.0';
     // cleanup
@@ -1615,7 +1660,6 @@
     } else {
       script = 'js/piskel-packaged-min' + version + '.js';
     }
-
     loadStyle('css/piskel-style-packaged' + version + '.css');
     loadScript(script, '_onPiskelReady()');
   }
