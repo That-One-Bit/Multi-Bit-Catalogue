@@ -67,7 +67,7 @@ input[type="range"]:hover {
 }
 
 a, a:visited {
-  color: gold;
+  color: var(--sharp-black);
 }
 body {
   background: #121212;
