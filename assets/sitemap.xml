@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+       <loc>https://that-one-bit.github.io/Multi-Bit-Catalogue/</loc>
+       <lastmod>2026-09-20T03:57:06+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>1.0000</priority>
+  </url>
+  <url>
+       <loc>https://that-one-bit.github.io/Multi-Bit-Catalogue/music/index.html</loc>
+       <lastmod>2026-09-20T03:57:07+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://that-one-bit.github.io/Multi-Bit-Catalogue/index</loc>
+       <lastmod>2026-09-20T03:57:06+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://that-one-bit.github.io/Multi-Bit-Catalogue/music/Fantasma/index</loc>
+       <lastmod>2026-09-20T03:57:06+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://that-one-bit.github.io/Multi-Bit-Catalogue/music/index</loc>
+       <lastmod>2026-09-20T03:57:06+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.5120</priority>
+  </url>
+</urlset>
