@@ -1,0 +1,307 @@
+body {
+    background-color: rgb(20, 20, 20);
+    color: ghostwhite;
+    font-size: large;
+    min-height: 100vh;
+    background-image: linear-gradient(to top right, black 50%, transparent 100%);
+    overflow: hidden;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.frame-stage {
+    position: relative;
+    width: 100%;
+}
+
+@property --mask-opacity {
+  syntax: '<length-percentage>';
+  inherits: false;
+  initial-value: 100%;
+}
+
+h1, p, span, li {
+  font-family: "Raleway", system-ui;
+  font-optical-sizing: auto;
+  font-style: normal;
+  text-shadow: 2px 2px 2px rgb(114, 0, 6);
+  margin-bottom: initial;
+}
+
+h1 {
+    text-wrap-mode: nowrap;
+}
+
+p, span {
+    font-weight: 300;
+}
+
+ul, li {
+    list-style-position: inside
+}
+
+@keyframes dropFromTop {
+    0% {
+        transform: scale(calc(var(--current-scale, 1) * var(--scale-factor))) translateY(-100vh);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(var(--current-scale, 1)) translate(var(--current-translate, 0em, 0em));
+        opacity: var(--current-opacity, 1);
+        filter: var(--current-blur, blur(0px));
+    }
+}
+
+@keyframes notes {
+    0% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0vh);
+        opacity: 1;
+    }
+}
+
+.dropIn {
+    animation: dropFromTop var(--delay) ease-out forwards;
+}
+
+.notes {
+    animation: notes 1.5s cubic-bezier(1,.71,.11,1.19) forwards;
+    position: fixed;
+    background-color: black;
+    color: white;
+
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 2em;
+}
+
+.notes-eye {
+    filter: invert(1);
+    image-rendering: pixelated;
+    transform: scale(5); 
+    margin-bottom: 2em;
+}
+
+.note-button {
+    margin-top: 2em;
+}
+
+
+.finished {
+    transform: scale(0.5) translate(-5em, -5.55em);
+    filter: blur(2px);
+    opacity: 0;
+    position: absolute;
+    max-width: 250px;
+}
+
+.firstFrame {
+    --current-scale: 1;
+    --scale-factor: 0.25;
+    --delay: 1.5s;
+    --current-translate: 0em, 0em;
+    --current-opacity: 1;
+    --current-blur: blur(0px);
+    
+    transform: scale(1) translate(0em, 0em);
+    filter: blur(0px);
+    opacity: 1;
+    max-width: 250px;
+    margin-left: 5px;
+}
+
+.secondFrame {
+    --current-scale: 1.3;
+    --scale-factor: 0.5;
+    --delay: 2s;
+    --current-translate: 15em, 2em;
+    --current-opacity: 0.43;
+    --current-blur: blur(0.5px);
+
+    transform: scale(1.3) translate(15em, 2em);
+    filter: blur(0.5px);
+    opacity: 0.43;
+    max-width: 250px;
+    padding: 10px;
+}
+
+.thirdFrame {
+    --current-scale: 1.8;
+    --scale-factor: 0.5;
+    --delay: 2.5s;
+    --current-translate: 20em, 2.5em;
+    --current-opacity: 0.10;
+    --current-blur: blur(1px);
+
+    transform: scale(1.8) translate(20em, 2.5em);
+    filter: blur(1px);
+    opacity: 0.10;
+    max-width: 250px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.fourthFrame {
+    --current-scale: 2.5;
+    --current-translate: 25em, 3em;
+    --current-opacity: 0.02;
+    --current-blur: blur(1.5px);
+
+    transform: scale(2.5) translate(25em, 3em);
+    filter: blur(1.5px);
+    opacity: 0.02;
+    max-width: 250px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.starting {
+    --current-scale: 2.5;
+    --current-translate: 25em, 3em;
+    --current-opacity: 0.01;
+    --current-blur: blur(2px);
+
+    transform: scale(2.8) translate(30em, 3.5em);
+    filter: blur(2px);
+    opacity: 0.01;
+    max-width: 250px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.textfade {
+    --mask-opacity: 100%; 
+    height: 12em;
+    mask-image: linear-gradient(to bottom, black var(--mask-opacity), transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black var(--mask-opacity), transparent 100%);
+
+    transition: --mask-opacity 1.25s ease-out; 
+    overflow: hidden;
+}
+
+.textfade-active {
+    --mask-opacity: 60%;
+}
+
+.starting, .fourthFrame, .thirdFrame, .secondFrame, .firstFrame, .finished {
+    transition: transform 1.25s ease-out, opacity 1.25s ease-out, scale 1.25s ease-out, filter 1.25s ease-out, mask-image 1.25s ease-out, -webkit-mask-image 1.25s ease-out;
+    overflow: hidden;    
+    position: absolute;
+}
+
+.functionMenu {
+    position: fixed;
+    bottom: 1.5em;
+    right: 1.5em;
+
+    align-items: center;
+
+    width: 5.5em;
+    height: 6em;
+
+    background-color: rgb(20, 20, 20);
+    border: 3px solid rgb(145, 145, 145);
+}
+
+.button {
+    width: fit-content;
+    height: 25px;
+    border-radius: 4px;
+    line-height: 25px;
+
+    font-family: "Raleway", system-ui;
+    font-weight: 575;
+    user-select: none;
+
+    position: relative;
+
+    background-color: #f3e4e4;
+    border: 2px solid #ffffff;
+    color: black;
+    padding: 0 15px;
+
+    cursor: pointer;
+    transition: transform 0.05s linear;
+}
+
+.button:active {
+    background-color: #e9dbdb;
+    border-top: 2px solid #b1a8a8;
+    
+    transform: translateY(5px); 
+}
+
+.button::after {
+    content: '';
+    position: absolute;
+    
+    top: -2px; 
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: -1;
+    
+    border-radius: 4px;
+    
+    background-color: #b1a8a8;
+    
+    transform: translateY(5px); 
+}
+
+.button:active::after {
+    transform: translateY(0px);
+}
+
+
+.frameCounter {
+    position: fixed;
+    top: 1.5em;
+    right: 1.5em; 
+
+    line-height: 30px;
+    padding: 5px;
+    
+    width: fit-content;
+    height: fit-content;
+    background-color: rgb(20, 20, 20);
+    border: 3px solid rgb(145, 145, 145);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Raleway", system-ui;
+    font-weight: 575;
+    color: ghostwhite;
+    text-shadow: 2px 2px 2px rgb(114, 0, 6);
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+
+.page-main {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 2;
+
+    text-align: center;
+}
+
+.firstFrame .textfade {
+    mask-image: linear-gradient(to bottom, black var(--mask-opacity), transparent 0%) !important;
+    -webkit-mask-image: linear-gradient(to bottom, black var(--mask-opacity), transparent 0%) !important;
+    height: auto !important;
+}
